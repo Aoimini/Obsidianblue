@@ -1,0 +1,311 @@
+{
+  "main": {
+    "id": "321c7d544ebb3fc7",
+    "type": "split",
+    "children": [
+      {
+        "id": "5af06b0735c9bbeb",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "393ac1811d2fad98",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2_daily/11-23-2025.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "11-23-2025"
+            }
+          },
+          {
+            "id": "78dd24c5391781dc",
+            "type": "leaf",
+            "state": {
+              "type": "bases",
+              "state": {
+                "file": "無題のファイル.base",
+                "viewName": "Table"
+              },
+              "icon": "lucide-layout-grid",
+              "title": "無題のファイル"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "cc8753e486476576",
+    "type": "split",
+    "children": [
+      {
+        "id": "fadcc1e119b7ef0e",
+        "type": "tabs",
+        "dimension": 70.39473684210526,
+        "children": [
+          {
+            "id": "5cba5ebbba9e7041",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "ファイルエクスプローラ"
+            }
+          },
+          {
+            "id": "72aa0919c909f653",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "検索"
+            }
+          },
+          {
+            "id": "039a6f422d0280d7",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "ブックマーク"
+            }
+          },
+          {
+            "id": "afa87284f18007d8",
+            "type": "leaf",
+            "state": {
+              "type": "vertical-tabs",
+              "state": {},
+              "icon": "vertical-tabs",
+              "title": "Vertical tabs"
+            }
+          }
+        ]
+      },
+      {
+        "id": "74bdebda5cfaad44",
+        "type": "tabs",
+        "dimension": 29.605263157894733,
+        "children": [
+          {
+            "id": "52a3323b3c2fb6dc",
+            "type": "leaf",
+            "state": {
+              "type": "recent-files",
+              "state": {},
+              "icon": "clock",
+              "title": "Recent Files"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "86e4665383d1b40c",
+    "type": "split",
+    "children": [
+      {
+        "id": "515de5d185be1f38",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5d5932f9e8725858",
+            "type": "leaf",
+            "state": {
+              "type": "webviewer",
+              "state": {
+                "url": "https://gemini.google.com/app/9c78cac9671213a5?hl=ja",
+                "title": "Google Gemini",
+                "mode": "webview"
+              },
+              "icon": "globe-2",
+              "title": "Google Gemini"
+            }
+          },
+          {
+            "id": "aadf67806b4b7405",
+            "type": "leaf",
+            "state": {
+              "type": "webviewer",
+              "state": {
+                "url": "https://app.slack.com/workspace-signin?redir=%2Fgantry%2Fauth%3Fapp%3Dclient%26lc%3D1763975192%26return_to%3D%252Fclient%252FT08K98XHN2Z%252FC08K98XLHPX%26teams%3D",
+                "title": "​ワ⁠ー⁠ク⁠ス⁠ペ⁠ー⁠ス⁠を⁠検⁠索⁠す⁠る​ | Slack",
+                "mode": "webview"
+              },
+              "icon": "globe-2",
+              "title": "​ワ⁠ー⁠ク⁠ス⁠ペ⁠ー⁠ス⁠を⁠検⁠索⁠す⁠る​ | Slack"
+            }
+          },
+          {
+            "id": "d7621a08e9da2f56",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "4_template/日記.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "日記へのバックリンク"
+            }
+          },
+          {
+            "id": "87ba85dee671cfc0",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "4_template/日記.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "日記からのアウトゴーイングリンク"
+            }
+          },
+          {
+            "id": "b0ce24cc8054c324",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "タグ"
+            }
+          },
+          {
+            "id": "692924022bfcf23e",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "aHR0cHM6Ly93d3cubm90aW9uLnNvL01FTU8tZDdlMjAxY2ExMzk4NGIwM2IzNDRmY2UwY2ZhMWE1Mzk=",
+              "state": {},
+              "pinned": true,
+              "icon": "aHR0cHM6Ly93d3cubm90aW9uLnNvL01FTU8tZDdlMjAxY2ExMzk4NGIwM2IzNDRmY2UwY2ZhMWE1Mzk=",
+              "title": "notionメモ"
+            }
+          },
+          {
+            "id": "31acd7df71bdce19",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "すべてのプロパティ"
+            }
+          },
+          {
+            "id": "75a86425592072ac",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "アウトライン"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 625.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "markdown-importer:Markdownインポーターを開く": false,
+      "zk-prefixer:新規ユニークノートの作成": false,
+      "audio-recorder:録音の開始/停止": false,
+      "switcher:クイックスイッチャーを開く": false,
+      "graph:グラフビューを開く": false,
+      "canvas:新規キャンバスを作成": false,
+      "daily-notes:今日のデイリーノートを開く": false,
+      "templates:テンプレートを挿入": false,
+      "command-palette:コマンドパレットを開く": false,
+      "bases:Create new base": false,
+      "open-gate:notionメモ": false,
+      "github-sync:Sync with Remote": false
+    }
+  },
+  "active": "78dd24c5391781dc",
+  "lastOpenFiles": [
+    "無題のファイル 2.base",
+    "無題のファイル 1.base",
+    "無題のファイル.canvas",
+    "無題のファイル.base",
+    "1_Inbox/思考/自主マス　就活講座.md",
+    "2_daily/11-23-2025.md",
+    "1_Inbox/健康・栄養/体型管理バランス.md",
+    "2_daily/11-22-2025.md",
+    "4_template/日記.md",
+    "2_daily/11-19-2025.md",
+    "4_template/広告事例.md",
+    "2_daily/11-20-2025.md",
+    "4_template/日報.md",
+    "1_Inbox/タスク.md",
+    "6_Personnal/20251118_my.md",
+    "5_Docs/2025-11-08.md",
+    "5_Docs/2025-11-14.md",
+    "5_Docs/2025-11-09.md",
+    "5_Docs/2025-11-12.md",
+    "5_Docs/2025-11-13.md",
+    "5_Docs/2025-11-11.md",
+    "5_Docs/2025-11-10.md",
+    "5_Docs/2025-11-08メモ.md",
+    "4_template/クイックメモ.md",
+    "4_Template/学習.md",
+    "4_Template/日記.md",
+    "2_daily/09-08-2025.md",
+    "1_Inbox/健康・栄養",
+    "6_Personnal",
+    "1_Inbox/思考",
+    "7_Apology",
+    "5_Docs",
+    "Bluenote",
+    "2_daily/11-18-2025.md",
+    "2_daily/11-17-2025.md",
+    "無題のファイル 3.base",
+    "1_Inbox/趣味"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "uuid": "lau0ae6oieduezjjjpcajo",
+  "gates": {
+    "aHR0cHM6Ly93d3cubm90aW9uLnNvL01FTU8tZDdlMjAxY2ExMzk4NGIwM2IzNDRmY2UwY2ZhMWE1Mzk=": {
+      "id": "aHR0cHM6Ly93d3cubm90aW9uLnNvL01FTU8tZDdlMjAxY2ExMzk4NGIwM2IzNDRmY2UwY2ZhMWE1Mzk=",
+      "title": "notionメモ",
+      "icon": "<svg viewBox=\"0 0 100 100\"><image href=\"https://icon.horse/icon/www.notion.so\" height=\"100\" width=\"100\" /></svg>",
+      "hasRibbon": true,
+      "position": "right",
+      "profileKey": "open-gate",
+      "url": "https://www.notion.so/MEMO-d7e201ca13984b03b344fce0cfa1a539?source=copy_link",
+      "zoomFactor": 1,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0/HBpt3US8-18"
+    }
+  }
+}

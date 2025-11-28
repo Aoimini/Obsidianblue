@@ -1,0 +1,7 @@
+filters:
+  and:
+    - file.inFolder("Clippings")
+views:
+  - type: cards
+    name: Table
+    order: []
