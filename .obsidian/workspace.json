@@ -25,17 +25,45 @@
             "id": "78dd24c5391781dc",
             "type": "leaf",
             "state": {
-              "type": "bases",
+              "type": "markdown",
               "state": {
-                "file": "無題のファイル.base",
-                "viewName": "Table"
+                "file": "2_daily/12-01-2025.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-layout-grid",
-              "title": "無題のファイル"
+              "icon": "lucide-file",
+              "title": "12-01-2025"
+            }
+          },
+          {
+            "id": "88515c56561c5cd7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2_daily/12-04-2025.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "12-04-2025"
+            }
+          },
+          {
+            "id": "a5b812f93dec1af0",
+            "type": "leaf",
+            "state": {
+              "type": "webviewer",
+              "state": {
+                "url": "about:blank",
+                "mode": "blank"
+              },
+              "icon": "globe-2",
+              "title": "New web viewer"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -164,7 +192,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "4_template/日記.md",
+                "file": "2_daily/12-04-2025.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -174,7 +202,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "日記へのバックリンク"
+              "title": "12-04-2025へのバックリンク"
             }
           },
           {
@@ -183,12 +211,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "4_template/日記.md",
+                "file": "2_daily/12-04-2025.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "日記からのアウトゴーイングリンク"
+              "title": "12-04-2025からのアウトゴーイングリンク"
             }
           },
           {
@@ -209,11 +237,9 @@
           {
             "id": "692924022bfcf23e",
             "type": "leaf",
-            "pinned": true,
             "state": {
               "type": "aHR0cHM6Ly93d3cubm90aW9uLnNvL01FTU8tZDdlMjAxY2ExMzk4NGIwM2IzNDRmY2UwY2ZhMWE1Mzk=",
               "state": {},
-              "pinned": true,
               "icon": "aHR0cHM6Ly93d3cubm90aW9uLnNvL01FTU8tZDdlMjAxY2ExMzk4NGIwM2IzNDRmY2UwY2ZhMWE1Mzk=",
               "title": "notionメモ"
             }
@@ -246,11 +272,12 @@
               "title": "アウトライン"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
-    "width": 625.5
+    "width": 444.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -268,44 +295,44 @@
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "78dd24c5391781dc",
+  "active": "5cba5ebbba9e7041",
   "lastOpenFiles": [
+    "2_daily/12-04-2025.md",
+    "2_daily/12-01-2025.md",
+    "2_daily/12-02-2025.md",
+    "2_daily/11-30-2025.md",
+    "2_daily/11-23-2025.md",
+    "2_daily/11-12-2025.md",
+    "4_template/日記.md",
+    "3_Project/non-no/ハリポタ　Harumaki.md",
+    "3_Project/non-no/ハリポタDtime.md",
+    "3_Project/JNTO/無題のファイル.md",
+    "6_Personnal/20251118_my.md",
+    "2_daily/08-31.md",
+    "2_daily/07-23.md",
+    "5_Docs/2025-11-08メモ.md",
+    "5_Docs/2025-11-13.md",
+    "5_Docs/2025-11-10.md",
+    "5_Docs/面接練習.md",
+    "無題のファイル.base",
     "無題のファイル 2.base",
     "無題のファイル 1.base",
     "無題のファイル.canvas",
-    "無題のファイル.base",
     "1_Inbox/思考/自主マス　就活講座.md",
-    "2_daily/11-23-2025.md",
     "1_Inbox/健康・栄養/体型管理バランス.md",
     "2_daily/11-22-2025.md",
-    "4_template/日記.md",
     "2_daily/11-19-2025.md",
     "4_template/広告事例.md",
     "2_daily/11-20-2025.md",
     "4_template/日報.md",
     "1_Inbox/タスク.md",
-    "6_Personnal/20251118_my.md",
     "5_Docs/2025-11-08.md",
-    "5_Docs/2025-11-14.md",
-    "5_Docs/2025-11-09.md",
-    "5_Docs/2025-11-12.md",
-    "5_Docs/2025-11-13.md",
-    "5_Docs/2025-11-11.md",
-    "5_Docs/2025-11-10.md",
-    "5_Docs/2025-11-08メモ.md",
-    "4_template/クイックメモ.md",
-    "4_Template/学習.md",
-    "4_Template/日記.md",
-    "2_daily/09-08-2025.md",
     "1_Inbox/健康・栄養",
     "6_Personnal",
     "1_Inbox/思考",
     "7_Apology",
     "5_Docs",
     "Bluenote",
-    "2_daily/11-18-2025.md",
-    "2_daily/11-17-2025.md",
-    "無題のファイル 3.base",
-    "1_Inbox/趣味"
+    "無題のファイル 3.base"
   ]
 }
