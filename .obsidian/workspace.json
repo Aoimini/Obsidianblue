@@ -124,7 +124,8 @@
               "title": "Vertical tabs"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       },
       {
         "id": "74bdebda5cfaad44",
@@ -176,11 +177,11 @@
               "type": "webviewer",
               "state": {
                 "url": "https://calendar.google.com/calendar/u/0/r/day/2026/2/1?pli=1",
-                "title": "Google カレンダー - 2026年 2月 1日 (日曜日)、今日",
+                "title": "Google カレンダー - 2026年 2月 1日 (日曜日)",
                 "mode": "webview"
               },
               "icon": "globe-2",
-              "title": "Google カレンダー - 2026年 2月 1日 (日曜日)、今日"
+              "title": "Google カレンダー - 2026年 2月 1日 (日曜日)"
             }
           },
           {
@@ -191,39 +192,6 @@
               "state": {},
               "icon": "lucide-file",
               "title": "新規タブ"
-            }
-          },
-          {
-            "id": "d7621a08e9da2f56",
-            "type": "leaf",
-            "state": {
-              "type": "backlink",
-              "state": {
-                "file": "2_daily/02-01-2026.md",
-                "collapseAll": true,
-                "extraContext": false,
-                "sortOrder": "alphabetical",
-                "showSearch": false,
-                "searchQuery": "",
-                "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
-              },
-              "icon": "links-coming-in",
-              "title": "02-01-2026へのバックリンク"
-            }
-          },
-          {
-            "id": "87ba85dee671cfc0",
-            "type": "leaf",
-            "state": {
-              "type": "outgoing-link",
-              "state": {
-                "file": "2_daily/02-01-2026.md",
-                "linksCollapsed": true,
-                "unlinkedCollapsed": true
-              },
-              "icon": "links-going-out",
-              "title": "02-01-2026からのアウトゴーイングリンク"
             }
           },
           {
@@ -279,14 +247,23 @@
               "icon": "lucide-list",
               "title": "02-01-2026のアウトライン"
             }
+          },
+          {
+            "id": "fcfae8354d628b9e",
+            "type": "leaf",
+            "state": {
+              "type": "footnotes",
+              "state": {},
+              "icon": "lucide-file-signature",
+              "title": "Footnotes"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
-    "width": 591.5,
-    "collapsed": true
+    "width": 296.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -301,10 +278,11 @@
       "command-palette:コマンドパレットを開く": false,
       "bases:Create new base": false,
       "open-gate:notionメモ": false,
-      "github-sync:Sync with Remote": false
+      "github-sync:Sync with Remote": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "5cba5ebbba9e7041",
+  "active": "a1efc0af08a3ad10",
   "lastOpenFiles": [
     "2_daily/02-14-2026.md",
     "2_daily/02-13-2026.md",
