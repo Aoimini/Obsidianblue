@@ -11,59 +11,56 @@
             "id": "393ac1811d2fad98",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2_daily/11-23-2025.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "11-23-2025"
+              "title": "新規タブ"
             }
           },
           {
-            "id": "78dd24c5391781dc",
+            "id": "41ddc05d96848d8a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2_daily/12-01-2025.md",
+                "file": "2_daily/01-30-2026.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "12-01-2025"
+              "title": "01-30-2026"
             }
           },
           {
-            "id": "88515c56561c5cd7",
+            "id": "0420a734d56fe8dd",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2_daily/12-04-2025.md",
+                "file": "カフェ.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "12-04-2025"
+              "title": "カフェ"
             }
           },
           {
-            "id": "a5b812f93dec1af0",
+            "id": "1d91c4ed3e6495a9",
             "type": "leaf",
             "state": {
-              "type": "webviewer",
+              "type": "markdown",
               "state": {
-                "url": "about:blank",
-                "mode": "blank"
+                "file": "2_daily/02-14-2026.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "globe-2",
-              "title": "New web viewer"
+              "icon": "lucide-file",
+              "title": "02-14-2026"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -96,7 +93,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:FleetingNote",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -164,7 +161,7 @@
             "state": {
               "type": "webviewer",
               "state": {
-                "url": "https://gemini.google.com/app/9c78cac9671213a5?hl=ja",
+                "url": "https://gemini.google.com/app/bc9cea447f8b5302?hl=ja",
                 "title": "Google Gemini",
                 "mode": "webview"
               },
@@ -173,17 +170,27 @@
             }
           },
           {
-            "id": "aadf67806b4b7405",
+            "id": "17d4410b271375c8",
             "type": "leaf",
             "state": {
               "type": "webviewer",
               "state": {
-                "url": "https://app.slack.com/workspace-signin?redir=%2Fgantry%2Fauth%3Fapp%3Dclient%26lc%3D1763975192%26return_to%3D%252Fclient%252FT08K98XHN2Z%252FC08K98XLHPX%26teams%3D",
-                "title": "​ワ⁠ー⁠ク⁠ス⁠ペ⁠ー⁠ス⁠を⁠検⁠索⁠す⁠る​ | Slack",
+                "url": "https://calendar.google.com/calendar/u/0/r/day/2026/2/1?pli=1",
+                "title": "Google カレンダー - 2026年 2月 1日 (日曜日)、今日",
                 "mode": "webview"
               },
               "icon": "globe-2",
-              "title": "​ワ⁠ー⁠ク⁠ス⁠ペ⁠ー⁠ス⁠を⁠検⁠索⁠す⁠る​ | Slack"
+              "title": "Google カレンダー - 2026年 2月 1日 (日曜日)、今日"
+            }
+          },
+          {
+            "id": "a1efc0af08a3ad10",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "新規タブ"
             }
           },
           {
@@ -192,8 +199,8 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2_daily/12-04-2025.md",
-                "collapseAll": false,
+                "file": "2_daily/02-01-2026.md",
+                "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
@@ -202,7 +209,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "12-04-2025へのバックリンク"
+              "title": "02-01-2026へのバックリンク"
             }
           },
           {
@@ -211,12 +218,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2_daily/12-04-2025.md",
-                "linksCollapsed": false,
+                "file": "2_daily/02-01-2026.md",
+                "linksCollapsed": true,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "12-04-2025からのアウトゴーイングリンク"
+              "title": "02-01-2026からのアウトゴーイングリンク"
             }
           },
           {
@@ -225,9 +232,9 @@
             "state": {
               "type": "tag",
               "state": {
-                "sortOrder": "frequency",
+                "sortOrder": "alphabetical",
                 "useHierarchy": true,
-                "showSearch": false,
+                "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-tags",
@@ -264,20 +271,22 @@
             "state": {
               "type": "outline",
               "state": {
-                "followCursor": false,
+                "file": "2_daily/02-01-2026.md",
+                "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "アウトライン"
+              "title": "02-01-2026のアウトライン"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 444.5
+    "width": 591.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -297,42 +306,43 @@
   },
   "active": "5cba5ebbba9e7041",
   "lastOpenFiles": [
-    "2_daily/12-04-2025.md",
-    "2_daily/12-01-2025.md",
-    "2_daily/12-02-2025.md",
-    "2_daily/11-30-2025.md",
-    "2_daily/11-23-2025.md",
-    "2_daily/11-12-2025.md",
+    "2_daily/02-14-2026.md",
+    "2_daily/02-13-2026.md",
+    "2_daily/02-12-2026.md",
+    "2_daily/02-11-2026.md",
+    "2_daily/02-10-2026.md",
+    "2_daily/02-09-2026.md",
     "4_template/日記.md",
-    "3_Project/non-no/ハリポタ　Harumaki.md",
-    "3_Project/non-no/ハリポタDtime.md",
-    "3_Project/JNTO/無題のファイル.md",
-    "6_Personnal/20251118_my.md",
-    "2_daily/08-31.md",
-    "2_daily/07-23.md",
-    "5_Docs/2025-11-08メモ.md",
-    "5_Docs/2025-11-13.md",
-    "5_Docs/2025-11-10.md",
-    "5_Docs/面接練習.md",
-    "無題のファイル.base",
-    "無題のファイル 2.base",
-    "無題のファイル 1.base",
-    "無題のファイル.canvas",
+    "2_daily/02-07-2026.md",
+    "2_daily/02-08-2026.md",
+    "2_daily/02-06-2026.md",
+    "2_daily/02-05-2026.md",
+    "2_daily/02-04-2026.md",
+    "2_daily/02-03-2026.md",
+    "2_daily/02-02-2026.md",
+    "2_daily/02-01-2026.md",
+    "カフェ.md",
+    "5_Docs/1月支出.md",
+    "5_Docs/支出管理.md",
+    "5_Docs/インタビュー用プロフィール",
+    "4_template/企画骨子.md",
+    "4_template/クイックメモ.md",
+    "5_Docs/名前だけ.md",
     "1_Inbox/思考/自主マス　就活講座.md",
-    "1_Inbox/健康・栄養/体型管理バランス.md",
-    "2_daily/11-22-2025.md",
-    "2_daily/11-19-2025.md",
-    "4_template/広告事例.md",
-    "2_daily/11-20-2025.md",
-    "4_template/日報.md",
-    "1_Inbox/タスク.md",
-    "5_Docs/2025-11-08.md",
-    "1_Inbox/健康・栄養",
-    "6_Personnal",
-    "1_Inbox/思考",
-    "7_Apology",
-    "5_Docs",
-    "Bluenote",
-    "無題のファイル 3.base"
+    "GAS0131.js",
+    "GAS0131.gs",
+    "2_daily/01-30-2026.md",
+    "2_daily/01-29-2026.md",
+    "1_Inbox/健康・栄養/やらないことリスト.md",
+    "1_Inbox/健康・栄養/ルーティン.md",
+    "CleanShot 2026-01-10 at 21.51.24@2x.png",
+    "Recording 20260110104151.m4a",
+    "002_青山龍星（ノーマル）_いざにゅうとう　あ….wav",
+    "2_daily/2025",
+    "無題のファイル.base",
+    "無題のファイル 3.base",
+    "無題のファイル.canvas",
+    "無題のファイル 1.base",
+    "無題のファイル 2.base"
   ]
 }

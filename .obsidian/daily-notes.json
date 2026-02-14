@@ -1,6 +1,5 @@
 {
   "folder": "2_daily",
   "template": "4_template/日記",
-  "format": "MM-DD-YYYY",
-  "autorun": true
+  "format": "MM-DD-YYYY"
 }
