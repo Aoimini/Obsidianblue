@@ -82,7 +82,7 @@
       {
         "id": "fadcc1e119b7ef0e",
         "type": "tabs",
-        "dimension": 70.39473684210526,
+        "dimension": 72.02797202797203,
         "children": [
           {
             "id": "5cba5ebbba9e7041",
@@ -139,7 +139,7 @@
       {
         "id": "74bdebda5cfaad44",
         "type": "tabs",
-        "dimension": 29.605263157894733,
+        "dimension": 27.972027972027973,
         "children": [
           {
             "id": "52a3323b3c2fb6dc",
@@ -334,13 +334,14 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "1d91c4ed3e6495a9",
+  "active": "52a3323b3c2fb6dc",
   "lastOpenFiles": [
-    "無題のフォルダ/無題のファイル.md",
+    "Bluenote",
+    "予算管理.md",
     "カフェ.md",
+    "無題のフォルダ/無題のファイル.md",
     "CleanShot 2026-01-10 at 21.51.24@2x.png",
     "Recording 20260110104151.m4a",
-    "予算管理.md",
     "5_Docs/フリュー.md",
     "2_daily/03-02-2026.md",
     "2_daily/02-23-2026.md",
@@ -364,7 +365,6 @@
     "2_daily/02-11-2026.md",
     "2_daily/02-10-2026.md",
     "2_daily/02-09-2026.md",
-    "2_daily/02-08-2026.md",
     "5_Docs/インタビュー用プロフィール",
     "GAS0131.js",
     "GAS0131.gs",
