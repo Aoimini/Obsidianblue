@@ -18,40 +18,12 @@
             }
           },
           {
-            "id": "41ddc05d96848d8a",
+            "id": "b20b62a2d39a4bde",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2_daily/01-30-2026.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "01-30-2026"
-            }
-          },
-          {
-            "id": "0420a734d56fe8dd",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "カフェ.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "カフェ"
-            }
-          },
-          {
-            "id": "1d91c4ed3e6495a9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2_daily/03-09-2026.md",
+                "file": "2_daily/03-12-2026.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -62,27 +34,39 @@
                   "showSearch": false,
                   "searchQuery": "",
                   "backlinkCollapsed": false,
-                  "unlinkedCollapsed": false
+                  "unlinkedCollapsed": true
                 }
               },
               "icon": "lucide-file",
-              "title": "03-09-2026"
+              "title": "03-12-2026"
             }
           },
           {
-            "id": "b20b62a2d39a4bde",
+            "id": "8e03476d9b16adc7",
             "type": "leaf",
             "state": {
-              "type": "release-notes",
+              "type": "markdown",
               "state": {
-                "currentVersion": "1.12.4"
+                "file": "1_Inbox/読書記録/スティーブン・R・コヴィー-フランクリン・コヴィー・ジャパン-完訳 7つの習慣 人格主義の回復.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
               },
-              "icon": "lucide-book-up",
-              "title": "リリースノート 1.12.4"
+              "icon": "lucide-file",
+              "title": "スティーブン・R・コヴィー-フランクリン・コヴィー・ジャパン-完訳 7つの習慣 人格主義の回復"
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -146,8 +130,7 @@
               "title": "Vertical tabs"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       },
       {
         "id": "74bdebda5cfaad44",
@@ -168,7 +151,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 275.5
   },
   "right": {
     "id": "86e4665383d1b40c",
@@ -323,8 +306,7 @@
               "title": "02-15-2026からのアウトゴーイングリンク"
             }
           }
-        ],
-        "currentTab": 8
+        ]
       }
     ],
     "direction": "horizontal",
@@ -344,41 +326,42 @@
       "command-palette:コマンドパレットを開く": false,
       "open-gate:notionメモ": false,
       "github-sync:Sync with Remote": false,
-      "obsidian-git:Open Git source control": false
+      "obsidian-git:Open Git source control": false,
+      "obsidian-kindle-plugin:Sync your Kindle highlights": false
     }
   },
-  "active": "b20b62a2d39a4bde",
+  "active": "8e03476d9b16adc7",
   "lastOpenFiles": [
+    "1_Inbox/読書記録/きっと明日はいい日になる.md",
+    "1_Inbox/読書記録/秀吾-ハーバード、スタンフォード、オックスフォード… 科学的に証明された すごい習慣大百科　人生が変わるテクニック112個集めました.md",
+    "1_Inbox/読書記録/やらないことリスト.md",
+    "1_Inbox/読書記録/ルーティン.md",
+    "1_Inbox/読書記録/体型管理バランス.md",
+    "1_Inbox/読書記録/和博-チャットＧＰＴvs.人類.md",
+    "1_Inbox/読書記録/寳 洋平-順希-ネット広告運用“打ち手”大全 成果にこだわるマーケ＆販促 最強の戦略102 できるMarketing Bibleシリーズ.md",
+    "1_Inbox/読書記録/スティーブン・R・コヴィー-フランクリン・コヴィー・ジャパン-完訳 7つの習慣 人格主義の回復.md",
+    "1_Inbox/思考/生産性 ＝ 費やす時間 x 脳のリソース x 心理的リソース x 健康状態 　田中渓語録.md",
+    "1_Inbox/思考/マッキンで学んだ仕事術.md",
+    "2_daily/03-13-2026.md",
+    "2_daily/03-12-2026.md",
+    "7つの習慣.md",
+    "2_daily/03-11-2026.md",
+    "4_template/日記.md",
+    "4_template/企画骨子.md",
+    "4_template/日報.md",
+    "4_template/クイックメモ.md",
+    "2_daily/03-10-2026.md",
     "2_daily/03-09-2026.md",
+    "2_daily/03-08-2026.md",
+    "2_daily/03-07-2026.md",
+    "2_daily/03-06-2026.md",
+    "2_daily/03-04-2026.md",
+    "2_daily/03-05-2026.md",
+    "2_daily/03-02-2026.md",
     "Bluenote",
-    "予算管理.md",
-    "カフェ.md",
-    "無題のフォルダ/無題のファイル.md",
     "CleanShot 2026-01-10 at 21.51.24@2x.png",
     "Recording 20260110104151.m4a",
-    "5_Docs/フリュー.md",
-    "2_daily/03-02-2026.md",
-    "2_daily/02-23-2026.md",
-    "2_daily/02-22-2026.md",
-    "2_daily/02-21-2026.md",
-    "2_daily/02-19-2026.md",
-    "Clippings/スターバックス新作・桜ドリンク全3種実食＆おすすめカスタムレポ！ 桃感満載のフラペチーノ®、桜風味のラテ、爽やかな炭酸ドリンク  グルメ.md",
     "5_Docs/フリュー",
-    "Clippings/【渋谷】手ぶらでOK！フリューの『SUKELU factory』でペンラシート、トレカを作ってみた（もみ） - エキスパート 1.md",
-    "Clippings/推し活プリント機「SUKELU factory」全国設置スタート！オリジナルのペンライトシート＆クリアトレカがその場で作れる - 女性向けアニメ情報サイトにじめん.md",
-    "Clippings/フリューにて“推し活”ニーズに応える新たなプリントビジネスが始動 “かわいい”の企画力・ノウハウを生かした新サービスを展開！プリントシール機を再活用した文字と写真の印刷機「SUKELU factory（スケルファクトリー）」.md",
-    "Clippings/フリュー【6238】フリューにて“推し活”ニーズに応える新たなプリントビジネスが始動プリントシール機を再活用した文字と写真の印刷機「SUKE.md",
-    "Clippings/【渋谷】手ぶらでOK！フリューの『SUKELU factory』でペンラシート、トレカを作ってみた（もみ） - エキスパート.md",
-    "2_daily/02-15-2026.md",
-    "2_daily/02-17-2026.md",
-    "2_daily/02-18-2026.md",
-    "2_daily/02-16-2026.md",
-    "2_daily/02-14-2026.md",
-    "2_daily/02-13-2026.md",
-    "2_daily/02-12-2026.md",
-    "2_daily/02-11-2026.md",
-    "2_daily/02-10-2026.md",
-    "2_daily/02-09-2026.md",
     "5_Docs/インタビュー用プロフィール",
     "GAS0131.js",
     "GAS0131.gs",
