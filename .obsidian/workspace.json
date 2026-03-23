@@ -47,7 +47,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2_daily/03-16-2026.md",
+                "file": "5_Docs/2〜0318 paypay.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -62,11 +62,47 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "03-16-2026"
+              "title": "2〜0318 paypay"
+            }
+          },
+          {
+            "id": "f523eb1d84944b19",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "34ストレングスファインダー.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "34ストレングスファインダー"
+            }
+          },
+          {
+            "id": "614886831bc41179",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2_daily/03-22-2026.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "03-22-2026"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -99,7 +135,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#日記",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -190,24 +226,14 @@
             }
           },
           {
-            "id": "a1efc0af08a3ad10",
-            "type": "leaf",
-            "state": {
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "新規タブ"
-            }
-          },
-          {
             "id": "b0ce24cc8054c324",
             "type": "leaf",
             "state": {
               "type": "tag",
               "state": {
                 "sortOrder": "alphabetical",
-                "useHierarchy": true,
-                "showSearch": true,
+                "useHierarchy": false,
+                "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-tags",
@@ -244,13 +270,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2_daily/02-01-2026.md",
+                "file": "2_daily/03-22-2026.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "02-01-2026のアウトライン"
+              "title": "03-22-2026のアウトライン"
             }
           },
           {
@@ -258,9 +284,11 @@
             "type": "leaf",
             "state": {
               "type": "footnotes",
-              "state": {},
+              "state": {
+                "file": "2_daily/03-22-2026.md"
+              },
               "icon": "lucide-file-signature",
-              "title": "Footnotes"
+              "title": "脚注"
             }
           },
           {
@@ -279,7 +307,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2_daily/02-15-2026.md",
+                "file": "2_daily/03-22-2026.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -289,7 +317,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "02-15-2026へのバックリンク"
+              "title": "03-22-2026へのバックリンク"
             }
           },
           {
@@ -298,19 +326,20 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2_daily/02-15-2026.md",
+                "file": "2_daily/03-22-2026.md",
                 "linksCollapsed": false,
-                "unlinkedCollapsed": true
+                "unlinkedCollapsed": false
               },
               "icon": "links-going-out",
-              "title": "02-15-2026からのアウトゴーイングリンク"
+              "title": "03-22-2026からのアウトゴーイングリンク"
             }
           }
-        ]
+        ],
+        "currentTab": 7
       }
     ],
     "direction": "horizontal",
-    "width": 296.5
+    "width": 481.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -330,45 +359,49 @@
       "obsidian-kindle-plugin:Sync your Kindle highlights": false
     }
   },
-  "active": "8e03476d9b16adc7",
+  "active": "614886831bc41179",
   "lastOpenFiles": [
+    "2_daily/03-21-2026.md",
+    "2_daily/03-20-2026.md",
+    "2_daily/03-19-2026.md",
+    "2_daily/03-18-2026.md",
+    "4_template/日記.md",
+    "2_daily/03-17-2026.md",
+    "2_daily/03-22-2026.md",
+    "2_daily/03-16-2026.md",
     "2_daily/03-15-2026.md",
     "2_daily/03-14-2026.md",
-    "2_daily/03-13-2026.md",
-    "2_daily/03-16-2026.md",
-    "2_daily/03-17-2026.md",
-    "2_daily/03-12-2026.md",
-    "2_daily/03-11-2026.md",
-    "1_Inbox/読書記録/スティーブン・R・コヴィー-フランクリン・コヴィー・ジャパン-完訳 7つの習慣 人格主義の回復.md",
-    "4_template/読書記録.md",
-    "1_Inbox/読書記録/きっと明日はいい日になる.md",
-    "1_Inbox/読書記録/秀吾-ハーバード、スタンフォード、オックスフォード… 科学的に証明された すごい習慣大百科　人生が変わるテクニック112個集めました.md",
-    "1_Inbox/読書記録/やらないことリスト.md",
-    "1_Inbox/読書記録/ルーティン.md",
-    "1_Inbox/読書記録/体型管理バランス.md",
-    "1_Inbox/読書記録/和博-チャットＧＰＴvs.人類.md",
-    "1_Inbox/読書記録/寳 洋平-順希-ネット広告運用“打ち手”大全 成果にこだわるマーケ＆販促 最強の戦略102 できるMarketing Bibleシリーズ.md",
-    "1_Inbox/思考/生産性 ＝ 費やす時間 x 脳のリソース x 心理的リソース x 健康状態 　田中渓語録.md",
-    "1_Inbox/思考/マッキンで学んだ仕事術.md",
-    "7つの習慣.md",
-    "4_template/日記.md",
-    "4_template/企画骨子.md",
-    "4_template/日報.md",
-    "4_template/クイックメモ.md",
-    "2_daily/03-10-2026.md",
-    "2_daily/03-09-2026.md",
-    "2_daily/03-08-2026.md",
-    "Bluenote",
-    "CleanShot 2026-01-10 at 21.51.24@2x.png",
-    "Recording 20260110104151.m4a",
-    "5_Docs/フリュー",
-    "5_Docs/インタビュー用プロフィール",
-    "GAS0131.js",
-    "GAS0131.gs",
-    "002_青山龍星（ノーマル）_いざにゅうとう　あ….wav",
-    "2_daily/2025",
+    "無題のファイル 1.base",
+    "202603230012.md",
     "無題のファイル.base",
-    "無題のファイル 3.base",
+    "34ストレングスファインダー.pdf",
+    "5_Docs/2〜0318 paypay.md",
+    "IMG_8414.png",
+    "IMG_8406.png",
+    "5_Docs/占い.md",
+    "package-lock.json",
+    "package.json",
+    "node_modules/googleapis/build/src/apis/safebrowsing/v5.d.ts",
+    "node_modules/googleapis/build/src/apis/pagespeedonline/v5.d.ts",
+    "node_modules/googleapis/build/src/apis/sheets/v4.d.ts",
+    "node_modules/googleapis/build/src/apis/safebrowsing/v4.d.ts",
+    "node_modules/googleapis/build/src/apis/jobs/v4.d.ts",
+    "node_modules/googleapis/README.md",
+    "node_modules/googleapis/CHANGELOG.md",
+    "node_modules/@formatjs/intl/README.md",
+    "node_modules/@formatjs/intl/LICENSE.md",
+    "node_modules/@google/clasp/README.md",
+    "node_modules/@google/clasp/docs/Gitpod/README.md",
+    "node_modules/@google/clasp/docs/run.md",
+    "node_modules/@google/clasp/docs/config-files.md",
+    "node_modules/@google/clasp/docs/README.md",
+    "node_modules/hono/README.md",
+    "node_modules/@modelcontextprotocol/sdk/README.md",
+    "node_modules/inquirer-autocomplete-standalone/node_modules/@inquirer/core/README.md",
+    "node_modules/object-assign/readme.md",
+    "IMG_8407.jpeg",
+    "Pasted image 20260318103154.png",
+    "CleanShot 2026-01-10 at 21.51.24@2x.png",
     "無題のファイル.canvas"
   ]
 }
