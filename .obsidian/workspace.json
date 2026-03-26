@@ -4,26 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "5af06b0735c9bbeb",
+        "id": "279b7fadab31b9bd",
         "type": "tabs",
         "children": [
           {
-            "id": "393ac1811d2fad98",
-            "type": "leaf",
-            "state": {
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "新規タブ"
-            }
-          },
-          {
-            "id": "b20b62a2d39a4bde",
+            "id": "fe0c0e4a222eb3ef",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2_daily/03-12-2026.md",
+                "file": "2_daily/03-24-2026.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -38,71 +28,10 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "03-12-2026"
-            }
-          },
-          {
-            "id": "8e03476d9b16adc7",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "5_Docs/2〜0318 paypay.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "2〜0318 paypay"
-            }
-          },
-          {
-            "id": "f523eb1d84944b19",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "34ストレングスファインダー.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "34ストレングスファインダー"
-            }
-          },
-          {
-            "id": "614886831bc41179",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2_daily/03-22-2026.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "03-22-2026"
+              "title": "03-24-2026"
             }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "vertical"
@@ -359,15 +288,28 @@
       "obsidian-kindle-plugin:Sync your Kindle highlights": false
     }
   },
-  "active": "614886831bc41179",
+  "active": "fe0c0e4a222eb3ef",
   "lastOpenFiles": [
+    "2_daily/03-23-2026.md",
+    "2_daily/03-24-2026.md",
+    "2_daily/03-25-2026.md",
+    "2_daily/03-22-2026.md",
     "2_daily/03-21-2026.md",
     "2_daily/03-20-2026.md",
     "2_daily/03-19-2026.md",
+    "2_daily/03-26-2026.md",
+    "2_daily/03-04-2026.md",
+    "2_daily/03-05-2026.md",
+    "2_daily/03-06-2026.md",
+    "2_daily/03-08-2026.md",
+    "2_daily/202602/02-01-2026.md",
+    "2_daily/202601/01-01-2026.md",
+    "2_daily/202602",
+    "2_daily/202601",
+    "5_Docs/ゆとらNight.md",
     "2_daily/03-18-2026.md",
     "4_template/日記.md",
     "2_daily/03-17-2026.md",
-    "2_daily/03-22-2026.md",
     "2_daily/03-16-2026.md",
     "2_daily/03-15-2026.md",
     "2_daily/03-14-2026.md",
@@ -384,21 +326,8 @@
     "node_modules/googleapis/build/src/apis/safebrowsing/v5.d.ts",
     "node_modules/googleapis/build/src/apis/pagespeedonline/v5.d.ts",
     "node_modules/googleapis/build/src/apis/sheets/v4.d.ts",
-    "node_modules/googleapis/build/src/apis/safebrowsing/v4.d.ts",
-    "node_modules/googleapis/build/src/apis/jobs/v4.d.ts",
     "node_modules/googleapis/README.md",
     "node_modules/googleapis/CHANGELOG.md",
-    "node_modules/@formatjs/intl/README.md",
-    "node_modules/@formatjs/intl/LICENSE.md",
-    "node_modules/@google/clasp/README.md",
-    "node_modules/@google/clasp/docs/Gitpod/README.md",
-    "node_modules/@google/clasp/docs/run.md",
-    "node_modules/@google/clasp/docs/config-files.md",
-    "node_modules/@google/clasp/docs/README.md",
-    "node_modules/hono/README.md",
-    "node_modules/@modelcontextprotocol/sdk/README.md",
-    "node_modules/inquirer-autocomplete-standalone/node_modules/@inquirer/core/README.md",
-    "node_modules/object-assign/readme.md",
     "IMG_8407.jpeg",
     "Pasted image 20260318103154.png",
     "CleanShot 2026-01-10 at 21.51.24@2x.png",
