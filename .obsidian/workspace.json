@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2_daily/03-24-2026.md",
+                "file": "2_daily/03-26-2026.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "03-24-2026"
+              "title": "03-26-2026"
             }
           }
         ]
@@ -95,7 +95,8 @@
               "title": "Vertical tabs"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       },
       {
         "id": "74bdebda5cfaad44",
@@ -132,7 +133,7 @@
             "state": {
               "type": "webviewer",
               "state": {
-                "url": "https://gemini.google.com/app/bc9cea447f8b5302?hl=ja",
+                "url": "https://gemini.google.com/app?hl=ja",
                 "title": "Google Gemini",
                 "mode": "webview"
               },
@@ -213,9 +214,7 @@
             "type": "leaf",
             "state": {
               "type": "footnotes",
-              "state": {
-                "file": "2_daily/03-22-2026.md"
-              },
+              "state": {},
               "icon": "lucide-file-signature",
               "title": "脚注"
             }
@@ -236,7 +235,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2_daily/03-22-2026.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -246,7 +244,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "03-22-2026へのバックリンク"
+              "title": "バックリンク"
             }
           },
           {
@@ -263,8 +261,7 @@
               "title": "03-22-2026からのアウトゴーイングリンク"
             }
           }
-        ],
-        "currentTab": 7
+        ]
       }
     ],
     "direction": "horizontal",
@@ -288,16 +285,21 @@
       "obsidian-kindle-plugin:Sync your Kindle highlights": false
     }
   },
-  "active": "fe0c0e4a222eb3ef",
+  "active": "5d5932f9e8725858",
   "lastOpenFiles": [
-    "2_daily/03-23-2026.md",
+    "2_daily/03-26-2026.md",
+    "6_Personnal/向いた仕事・才能.md",
+    "1_Inbox/思考/生産性 ＝ 費やす時間 x 脳のリソース x 心理的リソース x 健康状態 　田中渓語録.md",
+    "1_Inbox/思考/大義と利益の両立（義理合一）.md",
+    "1_Inbox/思考/自主マス　就活講座.md",
+    "1_Inbox/思考/ゆとりくんYT.md",
     "2_daily/03-24-2026.md",
+    "2_daily/03-23-2026.md",
     "2_daily/03-25-2026.md",
     "2_daily/03-22-2026.md",
     "2_daily/03-21-2026.md",
     "2_daily/03-20-2026.md",
     "2_daily/03-19-2026.md",
-    "2_daily/03-26-2026.md",
     "2_daily/03-04-2026.md",
     "2_daily/03-05-2026.md",
     "2_daily/03-06-2026.md",
@@ -314,20 +316,15 @@
     "2_daily/03-15-2026.md",
     "2_daily/03-14-2026.md",
     "無題のファイル 1.base",
-    "202603230012.md",
     "無題のファイル.base",
     "34ストレングスファインダー.pdf",
-    "5_Docs/2〜0318 paypay.md",
     "IMG_8414.png",
     "IMG_8406.png",
-    "5_Docs/占い.md",
     "package-lock.json",
     "package.json",
     "node_modules/googleapis/build/src/apis/safebrowsing/v5.d.ts",
     "node_modules/googleapis/build/src/apis/pagespeedonline/v5.d.ts",
     "node_modules/googleapis/build/src/apis/sheets/v4.d.ts",
-    "node_modules/googleapis/README.md",
-    "node_modules/googleapis/CHANGELOG.md",
     "IMG_8407.jpeg",
     "Pasted image 20260318103154.png",
     "CleanShot 2026-01-10 at 21.51.24@2x.png",
