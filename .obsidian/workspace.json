@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2_daily/03-29-2026.md",
+                "file": "2_daily/04-1-2026.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "03-29-2026"
+              "title": "04-1-2026"
             }
           }
         ],
@@ -120,8 +120,7 @@
               "title": "Vertical tabs"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       },
       {
         "id": "74bdebda5cfaad44",
@@ -142,7 +141,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 275.5
+    "width": 200
   },
   "right": {
     "id": "86e4665383d1b40c",
@@ -160,7 +159,7 @@
               "state": {
                 "url": "https://gemini.google.com/app?hl=ja",
                 "title": "Google Gemini",
-                "mode": "blank"
+                "mode": "webview"
               },
               "icon": "globe-2",
               "title": "Google Gemini"
@@ -290,7 +289,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 481.5
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -312,17 +311,24 @@
   },
   "active": "3eca7701924021a4",
   "lastOpenFiles": [
+    "2_daily/03-31-2026.md",
+    "2_daily/04-1-2026.md",
+    "2_daily/03-30-2026.md",
     "2_daily/03-29-2026.md",
+    "2_daily/03-28-2026.md",
     "2_daily/03-27-2026.md",
     "2_daily/03-26-2026.md",
+    "2_daily/03-25-2026.md",
+    "2_daily/03-24-2026.md",
+    "2_daily/03-23-2026.md",
+    "5_Docs/転職用/クラシコム.md",
+    "5_Docs/転職用/職務経歴書.md",
+    "5_Docs/転職用",
     "6_Personnal/向いた仕事・才能.md",
     "1_Inbox/思考/生産性 ＝ 費やす時間 x 脳のリソース x 心理的リソース x 健康状態 　田中渓語録.md",
     "1_Inbox/思考/大義と利益の両立（義理合一）.md",
     "1_Inbox/思考/自主マス　就活講座.md",
     "1_Inbox/思考/ゆとりくんYT.md",
-    "2_daily/03-24-2026.md",
-    "2_daily/03-23-2026.md",
-    "2_daily/03-25-2026.md",
     "2_daily/03-22-2026.md",
     "2_daily/03-21-2026.md",
     "2_daily/03-20-2026.md",
@@ -332,14 +338,8 @@
     "2_daily/03-06-2026.md",
     "2_daily/03-08-2026.md",
     "2_daily/202602/02-01-2026.md",
-    "2_daily/202601/01-01-2026.md",
     "2_daily/202602",
     "2_daily/202601",
-    "5_Docs/ゆとらNight.md",
-    "2_daily/03-18-2026.md",
-    "4_template/日記.md",
-    "2_daily/03-17-2026.md",
-    "2_daily/03-16-2026.md",
     "無題のファイル 1.base",
     "無題のファイル.base",
     "34ストレングスファインダー.pdf",
@@ -349,7 +349,6 @@
     "package.json",
     "node_modules/googleapis/build/src/apis/safebrowsing/v5.d.ts",
     "node_modules/googleapis/build/src/apis/pagespeedonline/v5.d.ts",
-    "node_modules/googleapis/build/src/apis/sheets/v4.d.ts",
     "IMG_8407.jpeg",
     "Pasted image 20260318103154.png",
     "CleanShot 2026-01-10 at 21.51.24@2x.png",
