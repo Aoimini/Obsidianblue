@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "03-29-2026",
+      "path": "2_daily/03-29-2026.md"
+    },
+    {
+      "basename": "03-27-2026",
+      "path": "2_daily/03-27-2026.md"
+    },
+    {
       "basename": "03-26-2026",
       "path": "2_daily/03-26-2026.md"
     },
@@ -191,14 +199,6 @@
     {
       "basename": "日報",
       "path": "4_template/日報.md"
-    },
-    {
-      "basename": "クイックメモ",
-      "path": "4_template/クイックメモ.md"
-    },
-    {
-      "basename": "03-10-2026",
-      "path": "2_daily/03-10-2026.md"
     }
   ],
   "omittedPaths": [],
