@@ -8,12 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "fe0c0e4a222eb3ef",
+            "id": "6bde23b97bcecef9",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2_daily/03-27-2026.md",
+                "file": "5_Docs/バレーオフ会26.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,35 +28,10 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "03-27-2026"
-            }
-          },
-          {
-            "id": "3eca7701924021a4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "5_Docs/転職用/yutori.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "yutori"
+              "title": "バレーオフ会26"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -89,7 +64,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#日記",
+                "query": "[\"tags\"]",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -157,12 +132,12 @@
             "state": {
               "type": "webviewer",
               "state": {
-                "url": "https://gemini.google.com/app?hl=ja",
-                "title": "Google Gemini",
+                "url": "https://gemini.google.com/app/1399231ba6f848a8?hl=ja",
+                "title": "アニメ作品の理由を演出・描写で - Google Gemini",
                 "mode": "webview"
               },
               "icon": "globe-2",
-              "title": "Google Gemini"
+              "title": "アニメ作品の理由を演出・描写で - Google Gemini"
             }
           },
           {
@@ -172,11 +147,11 @@
               "type": "webviewer",
               "state": {
                 "url": "https://calendar.google.com/calendar/u/0/r/day?pli=1",
-                "title": "Google カレンダー - 2026年 4月 4日 (土曜日)、今日",
+                "title": "Google カレンダー - 2026年 4月 13日 (月曜日)、今日",
                 "mode": "webview"
               },
               "icon": "globe-2",
-              "title": "Google カレンダー - 2026年 4月 4日 (土曜日)、今日"
+              "title": "Google カレンダー - 2026年 4月 13日 (月曜日)、今日"
             }
           },
           {
@@ -186,7 +161,7 @@
               "type": "tag",
               "state": {
                 "sortOrder": "alphabetical",
-                "useHierarchy": false,
+                "useHierarchy": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
@@ -219,31 +194,6 @@
             }
           },
           {
-            "id": "75a86425592072ac",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "2_daily/03-22-2026.md",
-                "followCursor": true,
-                "showSearch": false,
-                "searchQuery": ""
-              },
-              "icon": "lucide-list",
-              "title": "03-22-2026のアウトライン"
-            }
-          },
-          {
-            "id": "fcfae8354d628b9e",
-            "type": "leaf",
-            "state": {
-              "type": "footnotes",
-              "state": {},
-              "icon": "lucide-file-signature",
-              "title": "脚注"
-            }
-          },
-          {
             "id": "87bab0dd86ad1f9e",
             "type": "leaf",
             "state": {
@@ -270,31 +220,16 @@
               "icon": "links-coming-in",
               "title": "バックリンク"
             }
-          },
-          {
-            "id": "b3899876a69ace29",
-            "type": "leaf",
-            "state": {
-              "type": "outgoing-link",
-              "state": {
-                "file": "2_daily/03-22-2026.md",
-                "linksCollapsed": false,
-                "unlinkedCollapsed": false
-              },
-              "icon": "links-going-out",
-              "title": "03-22-2026からのアウトゴーイングリンク"
-            }
           }
-        ],
-        "currentTab": 7
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 296.5
+    "width": 351.5
   },
   "left-ribbon": {
     "hiddenItems": {
-      "bases:新規ベースを作成": false,
+      "bases:新規ベースを作成": true,
       "markdown-importer:Markdownインポーターを開く": false,
       "zk-prefixer:新規ユニークノートの作成": false,
       "audio-recorder:録音の開始/停止": false,
@@ -307,52 +242,54 @@
       "open-gate:notionメモ": false,
       "github-sync:Sync with Remote": false,
       "obsidian-git:Open Git source control": false,
-      "obsidian-kindle-plugin:Sync your Kindle highlights": false
+      "obsidian-kindle-plugin:Sync your Kindle highlights": false,
+      "obsidian-excalidraw-plugin:New drawing": false,
+      "templater-obsidian:Templater": false
     }
   },
-  "active": "3eca7701924021a4",
+  "active": "5d5932f9e8725858",
   "lastOpenFiles": [
-    "5_Docs/転職用/yutori.md",
-    "5_Docs/転職用/yutori",
+    "5_Docs/バレーオフ会26.md",
+    "4_template/バレーオフ会用.md",
+    "4_template/日報.md",
+    "2_daily/04-10-2026.md",
+    "2_daily/04-09-2026.md",
+    "34ストレングスファインダー.pdf",
+    "5_Docs/英語/無題のファイル.md",
+    "Excalidraw/Drawing 2026-04-11 11.32.07.excalidraw.md",
+    "Excalidraw/Drawing 2026-04-11 11.31.54.excalidraw.md",
+    "Excalidraw",
+    "1_Inbox/読書記録/英典-世界のビジネスエリートは知っている教養としてのコーヒー.md",
+    "2_daily/04-08-2026.md",
+    "2_daily/04-07-2026.md",
+    "2_daily/04-06-2026.md",
+    "2_daily/04-05-2026.md",
+    "5_Docs/英語/英語.md",
+    "5_Docs/英語",
+    "202604091333.md",
+    "（関連ノートへのリンク）.md",
+    "7つの習慣.md",
+    "無題のファイル.canvas",
+    "4_template/日記.md",
+    "6_Personnal/向いた仕事・才能.md",
+    "5_Docs/面接練習.md",
+    "5_Docs/ストレングスファインダー.md",
     "2_daily/04-04-2026.md",
     "2_daily/04-03-2026.md",
     "2_daily/04-02-2026.md",
-    "2_daily/04-02-2026 1.md",
     "2_daily/04-01-2026.md",
-    "5_Docs/tfaエントリー.md",
-    "無題のファイル.md",
-    "5_Docs/面接練習.md",
-    "5_Docs/転職用/クラシコム.md",
+    "2_daily/202603/03-04-2026.md",
+    "2_daily/202603",
+    "5_Docs/転職用/yutori",
     "5_Docs/転職用/tfa",
-    "2_daily/03-31-2026.md",
-    "2_daily/03-30-2026.md",
-    "2_daily/03-29-2026.md",
-    "2_daily/03-28-2026.md",
-    "2_daily/03-27-2026.md",
-    "2_daily/03-26-2026.md",
-    "2_daily/03-25-2026.md",
-    "2_daily/03-24-2026.md",
-    "2_daily/03-23-2026.md",
-    "5_Docs/転職用/職務経歴書.md",
     "5_Docs/転職用",
-    "6_Personnal/向いた仕事・才能.md",
-    "1_Inbox/思考/生産性 ＝ 費やす時間 x 脳のリソース x 心理的リソース x 健康状態 　田中渓語録.md",
-    "1_Inbox/思考/大義と利益の両立（義理合一）.md",
-    "1_Inbox/思考/自主マス　就活講座.md",
-    "1_Inbox/思考/ゆとりくんYT.md",
-    "2_daily/03-22-2026.md",
     "2_daily/202602",
     "2_daily/202601",
     "無題のファイル 1.base",
-    "無題のファイル.base",
-    "34ストレングスファインダー.pdf",
     "IMG_8414.png",
     "IMG_8406.png",
-    "package-lock.json",
-    "package.json",
     "IMG_8407.jpeg",
     "Pasted image 20260318103154.png",
-    "CleanShot 2026-01-10 at 21.51.24@2x.png",
-    "無題のファイル.canvas"
+    "CleanShot 2026-01-10 at 21.51.24@2x.png"
   ]
 }

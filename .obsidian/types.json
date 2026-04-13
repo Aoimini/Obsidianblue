@@ -5,6 +5,7 @@
     "tags": "tags",
     "if([\"jpg\",\"gif\",\"webp\",\"jpeg\",\"avif\",\"png\"].contains(file.embeds[0].asFile().ext), file.embeds[0])": "text",
     "study_date": "date",
-    "subject": "checkbox"
+    "subject": "checkbox",
+    "context": "number"
   }
 }
