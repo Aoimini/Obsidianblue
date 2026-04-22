@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2_daily/04-10-2026.md",
+                "file": "5_Docs/支出管理.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,16 +28,16 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "04-10-2026"
+              "title": "支出管理"
             }
           },
           {
-            "id": "87000839b5ea61c4",
+            "id": "4870dddec453be2d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "5_Docs/読書/日本経済地図.md",
+                "file": "5_Docs/英語/英語.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "日本経済地図"
+              "title": "英語"
             }
           }
         ],
@@ -89,11 +89,11 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "[\"tags\"]",
+                "query": "",
                 "matchingCase": false,
-                "explainSearch": false,
+                "explainSearch": true,
                 "collapseAll": false,
-                "extraContext": false,
+                "extraContext": true,
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-search",
@@ -120,7 +120,8 @@
               "title": "Vertical tabs"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       },
       {
         "id": "74bdebda5cfaad44",
@@ -253,12 +254,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "5_Docs/読書/日本経済地図.md",
+                "file": "2_daily/04-16-2026.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "日本経済地図からのアウトゴーイングリンク"
+              "title": "04-16-2026からのアウトゴーイングリンク"
             }
           },
           {
@@ -267,13 +268,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "5_Docs/読書/日本経済地図.md",
+                "file": "2_daily/04-16-2026.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "日本経済地図のアウトライン"
+              "title": "04-16-2026のアウトライン"
             }
           }
         ],
@@ -306,45 +307,45 @@
       "obsidian42-brat:BRAT": false
     }
   },
-  "active": "87000839b5ea61c4",
+  "active": "4870dddec453be2d",
   "lastOpenFiles": [
-    "2_daily/04-14-2026.md",
-    "5_Docs/読書/日本経済地図.md",
-    "5_Docs/読書/世界経済地図.md",
-    "5_Docs/OG会.md",
-    "5_Docs/読書/7つの習慣.md",
-    "（関連ノートへのリンク）.md",
-    "34ストレングスファインダー.pdf",
-    "5_Docs/自主マス　就活講座.md",
     "5_Docs/支出管理.md",
-    "5_Docs/占い.md",
-    "5_Docs/面接練習.md",
-    "5_Docs/名前だけ.md",
+    "2_daily/04-22-2026.md",
+    "1_Inbox/思考/仕事分解.md",
+    "2_daily/04-20-2026.md",
     "6_Personnal/ストレングスファインダー.md",
-    "5_Docs/non-no/フリュー.md",
-    "5_Docs/ゆとらNight.md",
-    "5_Docs/non-no",
-    "5_Docs/英語/英語.md",
-    "5_Docs/木曜会/バレーオフ会26.md",
-    "5_Docs/木曜会",
+    "5_Docs/占い.md",
+    "34ストレングスファインダー.pdf",
     "5_Docs/2〜0318 paypay.md",
-    "5_Docs/読書/無題のファイル.md",
-    "4_template/読書記録.md",
+    "5_Docs/2〜0318 三井.md",
+    "5_Docs/２月支出　三井住友.md",
+    "5_Docs/OG会.md",
+    "5_Docs/tfaエントリー.md",
+    "5_Docs/自主マス　就活講座.md",
+    "5_Docs/英語/英語.md",
+    "2_daily/04-16-2026.md",
+    "2_daily/04-17-2026.md",
+    "2_daily/04-18-2026.md",
+    "2_daily/04-15-2026.md",
+    "2_daily/04-19-2026.md",
+    "5_Docs/non-no/フリュー.md",
+    "5_Docs/転職用/履歴書.md",
+    "5_Docs/OB訪問/職務経歴書.md",
+    "5_Docs/OB訪問/履歴書.md",
+    "5_Docs/OB訪問/クラシコム.md",
+    "5_Docs/OB訪問/yutori.md",
+    "5_Docs/OB訪問/yutori",
+    "5_Docs/OB訪問/tfa",
+    "5_Docs/OB訪問/notahotel.md",
+    "5_Docs/OB訪問",
+    "5_Docs/転職用/職務経歴書.md",
+    "5_Docs/ファイナンス",
+    "5_Docs/non-no",
+    "5_Docs/木曜会",
     "5_Docs/読書",
-    "4_template/日記.md",
-    "2_daily/04-12-2026.md",
-    "2_daily/04-13-2026.md",
-    "2_daily/04-11-2026.md",
-    "2_daily/04-10-2026.md",
-    "Excalidraw/Drawing 2026-04-13 10.10.26.excalidraw.md",
-    "Excalidraw/Drawing 2026-04-13 10.10.24.excalidraw.md",
     "Excalidraw",
     "5_Docs/英語",
     "無題のファイル.canvas",
-    "2_daily/202603",
-    "5_Docs/転職用/yutori",
-    "5_Docs/転職用/tfa",
-    "5_Docs/転職用",
     "IMG_8414.png",
     "IMG_8406.png",
     "IMG_8407.jpeg",
