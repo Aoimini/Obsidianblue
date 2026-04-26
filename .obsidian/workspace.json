@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "5_Docs/英語/英語.md",
+                "file": "2_daily/2025/12-04-2025.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "英語"
+              "title": "12-04-2025"
             }
           }
         ],
@@ -120,8 +120,7 @@
               "title": "Vertical tabs"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       },
       {
         "id": "74bdebda5cfaad44",
@@ -225,8 +224,8 @@
             "state": {
               "type": "git-view",
               "state": {},
-              "icon": "lucide-ghost",
-              "title": "git-view"
+              "icon": "git-pull-request",
+              "title": "Source Control"
             }
           },
           {
@@ -278,12 +277,11 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 401.5,
-    "collapsed": true
+    "width": 401.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -309,6 +307,11 @@
   },
   "active": "4870dddec453be2d",
   "lastOpenFiles": [
+    "5_Docs/読書/半うつ.md",
+    "5_Docs/OB訪問/東宝.md",
+    "2_daily/04-25-2026.md",
+    "5_Docs/読書/日本経済地図.md",
+    "5_Docs/英語/英語.md",
     "5_Docs/支出管理.md",
     "2_daily/04-22-2026.md",
     "1_Inbox/思考/仕事分解.md",
@@ -322,7 +325,6 @@
     "5_Docs/OG会.md",
     "5_Docs/tfaエントリー.md",
     "5_Docs/自主マス　就活講座.md",
-    "5_Docs/英語/英語.md",
     "2_daily/04-16-2026.md",
     "2_daily/04-17-2026.md",
     "2_daily/04-18-2026.md",
@@ -332,13 +334,9 @@
     "5_Docs/転職用/履歴書.md",
     "5_Docs/OB訪問/職務経歴書.md",
     "5_Docs/OB訪問/履歴書.md",
-    "5_Docs/OB訪問/クラシコム.md",
-    "5_Docs/OB訪問/yutori.md",
     "5_Docs/OB訪問/yutori",
     "5_Docs/OB訪問/tfa",
-    "5_Docs/OB訪問/notahotel.md",
     "5_Docs/OB訪問",
-    "5_Docs/転職用/職務経歴書.md",
     "5_Docs/ファイナンス",
     "5_Docs/non-no",
     "5_Docs/木曜会",
