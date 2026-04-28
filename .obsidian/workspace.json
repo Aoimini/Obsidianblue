@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "5_Docs/支出管理.md",
+                "file": "5_Docs/読書/日本経済地図.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,35 +28,10 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "支出管理"
-            }
-          },
-          {
-            "id": "4870dddec453be2d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2_daily/2025/12-04-2025.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "12-04-2025"
+              "title": "日本経済地図"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -172,11 +147,11 @@
               "type": "webviewer",
               "state": {
                 "url": "https://calendar.google.com/calendar/u/0/r/day?pli=1",
-                "title": "Google カレンダー - 2026年 4月 14日 (火曜日)、今日",
+                "title": "Google カレンダー - 2026年 4月 28日 (火曜日)、今日",
                 "mode": "webview"
               },
               "icon": "globe-2",
-              "title": "Google カレンダー - 2026年 4月 14日 (火曜日)、今日"
+              "title": "Google カレンダー - 2026年 4月 28日 (火曜日)、今日"
             }
           },
           {
@@ -281,7 +256,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 401.5
+    "width": 489.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -307,33 +282,34 @@
   },
   "active": "87bab0dd86ad1f9e",
   "lastOpenFiles": [
-    "5_Docs/読書/半うつ.md",
-    "5_Docs/OB訪問/東宝.md",
-    "2_daily/04-25-2026.md",
+    "5_Docs/読書/世界経済地図.md",
     "5_Docs/読書/日本経済地図.md",
-    "5_Docs/英語/英語.md",
-    "5_Docs/支出管理.md",
+    "5_Docs/英語/単語メモ.md",
+    "Clippings/株式会社FUSION　取締役CRO楠 勇真 ラクスル新卒ビジネス職.md",
+    "Clippings/30歳で大手広告会社からの転職を決めた理由 ― AI×マーケティングの“工場”を作る事業開発の仕事｜ラクスル株式会社.md",
+    "2_daily/04-27-2026.md",
+    "2_daily/04-26-2026.md",
+    "2_daily/04-25-2026.md",
+    "2_daily/04-24-2026.md",
+    "2_daily/04-23-2026.md",
     "2_daily/04-22-2026.md",
-    "1_Inbox/思考/仕事分解.md",
+    "2_daily/04-21-2026.md",
     "2_daily/04-20-2026.md",
-    "6_Personnal/ストレングスファインダー.md",
-    "5_Docs/占い.md",
-    "34ストレングスファインダー.pdf",
-    "5_Docs/2〜0318 paypay.md",
-    "5_Docs/2〜0318 三井.md",
-    "5_Docs/２月支出　三井住友.md",
-    "5_Docs/OG会.md",
-    "5_Docs/tfaエントリー.md",
-    "5_Docs/自主マス　就活講座.md",
-    "2_daily/04-16-2026.md",
-    "2_daily/04-17-2026.md",
-    "2_daily/04-18-2026.md",
-    "2_daily/04-15-2026.md",
     "2_daily/04-19-2026.md",
-    "5_Docs/non-no/フリュー.md",
-    "5_Docs/転職用/履歴書.md",
-    "5_Docs/OB訪問/職務経歴書.md",
-    "5_Docs/OB訪問/履歴書.md",
+    "2_daily/04-18-2026.md",
+    "1_Inbox/思考/エンドレスチャレンジ.md",
+    "2_daily/04-16-2026.md",
+    "1_Inbox/思考/仕事分解.md",
+    "1_Inbox/思考/マッキンで学んだ仕事術.md",
+    "1_Inbox/思考/ビジネスセンス（利益を作るセンス）は一生懸命と怠惰のバランス.md",
+    "5_Docs/英語/0426テスト.md",
+    "Excalidraw/Drawing 2026-04-11 11.31.54.excalidraw.md",
+    "5_Docs/占い.md",
+    "5_Docs/自主マス　就活講座.md",
+    "5_Docs/支出管理.md",
+    "5_Docs/tfaエントリー.md",
+    "2_daily/無題のフォルダ",
+    "34ストレングスファインダー.pdf",
     "5_Docs/OB訪問/yutori",
     "5_Docs/OB訪問/tfa",
     "5_Docs/OB訪問",
@@ -342,7 +318,6 @@
     "5_Docs/木曜会",
     "5_Docs/読書",
     "Excalidraw",
-    "5_Docs/英語",
     "無題のファイル.canvas",
     "IMG_8414.png",
     "IMG_8406.png",
