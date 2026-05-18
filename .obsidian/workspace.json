@@ -8,7 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "ceb9371089ac1000",
+            "id": "9c40917da15c8223",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -116,7 +116,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 268.5
+    "width": 200
   },
   "right": {
     "id": "86e4665383d1b40c",
@@ -147,11 +147,11 @@
               "type": "webviewer",
               "state": {
                 "url": "https://calendar.google.com/calendar/u/0/r/day?pli=1",
-                "title": "Google カレンダー - 2026年 4月 28日 (火曜日)",
+                "title": "Google カレンダー - 2026年 5月 7日 (木曜日)、今日",
                 "mode": "webview"
               },
               "icon": "globe-2",
-              "title": "Google カレンダー - 2026年 4月 28日 (火曜日)"
+              "title": "Google カレンダー - 2026年 5月 7日 (木曜日)、今日"
             }
           },
           {
@@ -252,12 +252,11 @@
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 489.5,
-    "collapsed": true
+    "width": 208.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -281,45 +280,46 @@
       "obsidian42-brat:BRAT": false
     }
   },
-  "active": "ceb9371089ac1000",
+  "active": "9c40917da15c8223",
   "lastOpenFiles": [
-    "Clippings/30歳で大手広告会社からの転職を決めた理由 ― AI×マーケティングの“工場”を作る事業開発の仕事｜ラクスル株式会社.md",
-    "5_Docs/読書/日本経済地図.md",
-    "Clippings/【自分史：社会人3-5年目編🏄‍♂️】ぼくのゆとりのれきし｜センズイ タイガ🐯（senzui,inc）.md",
-    "Clippings/【検証】50万円する高額コーチングスクールに、その価値はあるのか？｜センズイ タイガ🐯（senzui,inc）.md",
-    "Clippings/弱さもダサさも抱きしめる。yutori がつくる「ここにいたい」と思える場所  キャリアハック（CAREER HACK）.md",
-    "5_Docs/読書/世界経済地図.md",
+    "5_Docs/英語/単語テスト.html",
+    "6_Personnal/転職.md",
+    "6_Personnal/向いた仕事・才能.md",
+    "5_Docs/やりたいことの見つけ方.md",
+    "5_Docs/三井住友カード４月支払い分.md",
+    "6_Personnal/若手のうちに身につけるスキル.md",
+    "6_Personnal/転職軸.md",
+    "5_Docs/OB訪問/notahotel.md",
     "5_Docs/英語/単語メモ.md",
-    "Clippings/株式会社FUSION　取締役CRO楠 勇真 ラクスル新卒ビジネス職.md",
+    "1_Inbox/YouTubeの世界に入って3年で学んだこと.md",
+    "Clippings/0318pay.md",
+    "無題のファイル.canvas",
+    "Pasted image 20260507132602.png",
+    "2_daily/05-10-2026.md",
+    "2_daily/05-11-2026.md",
+    "2_daily/05-09-2026.md",
+    "2_daily/05-08-2026.md",
+    "2_daily/05-07-2026.md",
+    "2_daily/05-06-2026.md",
+    "2_daily/05-03-2026.md",
+    "2_daily/05-02-2026.md",
+    "2_daily/05-01-2026.md",
+    "2_daily/04-30-2026.md",
+    "2_daily/04-29-2026.md",
+    "2_daily/04-28-2026.md",
     "2_daily/04-27-2026.md",
-    "2_daily/04-26-2026.md",
-    "2_daily/04-25-2026.md",
-    "2_daily/04-24-2026.md",
-    "2_daily/04-23-2026.md",
-    "2_daily/04-22-2026.md",
-    "2_daily/04-21-2026.md",
-    "2_daily/04-20-2026.md",
-    "2_daily/04-19-2026.md",
-    "2_daily/04-18-2026.md",
-    "1_Inbox/思考/エンドレスチャレンジ.md",
-    "2_daily/04-16-2026.md",
-    "1_Inbox/思考/仕事分解.md",
-    "1_Inbox/思考/マッキンで学んだ仕事術.md",
-    "1_Inbox/思考/ビジネスセンス（利益を作るセンス）は一生懸命と怠惰のバランス.md",
+    "2_daily/05-04-2026.md",
     "5_Docs/英語/0426テスト.md",
-    "Excalidraw/Drawing 2026-04-11 11.31.54.excalidraw.md",
-    "5_Docs/占い.md",
-    "2_daily/無題のフォルダ",
     "34ストレングスファインダー.pdf",
+    "三井住友カード５月支払い分.pdf",
+    "三井住友カード４月支払い分.pdf",
+    "三井住友カード５月.pdf",
+    "三井住友カード.pdf",
+    "5_Docs/note",
+    "2_daily/無題のフォルダ",
     "5_Docs/OB訪問/yutori",
     "5_Docs/OB訪問/tfa",
     "5_Docs/OB訪問",
-    "5_Docs/ファイナンス",
-    "5_Docs/non-no",
-    "5_Docs/木曜会",
-    "5_Docs/読書",
-    "Excalidraw",
-    "無題のファイル.canvas",
     "IMG_8414.png",
     "IMG_8406.png",
     "IMG_8407.jpeg",

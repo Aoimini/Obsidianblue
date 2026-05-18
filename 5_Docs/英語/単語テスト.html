@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>英単語テスト</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Segoe UI', sans-serif;
+      background: #0f172a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      color: #f1f5f9;
+    }
+
+    .container { width: 100%; max-width: 620px; }
+
+    h1 {
+      text-align: center;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #e2e8f0;
+      margin-bottom: 20px;
+      letter-spacing: 0.04em;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 9px 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.18s;
+      font-family: inherit;
+    }
+    .btn-toggle {
+      background: #1e293b;
+      color: #94a3b8;
+      border: 2px solid #334155;
+    }
+    .btn-toggle.active {
+      background: #6366f1;
+      color: #fff;
+      border-color: #6366f1;
+    }
+    .btn-toggle:hover:not(.active) { border-color: #6366f1; color: #c7d2fe; }
+
+    .btn-restart {
+      background: #1e293b;
+      color: #94a3b8;
+      border: 2px solid #334155;
+    }
+    .btn-restart:hover { border-color: #94a3b8; color: #e2e8f0; }
+
+    .btn-next {
+      background: #6366f1;
+      color: #fff;
+      border: 2px solid #6366f1;
+      padding: 11px 32px;
+      font-size: 0.95rem;
+      margin-top: 18px;
+    }
+    .btn-next:hover { background: #4f46e5; border-color: #4f46e5; }
+
+    .btn-retry {
+      background: #6366f1;
+      color: #fff;
+      border: 2px solid #6366f1;
+      padding: 13px 36px;
+      font-size: 1rem;
+    }
+    .btn-retry:hover { background: #4f46e5; }
+
+    .stats-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .progress-text { font-size: 0.8rem; color: #64748b; }
+    .score-text { font-size: 0.8rem; color: #64748b; }
+
+    .progress-bar {
+      background: #1e293b;
+      border-radius: 999px;
+      height: 6px;
+      margin-bottom: 22px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      background: linear-gradient(90deg, #6366f1, #8b5cf6);
+      height: 100%;
+      border-radius: 999px;
+      transition: width 0.35s ease;
+    }
+
+    .card {
+      background: #1e293b;
+      border-radius: 18px;
+      padding: 38px 28px 32px;
+      text-align: center;
+      margin-bottom: 18px;
+      border: 1px solid #334155;
+      min-height: 140px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .q-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #6366f1;
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+    .q-text {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      line-height: 1.35;
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 11px;
+    }
+
+    .opt-btn {
+      padding: 15px 12px;
+      background: #1e293b;
+      border: 2px solid #334155;
+      border-radius: 13px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      color: #cbd5e1;
+      transition: all 0.15s;
+      line-height: 1.4;
+      font-family: inherit;
+      text-align: center;
+      word-break: break-word;
+    }
+    .opt-btn:hover:not(:disabled) {
+      border-color: #6366f1;
+      background: #1e1b4b;
+      color: #c7d2fe;
+    }
+    .opt-btn.correct {
+      background: #052e16;
+      border-color: #22c55e;
+      color: #86efac;
+    }
+    .opt-btn.wrong {
+      background: #3b0764;
+      border-color: #f43f5e;
+      color: #fca5a5;
+    }
+    .opt-btn:disabled { cursor: default; }
+
+    .feedback {
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 600;
+      min-height: 28px;
+      margin-top: 14px;
+      color: transparent;
+    }
+    .feedback.show-correct { color: #4ade80; }
+    .feedback.show-wrong { color: #f87171; }
+
+    .next-wrap { text-align: center; }
+
+    /* Result */
+    .result-card {
+      background: #1e293b;
+      border-radius: 18px;
+      padding: 52px 28px;
+      text-align: center;
+      border: 1px solid #334155;
+    }
+    .result-emoji { font-size: 3.5rem; margin-bottom: 18px; }
+    .result-score { font-size: 2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 8px; }
+    .result-pct { font-size: 1rem; color: #94a3b8; margin-bottom: 28px; }
+    .result-bar-wrap {
+      background: #0f172a;
+      border-radius: 999px;
+      height: 10px;
+      margin-bottom: 28px;
+      overflow: hidden;
+    }
+    .result-bar-fill {
+      background: linear-gradient(90deg, #6366f1, #8b5cf6);
+      height: 100%;
+      border-radius: 999px;
+    }
+
+    @media (max-width: 480px) {
+      .q-text { font-size: 1.4rem; }
+      .options { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>英単語テスト</h1>
+
+  <div class="controls">
+    <button class="btn btn-toggle active" id="btn-en-ja" onclick="setDir('en-ja')">英 → 日</button>
+    <button class="btn btn-toggle" id="btn-ja-en" onclick="setDir('ja-en')">日 → 英</button>
+    <button class="btn btn-restart" onclick="restart()">シャッフル ↺</button>
+  </div>
+
+  <div id="quiz-area">
+    <div class="stats-row">
+      <span class="progress-text" id="prog-text">1 / 0</span>
+      <span class="score-text" id="score-text">正解: 0 / 0</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
+
+    <div class="card">
+      <div class="q-label" id="q-label">英語</div>
+      <div class="q-text" id="q-text"></div>
+    </div>
+
+    <div class="options" id="options"></div>
+    <div class="feedback" id="feedback"></div>
+    <div class="next-wrap"><button class="btn btn-next" id="btn-next" onclick="nextQ()" style="display:none">次へ →</button></div>
+  </div>
+
+  <div id="result-area" style="display:none">
+    <div class="result-card">
+      <div class="result-emoji" id="r-emoji"></div>
+      <div class="result-score" id="r-score"></div>
+      <div class="result-pct" id="r-pct"></div>
+      <div class="result-bar-wrap"><div class="result-bar-fill" id="r-bar" style="width:0%"></div></div>
+      <button class="btn btn-retry" onclick="restart()">もう一度挑戦</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const WORDS = [
+  // 0426テスト.md
+  {en:"railing",ja:"手すり"},
+  {en:"resurfaced",ja:"再塗装"},
+  {en:"Motorists",ja:"運転手"},
+  {en:"handouts",ja:"配布資料"},
+  {en:"hallway",ja:"廊下"},
+  {en:"off-limits",ja:"立ち入り禁止の"},
+  {en:"customs",ja:"税関"},
+  {en:"bin",ja:"荷物棚"},
+  {en:"Plumbing",ja:"配管業者"},
+  {en:"whenever",ja:"いつでも〔関〕"},
+  {en:"through",ja:"〜を通して〔前〕"},
+  {en:"including",ja:"〜を含む〔前〕"},
+  {en:"once",ja:"一度〜すれば〔接〕"},
+  {en:"startle",ja:"驚かす"},
+  {en:"upset",ja:"動揺させる・迷惑をかける"},
+  {en:"sourced",ja:"調達された"},
+  {en:"in my absence",ja:"私は不在ですが"},
+  {en:"genuine",ja:"心からの"},
+  {en:"auditor",ja:"監査役"},
+  // 0409
+  {en:"distribute",ja:"〜を配布する"},
+  {en:"handle",ja:"〜に対応する"},
+  {en:"compensation",ja:"補償"},
+  {en:"authentic",ja:"本格的な"},
+  {en:"landlord and tenants",ja:"家主と入居者"},
+  {en:"a devoted fan",ja:"献身的なファン"},
+  {en:"refrain from",ja:"控える"},
+  {en:"allocate X for Y",ja:"XをYに割り当てる"},
+  {en:"a board of trustees",ja:"理事会"},
+  {en:"intermediate",ja:"中級"},
+  {en:"modest",ja:"控えめ、適度"},
+  {en:"accumulate",ja:"貯める"},
+  {en:"optimistic",ja:"楽観的"},
+  {en:"endeavors",ja:"努力"},
+  {en:"dispatch",ja:"派遣する"},
+  {en:"ample",ja:"十分"},
+  {en:"protocol",ja:"手順"},
+  {en:"artisans",ja:"職人"},
+  {en:"attributes",ja:"特性・〜によるものだと考える"},
+  {en:"dominate",ja:"支配する"},
+  {en:"breakdown",ja:"内訳"},
+  {en:"privilege",ja:"光栄"},
+  {en:"devise a business plan",ja:"（ビジネスプランを）考案する"},
+  {en:"subsequently",ja:"その後"},
+  {en:"humidity",ja:"湿度"},
+  {en:"tentative",ja:"仮の"},
+  // 0410
+  {en:"compromise",ja:"危険にさらす・妥協"},
+  {en:"a fraction of",ja:"数分の１"},
+  {en:"appraisal",ja:"査定"},
+  {en:"straightforward",ja:"簡単・わかりやすい"},
+  {en:"interim",ja:"暫定"},
+  {en:"controversial",ja:"物議を醸す"},
+  {en:"acquaintances",ja:"知人"},
+  {en:"sibling",ja:"兄弟姉妹"},
+  {en:"transparent",ja:"透明"},
+  {en:"state-of-the-art",ja:"最先端の"},
+  {en:"municipal",ja:"市営"},
+  {en:"a fleet of vehicles",ja:"保有車両"},
+  {en:"sophisticated",ja:"高度な・精巧な・洗練された"},
+  {en:"proceed",ja:"収益"},
+  {en:"proceeding",ja:"議事録"},
+  {en:"slot",ja:"枠"},
+  {en:"dispute",ja:"論争"},
+  {en:"checkup",ja:"健康診断"},
+  {en:"transcript",ja:"成績証明書"},
+  {en:"be instrumental in",ja:"重要な役割を果たす"},
+  {en:"audit",ja:"会計監査"},
+  {en:"solicit",ja:"求める・訪問販売する"},
+  {en:"retreat",ja:"社員旅行"},
+  {en:"keynote",ja:"基本方針"},
+  {en:"a power outage",ja:"停電"},
+  {en:"expedite",ja:"発送する"},
+  {en:"paving",ja:"舗装・塗装"},
+  {en:"artifacts",ja:"人工遺物"},
+  {en:"attire",ja:"服装"},
+  {en:"batch",ja:"1回分"},
+  {en:"drain",ja:"排水溝"},
+  {en:"crate",ja:"木箱"},
+  {en:"raffle",ja:"くじ"},
+  {en:"redeem",ja:"引き換える"},
+  {en:"stunning",ja:"驚くほど美しい"},
+  {en:"outreach",ja:"奉仕活動"},
+  {en:"sturdy",ja:"はしご（ノート記載）"},
+  {en:"itemize",ja:"項目に分ける・箇条書きする"},
+  {en:"gala",ja:"祝賀"},
+  {en:"mural",ja:"壁画"},
+  {en:"centerpiece",ja:"目玉・中央に置く装飾"},
+  {en:"endorsement",ja:"推薦"},
+  {en:"debris",ja:"瓦礫"},
+  {en:"overdue",ja:"期限の過ぎた"},
+  {en:"kiosk",ja:"情報端末"},
+  {en:"tow",ja:"レッカー移動"},
+  {en:"streamline",ja:"合理化する"},
+  {en:"anecdote",ja:"逸話"},
+  {en:"attest to",ja:"証明する・証言する"},
+  {en:"refurbish",ja:"改装する"},
+  {en:"sanitize",ja:"消毒する"},
+  {en:"testimonial",ja:"推薦文"},
+  {en:"turnout",ja:"人手・参加者数"},
+  {en:"drape",ja:"覆う・カーテン"},
+  {en:"run an errand",ja:"用事をする・使い走り"},
+  {en:"advocate",ja:"提唱する"},
+  {en:"offset",ja:"相殺する"},
+  {en:"groundbreaking",ja:"画期的・着工式"},
+  {en:"chronicle",ja:"年代記"},
+  {en:"aspiring",ja:"〜の卵・〜志望"},
+  {en:"entail",ja:"伴う"},
+  {en:"is slated to",ja:"〜予定だ"},
+  {en:"footage",ja:"映像"},
+  {en:"versatile",ja:"多才"},
+  {en:"replenish",ja:"補充する"},
+  {en:"embark on",ja:"乗り出す"},
+  {en:"soothing",ja:"落ち着くような"},
+  {en:"annoying",ja:"イライラするような"},
+  {en:"inherent advantage",ja:"先天的な優位性"},
+  {en:"roll out",ja:"〜を公開する"},
+  {en:"podium",ja:"演壇"},
+  {en:"bricks",ja:"レンガ"},
+  {en:"curb",ja:"縁石"},
+  {en:"strolling around",ja:"歩き回る"},
+  {en:"jar",ja:"瓶"},
+  {en:"descend",ja:"下る"},
+  {en:"be descended from",ja:"〜の子孫だ"},
+  {en:"lean against",ja:"もたれかかる"},
+  {en:"owing to",ja:"〜が理由で"},
+  {en:"despite",ja:"にもかかわらず〔前〕"},
+  {en:"in spite of",ja:"にもかかわらず〔前〕"},
+  {en:"notwithstanding",ja:"にもかかわらず〔前〕"},
+  {en:"given",ja:"〜を考慮に入れると〔前〕"},
+  {en:"in writing",ja:"書面で"},
+  {en:"interest rate",ja:"利率・金利"},
+  {en:"just in case",ja:"万一に備えて"},
+  {en:"just so you know",ja:"ちなみに"},
+  {en:"on back order",ja:"入荷待ちで"},
+  {en:"on board",ja:"搭乗して・一員である"},
+  // 0427
+  {en:"be slated for",ja:"〜を予定する"},
+  // 0428
+  {en:"drawers",ja:"引き出し"},
+  {en:"workstations",ja:"作業場・コンピューター"},
+  {en:"cupboard",ja:"食器棚"},
+  {en:"crossing at an intersection",ja:"交差点を横切る"},
+  {en:"be putting on",ja:"着替え中"},
+  {en:"be propped up against",ja:"立てかけられている"},
+  {en:"vicepresident",ja:"副社長"},
+  {en:"a dozen",ja:"1ダース（12個）"},
+  {en:"by all means",ja:"もちろんOK"},
+  {en:"make on one's own",ja:"自力で〜を作る"},
+  {en:"interfere with",ja:"妨げる"},
+  {en:"procedures",ja:"手順"},
+  {en:"in one's way",ja:"〜の邪魔になる"},
+  {en:"preferably",ja:"可能な限り・できれば"},
+  {en:"considerably",ja:"かなり"},
+  // 0430
+  {en:"archeologist",ja:"考古学者"},
+  {en:"remain / site",ja:"遺跡"},
+  {en:"artifact",ja:"遺物"},
+  {en:"ancient",ja:"古代の"},
+  {en:"bury",ja:"埋める"},
+  {en:"academic",ja:"学者"},
+  {en:"commute",ja:"通勤する"},
+  {en:"cover",ja:"取材する"},
+  {en:"draw attention to",ja:"〜に注目を集める"},
+  {en:"shortage",ja:"不足"},
+  {en:"well-earned",ja:"十分に得るに値する"},
+  {en:"affair",ja:"事柄"},
+  // 0509
+  {en:"be in trouble",ja:"困っている"},
+  {en:"credential",ja:"経歴"},
+  {en:"in the middle of",ja:"〜の最中"},
+  {en:"insist on",ja:"強く求める"},
+  {en:"in a pile",ja:"積み重なって・どっさりと"},
+  {en:"resign from",ja:"〜を辞める"},
+  {en:"authorization",ja:"許可"},
+  {en:"derailment",ja:"脱線"},
+  {en:"evacuate",ja:"避難させる"},
+  {en:"press conference",ja:"記者会見"},
+  {en:"apparently",ja:"どうも〜らしい"},
+  {en:"feel better",ja:"体調が回復する"},
+  {en:"sales associates",ja:"販売員"},
+  {en:"congestion",ja:"混雑"},
+  {en:"property",ja:"物件"},
+  {en:"neighboring",ja:"隣接している・隣の"},
+  {en:"ramp",ja:"傾斜路"},
+  {en:"carriage",ja:"（電車の）客車"},
+  {en:"under consideration",ja:"検討中の"},
+  {en:"existing",ja:"現行の・既存の"},
+  {en:"spreadsheet software",ja:"表計算ソフト"},
+  {en:"attendee",ja:"出席者"},
+  {en:"outline",ja:"〜の概要を述べる"},
+  {en:"thick",ja:"厚い"},
+  {en:"detour",ja:"遠回り"},
+  {en:"move forward with",ja:"（計画など）を進める"},
+  {en:"make sense",ja:"理にかなう"},
+  {en:"placed emphasis on",ja:"強調する"},
+  {en:"a streak of",ja:"一連の"},
+];
+
+let dir = 'en-ja';
+let queue = [];
+let cur = 0;
+let score = 0;
+let answered = false;
+
+function shuffle(a) {
+  const b = [...a];
+  for (let i = b.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [b[i], b[j]] = [b[j], b[i]];
+  }
+  return b;
+}
+
+function setDir(d) {
+  dir = d;
+  document.getElementById('btn-en-ja').className = 'btn btn-toggle' + (d === 'en-ja' ? ' active' : '');
+  document.getElementById('btn-ja-en').className = 'btn btn-toggle' + (d === 'ja-en' ? ' active' : '');
+  restart();
+}
+
+function restart() {
+  queue = shuffle(WORDS);
+  cur = 0;
+  score = 0;
+  answered = false;
+  document.getElementById('quiz-area').style.display = '';
+  document.getElementById('result-area').style.display = 'none';
+  showQ();
+}
+
+function showQ() {
+  const w = queue[cur];
+  const total = queue.length;
+  answered = false;
+
+  document.getElementById('prog-fill').style.width = `${(cur / total) * 100}%`;
+  document.getElementById('prog-text').textContent = `${cur + 1} / ${total}`;
+  document.getElementById('score-text').textContent = `正解: ${score} / ${cur}`;
+  document.getElementById('feedback').textContent = '';
+  document.getElementById('feedback').className = 'feedback';
+  document.getElementById('btn-next').style.display = 'none';
+
+  const isEnJa = dir === 'en-ja';
+  document.getElementById('q-label').textContent = isEnJa ? '英語' : '日本語';
+  document.getElementById('q-text').textContent = isEnJa ? w.en : w.ja;
+
+  const correct = isEnJa ? w.ja : w.en;
+  const pool = WORDS.map(x => isEnJa ? x.ja : x.en).filter(a => a !== correct);
+  const wrongs = shuffle(pool).slice(0, 3);
+  const opts = shuffle([correct, ...wrongs]);
+
+  const div = document.getElementById('options');
+  div.innerHTML = '';
+  opts.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'opt-btn';
+    btn.textContent = opt;
+    btn.onclick = () => check(opt, correct);
+    div.appendChild(btn);
+  });
+}
+
+function check(sel, correct) {
+  if (answered) return;
+  answered = true;
+
+  document.querySelectorAll('.opt-btn').forEach(btn => {
+    btn.disabled = true;
+    if (btn.textContent === correct) btn.classList.add('correct');
+    else if (btn.textContent === sel) btn.classList.add('wrong');
+  });
+
+  const fb = document.getElementById('feedback');
+  if (sel === correct) {
+    score++;
+    fb.textContent = '✓ 正解！';
+    fb.className = 'feedback show-correct';
+  } else {
+    fb.textContent = `✗ 不正解　正解: ${correct}`;
+    fb.className = 'feedback show-wrong';
+  }
+
+  document.getElementById('score-text').textContent = `正解: ${score} / ${cur + 1}`;
+  document.getElementById('btn-next').style.display = 'inline-block';
+}
+
+function nextQ() {
+  cur++;
+  if (cur >= queue.length) showResult();
+  else showQ();
+}
+
+function showResult() {
+  document.getElementById('quiz-area').style.display = 'none';
+  document.getElementById('result-area').style.display = '';
+
+  const pct = Math.round((score / queue.length) * 100);
+  const emoji = pct >= 90 ? '🎉' : pct >= 70 ? '😊' : pct >= 50 ? '💪' : '📖';
+  const msg = pct >= 90 ? 'パーフェクトに近い！' : pct >= 70 ? 'よくできました！' : pct >= 50 ? 'まだ伸びしろあり！' : 'もっと練習しよう！';
+
+  document.getElementById('r-emoji').textContent = emoji;
+  document.getElementById('r-score').textContent = `${score} / ${queue.length}`;
+  document.getElementById('r-pct').textContent = `正答率 ${pct}%　${msg}`;
+  document.getElementById('r-bar').style.width = `${pct}%`;
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !document.getElementById('btn-next').hidden) {
+    if (document.getElementById('btn-next').style.display !== 'none') nextQ();
+  }
+});
+
+restart();
+</script>
+</body>
+</html>
