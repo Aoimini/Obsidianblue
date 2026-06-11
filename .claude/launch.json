@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "lifebalance",
+      "runtimeExecutable": "/usr/bin/env",
+      "runtimeArgs": ["-C", "/Users/aoi/lifebalance_mvp", "/usr/bin/python3", "-m", "http.server", "8080"],
+      "port": 8080
+    }
+  ]
+}
