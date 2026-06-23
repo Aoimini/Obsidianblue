@@ -16,15 +16,20 @@ import os, sys, shutil, sqlite3, datetime, urllib.parse, glob, tempfile, re
 DATA = os.path.expanduser("~/.local/share/vaultbrain")
 INBOX = os.path.join(DATA, "inbox")
 os.makedirs(INBOX, exist_ok=True)
-TS = datetime.date.today().isoformat()
+# Target day = env VAULTBRAIN_DATE (YYYY-MM-DD) or yesterday (the 4am run summarizes the day just ended)
+_t = os.environ.get("VAULTBRAIN_DATE")
+DAY = datetime.date.fromisoformat(_t) if _t else (datetime.date.today() - datetime.timedelta(days=1))
+TS = DAY.isoformat()
 OUT = os.path.join(INBOX, f"chrome_{TS}.md")
 CHROME = os.path.expanduser("~/Library/Application Support/Google/Chrome")
 
 def log(*a): print("[collect_chrome]", *a)
 
-# chrome epoch (microseconds since 1601-01-01) for local midnight today
-midnight = datetime.datetime.combine(datetime.date.today(), datetime.time.min)
-chrome_midnight = int((midnight.timestamp() + 11644473600) * 1_000_000)
+# chrome epoch (microseconds since 1601-01-01) for the target day's window [midnight, next midnight)
+_start = datetime.datetime.combine(DAY, datetime.time.min)
+_end = datetime.datetime.combine(DAY + datetime.timedelta(days=1), datetime.time.min)
+chrome_start = int((_start.timestamp() + 11644473600) * 1_000_000)
+chrome_end = int((_end.timestamp() + 11644473600) * 1_000_000)
 
 profiles = []
 for hist in glob.glob(os.path.join(CHROME, "*", "History")):
@@ -45,7 +50,8 @@ for hist in profiles:
         cur = con.cursor()
         cur.execute(
             "SELECT last_visit_time, url, title FROM urls "
-            "WHERE last_visit_time >= ? ORDER BY last_visit_time DESC", (chrome_midnight,))
+            "WHERE last_visit_time >= ? AND last_visit_time < ? ORDER BY last_visit_time DESC",
+            (chrome_start, chrome_end))
         for t, url, title in cur.fetchall():
             secs = t/1_000_000 - 11644473600
             when = datetime.datetime.fromtimestamp(secs).strftime("%H:%M")

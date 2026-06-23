@@ -38,7 +38,7 @@
   "canonical_notes_created": 113,
   "people_notes": 92,
   "company_notes": 10,
-  "source_traces_created": 16,
+  "source_traces_created": 17,
   "context_packs_created": 1,
   "validation_status": "PASS (0 issues, 137 notes) 2026-06-23",
   "waves_done": {
@@ -55,5 +55,5 @@
     "Optional: per-event granularity from daily notes; 1_Inbox思考メモ -> Topics"
   ],
   "blockers": [],
-  "last_updated": "2026-06-23"
+  "last_updated": "2026-06-23T-delta-06-22"
 }

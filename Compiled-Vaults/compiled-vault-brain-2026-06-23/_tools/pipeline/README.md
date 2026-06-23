@@ -1,22 +1,36 @@
 # Vault Brain — Daily Auto-Update Pipeline
 
-Every morning (04:00, via launchd) this folds new information from your **local vault**
-(and optionally **Notion**) into the compiled brain vault, validates it, and commits it.
+Every morning (04:00, via launchd) this folds **yesterday's** activity into the compiled brain
+vault, writes a "1日のまとめ" into that day's Obsidian daily note, validates, and commits.
+
+**Target day = yesterday** by default (the 4am run summarizes the day that just ended).
+Override with `VAULTBRAIN_DATE=YYYY-MM-DD`.
 
 ## What runs each morning
-1. `collect_local.sh` — finds source-vault (Obsidian) markdown changed since last run (read-only).
-2. `collect_chrome.py` — today's Google searches + visited pages from Chrome's local history (read-only).
-3. `collect_notion.py` — recently-edited Notion DB rows (read-only, optional; needs token).
-4. `gen_people.py` — regenerates AI木曜会 People notes (idempotent).
-5. `claude -p` (model: sonnet by default) — folds deltas into canonical notes **and writes a
-   daily digest** `Reports/daily-digests/<date>.md` ("1日のまとめ"). **Skipped if no new input.**
-6. `validate.py` — link/secret/provenance/slug/artifact gate.
-7. Records status in `Reports/auto-update-log.md`, then `git commit` (local only — never pushes).
+1. `collect_local.sh` — source-vault (Obsidian) markdown changed since last run, incl. that day's
+   daily note + voice diary (read-only; strips its own past auto-summary to avoid re-summarizing).
+2. `collect_chrome.py` — that day's Google searches + visited pages from Chrome history (read-only).
+3. `collect_screentime.py` — that day's SNS Screen Time, if set up (experimental; read-only).
+4. `collect_notion.py` — recently-edited Notion DB rows (read-only, optional; needs token).
+5. `gen_people.py` — regenerates AI木曜会 People notes (idempotent).
+6. `claude -p` (sonnet) — folds deltas into canonical notes **and writes the daily digest**
+   `Reports/daily-digests/<date>.md` with a `memo-block`. **Skipped if no new input.**
+7. `inject_memo.py` — inserts that memo-block into the day's `2_daily/<MM-DD-YYYY>.md` `## 1. MEMO`
+   (creates the note from `4_template/日記.md` if missing; idempotent; **preserves your voice diary**).
+8. `validate.py` gate → records status in `Reports/auto-update-log.md` → `git commit` (local only).
+
+## The daily MEMO write-back
+The summary lands in your Obsidian daily note between `<!-- auto-summary:start -->` / `:end` markers
+inside `## 1. MEMO`, with **行動ハイライト / 検索テーマ / 気付き / SNS利用**. Re-runs replace that block
+in place; anything you type yourself (voice diary, notes) is left untouched. This is the ONE place
+the pipeline writes into the original vault — and only between those markers.
 
 ## Inputs captured
-- **Obsidianメモ/日記** — any note you add/edit in the Bluenote vault.
-- **Google検索履歴** — via Chrome's local history (your `q=` searches). The digest summarizes
-  *themes*, not raw URLs. (Account-level "My Activity" has no clean API, so Chrome-local is used.)
+- **Obsidianメモ/日記/音声日記** — any note you add/edit (the daily note's voice diary is read & folded in).
+- **Google検索履歴** — via Chrome's local history (`q=` searches). Digest summarizes *themes*, not raw URLs.
+- **Mac アプリ利用時間** — from `knowledgeC.db` (needs Full Disk Access). iPhone Screen Time does
+  NOT reach the Mac (no local DB), so **iPhone SNS time is manual** — write it in the voice diary
+  (e.g. "Instagram 1h20m") and the AI folds it into the same line.
 - **Notion** — your work DBs, once you connect a token.
 - NOT here: Gmail/Calendar/Slack (managed connectors aren't available headless) — do those in a session.
 
@@ -29,9 +43,12 @@ only a themed summary enters the vault. If you don't want searches captured, del
 - The morning `claude` run uses `--permission-mode acceptEdits` with `--allowedTools Read Edit
   Write Grep Glob` — **file edits only, no shell, no network, no connectors**. It cannot send
   email, post, run arbitrary commands, or bypass approvals. (No `bypassPermissions`.)
-- Deterministic steps (collect, `gen_people.py`, `validate.py`, `git commit`) are run by the
-  shell launcher — not by the AI.
-- The **original vault is read-only**. All changes are local git commits (reversible, never pushed).
+- Deterministic steps (collect, `gen_people.py`, `inject_memo.py`, `validate.py`, `git commit`)
+  are run by the shell launcher — not by the AI.
+- The AI edits only the compiled vault. The **only** write into the original vault is the
+  marker-bounded MEMO block, done deterministically by `inject_memo.py` (never the AI).
+- All changes are local git commits (reversible, never pushed). Commits stage ONLY the compiled
+  vault + the one daily note touched.
 - Token & collected data live OUTSIDE the vault/git: `~/.local/share/vaultbrain/`.
 
 ## One-time setup
@@ -42,6 +59,10 @@ chmod +x _tools/pipeline/*.sh
 #   https://www.notion.so/my-integrations  then:
 bash _tools/pipeline/setup_notion.sh
 # ...and in Notion, share the target pages/DBs with the integration (••• → Connections).
+
+# Mac app-usage (collect_screentime.py) needs Full Disk Access for /bin/bash (see note below).
+#   NOTE: iPhone Screen Time is NOT available locally on this Mac (verified) — only Mac app usage.
+#   For iPhone SNS time, just type it in your voice diary; the AI folds it into the same line.
 
 # install the 04:00 schedule
 cp _tools/pipeline/com.vaultbrain.daily.plist ~/Library/LaunchAgents/

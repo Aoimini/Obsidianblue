@@ -8,16 +8,18 @@ VAULT="$SRC/Compiled-Vaults/compiled-vault-brain-2026-06-23"
 DATA="$HOME/.local/share/vaultbrain"
 INBOX="$DATA/inbox"
 mkdir -p "$INBOX"
-TS="$(date +%Y-%m-%d)"
+# Target day = VAULTBRAIN_DATE (set by launcher) or today; used for the delta filename + label
+TS="${VAULTBRAIN_DATE:-$(date +%Y-%m-%d)}"
 OUT="$INBOX/local_delta_$TS.md"
 
 LAST="$(cat "$DATA/last_run" 2>/dev/null || echo '2000-01-01T00:00:00')"
-echo "[collect_local] since=$LAST"
+echo "[collect_local] target=$TS since=$LAST"
 
 {
-  echo "# Local delta — $TS (since $LAST)"
+  echo "# Local delta — target day $TS (changed since $LAST)"
   echo ""
-  echo "Source vault: $SRC (read-only). Files below changed since last run."
+  echo "Source vault: $SRC. The day being summarized is **$TS** — focus the digest on that day's"
+  echo "daily note (2_daily/$(date -j -f %Y-%m-%d "$TS" +%m-%d-%Y 2>/dev/null || echo "$TS").md, incl. any voice diary) and the changes below."
   echo ""
 
   # Markdown files modified since last run, excluding the compiled vault, git, obsidian, claude dirs
@@ -44,10 +46,28 @@ echo "[collect_local] since=$LAST"
       echo ""
       echo "### $rel"
       echo '```'
-      head -c 6000 "$f"
+      # strip our own auto-summary block so the AI never re-summarizes its own output
+      awk '/<!-- auto-summary:start -->/{skip=1} !skip; /<!-- auto-summary:end -->/{skip=0}' "$f" | head -c 6000
       echo ""
       echo '```'
     done
+  fi
+
+  # ALWAYS include the target day's daily note (the day being summarized), even if unchanged
+  # since last run — this carries the voice diary / hand-written memo for that day.
+  NOTE_MD="$(date -j -f %Y-%m-%d "$TS" +%m-%d-%Y 2>/dev/null).md"
+  NOTE_PATH="$SRC/2_daily/$NOTE_MD"
+  echo ""
+  echo "## Target day's daily note ($NOTE_MD)"
+  if [ -f "$NOTE_PATH" ]; then
+    echo '```'
+    awk '/<!-- auto-summary:start -->/{skip=1} !skip; /<!-- auto-summary:end -->/{skip=0}' "$NOTE_PATH" | head -c 8000
+    echo ""
+    echo '```'
+    TARGET_NOTE_EXISTS=1
+  else
+    echo "(まだ作成されていない。inject_memo がテンプレから作成して挿入します)"
+    TARGET_NOTE_EXISTS=""
   fi
 
   # Flag new AI木曜会 profile files (gen_people.py will regenerate People notes)
@@ -60,6 +80,7 @@ echo "[collect_local] since=$LAST"
 LINES="$(wc -l < "$OUT" | tr -d ' ')"
 echo "[collect_local] wrote $OUT ($LINES lines)"
 
-# Emit a simple changed-count marker for the launcher to decide whether to run the AI step
-echo "${CHANGED:+nonempty}" > "$INBOX/.local_has_changes_$TS"
+# Trigger the AI step if there were changes OR the target day's note exists (has diary content)
+if [ -n "$CHANGED" ] || [ -n "${TARGET_NOTE_EXISTS:-}" ]; then echo nonempty; else echo ""; fi \
+  > "$INBOX/.local_has_changes_$TS"
 exit 0

@@ -12,14 +12,20 @@ VAULT="$SRC/Compiled-Vaults/compiled-vault-brain-2026-06-23"
 PIPE="$VAULT/_tools/pipeline"
 DATA="$HOME/.local/share/vaultbrain"
 INBOX="$DATA/inbox"
-TS="$(date +%Y-%m-%d)"
+# Target day = yesterday by default (the 4am run summarizes the day that just ended).
+# Override with VAULTBRAIN_DATE=YYYY-MM-DD. All collectors read VAULTBRAIN_DATE.
+TARGET_DATE="${VAULTBRAIN_DATE:-$(date -v-1d +%Y-%m-%d)}"
+export VAULTBRAIN_DATE="$TARGET_DATE"
+NOTE_DATE="$(date -j -f %Y-%m-%d "$TARGET_DATE" +%m-%d-%Y 2>/dev/null)"
+RUNTS="$(date +%Y-%m-%d)"
+TS="$TARGET_DATE"
 mkdir -p "$INBOX" "$DATA/logs"
-LOG="$DATA/logs/run_$TS.log"
+LOG="$DATA/logs/run_$RUNTS.log"
 MODEL="${VAULTBRAIN_MODEL:-sonnet}"
 DRYRUN="${VAULTBRAIN_DRYRUN:-0}"
 
 exec >>"$LOG" 2>&1
-echo "================ Vault daily update $(date) (model=$MODEL dryrun=$DRYRUN) ================"
+echo "================ Vault daily update $(date) target=$TARGET_DATE (model=$MODEL dryrun=$DRYRUN) ================"
 caffeinate -i -w $$ &   # prevent sleep during the run
 
 STATUS="OK"; NOTES=""
@@ -27,8 +33,11 @@ STATUS="OK"; NOTES=""
 # 1) collect local deltas (read-only on source)
 bash "$PIPE/collect_local.sh" || { STATUS="WARN"; NOTES="$NOTES collect_local_failed"; }
 
-# 2) collect today's Chrome history (Google searches + visits), read-only
+# 2) collect the target day's Chrome history (Google searches + visits), read-only
 python3 "$PIPE/collect_chrome.py" || { STATUS="WARN"; NOTES="$NOTES chrome_failed"; }
+
+# 2b) collect iPhone/Mac Screen Time for SNS (experimental; skips cleanly if not set up)
+python3 "$PIPE/collect_screentime.py" || { STATUS="WARN"; NOTES="$NOTES screentime_failed"; }
 
 # 3) collect Notion (optional; skips cleanly if no token)
 if [ -f "$DATA/notion_token" ]; then
@@ -45,9 +54,10 @@ python3 "$VAULT/_tools/gen_people.py" || { STATUS="WARN"; NOTES="$NOTES gen_peop
 HAS_LOCAL="$(cat "$INBOX/.local_has_changes_$TS" 2>/dev/null)"
 HAS_NOTION="no"; [ -s "$INBOX/notion_$TS.md" ] && HAS_NOTION="yes"
 HAS_CHROME="no"; [ -s "$INBOX/chrome_$TS.md" ] && HAS_CHROME="yes"
+HAS_SCREEN="no"; [ -s "$INBOX/screentime_$TS.md" ] && HAS_SCREEN="yes"
 
 if [ "$DRYRUN" = "1" ]; then
-  echo "DRYRUN: stopping before AI synthesis. local='$HAS_LOCAL' chrome='$HAS_CHROME' notion='$HAS_NOTION'"
+  echo "DRYRUN: stopping before AI synthesis. target=$TARGET_DATE local='$HAS_LOCAL' chrome='$HAS_CHROME' screen='$HAS_SCREEN' notion='$HAS_NOTION'"
   echo "Inbox files:"; ls -la "$INBOX" | sed 's/^/  /'
   exit 0
 fi
@@ -61,24 +71,44 @@ COST="0"
 if [ -n "$HAS_LOCAL" ] || [ "$HAS_NOTION" = "yes" ] || [ "$HAS_CHROME" = "yes" ]; then
   echo "Running AI synthesis (claude -p, $MODEL, acceptEdits, file tools only)..."
   CLAUDE_JSON="$DATA/logs/claude_$TS.json"
-  if claude -p "$(cat "$PIPE/daily_update_prompt.md")" \
+  claude -p "$(cat "$PIPE/daily_update_prompt.md")" \
         --model "$MODEL" \
         --permission-mode acceptEdits \
         --allowedTools "Read Edit Write Grep Glob" \
         --add-dir "$VAULT" \
-        --output-format json > "$CLAUDE_JSON" 2>>"$LOG"; then
-    COST="$(python3 -c "import json;print(f\"{json.load(open('$CLAUDE_JSON')).get('total_cost_usd',0):.4f}\")" 2>/dev/null || echo '?')"
-    echo "AI synthesis cost: \$$COST USD"
-    NOTES="$NOTES cost=\$$COST"
-  else
-    STATUS="WARN"; NOTES="$NOTES claude_failed"
+        --output-format json > "$CLAUDE_JSON" 2>>"$LOG"
+  # Parse cost + error reason regardless of exit code (work may complete then hit a limit).
+  eval "$(python3 - "$CLAUDE_JSON" <<'PY'
+import json,sys
+try:
+    d=json.load(open(sys.argv[1]))
+except Exception:
+    print('AI_COST=0; AI_ERR=parse; AI_REASON=no_json'); sys.exit()
+cost=d.get('total_cost_usd',0) or 0
+err=bool(d.get('is_error'))
+res=(d.get('result') or '')[:120].replace('"','').replace('\n',' ')
+reason='ratelimit' if ('limit' in res.lower()) else ('err' if err else 'ok')
+print(f'AI_COST={cost:.4f}; AI_ERR={int(err)}; AI_REASON={reason}; AI_MSG="{res}"')
+PY
+)"
+  COST="${AI_COST:-0}"
+  echo "AI synthesis: cost≈\$$COST (subscription usage) reason=$AI_REASON ${AI_MSG:+— $AI_MSG}"
+  NOTES="$NOTES cost=\$$COST"
+  if [ "$AI_REASON" = "ratelimit" ]; then
+    STATUS="RATELIMIT"; NOTES="$NOTES session_limit"
+  elif [ "${AI_ERR:-0}" = "1" ]; then
+    STATUS="WARN"; NOTES="$NOTES claude_error"
   fi
 else
-  echo "No new local/Chrome/Notion input today; skipping AI synthesis."
+  echo "No new local/Chrome/Notion input for $TARGET_DATE; skipping AI synthesis."
   NOTES="$NOTES no_input"
 fi
 
-# 5) validation gate
+# 5b) inject the day's auto-summary into the Obsidian daily note `## 1. MEMO`
+#     (deterministic + idempotent; creates the note from template if missing; preserves voice diary)
+python3 "$PIPE/inject_memo.py" || { STATUS="WARN"; NOTES="$NOTES inject_failed"; }
+
+# 6) validation gate (compiled vault)
 if python3 "$VAULT/_tools/validate.py"; then
   echo "VALIDATE PASS"
 else
@@ -90,17 +120,18 @@ fi
 # 6) record run status inside the vault (committed; original vault untouched)
 STATUSFILE="$VAULT/Reports/auto-update-log.md"
 [ -f "$STATUSFILE" ] || printf -- '---\ntype: report\nreport: auto-update-log\n---\n\n# Auto-update log\n\n' > "$STATUSFILE"
-printf -- '- %s — status: **%s**%s (model=%s, local_changes=%s, notion=%s)\n' \
-  "$TS" "$STATUS" "${NOTES:+ —$NOTES}" "$MODEL" "${HAS_LOCAL:-none}" "$HAS_NOTION" >> "$STATUSFILE"
+printf -- '- %s — status: **%s**%s (model=%s, local=%s, chrome=%s, screen=%s, notion=%s)\n' \
+  "$TARGET_DATE" "$STATUS" "${NOTES:+ —$NOTES}" "$MODEL" "${HAS_LOCAL:-none}" "$HAS_CHROME" "$HAS_SCREEN" "$HAS_NOTION" >> "$STATUSFILE"
 
-# 7) commit (local only, never push). Broken-but-recorded states still commit per
-#    "keep going + record anomaly"; everything is reversible via git history.
+# 7) commit (local only, never push). Stage ONLY the compiled vault + the one daily note we
+#    touched — never sweep in the repo's other uncommitted changes.
 cd "$SRC" || exit 1
 git add "$VAULT" >/dev/null 2>&1
+[ -n "$NOTE_DATE" ] && [ -f "$SRC/2_daily/$NOTE_DATE.md" ] && git add "$SRC/2_daily/$NOTE_DATE.md" >/dev/null 2>&1
 if git diff --cached --quiet; then
-  echo "no vault changes to commit"
+  echo "no changes to commit"
 else
-  git commit -m "vault: daily auto-update $TS [$STATUS]" >/dev/null 2>&1 && echo "COMMITTED [$STATUS]"
+  git commit -m "vault: daily auto-update $TARGET_DATE [$STATUS]" >/dev/null 2>&1 && echo "COMMITTED [$STATUS]"
 fi
 
 # 8) advance watermark + tidy old inbox files (>14 days)
