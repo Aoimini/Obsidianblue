@@ -1,0 +1,59 @@
+{
+  "output_path": "/Users/aoi/Desktop/Bluenote/Compiled-Vaults/compiled-vault-brain-2026-06-23",
+  "source_vault": "/Users/aoi/Desktop/Bluenote",
+  "current_phase": "3-broad-ingestion",
+  "completed_phases": ["0-setup", "1-orientation", "2-smoke-pass"],
+  "phase_status": {
+    "1-orientation": "complete",
+    "2-smoke-pass": "complete",
+    "3-broad-ingestion": "substantially-complete"
+  },
+  "checkpoint": "Broad pass done (local full + connectors). Optional deep passes remain (Notion DB rows, Gmail entity-targeted bodies, daily-event granularity).",
+  "sources_discovered": {
+    "local_md_total": 738,
+    "local_md_content": 448,
+    "daily_notes": 234,
+    "thursday_club_profiles": 95,
+    "docs_md": 125,
+    "inbox_md": 27,
+    "projects": 12
+  },
+  "sources_ingested": {
+    "local": 0,
+    "gmail": 0,
+    "calendar": 0,
+    "drive": 0,
+    "slack": 0,
+    "notion": 0
+  },
+  "connector_status": {
+    "gmail": {"account": "aoiendo05@gmail.com", "match": true, "approved": true},
+    "calendar": {"account": "aoiendo05@gmail.com", "match": true, "approved": true},
+    "drive": {"account": "aoiendo05@gmail.com", "match": true, "approved": true},
+    "slack": {"account": "aoiendo05 / Concon Inc / U0B5BQDULLT", "match": true, "approved": true},
+    "notion": {"account": "Aostu / 2520095291@campus.ouj.ac.jp (放送大学)", "match": false, "approved": true, "note": "user confirmed inclusion 2026-06-23; contains real work data (制作進行/案件管理)"}
+  },
+  "finance_policy": "keep amounts and line items; never copy account/card numbers, auth codes, passwords, tokens",
+  "batches_completed": 6,
+  "canonical_notes_created": 113,
+  "people_notes": 92,
+  "company_notes": 10,
+  "source_traces_created": 16,
+  "context_packs_created": 1,
+  "validation_status": "PASS (0 issues, 137 notes) 2026-06-23",
+  "waves_done": {
+    "A_thursday_people": "90 People generated via gen_people.py",
+    "B_career_companies": "VOISING/yutori/kurashicom/toho + resume enrichment",
+    "C_daily_notes": "habits-and-values + health topic (234 notes synthesized)",
+    "D_finance": "household-budget-entry procedure + spending-overview",
+    "E_connectors": "Gmail bodies, Calendar (active selections 代アニ/Wantedly/FUSION), Notion fetch, Slack"
+  },
+  "next_actions": [
+    "Optional: import Notion work-DB rows (クリエイティブプロジェクト/案件管理/タスク管理)",
+    "Optional: Gmail entity-targeted bodies per active selection (代アニ/Wantedly/FUSION threads)",
+    "Optional: confirm Concon Inc relationship via Slack history",
+    "Optional: per-event granularity from daily notes; 1_Inbox思考メモ -> Topics"
+  ],
+  "blockers": [],
+  "last_updated": "2026-06-23"
+}

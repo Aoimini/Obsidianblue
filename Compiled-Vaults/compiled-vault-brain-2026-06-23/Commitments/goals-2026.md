@@ -1,0 +1,32 @@
+---
+type: commitment
+name: "2026年の目標"
+tags:
+  - commitment
+  - goals
+source_status: source-backed
+status: active
+sensitivity: personal
+last_verified: 2026-06-23
+---
+
+# Commitment: 2026年（25歳）の目標
+
+## Goals (source-backed, 本人の計画)
+- 仕事: 副業月5万 / **転職する**（[[Decisions/career-change-2026]]）/ 生活に余白を作る / 広告運用を学ぶ
+- プロジェクト: [[Projects/kaisha-daruma-ivs]]（カイシャダルマ）の運用開始
+- 健康・趣味: バレーの大会に出る / HYROX出場 / 3Dプリンター開始 / ハーフマラソン挑戦
+- 年間テーマ（日記より）: 外見・内面ともに品を磨く、良質なアウトプットを残す、SNSフォロワー年内5000人、月2冊読破、TOEIC900。
+- **TOEIC**: 8/23に900点台目標（現在 L310/R235=545）。Claude+Notionで毎日のミッション提示・学習報告をリマインド運用中（[[Sources/src-gcal-2026]]）。
+
+## Note
+これらは本人の目標・願望であり、達成確約ではない。進捗は元vaultの日次ノート（2_daily/）で追跡されている。
+
+## Related
+- [[People/endo-aoi]]
+- [[Decisions/career-change-2026]]
+- [[Projects/kaisha-daruma-ivs]]
+
+## Provenance
+- [[Sources/src-local-my-jigyo-keikaku]] — 年次計画（1_Inbox/企画・アイデア/MY事業計画.md）
+- 元vault: 2_daily/202605/05-31-2026.md の GOAL セクション（年間テーマ）
