@@ -14,7 +14,8 @@ DATA="$HOME/.local/share/vaultbrain"
 INBOX="$DATA/inbox"
 # Target day = yesterday by default (the 4am run summarizes the day that just ended).
 # Override with VAULTBRAIN_DATE=YYYY-MM-DD. All collectors read VAULTBRAIN_DATE.
-TARGET_DATE="${VAULTBRAIN_DATE:-$(date -v-1d +%Y-%m-%d)}"
+USER_DATE="${VAULTBRAIN_DATE:-}"   # empty unless the user explicitly set a date (manual run)
+TARGET_DATE="${USER_DATE:-$(date -v-1d +%Y-%m-%d)}"
 export VAULTBRAIN_DATE="$TARGET_DATE"
 NOTE_DATE="$(date -j -f %Y-%m-%d "$TARGET_DATE" +%m-%d-%Y 2>/dev/null)"
 RUNTS="$(date +%Y-%m-%d)"
@@ -27,6 +28,17 @@ DRYRUN="${VAULTBRAIN_DRYRUN:-0}"
 exec >>"$LOG" 2>&1
 echo "================ Vault daily update $(date) target=$TARGET_DATE (model=$MODEL dryrun=$DRYRUN) ================"
 caffeinate -i -w $$ &   # prevent sleep during the run
+
+# Run-once-per-target-day guard. The agent fires at 04:00 AND at login/boot (RunAtLoad), so if
+# the 4am run was missed (Mac off / logged out) it catches up on next login — but if the day's
+# summary is already done, skip cheaply instead of re-running. Manual runs with an explicit
+# VAULTBRAIN_DATE, or VAULTBRAIN_FORCE=1, bypass the guard.
+if [ -z "$USER_DATE" ] && [ "${VAULTBRAIN_FORCE:-0}" != "1" ] && [ "$DRYRUN" != "1" ]; then
+  if [ "$(cat "$DATA/last_completed_target" 2>/dev/null)" = "$TARGET_DATE" ]; then
+    echo "target $TARGET_DATE already completed; skipping (VAULTBRAIN_FORCE=1 to override)."
+    exit 0
+  fi
+fi
 
 STATUS="OK"; NOTES=""
 
@@ -134,7 +146,8 @@ else
   git commit -m "vault: daily auto-update $TARGET_DATE [$STATUS]" >/dev/null 2>&1 && echo "COMMITTED [$STATUS]"
 fi
 
-# 8) advance watermark + tidy old inbox files (>14 days)
+# 8) advance watermark + mark this target day done (so login/boot runs don't repeat it)
 date +%Y-%m-%dT%H:%M:%S > "$DATA/last_run"
+[ "$STATUS" != "FAIL" ] && echo "$TARGET_DATE" > "$DATA/last_completed_target"
 find "$INBOX" -type f -mtime +14 -delete 2>/dev/null
 echo "================ done: status=$STATUS notes=$NOTES ================"

@@ -16,8 +16,10 @@
         <key>Minute</key>
         <integer>0</integer>
     </dict>
+    <!-- Also run at login/boot so a missed 04:00 (Mac off / logged out) is caught up.
+         daily_update.sh has a once-per-target-day guard so repeated logins don't re-run it. -->
     <key>RunAtLoad</key>
-    <false/>
+    <true/>
     <key>StandardOutPath</key>
     <string>/Users/aoi/.local/share/vaultbrain/logs/launchd.out</string>
     <key>StandardErrorPath</key>
