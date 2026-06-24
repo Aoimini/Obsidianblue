@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>自主マス 就活講座 0620 — ADK 遠藤</title>
+<style>
+  :root{
+    --bg:#0f1424;
+    --panel:#161d33;
+    --ink:#eef2fb;
+    --muted:#9aa6c4;
+    --accent:#ff5a6e;
+    --accent2:#37d3c3;
+    --line:#2a3556;
+    --p1:#ff5a6e;
+    --p2:#37d3c3;
+    --p3:#ffb454;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic UI",system-ui,sans-serif;
+    overflow:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  #deck{position:fixed;inset:0}
+  .slide{
+    position:absolute;inset:0;
+    display:none;
+    flex-direction:column;
+    padding:6vh 8vw 9vh;
+    animation:fade .35s ease;
+  }
+  .slide.active{display:flex}
+  @keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+  .kicker{
+    font-size:1.05rem;letter-spacing:.18em;color:var(--muted);
+    font-weight:700;margin-bottom:1.2rem;display:flex;align-items:center;gap:.7rem;
+  }
+  .kicker .dot{width:.7rem;height:.7rem;border-radius:50%;background:var(--accent)}
+  h1{font-size:4.6rem;line-height:1.08;font-weight:800;letter-spacing:.01em}
+  h2{font-size:3rem;line-height:1.2;font-weight:800;margin-bottom:2.2rem}
+  h2 .num{color:var(--accent);font-size:2rem;margin-right:.6rem;font-weight:800}
+  .sub{font-size:1.15rem;color:var(--muted);margin-top:1.4rem;font-weight:600}
+
+  ul{list-style:none;display:flex;flex-direction:column;gap:1.05rem;margin-top:.4rem}
+  li{
+    font-size:1.6rem;line-height:1.5;padding-left:1.6rem;position:relative;color:#dde4f5;
+  }
+  li::before{content:"";position:absolute;left:0;top:.7em;width:.6rem;height:.6rem;border-radius:2px;background:var(--accent2);transform:rotate(45deg)}
+  li.sm{font-size:1.28rem;color:var(--muted);gap:.6rem}
+  li.sm::before{top:.65em;width:.42rem;height:.42rem;background:var(--muted)}
+  b,strong{color:#fff;font-weight:800;background:linear-gradient(transparent 60%, rgba(255,90,110,.28) 60%)}
+
+  .group{margin-top:1.5rem}
+  .group .gh{font-size:1.5rem;font-weight:800;color:var(--accent2);margin-bottom:.7rem;display:flex;align-items:center;gap:.6rem}
+  .group .gh::before{content:"■";font-size:1rem}
+
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
+
+  /* Q&A */
+  .qa{display:flex;flex-direction:column;gap:1.25rem;margin-top:.3rem}
+  .qcard{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:1.3rem 1.6rem;border-left:5px solid var(--accent)}
+  .q{font-size:1.42rem;font-weight:800;color:#fff;display:flex;gap:.7rem;line-height:1.35}
+  .q .qb{color:var(--accent);font-weight:900;flex:none}
+  .note{margin-top:.7rem;display:flex;flex-direction:column;gap:.4rem}
+  .note .n{font-size:1.12rem;line-height:1.45;color:var(--muted);padding-left:1.4rem;position:relative}
+  .note .n::before{content:"›";position:absolute;left:.2rem;color:var(--accent2);font-weight:900}
+
+  .ref{font-size:1rem;color:var(--muted);margin-top:.2rem}
+  .ref a{color:var(--accent2);text-decoration:none}
+
+  /* section divider */
+  .divider{justify-content:center}
+  .divider .kicker{justify-content:center}
+  .divider h1{text-align:center;font-size:5.2rem}
+  .divider .bar{width:90px;height:6px;border-radius:3px;background:var(--accent);margin:2rem auto 0}
+
+  /* progress + footer */
+  #bar{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,var(--accent),var(--accent2));z-index:50;transition:width .3s}
+  footer{position:fixed;bottom:2.6vh;left:8vw;right:8vw;display:flex;justify-content:space-between;align-items:center;font-size:.95rem;color:var(--muted);z-index:40}
+  footer .sec{font-weight:700;letter-spacing:.08em}
+  .pageno b{color:var(--ink)}
+  .hint{position:fixed;bottom:2.6vh;left:50%;transform:translateX(-50%);font-size:.85rem;color:#5b678a;z-index:40}
+
+  /* part accents */
+  .p1 .kicker .dot,.p1 .qcard{border-left-color:var(--p1)}
+  .p1 .kicker .dot{background:var(--p1)}
+  .p2 .kicker .dot{background:var(--p2)}
+  .p3 .kicker .dot{background:var(--p3)}
+  .p2 li::before{background:var(--p2)}
+  .p3 li::before{background:var(--p3)}
+  .p2 .q .qb{color:var(--p2)} .p3 .q .qb{color:var(--p3)}
+  .p2 .qcard{border-left-color:var(--p2)} .p3 .qcard{border-left-color:var(--p3)}
+  .p2 b,.p2 strong{background:linear-gradient(transparent 60%, rgba(55,211,195,.25) 60%)}
+  .p3 b,.p3 strong{background:linear-gradient(transparent 60%, rgba(255,180,84,.28) 60%)}
+
+  @media (max-width:900px){
+    h1{font-size:2.8rem} h2{font-size:2rem} li{font-size:1.15rem} .q{font-size:1.1rem}
+    .cols{grid-template-columns:1fr;gap:1rem}
+  }
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<div id="deck">
+
+<!-- 0 TITLE -->
+<section class="slide active divider p1">
+  <div class="kicker"><span class="dot"></span>自主マスコミ講座 / 就活講座 2026.06.20</div>
+  <h1>広告代理店という仕事と、<br>就活のリアル</h1>
+  <div class="bar"></div>
+  <p class="sub" style="text-align:center">ADK デジタルアクティベーションプランナー 3年目 ／ 遠藤 葵</p>
+</section>
+
+<!-- ===== 第1部 ===== -->
+<section class="slide divider p1">
+  <div class="kicker"><span class="dot"></span>PART 1</div>
+  <h1>自己紹介</h1>
+  <div class="bar"></div>
+</section>
+
+<!-- 1 -->
+<section class="slide p1">
+  <div class="kicker"><span class="dot"></span>第1部 ・ 自己紹介</div>
+  <h2><span class="num">01</span>自己紹介</h2>
+  <ul>
+    <li><b>ADK</b>／デジタルアクティベーションプランナー 3年目</li>
+    <li>経営学部 市場経営学科（ゼミは半年で退散）</li>
+    <li>体育会・女子ラクロス部 マネージャー</li>
+    <li>女子大生リポーター「Scketto」</li>
+    <li>non-no ファッションライター</li>
+  </ul>
+</section>
+
+<!-- 2 -->
+<section class="slide p1">
+  <div class="kicker"><span class="dot"></span>第1部 ・ 自己紹介</div>
+  <h2><span class="num">02</span>好きなこと</h2>
+  <ul>
+    <li><b>チャイ作り</b>：スパイスからカレーを作る男はモテないというが、チャイを作る女は許されるのか…</li>
+    <li><b>バレーボール</b>：小〜高で10年。社会人で再開（断然ネーションズリーグ派）</li>
+    <li><b>旅行</b>：トルコ、先日は1人スペイン。お金と体力の限り知らない国へ</li>
+    <li><b>3Dプリンター</b>：モデリング知識ゼロでも作れる進歩に感動し、コワーキングのプリンターを使い倒す</li>
+  </ul>
+</section>
+
+<!-- 3 -->
+<section class="slide p1">
+  <div class="kicker"><span class="dot"></span>第1部 ・ 自己紹介</div>
+  <h2><span class="num">03</span>経歴（大学）</h2>
+  <ul>
+    <li>コロナ禍入学。「頑張った形を残したい」と体育会へ。<b>稼ぎながら趣味も</b>と体力の限り挑戦</li>
+    <li><b>超朝活のラクロス部MG</b>（選手70人にMG1人…）</li>
+    <li><b>non-no WEBライター</b>：企画〜画像制作〜投稿まで1人で（PV好調でご褒美の沖縄ほぼ無料旅も）</li>
+    <li><b>Sckettoでアイドルリポーター</b>：櫻坂46にインタビュー、長澤まさみと新木優子に挟まれる</li>
+    <li>地元・世田谷でイベント：推しのカフェに企画書を持ち込んで交渉</li>
+  </ul>
+</section>
+
+<!-- 4 -->
+<section class="slide p1">
+  <div class="kicker"><span class="dot"></span>第1部 ・ 自己紹介</div>
+  <h2><span class="num">04</span>経歴（社会人）</h2>
+  <ul>
+    <li>入社時からSNS運用・インフルエンサーコラボ・プレゼントキャンペーンなど、<b>デジタル軸の施策</b>の企画・制作進行を担当</li>
+    <li>クライアント付きではなく<b>プロジェクト単位</b>で参加</li>
+    <li>→ 行政から大手・中小まで幅広く担当</li>
+  </ul>
+</section>
+
+<!-- ===== 第2部 ===== -->
+<section class="slide divider p2">
+  <div class="kicker"><span class="dot"></span>PART 2</div>
+  <h1>業界・会社の話</h1>
+  <div class="bar" style="background:var(--p2)"></div>
+</section>
+
+<!-- 5 -->
+<section class="slide p2">
+  <div class="kicker"><span class="dot"></span>第2部 ・ 業界・会社</div>
+  <h2><span class="num">05</span>広告代理店について</h2>
+  <div class="cols">
+    <div class="group">
+      <div class="gh">① ビジネスモデル（どう稼ぐか）</div>
+      <ul>
+        <li>収益は2つ：メディアからの<b>コミッション</b>＋クライアントからの<b>フィー</b></li>
+        <li>従来マス広告は<b>媒体費の15〜20%</b>を手数料に（＝枠を仕入れて売る）</li>
+        <li>デジタルは<b>工数フィー／成果報酬</b>へ多様化（"枠売り"→"課題解決の対価"）</li>
+      </ul>
+    </div>
+    <div class="group">
+      <div class="gh">② 代理店ごとの違い</div>
+      <ul>
+        <li><b>総合</b>：全媒体を企画〜制作まで一気通貫（電通・博報堂・ADK）</li>
+        <li><b>専門</b>：特定領域に特化（ネット・交通広告など）</li>
+        <li><b>ハウスエージェンシー</b>：特定事業会社の専属</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="slide p2">
+  <div class="kicker"><span class="dot"></span>第2部 ・ 業界・会社</div>
+  <h2><span class="num">06</span>ADKについて</h2>
+  <ul>
+    <li>コンセプト <b>「全員が変革者」</b>：CM広告起点に甘えず、個性・「好き」・多様性を重視し、<b>越境</b>しながら<b>変化</b>を恐れずアップデート</li>
+    <li><b>電通</b>：an invitation to the never before.（まだ見たことない世界へ）</li>
+    <li><b>博報堂</b>：生活者発想／パートナー主義。26卒「汗かいて、心を動かす。」</li>
+    <li class="sm">📝 各社の公式・採用サイトは<b>言葉をとても大事にしている</b>。「生活者」「ファン」「未開拓の地」など、求める人・ビジネスの起点の“色”が出るので見比べると面白い</li>
+  </ul>
+</section>
+
+<!-- 7 -->
+<section class="slide p2">
+  <div class="kicker"><span class="dot"></span>第2部 ・ 業界・会社</div>
+  <h2><span class="num">07</span>職種について</h2>
+  <div class="cols">
+    <ul>
+      <li><b>ビジネスプロデュース職</b>（営業）：オリエンを聞き各スタッフと連携、施策をまとめる<b>司令塔</b></li>
+      <li><b>ソリューション職</b>：ストラテジックプランナー／クリエイティブディレクター／動画プランナー</li>
+      <li><b>デジタルビジネス職</b>：デジタルメディアプランナー（戦略〜運用〜レポート）</li>
+    </ul>
+    <ul>
+      <li><b>総合プロデュース職</b>：プロデューサー／コミュニケーションプランナー／<b>デジタルアクティベーションプランナー（＝私）</b></li>
+      <li><b>メディアビジネス職</b>：テレビ局担当（局担）</li>
+      <li><b>コンテンツビジネスプロデュース職</b>：IPコンテンツの企画・権利ビジネス</li>
+      <li class="sm">📝 相関図：「オリエン→提案→実施→評価」を各職種が分担、<b>BPが全工程をつなぐ</b></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 8 -->
+<section class="slide p2">
+  <div class="kicker"><span class="dot"></span>第2部 ・ 業界・会社</div>
+  <h2><span class="num">08</span>ADKと電博・サイバーの違い</h2>
+  <ul>
+    <li><b>電博との違い＝ビジネスモデル</b>。広告・CMは電博が7〜8割。ADKは総合代理店だが業界シェアは小さい。だからこその3つ：</li>
+    <li class="sm">① <b>ファンマーケに注力</b>：国際スポーツ案件は少なく、長期でファンを育てる提案に強い</li>
+    <li class="sm">② <b>若手が早く打席に立てる</b>：意見を取り入れ挑戦させる環境。ファンマーケは20〜30代向け相談が多く同世代として提案に立てる</li>
+    <li class="sm">③ <b>IPを持つ強み</b>：アニメ等の製作委員会に参画、コラボ企画ができる（電博にない特徴）</li>
+    <li><b>サイバーとの違い</b>：コミュニケーション提案軸の総合代理店か／ABEMA等デジタル軸か。企画をしたいなら総合代理店が近い</li>
+  </ul>
+</section>
+
+<!-- 9 業界Q&A① -->
+<section class="slide p2">
+  <div class="kicker"><span class="dot"></span>第2部 ・ Q&A（業界）</div>
+  <h2><span class="num">09</span>業界Q&A ①</h2>
+  <div class="qa">
+    <div class="qcard">
+      <div class="q"><span class="qb">Q.</span>広告は「課題解決」が軸で、手段がコンサル寄りに？この認識は正しい？</div>
+      <div class="note">
+        <div class="n">認識は相違なし。「目立つCM」だけでは行動変容は起こせない</div>
+        <div class="n">今は施策が<b>どれだけ数字に反映されたか</b>が問われ、課題解決はコンサル同様に必須</div>
+        <div class="n">その上で<b>プランニングのプロとして質の高いアウトプット</b>を出せるのが広告の強み</div>
+      </div>
+    </div>
+    <div class="qcard">
+      <div class="q"><span class="qb">Q.</span>AIに仕事を奪われる実感は？／インハウス化が進む中で総合代理店の価値は？</div>
+      <div class="note">
+        <div class="n">議事録・リサーチ・動画制作などAI活用の実感あり。でも<b>人の心を動かすには人の発想力</b>、AIは手段</div>
+        <div class="n"><b>多くのクライアント課題に向き合いトレンドを先取り</b>する立場だから冷静な判断・外から出ないアイデアが出る</div>
+        <div class="n">異業種コラボ（特にIP）は会社単独ではきっかけが生まれにくい</div>
+      </div>
+    </div>
+    <div class="qcard">
+      <div class="q"><span class="qb">Q.</span>ネット広告が増える中、4マスに逆戻りする未来は？</div>
+      <div class="note">
+        <div class="n">4マス中心に戻る未来は考えていない</div>
+        <div class="n">ただテレビCM出稿は減り、<b>中小・個人が少額から使える仕組み</b>になる可能性は十分ある</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 業界Q&A② -->
+<section class="slide p2">
+  <div class="kicker"><span class="dot"></span>第2部 ・ Q&A（業界）</div>
+  <h2><span class="num">10</span>業界Q&A ②</h2>
+  <div class="qa">
+    <div class="qcard">
+      <div class="q"><span class="qb">Q.</span>なぜ広告業界を選んだ？</div>
+      <div class="note">
+        <div class="n">アイデアを考えるのが好きで、<b>一番ワクワクできる仕事</b>だと思ったから</div>
+        <div class="n">企画を作り進める<b>推進力は次のキャリアにもつながりやすい</b>から</div>
+      </div>
+    </div>
+    <div class="qcard">
+      <div class="q"><span class="qb">Q.</span>広告業界で働いてみてのメリット・デメリットは？</div>
+      <div class="note">
+        <div class="n">メリット：多様な広告手法を学べる／トレンドに近い／芸能人・大規模・行政案件にも関われる</div>
+        <div class="n">デメリット：<b>WLBを取りにくい</b>。制作物が上がる時間を読めず、急な依頼対応もある</div>
+      </div>
+    </div>
+    <div class="qcard">
+      <div class="q"><span class="qb">Q.</span>案件で最も泥臭い・タフだと感じる部分は？</div>
+      <div class="note">
+        <div class="n">ギリギリまで勝ち所を考え企画に落とし、予算内に収まるか制作会社と交渉</div>
+        <div class="n">関係性を保ちつつ交渉、評価ポイントを聞き出しチームをまとめる。<b>文化祭の前日のようなタフさ</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 ADK Q&A -->
+<section class="slide p2">
+  <div class="kicker"><span class="dot"></span>第2部 ・ Q&A（ADK）</div>
+  <h2><span class="num">11</span>ADK Q&A</h2>
+  <div class="qa">
+    <div class="qcard">
+      <div class="q"><span class="qb">Q.</span>ADKに集まる人と、他広告に集まる人の違いは？</div>
+      <div class="note">
+        <div class="n">ADKは<b>人当たりが良く柔らかい</b>人が多い。他2社より体育会系が少なく上下関係も厳しくない</div>
+        <div class="n">広告全般：流行に敏感／話好き／<b>偏愛を持つ好奇心旺盛な人</b>が多い</div>
+      </div>
+    </div>
+    <div class="qcard">
+      <div class="q"><span class="qb">Q.</span>買収でどうなる？（特にIP関係）</div>
+      <div class="note">
+        <div class="n">広告部門は、現時点でKRAFTON（クラフトン）が方針を変える予定はない</div>
+        <div class="n">むしろ<b>IP×グローバル展開</b>をゲーム会社が間に入りアジア中心に協業。IP部門は少し変化が出る</div>
+      </div>
+    </div>
+    <div class="qcard">
+      <div class="q"><span class="qb">Q.</span>ADKエモーションズの取り組みや社風は？</div>
+      <div class="note">
+        <div class="n">社風：広告部門の他2社と違い<b>比較的9〜17時に近い働き方</b>の雰囲気</div>
+        <div class="n">取り組み：各IP担当が営業・プランナーに声をかけ<b>タイアップ/コラボ施策</b>の営業をすることが多い</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 ADK・働き方 Q&A -->
+<section class="slide p2">
+  <div class="kicker"><span class="dot"></span>第2部 ・ Q&A（ADK・働き方）</div>
+  <h2><span class="num">12</span>ADK・働き方 Q&A</h2>
+  <div class="qa">
+    <div class="qcard">
+      <div class="q"><span class="qb">Q.</span>海外・韓国市場への参入を強める意向は？</div>
+      <div class="note">
+        <div class="n">アジア展開、特に<b>IP注目度の高い韓国</b>への参入は今後起きてくる</div>
+        <div class="n">タイなどアジア中心に動きがあり、<b>駐在ポジション・グローバル活躍</b>も将来のキャリアに</div>
+      </div>
+    </div>
+    <div class="qcard">
+      <div class="q"><span class="qb">Q.</span>なぜADKはコンペで若手が多い？</div>
+      <div class="note">
+        <div class="n">若いうちから<b>企画の中心に立つ</b>のでスキルアップを目指して挑戦する人が多い</div>
+        <div class="n">会社全体でも若手層が多めで、外から見ると若手の介入が一番多く見える</div>
+      </div>
+    </div>
+    <div class="qcard">
+      <div class="q"><span class="qb">Q.</span>最近の若手のジョブローテ実例は？</div>
+      <div class="note">
+        <div class="n">〜2024入社：1年スタッフ→2〜4(6)年目営業→残りでIP/他職と<b>10年で3職種</b></div>
+        <div class="n">2025入社〜：1年目から営業に挑戦。今は<b>営業 or デジタル広告運用</b>配属が高め</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 働き方 Q&A -->
+<section class="slide p2">
+  <div class="kicker"><span class="dot"></span>第2部 ・ Q&A（働き方）</div>
+  <h2><span class="num">13</span>働き方 Q&A</h2>
+  <div class="qa">
+    <div class="qcard">
+      <div class="q"><span class="qb">Q.</span>若手のうちから得られる専門性はある？</div>
+      <div class="note">
+        <div class="n">オウンドメディア（SNS）・広告運用はアルゴリズムが日々変わるので<b>若手から専門性をつけられる</b></div>
+        <div class="n">一方、テレビCMの出稿交渉は信頼関係が要り、若手がすぐ結果を出すのは難しいかも</div>
+      </div>
+    </div>
+    <div class="qcard">
+      <div class="q"><span class="qb">Q.</span>働き方・キャリアに満足している？描いたキャリアは実現できそう？</div>
+      <div class="note">
+        <div class="n">比較的ハードだが一番やりたかったポジション。就活時の<b>「光が当たるきっかけを生み出す」</b>役として様々な販促を経験、思うように進んでいる</div>
+      </div>
+    </div>
+    <div class="qcard">
+      <div class="q"><span class="qb">Q.</span>どんな働き方をしている？（1日の流れ）</div>
+      <div class="note">
+        <div class="n">9:30〜10:00出社、メール返信・前日資料を先輩に展開。午前は作業を片付ける</div>
+        <div class="n">午後はMTGが入りやすい。18時以降に新規提案資料へ着手。<b>平均21〜22時退勤</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 第3部 ===== -->
+<section class="slide divider p3">
+  <div class="kicker"><span class="dot"></span>PART 3</div>
+  <h1>就活に関する話</h1>
+  <div class="bar" style="background:var(--p3)"></div>
+</section>
+
+<!-- 14 OB訪問 -->
+<section class="slide p3">
+  <div class="kicker"><span class="dot"></span>第3部 ・ 就活</div>
+  <h2><span class="num">14</span>OB訪問</h2>
+  <ul>
+    <li><b>若手と中堅を見比べる</b>：若手＝案件への関わり方・領域／中堅＝給与の上がり幅・キャリア変化を見て<b>ロールモデル探し</b></li>
+    <li><b>分からないことは正直に質問</b>し、答えの<b>裏にある具体的エピソードを引き出す</b></li>
+    <li class="sm">📝「なぜ広告か」も聞く。コンサル就活が増える中であえて広告を選んだ理由・キャリアビジョンを聞くと、強いエピソードがなくても受かった人もいて参考になる</li>
+  </ul>
+</section>
+
+<!-- 15 ES -->
+<section class="slide p3">
+  <div class="kicker"><span class="dot"></span>第3部 ・ 就活</div>
+  <h2><span class="num">15</span>ES</h2>
+  <ul>
+    <li>ESは「書類通過」でなく<b>面接で話しやすくするため</b>に書く（面接から逆算）</li>
+    <li class="sm">① 自分のキャラが伝わるエピソードを決める（例：選手→マネージャー）</li>
+    <li class="sm">② 一番ウケそうなシーンを選ぶ（例：マネになった経緯、審判資格を取った理由）</li>
+    <li class="sm">③ どんな質問が来れば②を話せるか考える　④ 記憶に残る<b>パワーワード</b>を仕込む</li>
+    <li>強いガクチカは不要（GS田中渓さんも夜勤コンビニバイトの話で内定）</li>
+    <li><b>「人間性を相手に納得させるところまでをデザインする」</b>のがコツ</li>
+  </ul>
+</section>
+
+<!-- 16 志望動機 -->
+<section class="slide p3">
+  <div class="kicker"><span class="dot"></span>第3部 ・ 就活</div>
+  <h2><span class="num">16</span>志望動機</h2>
+  <ul>
+    <li>「人生の中に仕事がある」→ <b>自分の生き方・思想を志望動機にしていい</b>（嘘をつかなくていい）</li>
+    <li>「仕事を通じて○○に貢献」の型に無理にハメない。軸は<b>「何をしている時が一番活き活きするか」</b></li>
+    <li>原体験を通した<b>一貫性</b>を持たせるキーワードを探す</li>
+  </ul>
+</section>
+
+<!-- 17 ガクチカ -->
+<section class="slide p3">
+  <div class="kicker"><span class="dot"></span>第3部 ・ 就活</div>
+  <h2><span class="num">17</span>ガクチカ</h2>
+  <ul>
+    <li>大事なのは<b>相手がイメージできるよう言語化できるか</b>。成果物でなく「何を課題に感じ」「周りとどう関わったか」</li>
+    <li class="sm"><b>A（きれい・抽象）</b>：試合に出られないが誰より早く自主練し信頼を得てピンチバッターに</li>
+    <li class="sm"><b>B（具体・泥臭い）</b>：自主練動画をSNSに毎日アップしアドバイスを求め続け、"脳筋二宮金次郎"と呼ばれ信頼を得た</li>
+    <li>→ 残るのは<b>B</b>。スーツを脱いだ姿まで想像でき「この子はこういう子だ」と伝わった時に強い印象</li>
+  </ul>
+</section>
+
+<!-- 18 面接 -->
+<section class="slide p3">
+  <div class="kicker"><span class="dot"></span>第3部 ・ 就活</div>
+  <h2><span class="num">18</span>面接</h2>
+  <ul>
+    <li>面接官が知りたいのは4つだけ＝<b>「人柄・能力・やりたいこと・熱意」</b></li>
+    <li><b>雑談・簡潔の罠</b>：全部結論ファーストだと「朝何食べた？」「食パンです」レベルに。雑談でも<b>見せたい印象をどう伝えるか</b></li>
+    <li><b>イメージブランディング</b>：例「冷静そうに見えて実は分析の上で粘り強く働きかける戦略家」。面接後の人事メモにどう残したいかまで考える</li>
+  </ul>
+</section>
+
+<!-- 19 就活Q&A① -->
+<section class="slide p3">
+  <div class="kicker"><span class="dot"></span>第3部 ・ Q&A（企業研究・業界選び）</div>
+  <h2><span class="num">19</span>就活Q&A ①</h2>
+  <div class="qa">
+    <div class="qcard">
+      <div class="q"><span class="qb">Q.</span>企業研究でどんな資料を見るべき？</div>
+      <div class="note">
+        <div class="n">収益・経営戦略は<b>IR/投資家向け資料</b>。売上の数字は<b>四季報</b>＋AIで「なぜ売上を作れているか」を分析</div>
+        <div class="n">中小企業の特色は発信の多い<b>note</b>で、志望職種の人の思いやメンバーの特徴を覗くのも◎</div>
+      </div>
+    </div>
+    <div class="qcard">
+      <div class="q"><span class="qb">Q.</span>広告に絞る？視野を広げる？ESが追いつかない…</div>
+      <div class="note">
+        <div class="n">まだ狭めなくていい。<b>業務内容・環境・収入など最低条件</b>を整理し、業界バラバラでも条件に合う会社中心に</div>
+        <div class="n">「しっかり書く会社」と「ざっと出す会社」を住み分ける</div>
+      </div>
+    </div>
+    <div class="qcard">
+      <div class="q"><span class="qb">Q.</span>出版志望だが、広告業界と両立できる？</div>
+      <div class="note">
+        <div class="n">可能。私もWEBライター経験から出版も見たが相性が良く最後は広告に絞った</div>
+        <div class="n"><b>個性をESに落とし込む点は出版も広告も同じ</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 20 就活Q&A② -->
+<section class="slide p3">
+  <div class="kicker"><span class="dot"></span>第3部 ・ Q&A（業界選び・志望動機）</div>
+  <h2><span class="num">20</span>就活Q&A ②</h2>
+  <div class="qa">
+    <div class="qcard">
+      <div class="q"><span class="qb">Q.</span>ただの会社ファンから、その業界の強者になる方法は？</div>
+      <div class="note">
+        <div class="n">ファンは悪くない。その好きを<b>「入社後どう活躍・発信に変えられるか」</b>に変換</div>
+        <div class="n">強み・経験から「やりたいこと・できること」を整理すれば<b>唯一無二のエピソード</b>に</div>
+      </div>
+    </div>
+    <div class="qcard">
+      <div class="q"><span class="qb">Q.</span>ESが通らない理由は？</div>
+      <div class="note">
+        <div class="n">運もあるが<b>見せ方が定まっていない人</b>は多い。綺麗でも抽象的だと数千枚の中で刺さらない</div>
+        <div class="n">面接まで想定し「何を伝え・どんな人に見せたいか」からエピソード選び・構成を工夫</div>
+      </div>
+    </div>
+    <div class="qcard">
+      <div class="q"><span class="qb">Q.</span>志望動機が言語化できない／ビジョン設計は？</div>
+      <div class="note">
+        <div class="n">原体験から、広告の何に惹かれたか（仕組み作り／課題解決／光を当てる行為）を言語化</div>
+        <div class="n">ビジョンはOB訪問でジョブローテを聞き、配属後に身につけたいスキルを擦り合わせる</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 21 就活Q&A③ -->
+<section class="slide p3">
+  <div class="kicker"><span class="dot"></span>第3部 ・ Q&A（志望動機・自己分析）</div>
+  <h2><span class="num">21</span>就活Q&A ③</h2>
+  <div class="qa">
+    <div class="qcard">
+      <div class="q"><span class="qb">Q.</span>what to sayの定め方（話が多く「〇〇の子」と覚えてもらえない）</div>
+      <div class="note">
+        <div class="n"><b>キャラ設定を先に置いてからエピソードを決める</b></div>
+        <div class="n">深掘りされやすい話を自己紹介など早めに自分から出すと「つかみ」になる</div>
+      </div>
+    </div>
+    <div class="qcard">
+      <div class="q"><span class="qb">Q.</span>「やりたいこと」と「向いていること」が違う時は？</div>
+      <div class="note">
+        <div class="n">基本はやりたいこと優先。ただ「向いている×やりたくない」でなければ<b>成果を早く出すチャンス</b>として向いていることもアリ</div>
+        <div class="n">モチベは「将来やりたいこと」が土台。今やることがそこに向かうか整理して選ぶ</div>
+      </div>
+    </div>
+    <div class="qcard">
+      <div class="q"><span class="qb">Q.</span>「らしさ」は素直に書く？企業に寄せるべき？</div>
+      <div class="note">
+        <div class="n"><b>会社に寄せる必要はない</b>。寄せようとすると不自然に見える</div>
+        <div class="n">自分らしさを言語化しエピソードで語れる人は、面接官目線ですぐ分かる</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 22 就活Q&A④ -->
+<section class="slide p3">
+  <div class="kicker"><span class="dot"></span>第3部 ・ Q&A（自己分析・ガクチカ）</div>
+  <h2><span class="num">22</span>就活Q&A ④</h2>
+  <div class="qa">
+    <div class="qcard">
+      <div class="q"><span class="qb">Q.</span>広告が本当に向いているか自信がない</div>
+      <div class="note">
+        <div class="n">広告にも制作・PR・CM・デジタル運用など多様な側面がある</div>
+        <div class="n"><b>「何が向いていない／それでもやりたい理由は何か」</b>を言語化してあげる</div>
+      </div>
+    </div>
+    <div class="qcard">
+      <div class="q"><span class="qb">Q.</span>強みの見つけ方／エピソードに自信が持てない</div>
+      <div class="note">
+        <div class="n">強弱でなく<b>価値観・性格を原体験から言語化</b>する</div>
+        <div class="n">人生を振り返り「なぜ熱中？なぜ頑張る？なぜ腹が立つ？」と問うと<b>人生の軸</b>が見える</div>
+      </div>
+    </div>
+    <div class="qcard">
+      <div class="q"><span class="qb">Q.</span>「将来が決まる」漠然とした不安／SNSの情報過多</div>
+      <div class="note">
+        <div class="n">第二新卒もあり一社で永遠に働くわけではない。<b>この選択が全てと思わなくていい</b></div>
+        <div class="n">SNSの情報量で決めず<b>自分が一番納得できる形</b>で。情報は「自分に必要か」で取捨</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <span class="sec" id="secLabel"></span>
+  <span class="pageno"><b id="cur">1</b> / <span id="total">1</span></span>
+</footer>
+<div class="hint" id="hint">← → / クリック でスライド移動　・　F で全画面</div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  let i=0;
+  const bar=document.getElementById('bar');
+  const cur=document.getElementById('cur');
+  const total=document.getElementById('total');
+  const secLabel=document.getElementById('secLabel');
+  total.textContent=slides.length;
+
+  function partName(s){
+    if(s.classList.contains('p1'))return 'PART 1 ・ 自己紹介';
+    if(s.classList.contains('p2'))return 'PART 2 ・ 業界・会社';
+    if(s.classList.contains('p3'))return 'PART 3 ・ 就活';
+    return '';
+  }
+  function show(n){
+    i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('active',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%';
+    cur.textContent=i+1;
+    secLabel.textContent=partName(slides[i]);
+    location.hash=i+1;
+  }
+  function next(){show(i+1)}
+  function prev(){show(i-1)}
+
+  document.addEventListener('keydown',e=>{
+    if(['ArrowRight','ArrowDown',' ','PageDown'].includes(e.key)){e.preventDefault();next()}
+    else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();prev()}
+    else if(e.key==='Home'){show(0)}
+    else if(e.key==='End'){show(slides.length-1)}
+    else if(e.key.toLowerCase()==='f'){
+      if(!document.fullscreenElement)document.documentElement.requestFullscreen();
+      else document.exitFullscreen();
+    }
+  });
+  document.getElementById('deck').addEventListener('click',e=>{
+    if(e.clientX < window.innerWidth*0.32) prev(); else next();
+  });
+  const h=parseInt(location.hash.replace('#',''));
+  show(Number.isInteger(h)&&h>0?h-1:0);
+  setTimeout(()=>{document.getElementById('hint').style.transition='opacity 1s';document.getElementById('hint').style.opacity='0'},4000);
+</script>
+</body>
+</html>

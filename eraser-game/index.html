@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>消しゴム落とし - 懐かしの机上バトル</title>
+    <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&family=Zen+Maru+Gothic:wght@700&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Matter.js Physics Engine -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+</head>
+<body>
+    <div id="game-container">
+        <!-- Notebook HUD (Heads-up Display) -->
+        <div id="hud" class="hidden">
+            <div class="hud-item" id="turn-indicator">
+                <span class="label">ターン:</span>
+                <span id="turn-text" class="value text-player">あなた</span>
+            </div>
+            <div class="hud-item" id="gauge-container">
+                <span class="label">全力ゲージ:</span>
+                <div class="gauge-bar-bg">
+                    <div id="super-gauge" class="gauge-bar-fill"></div>
+                </div>
+                <span id="super-ready" class="super-ready-text hidden">全力フリック可能！</span>
+            </div>
+            <button id="give-up-btn" class="notebook-btn small">降参</button>
+        </div>
+
+        <!-- Canvas for Wood Desk rendering -->
+        <canvas id="game-canvas"></canvas>
+
+        <!-- Main Menu Screen (Notebook Paper Style) -->
+        <div id="menu-screen" class="screen">
+            <div class="notebook-page">
+                <div class="notebook-header">
+                    <span class="date">No. 1</span>
+                    <span class="subject">CLASSROOM BATTLE</span>
+                </div>
+                <div class="notebook-body">
+                    <h1 class="game-title">消しゴム落とし</h1>
+                    <p class="game-subtitle">〜 懐かしの机上バトル 〜</p>
+                    
+                    <div class="menu-actions">
+                        <button id="start-game-btn" class="notebook-btn">対戦スタート (VS CPU)</button>
+                        <button id="how-to-btn" class="notebook-btn secondary">遊び方</button>
+                    </div>
+
+                    <div class="doodles">
+                        <span class="doodle doodle-pencil">✏️</span>
+                        <span class="doodle doodle-ruler">📐</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- How to Play Screen (Sticky Note / Hand-drawn Style) -->
+        <div id="how-to-screen" class="screen hidden">
+            <div class="notebook-page">
+                <div class="notebook-header">
+                    <span class="subject">遊び方</span>
+                </div>
+                <div class="notebook-body rules-content">
+                    <h3>【基本操作】</h3>
+                    <p>自分の消しゴムをマウス（またはタッチ）で引っ張り、弾いて相手の消しゴムを机の外に落とします。</p>
+                    
+                    <h3>【オリジナル要素】</h3>
+                    <ul>
+                        <li><strong>落書き消し:</strong> 机の上の鉛筆汚れ（黒い線）の上を滑ると、汚れが消えて「全力ゲージ」が溜まります。</li>
+                        <li><strong>全力フリック:</strong> ゲージが満タンになると、強力な一撃（高威力・消しクズ大量発生）が放てます！</li>
+                        <li><strong>消しクズ:</strong> 動くと発生する消しクズの中に入ると摩擦で減速します。防御壁として利用しましょう。</li>
+                        <li><strong>机のギミック:</strong> 中央の「回転コンパス」、滑る「液体のり」、障害物になる「えんぴつ」を上手く使いましょう。</li>
+                    </ul>
+
+                    <button id="back-to-menu-btn" class="notebook-btn">もどる</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="game-over-screen" class="screen hidden">
+            <div class="result-card">
+                <div class="stamp-container">
+                    <div id="result-stamp" class="stamp">たいへんよくできました</div>
+                </div>
+                <h2 id="result-title">あなたのかち！</h2>
+                <p id="result-desc">見事に相手の消しゴムを突き落としました！</p>
+                <div class="result-actions">
+                    <button id="restart-btn" class="notebook-btn">もう一度あそぶ</button>
+                    <button id="menu-btn" class="notebook-btn secondary">メニューへ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Game Script -->
+    <script src="app.js"></script>
+</body>
+</html>

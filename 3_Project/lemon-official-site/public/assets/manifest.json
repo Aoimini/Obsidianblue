@@ -1,0 +1,306 @@
+{
+  "assets": [
+    {
+      "contentType": "",
+      "id": "ed276ade5f13553d",
+      "kind": "stylesheet",
+      "name": "entry.BiNW5dfe.css",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/ed276ade5f13553d.css",
+      "url": "https://olive681833.studio.site/_nuxt/entry.BiNW5dfe.css"
+    },
+    {
+      "contentType": "",
+      "id": "ec761e246df0bce6",
+      "kind": "stylesheet",
+      "name": "css",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/ec761e246df0bce6",
+      "url": "https://fonts.googleapis.com/css?display=swap&family=Lato%3A700"
+    },
+    {
+      "contentType": "",
+      "id": "219c0b88ea8429cf",
+      "kind": "stylesheet",
+      "name": "css",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/219c0b88ea8429cf",
+      "url": "https://fonts.googleapis.com/css?display=swap&family=Wix+Madefor+Display%3A700"
+    },
+    {
+      "contentType": "",
+      "id": "1eeac57f0b25868e",
+      "kind": "stylesheet",
+      "name": "css",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/1eeac57f0b25868e",
+      "url": "https://fonts.googleapis.com/css?display=swap&family=Wix+Madefor+Display%3A400"
+    },
+    {
+      "contentType": "",
+      "id": "1b2314284fcfc80c",
+      "kind": "stylesheet",
+      "name": "css",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/1b2314284fcfc80c",
+      "url": "https://fonts.googleapis.com/css?display=swap&family=Zen+Kaku+Gothic+Antique%3A700"
+    },
+    {
+      "contentType": "",
+      "id": "7213306578e19132",
+      "kind": "stylesheet",
+      "name": "css",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/7213306578e19132",
+      "url": "https://fonts.googleapis.com/css?display=swap&family=Zen+Kaku+Gothic+Antique%3A500"
+    },
+    {
+      "contentType": "image/webp",
+      "id": "6c256f93d532fa08",
+      "kind": "image",
+      "name": "s-2400x1800_v-frms_webp_e02c7b4f-7352-4938-b2cd-3aa60212d476_small.webp",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/6c256f93d532fa08.webp",
+      "url": "https://storage.googleapis.com/studio-design-asset-files/projects/NxqgMpmBW1/s-2400x1800_v-frms_webp_e02c7b4f-7352-4938-b2cd-3aa60212d476_small.webp"
+    },
+    {
+      "contentType": "image/webp",
+      "id": "b11a0cae48b6fb61",
+      "kind": "image",
+      "name": "s-244x244_webp_d4fc818e-9043-4b22-91f5-eb5bd548d480.webp",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/b11a0cae48b6fb61.webp",
+      "url": "https://storage.googleapis.com/studio-design-asset-files/projects/NxqgMpmBW1/s-244x244_webp_d4fc818e-9043-4b22-91f5-eb5bd548d480.webp"
+    },
+    {
+      "contentType": "image/webp",
+      "id": "f6b993257776a139",
+      "kind": "image",
+      "name": "s-2400x1800_v-frms_webp_bef68056-b81a-4a4a-92a5-a56da78593f4_small.webp",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/f6b993257776a139.webp",
+      "url": "https://storage.googleapis.com/studio-design-asset-files/projects/NxqgMpmBW1/s-2400x1800_v-frms_webp_bef68056-b81a-4a4a-92a5-a56da78593f4_small.webp"
+    },
+    {
+      "contentType": "image/webp",
+      "id": "a2821d81b8e7b792",
+      "kind": "image",
+      "name": "s-2400x1800_v-frms_webp_a8aeebf7-c410-44f5-908b-54ea0485f40a_small.webp",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/a2821d81b8e7b792.webp",
+      "url": "https://storage.googleapis.com/studio-design-asset-files/projects/NxqgMpmBW1/s-2400x1800_v-frms_webp_a8aeebf7-c410-44f5-908b-54ea0485f40a_small.webp"
+    },
+    {
+      "contentType": "image/webp",
+      "id": "252e83cb682209a1",
+      "kind": "image",
+      "name": "s-258x248_webp_1854bd65-b196-4742-a323-fc445b43f2e4.webp",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/252e83cb682209a1.webp",
+      "url": "https://storage.googleapis.com/studio-design-asset-files/projects/NxqgMpmBW1/s-258x248_webp_1854bd65-b196-4742-a323-fc445b43f2e4.webp"
+    },
+    {
+      "contentType": "image/webp",
+      "id": "17fea7c49dfbb833",
+      "kind": "image",
+      "name": "s-2400x1800_v-frms_webp_bd9e179b-0e53-49fd-80b3-16538eab4cad_small.webp",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/17fea7c49dfbb833.webp",
+      "url": "https://storage.googleapis.com/studio-design-asset-files/projects/NxqgMpmBW1/s-2400x1800_v-frms_webp_bd9e179b-0e53-49fd-80b3-16538eab4cad_small.webp"
+    },
+    {
+      "contentType": "image/webp",
+      "id": "b9887a78ab0d4bc7",
+      "kind": "image",
+      "name": "s-1865x930_v-frms_webp_65ff57d5-d57b-4b3f-bfa0-ff51d6e0fed4.webp",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/b9887a78ab0d4bc7.webp",
+      "url": "https://storage.googleapis.com/studio-design-asset-files/projects/NxqgMpmBW1/s-1865x930_v-frms_webp_65ff57d5-d57b-4b3f-bfa0-ff51d6e0fed4.webp"
+    },
+    {
+      "contentType": "image/webp",
+      "id": "f452355deafb2383",
+      "kind": "image",
+      "name": "s-2400x1800_v-frms_webp_7d67fb35-3690-4f8d-a30f-e1164fde5564_small.webp",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/f452355deafb2383.webp",
+      "url": "https://storage.googleapis.com/studio-design-asset-files/projects/NxqgMpmBW1/s-2400x1800_v-frms_webp_7d67fb35-3690-4f8d-a30f-e1164fde5564_small.webp"
+    },
+    {
+      "contentType": "image/webp",
+      "id": "e63d57a801fa722e",
+      "kind": "image",
+      "name": "s-371x299_webp_7af750e8-4016-4690-9fa1-9d26ba09995d.webp",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/e63d57a801fa722e.webp",
+      "url": "https://storage.googleapis.com/studio-design-asset-files/projects/NxqgMpmBW1/s-371x299_webp_7af750e8-4016-4690-9fa1-9d26ba09995d.webp"
+    },
+    {
+      "contentType": "image/webp",
+      "id": "45c4332e393767e0",
+      "kind": "image",
+      "name": "s-308x113_webp_d53590c9-e33c-48ee-a006-dce12503f917.webp",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/45c4332e393767e0.webp",
+      "url": "https://storage.googleapis.com/studio-design-asset-files/projects/NxqgMpmBW1/s-308x113_webp_d53590c9-e33c-48ee-a006-dce12503f917.webp"
+    },
+    {
+      "contentType": "image/webp",
+      "id": "874b76a430f30904",
+      "kind": "image",
+      "name": "s-2400x1800_v-frms_webp_75a8f9e8-54cb-4746-baa8-6b121380e4cc_small.webp",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/874b76a430f30904.webp",
+      "url": "https://storage.googleapis.com/studio-design-asset-files/projects/NxqgMpmBW1/s-2400x1800_v-frms_webp_75a8f9e8-54cb-4746-baa8-6b121380e4cc_small.webp"
+    },
+    {
+      "contentType": "image/webp",
+      "id": "69d8e34edfb3c05e",
+      "kind": "image",
+      "name": "s-2400x1800_v-frms_webp_7191665e-fc94-4dc5-bb68-18082708bb84_small.webp",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/69d8e34edfb3c05e.webp",
+      "url": "https://storage.googleapis.com/studio-design-asset-files/projects/NxqgMpmBW1/s-2400x1800_v-frms_webp_7191665e-fc94-4dc5-bb68-18082708bb84_small.webp"
+    },
+    {
+      "contentType": "image/webp",
+      "id": "bfa698338234c586",
+      "kind": "image",
+      "name": "s-2400x1800_v-frms_webp_fa0bd5c5-9dd3-42a7-b430-4e082a682115_small.webp",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/bfa698338234c586.webp",
+      "url": "https://storage.googleapis.com/studio-design-asset-files/projects/NxqgMpmBW1/s-2400x1800_v-frms_webp_fa0bd5c5-9dd3-42a7-b430-4e082a682115_small.webp"
+    },
+    {
+      "contentType": "image/webp",
+      "id": "e40736c4f74b8eb6",
+      "kind": "image",
+      "name": "s-2400x1800_v-frms_webp_8c423431-7464-4b5c-8306-0bd00236b52a_small.webp",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/e40736c4f74b8eb6.webp",
+      "url": "https://storage.googleapis.com/studio-design-asset-files/projects/NxqgMpmBW1/s-2400x1800_v-frms_webp_8c423431-7464-4b5c-8306-0bd00236b52a_small.webp"
+    },
+    {
+      "contentType": "image/webp",
+      "id": "5a29472a3c920957",
+      "kind": "image",
+      "name": "s-2400x1800_v-frms_webp_07440274-613b-41f5-a809-2feb1fe1d279_small.webp",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/5a29472a3c920957.webp",
+      "url": "https://storage.googleapis.com/studio-design-asset-files/projects/NxqgMpmBW1/s-2400x1800_v-frms_webp_07440274-613b-41f5-a809-2feb1fe1d279_small.webp"
+    },
+    {
+      "contentType": "image/webp",
+      "id": "cffd30bde4d3d399",
+      "kind": "image",
+      "name": "s-2400x1600_v-frms_webp_709c4228-655a-411c-bfe9-eb74c49267ee.webp",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/cffd30bde4d3d399.webp",
+      "url": "https://storage.googleapis.com/studio-design-asset-files/projects/NxqgMpmBW1/s-2400x1600_v-frms_webp_709c4228-655a-411c-bfe9-eb74c49267ee.webp"
+    },
+    {
+      "contentType": "image/webp",
+      "id": "e4627cafe1a64e45",
+      "kind": "image",
+      "name": "s-308x113_webp_85e6562b-5170-4c0b-8af7-2e9f2cf91b35.webp",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/e4627cafe1a64e45.webp",
+      "url": "https://storage.googleapis.com/studio-design-asset-files/projects/NxqgMpmBW1/s-308x113_webp_85e6562b-5170-4c0b-8af7-2e9f2cf91b35.webp"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "00b3c927758f3d75",
+      "kind": "image",
+      "name": "s-271x83_e749a9e4-7f04-4f8e-a9ee-8710c6939f24.svg",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/00b3c927758f3d75.svg",
+      "url": "https://storage.googleapis.com/studio-design-asset-files/projects/NxqgMpmBW1/s-271x83_e749a9e4-7f04-4f8e-a9ee-8710c6939f24.svg"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "b0b0d9ee3f9a8f59",
+      "kind": "image",
+      "name": "s-548x393_6955dbae-c47c-4711-b344-fba0bf7affdc.svg",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/b0b0d9ee3f9a8f59.svg",
+      "url": "https://storage.googleapis.com/studio-design-asset-files/projects/NxqgMpmBW1/s-548x393_6955dbae-c47c-4711-b344-fba0bf7affdc.svg"
+    },
+    {
+      "contentType": "image/webp",
+      "id": "e53a68ba4e4ee00a",
+      "kind": "image",
+      "name": "s-666x564_v-fs_webp_7e512104-2779-4ce3-99a6-3eee3aa0538a.webp",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/e53a68ba4e4ee00a.webp",
+      "url": "https://storage.googleapis.com/studio-design-asset-files/projects/NxqgMpmBW1/s-666x564_v-fs_webp_7e512104-2779-4ce3-99a6-3eee3aa0538a.webp"
+    },
+    {
+      "contentType": "image/webp",
+      "id": "eb3cbc3eb61c3f7e",
+      "kind": "image",
+      "name": "s-666x564_v-fs_webp_283b54db-c847-4e1e-bde5-38e493a094b9.webp",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/eb3cbc3eb61c3f7e.webp",
+      "url": "https://storage.googleapis.com/studio-design-asset-files/projects/NxqgMpmBW1/s-666x564_v-fs_webp_283b54db-c847-4e1e-bde5-38e493a094b9.webp"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "7e3275d9a5c7dd19",
+      "kind": "image",
+      "name": "s-1200x595_1c8af129-5c24-4499-ae8d-217b5d807935.svg",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/7e3275d9a5c7dd19.svg",
+      "url": "https://storage.googleapis.com/studio-design-asset-files/projects/NxqgMpmBW1/s-1200x595_1c8af129-5c24-4499-ae8d-217b5d807935.svg"
+    },
+    {
+      "contentType": "image/webp",
+      "id": "d220f8518d9658eb",
+      "kind": "image",
+      "name": "s-732x616_v-fs_webp_d5d23314-618f-4315-94e2-8905c30e6026.webp",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/d220f8518d9658eb.webp",
+      "url": "https://storage.googleapis.com/studio-design-asset-files/projects/NxqgMpmBW1/s-732x616_v-fs_webp_d5d23314-618f-4315-94e2-8905c30e6026.webp"
+    },
+    {
+      "contentType": "image/webp",
+      "id": "d54ad869986451c6",
+      "kind": "image",
+      "name": "s-2400x1800_v-frms_webp_879acea3-e3fd-4a6d-9d68-38bba4e0087d_small.webp",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/d54ad869986451c6.webp",
+      "url": "https://storage.googleapis.com/studio-design-asset-files/projects/NxqgMpmBW1/s-2400x1800_v-frms_webp_879acea3-e3fd-4a6d-9d68-38bba4e0087d_small.webp"
+    },
+    {
+      "contentType": "image/webp",
+      "id": "73be2d85cc147200",
+      "kind": "image",
+      "name": "s-2400x1800_v-frms_webp_0ac4eea5-c186-4378-b1d2-fdf70d87a32b_small.webp",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/73be2d85cc147200.webp",
+      "url": "https://storage.googleapis.com/studio-design-asset-files/projects/NxqgMpmBW1/s-2400x1800_v-frms_webp_0ac4eea5-c186-4378-b1d2-fdf70d87a32b_small.webp"
+    },
+    {
+      "contentType": "image/webp",
+      "id": "10a15184b05bad87",
+      "kind": "image",
+      "name": "s-2400x1800_v-frms_webp_b43834c4-df1b-4cb7-85e6-f26071e241f8_small.webp",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/10a15184b05bad87.webp",
+      "url": "https://storage.googleapis.com/studio-design-asset-files/projects/NxqgMpmBW1/s-2400x1800_v-frms_webp_b43834c4-df1b-4cb7-85e6-f26071e241f8_small.webp"
+    },
+    {
+      "contentType": "image/webp",
+      "id": "b468c27f40c43814",
+      "kind": "image",
+      "name": "s-2400x1800_v-frms_webp_7e36e87d-102f-46ea-8bb4-864d2082e458_small.webp",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/b468c27f40c43814.webp",
+      "url": "https://storage.googleapis.com/studio-design-asset-files/projects/NxqgMpmBW1/s-2400x1800_v-frms_webp_7e36e87d-102f-46ea-8bb4-864d2082e458_small.webp"
+    },
+    {
+      "contentType": "image/svg+xml",
+      "id": "8f4c258d6d89e7d5",
+      "kind": "image",
+      "name": "Created in Studio.Design, Start your site in Studio.Design",
+      "path": "/var/folders/hw/bgbl7n7n6j72s425tpfzhj880000gn/T/browser-use/assets/e75326d0-e3eb-4b3d-89ef-aa65119bfdf3/8f4c258d6d89e7d5.svg",
+      "url": "inline-svg:8f4c258d6d89e7d5"
+    }
+  ],
+  "failures": [
+    {
+      "contentType": "image/jpeg",
+      "id": "e6fd9b65c3dcc392",
+      "name": "photo-1525802498323-c8fbf69eb42f",
+      "reason": "Asset response type image/jpeg is not valid for stylesheet",
+      "url": "https://images.unsplash.com/photo-1525802498323-c8fbf69eb42f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2MzQ2fDB8MXxzZWFyY2h8NjB8fGtpdGNoZW58ZW58MHx8fHwxNzM1NzI2Njc5fDA&ixlib=rb-4.0.3&q=80&w=1080"
+    },
+    {
+      "contentType": null,
+      "id": "7c4719e43f89328a",
+      "name": "MaterialIcons-Regular.woff2",
+      "reason": "Loaded resource fetch failed: Asset bundling failed; page fetch failed: Browser Use encountered an error interacting with this webpage: TypeError: Failed to fetch\n    at e7 (<anonymous>:1:41)\n    at <anonymous>:1:354",
+      "url": "https://storage.googleapis.com/production-os-assets/assets/material-icons/1629704621943/MaterialIcons-Regular.woff2"
+    },
+    {
+      "contentType": null,
+      "id": "67604509808fef6b",
+      "name": "favicon.svg",
+      "reason": "Loaded resource fetch failed: Asset bundling failed; page fetch failed: Browser Use encountered an error interacting with this webpage: TypeError: Failed to fetch\n    at e7 (<anonymous>:1:41)\n    at <anonymous>:1:354",
+      "url": "https://storage.googleapis.com/studio-preview/favicon.svg"
+    },
+    {
+      "contentType": null,
+      "id": "caa3e2199c3b02e3",
+      "name": "s-1477x1108_v-fms_webp_86f00081-1f44-4865-b30d-7991b4b85af9.webp",
+      "reason": "Loaded resource fetch failed: Asset bundling failed; page fetch failed: Browser Use encountered an error interacting with this webpage: TypeError: Failed to fetch\n    at e7 (<anonymous>:1:41)\n    at <anonymous>:1:354",
+      "url": "https://storage.googleapis.com/studio-design-asset-files/projects/NxqgMpmBW1/s-1477x1108_v-fms_webp_86f00081-1f44-4865-b30d-7991b4b85af9.webp"
+    }
+  ]
+}

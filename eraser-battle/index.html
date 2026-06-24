@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>消しゴム落としバトル</title>
+<style>
+  :root{
+    --bg:#1d2230; --panel:#262d40; --ink:#e8ecf4; --sub:#9aa6c2;
+    --blue:#4f8cff; --red:#ff5d6c; --gold:#ffcd4d; --line:#39415a;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;height:100%}
+  body{
+    background:radial-gradient(1200px 800px at 50% -10%,#2a3147,#161a26 70%);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;
+    display:flex;flex-direction:column;align-items:center;min-height:100%;
+    padding:16px;gap:14px;user-select:none;
+  }
+  h1{font-size:20px;margin:2px 0 0;letter-spacing:.04em;font-weight:800}
+  h1 small{font-weight:500;color:var(--sub);font-size:12px;display:block;margin-top:3px}
+  .wrap{width:100%;max-width:820px;display:flex;flex-direction:column;gap:12px}
+  .hud{display:flex;gap:10px}
+  .card{
+    flex:1;background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:10px 14px;display:flex;flex-direction:column;gap:4px;position:relative;overflow:hidden;
+  }
+  .card .who{font-size:12px;color:var(--sub);font-weight:700;display:flex;align-items:center;gap:6px}
+  .dot{width:10px;height:10px;border-radius:50%}
+  .card .score{font-size:26px;font-weight:800;line-height:1}
+  .card .meta{font-size:11px;color:var(--sub)}
+  .hand{display:inline-flex;align-items:center;gap:4px;vertical-align:middle}
+  .he{display:inline-block;border-radius:3px;box-shadow:0 1px 2px rgba(0,0,0,.3),inset 0 0 0 1px rgba(255,255,255,.25)}
+  .hand .none{opacity:.5}
+  .card.active{box-shadow:0 0 0 2px var(--gold) inset}
+  .card.active::after{content:"YOUR TURN";position:absolute;top:8px;right:10px;font-size:9px;font-weight:800;color:var(--gold);letter-spacing:.1em}
+  .card.cpu.active::after{content:"CPU"}
+  canvas{
+    width:100%;border-radius:16px;background:#caa472;display:block;touch-action:none;
+    box-shadow:0 18px 40px rgba(0,0,0,.45),0 0 0 1px var(--line);
+  }
+  .bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .btn{
+    appearance:none;border:1px solid var(--line);background:var(--panel);color:var(--ink);
+    font:inherit;font-weight:700;font-size:14px;padding:10px 16px;border-radius:11px;cursor:pointer;
+    transition:transform .06s ease,background .15s,border-color .15s;
+  }
+  .btn:active{transform:translateY(1px)}
+  .btn.sel{background:var(--blue);border-color:var(--blue);color:#fff}
+  .btn[disabled]{opacity:.4;cursor:not-allowed}
+  .btn.ghost{background:transparent}
+  .msg{flex:1;min-width:160px;font-size:13px;color:var(--sub);text-align:right}
+  .msg b{color:var(--ink)}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:var(--sub);justify-content:center}
+  .legend span{display:inline-flex;align-items:center;gap:5px}
+  .sw{width:14px;height:14px;border-radius:4px;display:inline-block}
+  .overlay{
+    position:fixed;inset:0;background:rgba(10,12,20,.72);backdrop-filter:blur(4px);
+    display:none;align-items:center;justify-content:center;z-index:10;
+  }
+  .overlay.show{display:flex}
+  .modal{
+    background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px 28px;
+    text-align:center;max-width:340px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.5);
+  }
+  .modal h2{margin:0 0 8px;font-size:24px}
+  .modal p{margin:0 0 18px;color:var(--sub);font-size:13px;line-height:1.6}
+  .modal .btn{background:var(--blue);border-color:var(--blue);color:#fff;width:100%}
+
+  /* スマホ向け */
+  @media (max-width:560px){
+    body{padding:8px;gap:9px}
+    h1{font-size:16px}
+    h1 small{font-size:11px}
+    .hud{gap:8px}
+    .card{padding:8px 10px;border-radius:11px}
+    .card .who{font-size:11px}
+    .card .score{font-size:21px}
+    .card.active::after{font-size:8px}
+    .btn{padding:13px 16px;font-size:15px}
+    .msg{font-size:12px;min-width:120px}
+    .legend{gap:7px 10px;font-size:10px}
+    .sw{width:12px;height:12px}
+    .modal{padding:22px 20px}
+  }
+</style>
+</head>
+<body>
+  <h1>消しゴム落としバトル<small id="sub">レベル 1 · ドラッグで引っ張って発射</small></h1>
+
+  <div class="wrap">
+    <div class="hud">
+      <div class="card you active" id="cardP">
+        <div class="who"><span class="dot" style="background:var(--blue)"></span>あなた</div>
+        <div class="score" id="scoreP">0</div>
+        <div class="meta">机上 <b id="tblP">1</b> · 手札 <span class="hand" id="handP"></span></div>
+      </div>
+      <div class="card cpu" id="cardC">
+        <div class="who"><span class="dot" style="background:var(--red)"></span>CPU</div>
+        <div class="score" id="scoreC">0</div>
+        <div class="meta">机上 <b id="tblC">1</b> · 手札 <span class="hand" id="handC"></span></div>
+      </div>
+    </div>
+
+    <canvas id="cv" width="800" height="650"></canvas>
+
+    <div class="bar">
+      <button class="btn ghost" id="btnReset">↻ リセット</button>
+      <div class="msg" id="msg">机の消しゴムをドラッグして発射</div>
+    </div>
+
+    <div class="legend">
+      <span><i class="sw" style="background:var(--blue)"></i>自陣</span>
+      <span><i class="sw" style="background:var(--red)"></i>CPU</span>
+      <span><i class="sw" style="background:#f0b429"></i>鉛筆</span>
+      <span><i class="sw" style="background:#62bcd8"></i>定規</span>
+      <span><i class="sw" style="background:#2c2c30"></i>落書き(±点)</span>
+      <span><i class="sw" style="background:radial-gradient(#000 40%,#5a2ea0);border-radius:50%"></i>ブラックホール=消滅</span>
+      <span>落とす=<b style="color:var(--gold)">+50</b></span>
+    </div>
+  </div>
+
+  <div class="overlay" id="overlay">
+    <div class="modal">
+      <h2 id="ovTitle">勝利！</h2>
+      <p id="ovText"></p>
+      <button class="btn" id="ovBtn">もう一度</button>
+    </div>
+  </div>
+
+<script>
+(()=>{
+  const cv = document.getElementById('cv');
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+
+  // 机（テーブル）の領域。ここから出ると落下。下部はトレイ（手札置き場）。
+  const TRAY_H = 104;                                   // 盤下のトレイ高さ
+  const table = { x:70, y:56, w:W-140, h:H-72-TRAY_H }; // 机の下にトレイ分を確保
+  const R = 24;                 // 消しゴム半径
+  const FRICTION = 0.955;       // 摩擦
+  const STOP = 0.18;            // 停止しきい値
+  const MAX_PULL = 150;         // ドラッグ最大距離
+  const MAX_SPEED = 19;         // 最大初速
+  const OBST_REST = 0.15;       // 障害物との反発(小さい=滑る/跳ね返らない)
+  // 障害物の重さ・摩擦・回転は種類ごとに mkPencil / mkRuler 内で設定
+
+  // 消しゴムのサイズ3種。大=重く動きにくい / 小=軽快だが飛びすぎない様に再調整
+  const SIZES = {
+    L:{r:31, mass:2.2, fr:0.945},  // 大：重い・当てられても動きにくい
+    M:{r:24, mass:1.2, fr:0.952},  // 中：標準
+    S:{r:20, mass:0.8, fr:0.955},  // 小：やや軽い・小回り。1発で飛びすぎない／大とも戦える
+  };
+
+  const UI = {
+    scoreP:gid('scoreP'), scoreC:gid('scoreC'),
+    tblP:gid('tblP'), tblC:gid('tblC'), handP:gid('handP'), handC:gid('handC'),
+    cardP:gid('cardP'), cardC:gid('cardC'), msg:gid('msg'),
+    btnReset:gid('btnReset'),
+    overlay:gid('overlay'), ovTitle:gid('ovTitle'), ovText:gid('ovText'), ovBtn:gid('ovBtn'),
+    sub:gid('sub'),
+  };
+  function gid(id){return document.getElementById(id);}
+
+  let erasers, obstacles, graffiti, boxes, score, hand, turn, phase, turnCount;
+  let drag = null;   // {er, mx, my}
+  let level = 1;     // 勝つほど上がる難易度レベル（勝利で+1 / 敗北で1に戻る）
+  let streak = 0;    // 連勝数
+  let DIFF;          // 現在レベルの難易度パラメータ
+  let tick = 0;      // 描画フレームカウンタ（ブラックホールの回転用）
+  let started = false;// ループ多重起動の防止
+  let bonusAt, pendingBonus;     // +150点ごとのボーナス消しゴム
+  let penaltyAt, pendingPenalty; // -150点ごとに手札を1個失う
+  let stashDrag = null;          // トレイから引き出し中の手札 {idx,sz,x,y}
+
+  // 加点／減点（+150ごとにボーナス、-150ごとに手札ロスト）
+  function gainScore(owner, pts){
+    score[owner]+=pts;
+    while(score[owner] >= bonusAt[owner]){ pendingBonus[owner]++; bonusAt[owner]+=150; }
+    while(score[owner] <= penaltyAt[owner]){ pendingPenalty[owner]++; penaltyAt[owner]-=150; }
+  }
+  let splitMode=false, gap=null, bridge=null;  // レベル3+：机が2つ＋下敷きの橋
+
+  const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=(Math.random()*(i+1))|0;[a[i],a[j]]=[a[j],a[i]];}return a;};
+
+  // レベルに応じた難易度。値が大きいほどCPUが強い／配点が辛い
+  function makeDiff(lv){
+    return {
+      cpuError:    Math.max(0.04, 0.30 - lv*0.035),  // 狙いの誤差(小さい=正確)
+      cpuPowerJit: Math.max(0.04, 0.20 - lv*0.02),   // 強さのブレ
+      cpuPowerBase:Math.min(0.72, 0.46 + lv*0.03),   // 基本の強さ
+      extraObst:   Math.min(3, Math.floor((lv-1)/2)),// 障害物の追加数(2レベルごと+1)
+      negBias:     Math.min(0.72, 0.38 + lv*0.05),   // マイナス点の出やすさ
+      boxes:       Math.min(3, 1+Math.floor((lv-1)/3)),// ブラックボックス数(1〜3)
+    };
+  }
+
+  const rndR=(a,b)=>a+Math.random()*(b-a);
+  // placedに対しmin距離を確保できるランダム点を探す（円近似）
+  // 分割時の「すき間（下敷きの橋以外）」判定
+  function inGap(x,y){ return splitMode && y>gap.y0 && y<gap.y1 && Math.abs(x-bridge.x)>bridge.w/2; }
+  // 橋とその前後（渡る通路）。ここに障害物等を置くと渡れなくなるので空けておく
+  function onBridgeZone(x,y){ return splitMode && Math.abs(x-bridge.x)<bridge.w/2+30 && y>gap.y0-52 && y<gap.y1+52; }
+
+  function findSpot(xlo,xhi,ylo,yhi,r,placed,tries=80){
+    for(let i=0;i<tries;i++){
+      const x=rndR(xlo,xhi), y=rndR(ylo,yhi);
+      if(inGap(x,y)||onBridgeZone(x,y)) continue;   // すき間・橋の通路には置かない
+      let ok=true;
+      for(const o of placed){ if(Math.hypot(o.x-x,o.y-y) < r+o.r+8){ ok=false; break; } }
+      if(ok) return {x,y};
+    }
+    return null; // 見つからなければnull（呼び出し側でフォールバック）
+  }
+
+  // 指定プレイヤーの陣地に消しゴムを置ける空きスペースを1つ返す
+  function freeSpot(owner){
+    const placed=[];
+    for(const e of erasers){ if(e.alive) placed.push({x:e.x,y:e.y,r:e.r}); }
+    for(const p of obstacles){ placed.push({x:p.x,y:p.y,r:Math.max(p.w,p.h)/2}); }
+    for(const b of boxes){ placed.push({x:b.x,y:b.y,r:b.s+R}); }  // 罠は避ける
+    const cy=table.y+table.h/2;
+    let ylo=table.y+R, yhi=table.y+table.h-R;
+    if(owner==='P') ylo=(splitMode?gap.y1:cy)+R;   // 自陣＝下
+    if(owner==='C') yhi=(splitMode?gap.y0:cy)-R;   // 敵陣＝上
+    return findSpot(table.x+R, table.x+table.w-R, ylo, yhi, R, placed)
+        || {x:table.x+table.w/2, y:owner==='C'?table.y+60:table.y+table.h-60};
+  }
+
+  function init(){
+    score = {P:0, C:0};
+    bonusAt = {P:150, C:150}; pendingBonus = {P:0, C:0};
+    penaltyAt = {P:-150, C:-150}; pendingPenalty = {P:0, C:0};
+    turn = 'P'; phase='aim'; turnCount=0; drag=null; stashDrag=null;
+    DIFF = makeDiff(level);
+
+    const cx = table.x+table.w/2, cy = table.y+table.h/2;
+
+    // --- レベル3+：机を上下2つに割り、間は下敷き(橋)だけで渡れる ---
+    splitMode = level>=3;
+    if(splitMode){
+      const gapH=66;
+      gap = {y0:cy-gapH/2, y1:cy+gapH/2};
+      bridge = {x:rndR(table.x+100, table.x+table.w-100), w:118};
+    } else { gap=null; bridge=null; }
+
+    const placed = [];           // 重なり回避用 {x,y,r}
+
+    // --- 消しゴム：各自 大中小の3つ。1つを机に、残り2つを手札に ---
+    const loadP = shuffle(['L','M','S']);
+    const loadC = shuffle(['L','M','S']);
+    const peP = findSpot(table.x+60, table.x+table.w-60, cy+50, table.y+table.h-55, R, placed)
+              || {x:cx, y:table.y+table.h-70};
+    placed.push({x:peP.x,y:peP.y,r:R});
+    const peC = findSpot(table.x+60, table.x+table.w-60, table.y+55, cy-50, R, placed)
+              || {x:cx, y:table.y+70};
+    placed.push({x:peC.x,y:peC.y,r:R});
+    erasers = [ mkEraser(peP.x,peP.y,'P',loadP[0]), mkEraser(peC.x,peC.y,'C',loadC[0]) ];
+    hand = { P:[loadP[1],loadP[2]], C:[loadC[1],loadC[2]] };
+
+    // --- 障害物：鉛筆2本＋定規1個（＋レベルで鉛筆追加）。中央付近は避けて散らす ---
+    obstacles = [];
+    const obsPlan = [
+      {type:'pencil', w:rndR(95,120)}, {type:'pencil', w:rndR(95,120)},
+      {type:'ruler',  w:rndR(135,165)},
+    ];
+    for(let k=0;k<DIFF.extraObst;k++) obsPlan.push({type:'pencil', w:rndR(90,115)});
+    for(const o of obsPlan){
+      const h = o.type==='ruler'?30:15;
+      const r = Math.max(o.w,h)/2;
+      // 中央の十字ゾーンは避ける(攻撃ラインを確保)ため、何度か引き直す
+      let spot=null;
+      for(let t=0;t<60 && !spot;t++){
+        const cand=findSpot(table.x+r+20, table.x+table.w-r-20, table.y+r+20, table.y+table.h-r-20, r, placed, 1);
+        if(!cand) continue;
+        if(Math.abs(cand.x-cx)<70 && Math.abs(cand.y-cy)<60) continue; // 中央回避
+        spot=cand;
+      }
+      if(!spot) spot={x:rndR(table.x+r+20,table.x+table.w-r-20), y:rndR(table.y+r+20,table.y+table.h-r-20)};
+      placed.push({x:spot.x,y:spot.y,r});
+      const a = rndR(-1.3,1.3);
+      obstacles.push(o.type==='ruler' ? mkRuler(spot.x,spot.y,o.w,h,a) : mkPencil(spot.x,spot.y,o.w,h,a));
+    }
+
+    // --- ブラックボックス(罠)：入った消しゴムは消滅する。ランダム配置 ---
+    boxes = [];
+    const boxHalf = 24;
+    for(let i=0;i<DIFF.boxes;i++){
+      const spot=findSpot(table.x+boxHalf+14, table.x+table.w-boxHalf-14, table.y+boxHalf+14, table.y+table.h-boxHalf-14, boxHalf+10, placed);
+      if(!spot) break;
+      placed.push({x:spot.x,y:spot.y,r:boxHalf+10});
+      boxes.push(mkBox(spot.x,spot.y,boxHalf));
+    }
+
+    // --- ラクガキ：位置も点数もランダム。レベルが上がるほどマイナス寄り ---
+    graffiti = [];
+    const gCount = 6;
+    for(let i=0;i<gCount;i++){
+      const spot=findSpot(table.x+50, table.x+table.w-50, table.y+50, table.y+table.h-50, 30, placed);
+      if(!spot) break;
+      placed.push({x:spot.x,y:spot.y,r:30});
+      const mag = [30,50,100][Math.floor(Math.random()*3)];  // ±30 / ±50 / ±100
+      const v   = (Math.random()<DIFF.negBias ? -1 : 1) * mag;
+      graffiti.push(mkGraf(spot.x,spot.y,v));
+    }
+
+    UI.overlay.classList.remove('show');
+    syncHUD();
+    setMsg('机の<b>消しゴム</b>をドラッグで発射／下のトレイから引き出して場内へ');
+    if(!started){ started=true; requestAnimationFrame(loop); }  // ループは1本だけ
+  }
+
+  // 手札（トレイ）の各スロット位置。左下に並べる
+  function stashSlots(){
+    const slots=[]; let x=table.x+34; const y=table.y+table.h+TRAY_H*0.46;
+    for(let i=0;i<hand.P.length;i++){
+      const r=SIZES[hand.P[i]].r; x+=r;
+      slots.push({idx:i, sz:hand.P[i], x, y, r});
+      x+=r+16;
+    }
+    return slots;
+  }
+
+  function mkEraser(x,y,owner,size='M'){
+    const s=SIZES[size];
+    return {x,y,vx:0,vy:0,owner,size,r:s.r,mass:s.mass,fr:s.fr,alive:true,fell:false,ang:Math.random()*6.28};
+  }
+  // 鉛筆：軽くてよく転がる(コロコロ)。ruler：重くて動きにくい
+  function mkPencil(x,y,w,h,a){return {x,y,w,h,a,vx:0,vy:0,va:0,type:'pencil',mass:1.5,fr:0.945,afr:0.97,spin:0.032};}
+  function mkRuler(x,y,w,h,a){return {x,y,w,h,a,vx:0,vy:0,va:0,type:'ruler', mass:2.8,fr:0.9,  afr:0.92,spin:0.012};}
+  function mkBox(x,y,s){return {x,y,s};}   // ブラックボックス（罠）。s=半サイズ
+  function mkGraf(x,y,v){return {x,y,v,taken:false,rot:(Math.random()-0.5)*0.45,seed:(Math.random()*1e9)|0};}
+
+  // ---------- 物理 ----------
+  function anyMoving(){
+    return erasers.some(e=>e.alive && Math.hypot(e.vx,e.vy)>STOP)
+        || obstacles.some(p=>Math.hypot(p.vx,p.vy)>STOP || Math.abs(p.va)>0.004);
+  }
+
+  function step(){
+    for(const e of erasers){
+      if(!e.alive) continue;
+      e.x+=e.vx; e.y+=e.vy;
+      e.vx*=e.fr; e.vy*=e.fr;             // 摩擦はサイズごと（大=止まりやすい）
+      const sp=Math.hypot(e.vx,e.vy);
+      if(sp>0.4) e.ang=Math.atan2(e.vy,e.vx);
+      if(sp<STOP){e.vx=0;e.vy=0;}
+    }
+    // ブラックホールの引力：動いている消しゴムを吸い寄せる
+    for(const e of erasers){
+      if(!e.alive || Math.hypot(e.vx,e.vy)<STOP) continue;  // 停止中は引かない
+      for(const b of boxes){
+        const dx=b.x-e.x, dy=b.y-e.y, d=Math.hypot(dx,dy), Rp=b.s*2.8;
+        if(d<Rp && d>1){ const g=0.24*(1-d/Rp); e.vx+=dx/d*g; e.vy+=dy/d*g; }  // 引力は控えめ
+      }
+    }
+    // 障害物（鉛筆・定規）も移動・回転・減速する（鉛筆はよく転がる）
+    for(const p of obstacles){
+      p.x+=p.vx; p.y+=p.vy; p.a+=p.va;
+      p.vx*=p.fr; p.vy*=p.fr; p.va*=p.afr;
+      if(Math.hypot(p.vx,p.vy)<STOP){p.vx=0;p.vy=0;}
+      if(Math.abs(p.va)<0.002){p.va=0;}
+    }
+    // 消しゴム同士の衝突
+    for(let i=0;i<erasers.length;i++){
+      for(let j=i+1;j<erasers.length;j++){
+        const a=erasers[i],b=erasers[j];
+        if(!a.alive||!b.alive) continue;
+        collideCircles(a,b);
+      }
+    }
+    // 鉛筆との衝突
+    for(const e of erasers){ if(e.alive) for(const p of obstacles) collideEraserPencil(e,p); }
+
+    // ラクガキ通過判定
+    for(const e of erasers){
+      if(!e.alive) continue;
+      for(const g of graffiti){
+        if(g.taken) continue;
+        if(Math.hypot(e.x-g.x,e.y-g.y) < e.r+6){
+          g.taken=true;
+          gainScore(e.owner, g.v);
+          syncHUD();
+          flash(g.x,g.y,(g.v>0?'+':'')+g.v, g.v>0?'#39d27a':'#ff7a86');
+        }
+      }
+    }
+
+    // ブラックホール：吸い込まれたら消滅（手札の補充もなし＝一番危険）
+    for(const e of erasers){
+      if(!e.alive) continue;
+      for(const b of boxes){
+        if(Math.hypot(e.x-b.x,e.y-b.y) < b.s){
+          e.alive=false; e.fell=false;        // 完全に消える
+          flash(b.x,b.y,'消滅','#c98bff');
+          syncHUD();
+          break;
+        }
+      }
+    }
+
+    // 机外へ落下 → そのまま消滅。endSimで手札から1つ自動投入（相手を落とせば+50）
+    for(const e of erasers){
+      if(!e.alive) continue;
+      if(isOffDesk(e)){
+        e.alive=false;
+        e.fell=true;                          // endSimで「手札投入」処理
+        if(e.owner!==turn){
+          gainScore(turn,50);
+          flash(clamp(e.x,table.x,table.x+table.w),clamp(e.y,table.y,table.y+table.h),'+50','#ffcd4d');
+        }
+        syncHUD();
+      }
+    }
+
+    // 障害物が机の外（またはすき間）へ出たら取り除く
+    obstacles = obstacles.filter(p =>
+      p.x>table.x && p.x<table.x+table.w && p.y>table.y && p.y<table.y+table.h && !inGap(p.x,p.y));
+  }
+
+  // 机から落ちたか（分割時はすき間に入っても落下）
+  function isOffDesk(e){
+    const m=e.r*0.4;
+    if(e.x<table.x-m || e.x>table.x+table.w+m || e.y<table.y-m || e.y>table.y+table.h+m) return true;
+    if(splitMode && e.y>gap.y0 && e.y<gap.y1 && Math.abs(e.x-bridge.x)>bridge.w/2) return true;
+    return false;
+  }
+
+  // 質量・半径ごとの弾性衝突
+  function collideCircles(a,b){
+    let dx=b.x-a.x, dy=b.y-a.y, d=Math.hypot(dx,dy);
+    const min=a.r+b.r;
+    if(d===0){d=0.01;dx=0.01;}
+    if(d<min){
+      const nx=dx/d, ny=dy/d, overlap=min-d;
+      const ima=1/a.mass, imb=1/b.mass, ims=ima+imb;
+      a.x-=nx*overlap*(ima/ims); a.y-=ny*overlap*(ima/ims);
+      b.x+=nx*overlap*(imb/ims); b.y+=ny*overlap*(imb/ims);
+      const rvn=(b.vx-a.vx)*nx+(b.vy-a.vy)*ny;
+      if(rvn<0){
+        const j=-(1+0.95)*rvn/ims;           // 反発係数0.95
+        a.vx-=j*nx*ima; a.vy-=j*ny*ima;
+        b.vx+=j*nx*imb; b.vy+=j*ny*imb;
+      }
+    }
+  }
+
+  // 向きを持つ長方形 vs 円
+  function collideEraserPencil(e,p){
+    const cos=Math.cos(-p.a), sin=Math.sin(-p.a);
+    let lx=(e.x-p.x)*cos - (e.y-p.y)*sin;
+    let ly=(e.x-p.x)*sin + (e.y-p.y)*cos;
+    const hw=p.w/2, hh=p.h/2;
+    const cxl=clamp(lx,-hw,hw), cyl=clamp(ly,-hh,hh);
+    let ddx=lx-cxl, ddy=ly-cyl, dist=Math.hypot(ddx,ddy);
+    if(dist<e.r){
+      if(dist===0){ // 中心が内部：押し出し方向を単位ベクトルで決める
+        if(hw-Math.abs(lx) < hh-Math.abs(ly)){ ddx=Math.sign(lx)||1; ddy=0; }
+        else { ddx=0; ddy=Math.sign(ly)||1; }
+        dist=1;     // (ddx,ddy)は単位ベクトルなので大きさ1
+      }
+      const nlx=ddx/dist, nly=ddy/dist, push=e.r-dist;
+      // ローカル→ワールドへ法線変換（nは障害物→消しゴム向き）
+      const c2=Math.cos(p.a), s2=Math.sin(p.a);
+      const nx=nlx*c2 - nly*s2, ny=nlx*s2 + nly*c2;
+      // 位置補正を逆質量で分配（消しゴムのサイズ＝質量で動きやすさが変わる）
+      const me=e.mass, mo=p.mass, inv=1/me+1/mo;
+      e.x+=nx*push*((1/me)/inv); e.y+=ny*push*((1/me)/inv);
+      p.x-=nx*push*((1/mo)/inv); p.y-=ny*push*((1/mo)/inv);
+      // 法線方向の相対速度で力積を計算 → 障害物が動く
+      const rvn=(e.vx-p.vx)*nx+(e.vy-p.vy)*ny;
+      if(rvn<0){
+        const j=-(1+OBST_REST)*rvn/inv;
+        e.vx+=j*nx/me; e.vy+=j*ny/me;
+        p.vx-=j*nx/mo; p.vy-=j*ny/mo;
+        // 当たった位置(長手方向のズレlx)に応じて回転＝コロコロ転がる
+        p.va += (lx/hw) * (j/mo) * p.spin;
+      }
+    }
+  }
+
+  // ---------- 演出 ----------
+  let pops=[];
+  function flash(x,y,text,color){pops.push({x,y,text,color,t:0});}
+
+  // ---------- 描画 ----------
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+
+    // 背景：廊下の床板
+    drawHallway();
+
+    // 机（レベル3+は上下2つに分割し、すき間に下敷きの橋）
+    if(splitMode){
+      drawDeskRect(table.x, table.y, table.w, gap.y0-table.y);                  // 上の机
+      drawDeskRect(table.x, gap.y1, table.w, table.y+table.h-gap.y1);           // 下の机
+      drawBridge();                                                             // 下敷き
+    } else {
+      drawDeskRect(table.x, table.y, table.w, table.h);
+      // 中央ライン
+      ctx.strokeStyle='rgba(80,50,20,.2)'; ctx.setLineDash([8,8]); ctx.lineWidth=2;
+      ctx.beginPath();ctx.moveTo(table.x+10,table.y+table.h/2);ctx.lineTo(table.x+table.w-10,table.y+table.h/2);ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    // ラクガキ（黒鉛筆で手描き風）
+    for(const gr of graffiti){ if(!gr.taken) drawGraffiti(gr); }
+
+    // 障害物（鉛筆・定規）
+    for(const p of obstacles){ if(p.type==='ruler') drawRuler(p); else drawPencil(p); }
+
+    // ブラックボックス（罠）
+    for(const b of boxes) drawBox(b);
+
+    // 消しゴム
+    for(const e of erasers){ if(e.alive) drawEraser(e); }
+
+    // 照準（ドラッグ中）
+    if(drag){
+      const e=drag.er;
+      let dx=e.x-drag.mx, dy=e.y-drag.my, d=Math.hypot(dx,dy);
+      if(d>MAX_PULL){dx*=MAX_PULL/d; dy*=MAX_PULL/d; d=MAX_PULL;}
+      const power=d/MAX_PULL;
+      // 引っ張り線
+      ctx.strokeStyle='rgba(255,255,255,.5)'; ctx.lineWidth=3; ctx.setLineDash([6,6]);
+      ctx.beginPath();ctx.moveTo(e.x,e.y);ctx.lineTo(e.x-dx,e.y-dy);ctx.stroke();ctx.setLineDash([]);
+      // 発射方向 矢印
+      const ang=Math.atan2(dy,dx), len=40+power*120;
+      const ex=e.x+Math.cos(ang)*len, ey=e.y+Math.sin(ang)*len;
+      ctx.strokeStyle=`rgba(${Math.round(80+power*175)},${Math.round(140-power*120)},255,.95)`;
+      ctx.lineWidth=5;
+      ctx.beginPath();ctx.moveTo(e.x,e.y);ctx.lineTo(ex,ey);ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(ex,ey);
+      ctx.lineTo(ex-Math.cos(ang-0.4)*16, ey-Math.sin(ang-0.4)*16);
+      ctx.lineTo(ex-Math.cos(ang+0.4)*16, ey-Math.sin(ang+0.4)*16);
+      ctx.closePath(); ctx.fillStyle=ctx.strokeStyle; ctx.fill();
+      // パワーゲージ
+      ctx.fillStyle='rgba(0,0,0,.35)'; roundRect(e.x-30,e.y+e.r+8,60,8,4); ctx.fill();
+      ctx.fillStyle=power>0.8?'#ff5d6c':'#ffcd4d'; roundRect(e.x-30,e.y+e.r+8,60*power,8,4); ctx.fill();
+    }
+
+    // トレイ（手札置き場）＋ 引き出し中の消しゴム
+    drawTray();
+    if(stashDrag){
+      const pr=SIZES[stashDrag.sz].r;
+      const ok=isPlaceValid(stashDrag.x,stashDrag.y,pr);
+      drawEraserShape(stashDrag.x,stashDrag.y,pr,'P',0,0.85);
+      ctx.beginPath();ctx.arc(stashDrag.x,stashDrag.y,pr+4,0,6.29);
+      ctx.strokeStyle=ok?'#5ad07a':'#ff5d6c';ctx.lineWidth=2.5;ctx.setLineDash([5,5]);ctx.stroke();ctx.setLineDash([]);
+    }
+
+    // ポップ
+    for(const p of pops){
+      ctx.save();
+      ctx.globalAlpha=Math.max(0,1-p.t/60);
+      ctx.font='bold 24px -apple-system,sans-serif';
+      ctx.textAlign='center';
+      ctx.lineWidth=4; ctx.strokeStyle='rgba(0,0,0,.4)';
+      ctx.strokeText(p.text,p.x,p.y-p.t*0.6);
+      ctx.fillStyle=p.color; ctx.fillText(p.text,p.x,p.y-p.t*0.6);
+      ctx.restore();
+    }
+  }
+
+  function drawEraser(e){ drawEraserShape(e.x,e.y,e.r,e.owner,e.ang); }
+  function drawEraserShape(x,y,R,owner,ang=0,alpha=1){
+    ctx.save(); ctx.globalAlpha=alpha; ctx.translate(x,y); ctx.rotate(ang);
+    const col = owner==='P' ? '#4f8cff' : '#ff5d6c';
+    const dark= owner==='P' ? '#2f6ae0' : '#e23b4c';
+    // 影
+    ctx.fillStyle='rgba(0,0,0,.22)';
+    roundRect(-R+3,-R*0.7+5,R*2,R*1.4,8); ctx.fill();
+    // 本体
+    ctx.fillStyle=col; roundRect(-R,-R*0.7,R*2,R*1.4,8); ctx.fill();
+    // 紙スリーブ
+    ctx.fillStyle=dark; roundRect(-R*0.45,-R*0.7,R*0.9,R*1.4,3); ctx.fill();
+    ctx.fillStyle='rgba(255,255,255,.85)';
+    ctx.font=`bold ${Math.max(7,R*0.34)|0}px sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.save();ctx.rotate(-1.5708);ctx.fillText('ERASER',0,1);ctx.restore();
+    ctx.restore();
+  }
+
+  // 決定論的な乱数（シードで安定 → 毎フレーム同じ揺らぎ）
+  function rng(seed){
+    let t=seed>>>0;
+    return ()=>{ t+=0x6D2B79F5; let r=Math.imul(t^(t>>>15),1|t);
+      r^=r+Math.imul(r^(r>>>7),61|r); return ((r^(r>>>14))>>>0)/4294967296; };
+  }
+
+  // 黒鉛筆で手描きした落書き（数字＋ラフな囲み）
+  function drawGraffiti(gr){
+    const txt=(gr.v>0?'+':'')+gr.v;
+    const rnd=rng(gr.seed);
+    const ink='#2c2c30';
+    ctx.save();
+    ctx.translate(gr.x,gr.y);
+    ctx.rotate(gr.rot);
+    ctx.lineCap='round'; ctx.lineJoin='round';
+    ctx.textAlign='center'; ctx.textBaseline='middle';
+
+    // 数字：細い線を少しずらして重ね描き＝鉛筆のかすれ感
+    ctx.font='700 25px "Comic Sans MS","Chalkboard SE",Chalkboard,"Bradley Hand",cursive';
+    ctx.fillStyle=ink;
+    for(let i=0;i<3;i++){
+      ctx.globalAlpha=i===0?0.9:0.3;
+      ctx.fillText(txt,(rnd()-0.5)*1.8,(rnd()-0.5)*1.8);
+    }
+
+    // 囲み：ジグザグに揺らした楕円を2周ぶん
+    ctx.strokeStyle=ink; ctx.lineWidth=1.8;
+    const rx=32, ry=21;
+    for(let pass=0;pass<2;pass++){
+      ctx.globalAlpha=pass===0?0.7:0.28;
+      ctx.beginPath();
+      const start=rnd()*0.7, end=Math.PI*2+0.5+rnd()*0.6;
+      let first=true;
+      for(let a=start;a<=end;a+=0.28){
+        const jr=1+(rnd()-0.5)*0.14;
+        const x=Math.cos(a)*rx*jr+(rnd()-0.5)*1.4;
+        const y=Math.sin(a)*ry*jr+(rnd()-0.5)*1.4;
+        if(first){ctx.moveTo(x,y);first=false;} else ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+    }
+    ctx.globalAlpha=1;
+    ctx.restore();
+  }
+
+  function drawPencil(p){
+    ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.a);
+    const hw=p.w/2, hh=p.h/2;
+    ctx.fillStyle='rgba(0,0,0,.18)'; roundRect(-hw+2,-hh+3,p.w,p.h,4); ctx.fill();
+    // 軸
+    ctx.fillStyle='#f0b429'; roundRect(-hw,-hh,p.w-14,p.h,3); ctx.fill();
+    ctx.fillStyle='rgba(0,0,0,.12)'; ctx.fillRect(-hw,hh-4,p.w-14,4);
+    // 木+芯
+    ctx.fillStyle='#d9a066';ctx.beginPath();
+    ctx.moveTo(hw-14,-hh);ctx.lineTo(hw-2,0);ctx.lineTo(hw-14,hh);ctx.closePath();ctx.fill();
+    ctx.fillStyle='#333';ctx.beginPath();
+    ctx.moveTo(hw-4,-hh*0.35);ctx.lineTo(hw,0);ctx.lineTo(hw-4,hh*0.35);ctx.closePath();ctx.fill();
+    // 消しゴム側
+    ctx.fillStyle='#ff8aa0'; roundRect(-hw,-hh,8,p.h,3); ctx.fill();
+    ctx.restore();
+  }
+
+  // 定規（半透明＋目盛り）
+  function drawRuler(p){
+    ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.a);
+    const hw=p.w/2, hh=p.h/2;
+    // 影
+    ctx.fillStyle='rgba(0,0,0,.16)'; roundRect(-hw+2,-hh+3,p.w,p.h,5); ctx.fill();
+    // 本体（半透明の三角定規/直定規イメージ）
+    const g=ctx.createLinearGradient(0,-hh,0,hh);
+    g.addColorStop(0,'rgba(120,210,235,.7)'); g.addColorStop(1,'rgba(70,170,205,.7)');
+    ctx.fillStyle=g; roundRect(-hw,-hh,p.w,p.h,5); ctx.fill();
+    // 縁
+    ctx.lineWidth=2; ctx.strokeStyle='rgba(255,255,255,.65)';
+    roundRect(-hw,-hh,p.w,p.h,5); ctx.stroke();
+    ctx.strokeStyle='rgba(20,90,120,.55)'; ctx.lineWidth=1;
+    roundRect(-hw+2.5,-hh+2.5,p.w-5,p.h-5,4); ctx.stroke();
+    // 目盛り
+    ctx.strokeStyle='rgba(20,80,110,.7)'; ctx.lineWidth=1;
+    const step=14;
+    for(let x=-hw+8;x<=hw-8;x+=step){
+      const tall=((x+hw)%(step*2)<step);
+      ctx.beginPath();
+      ctx.moveTo(x,-hh+3);
+      ctx.lineTo(x,-hh+3+(tall?hh*0.9:hh*0.5));
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  // ブラックホール：吸い込まれると消滅。回転する降着円盤＋イベントホライズン
+  function drawBox(b){
+    const s=b.s, rot=tick*0.04;
+    ctx.save(); ctx.translate(b.x,b.y);
+    // 外側のグロー
+    const glow=ctx.createRadialGradient(0,0,s*0.4,0,0,s*2.6);
+    glow.addColorStop(0,'rgba(130,80,230,.4)'); glow.addColorStop(1,'rgba(130,80,230,0)');
+    ctx.fillStyle=glow; ctx.beginPath(); ctx.arc(0,0,s*2.6,0,6.29); ctx.fill();
+    // 降着円盤（回転する渦・楕円のスパイラル）
+    ctx.save(); ctx.rotate(rot); ctx.lineCap='round';
+    for(let i=0;i<3;i++){
+      ctx.rotate(2.094);
+      ctx.strokeStyle=`rgba(${200-i*30},${150-i*40},255,${0.55-i*0.13})`;
+      ctx.lineWidth=3-i*0.6;
+      ctx.beginPath();
+      for(let a=0;a<Math.PI*1.5;a+=0.18){
+        const rr=s*0.75+a*s*0.3;
+        const x=Math.cos(a)*rr, y=Math.sin(a)*rr*0.62;   // 楕円で円盤感
+        a===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+    }
+    ctx.restore();
+    // イベントホライズン（明るいリング）
+    ctx.lineWidth=2.5; ctx.strokeStyle='rgba(195,160,255,.95)';
+    ctx.beginPath(); ctx.arc(0,0,s*0.95,0,6.29); ctx.stroke();
+    // 中心の黒い穴
+    const core=ctx.createRadialGradient(0,0,1,0,0,s*0.95);
+    core.addColorStop(0,'#000'); core.addColorStop(.72,'#000'); core.addColorStop(1,'#1a0d33');
+    ctx.fillStyle=core; ctx.beginPath(); ctx.arc(0,0,s*0.9,0,6.29); ctx.fill();
+    ctx.restore();
+  }
+
+  // 背景：廊下の床板（横方向の板＋木目）
+  function drawHallway(){
+    const plank=46;
+    const tones=['#6e4d2e','#785431','#664726'];
+    for(let i=0,y=0;y<H;y+=plank,i++){
+      ctx.fillStyle=tones[i%3];
+      ctx.fillRect(0,y,W,plank);
+      ctx.fillStyle='rgba(38,24,12,.6)'; ctx.fillRect(0,y+plank-3,W,3);   // 継ぎ目
+      ctx.strokeStyle='rgba(48,30,15,.22)'; ctx.lineWidth=1;              // 木目
+      for(let k=0;k<3;k++){ const yy=y+8+k*13;
+        ctx.beginPath();ctx.moveTo(0,yy);
+        ctx.bezierCurveTo(W*0.3,yy-3,W*0.6,yy+4,W,yy-1);ctx.stroke(); }
+    }
+    const v=ctx.createRadialGradient(W/2,H/2,120,W/2,H/2,W*0.72);
+    v.addColorStop(0,'rgba(0,0,0,0)'); v.addColorStop(1,'rgba(0,0,0,.3)');
+    ctx.fillStyle=v; ctx.fillRect(0,0,W,H);
+  }
+
+  // 机（木目つき）。分割時は各ブロックをこの関数で描く
+  function drawDeskRect(x,y,w,h){
+    ctx.save();
+    roundRect(x,y,w,h,14);
+    const g=ctx.createLinearGradient(0,y,0,y+h);
+    g.addColorStop(0,'#e2c08d'); g.addColorStop(1,'#c99a60');
+    ctx.fillStyle=g; ctx.fill();
+    ctx.clip();
+    // 細い木目
+    ctx.strokeStyle='rgba(120,78,38,.16)'; ctx.lineWidth=2;
+    for(let i=0;i<Math.ceil(h/26)+1;i++){ const yy=y+i*26+8;
+      ctx.beginPath();ctx.moveTo(x,yy);
+      ctx.bezierCurveTo(x+w*0.3,yy-5,x+w*0.65,yy+7,x+w,yy-2);ctx.stroke(); }
+    // 太い木目streak
+    ctx.strokeStyle='rgba(110,70,32,.1)'; ctx.lineWidth=5;
+    for(let i=0;i<3;i++){ const yy=y+h*(0.22+i*0.3);
+      ctx.beginPath();ctx.moveTo(x,yy+(i%2?6:-6));
+      ctx.bezierCurveTo(x+w*0.35,yy,x+w*0.6,yy+(i%2?-9:9),x+w,yy);ctx.stroke(); }
+    ctx.restore();
+    ctx.lineWidth=3; ctx.strokeStyle='rgba(85,56,28,.6)';
+    roundRect(x,y,w,h,14); ctx.stroke();
+  }
+
+  // トレイ（盤下の手札置き場）。ここからドラッグで場内へ
+  function drawTray(){
+    const ty=table.y+table.h+8, th=TRAY_H-12;
+    ctx.fillStyle='rgba(20,14,8,.5)'; roundRect(table.x, ty, table.w, th, 12); ctx.fill();
+    ctx.lineWidth=2; ctx.strokeStyle='rgba(255,255,255,.12)'; roundRect(table.x, ty, table.w, th, 12); ctx.stroke();
+    // ラベル
+    ctx.fillStyle='rgba(255,255,255,.5)';
+    ctx.font='bold 13px -apple-system,sans-serif'; ctx.textAlign='left'; ctx.textBaseline='middle';
+    ctx.fillText('手札 ⤴ ドラッグで場内へ', table.x+16, ty+16);
+    // 手札の消しゴム
+    for(const s of stashSlots()){
+      if(stashDrag && stashDrag.idx===s.idx) continue;   // 引き出し中は元位置に描かない
+      drawEraserShape(s.x, s.y, s.r, 'P', 0, 1);
+    }
+    if(hand.P.length===0){
+      ctx.fillStyle='rgba(255,255,255,.35)'; ctx.font='13px -apple-system,sans-serif';
+      ctx.fillText('（手札なし）', table.x+16, ty+th*0.62);
+    }
+  }
+
+  // 下敷き（半透明の樹脂シート）＝机のすき間に架かる橋
+  function drawBridge(){
+    const x=bridge.x-bridge.w/2, w=bridge.w, y=gap.y0-12, h=(gap.y1-gap.y0)+24;
+    ctx.fillStyle='rgba(0,0,0,.28)'; roundRect(x+3,y+4,w,h,9); ctx.fill();
+    const g=ctx.createLinearGradient(x,0,x+w,0);
+    g.addColorStop(0,'rgba(120,215,185,.6)'); g.addColorStop(1,'rgba(95,180,215,.6)');
+    ctx.fillStyle=g; roundRect(x,y,w,h,9); ctx.fill();
+    ctx.lineWidth=2; ctx.strokeStyle='rgba(255,255,255,.55)'; roundRect(x,y,w,h,9); ctx.stroke();
+    ctx.fillStyle='rgba(255,255,255,.2)'; roundRect(x+7,y+6,w*0.28,h-12,5); ctx.fill();
+  }
+
+  // ---------- ループ ----------
+  function loop(){
+    if(phase==='sim'){
+      for(let k=0;k<2;k++) step();          // 2サブステップで安定化
+      if(!anyMoving()) endSim();
+    }
+    pops=pops.filter(p=>{p.t++;return p.t<60;});
+    tick++;
+    draw();
+    requestAnimationFrame(loop);
+  }
+
+  function endSim(){
+    for(const e of erasers){e.vx=0;e.vy=0;}
+    for(const p of obstacles){p.vx=0;p.vy=0;p.va=0;}
+    // 机外に落ちた消しゴムは消滅。手札が残っていれば1つ自動投入（復活はしない・ターン消化なし）
+    const fallen = erasers.filter(e=>e.fell);
+    for(const e of fallen){
+      e.fell=false;                              // 落ちたものは消えたまま
+      if(hand[e.owner].length>0){
+        const sz=hand[e.owner].shift();
+        const sp=freeSpot(e.owner);
+        erasers.push(mkEraser(sp.x,sp.y,e.owner,sz));
+        flash(sp.x,sp.y,'手札投入','#7fe0ff');
+      }
+    }
+    // +150点ボーナス：通常(中)サイズの消しゴムを場内に自動追加
+    for(const o of ['P','C']){
+      while(pendingBonus[o]>0){
+        pendingBonus[o]--;
+        const sp=freeSpot(o);
+        erasers.push(mkEraser(sp.x,sp.y,o,'M'));
+        flash(sp.x,sp.y,'＋消しゴム','#ffd84d');
+      }
+    }
+    // -150点ペナルティ：手札の消しゴムを1個失う
+    for(const o of ['P','C']){
+      while(pendingPenalty[o]>0){
+        pendingPenalty[o]--;
+        if(hand[o].length>0){
+          hand[o].pop();
+          const fy = o==='P' ? table.y+table.h-40 : table.y+40;
+          flash(table.x+table.w/2, fy, '手札 -1', '#ff5d6c');
+        }
+      }
+    }
+    syncHUD();
+    if(checkGameOver()) return;
+    // ターン交代（規定ターンは無し。全滅するまで続く）
+    turnCount++;
+    turn = (turn==='P') ? 'C' : 'P';
+    if(turn==='C'){ phase='cpu'; setBusy(true); setMsg('CPUの番…'); setTimeout(cpuTurn,650); }
+    else { phase='aim'; setBusy(false); promptTurn(); }
+  }
+
+  function promptTurn(){
+    const onTable = erasers.filter(e=>e.alive && e.owner==='P').length;
+    if(onTable===0 && hand.P.length>0){
+      setMsg('場内に消しゴムが無い！下のトレイから<b>ドラッグして場内へ</b>');
+    } else {
+      setMsg('あなたの番：机の消しゴムをドラッグで発射／トレイから補充');
+    }
+    updateButtons();
+  }
+
+  // ---------- 勝敗 ----------
+  function alive(owner){return erasers.filter(e=>e.alive&&e.owner===owner).length;}
+  function resources(owner){return alive(owner)+hand[owner].length;}
+
+  function checkGameOver(){
+    const pOut = resources('P')===0;
+    const cOut = resources('C')===0;
+    if(pOut||cOut){
+      if(pOut&&cOut) finish( score.P===score.C ? null : (score.P>score.C?'P':'C'), '両者全滅！');
+      else if(cOut)  finish('P','CPUを全滅させた！');
+      else           finish('C','自陣が全滅…');
+      return true;
+    }
+    return false;
+  }
+
+  function finish(winner, reason){
+    phase='over'; setBusy(true);
+    let title, extra='';
+    if(winner==='P'){
+      title='🎉 あなたの勝ち！';
+      streak++; level++;                              // 勝つと次戦は難易度UP
+      extra=`<br><b style="color:var(--gold)">レベル ${level} に上昇！</b>（${streak}連勝）`;
+      UI.ovBtn.textContent=`レベル ${level} に挑戦`;
+    } else if(winner==='C'){
+      title='😖 CPUの勝ち';
+      if(level>1) extra=`<br>レベル 1 にリセット`;
+      streak=0; level=1;
+      UI.ovBtn.textContent='もう一度（レベル 1）';
+    } else {
+      title='🤝 引き分け';
+      UI.ovBtn.textContent='もう一度';
+    }
+    UI.ovTitle.textContent=title;
+    UI.ovText.innerHTML=`${reason}<br>スコア — あなた <b>${score.P}</b> / CPU <b>${score.C}</b>${extra}`;
+    UI.overlay.classList.add('show');
+  }
+
+  // ---------- 入力（プレイヤー） ----------
+  function canvasPos(ev){
+    const r=cv.getBoundingClientRect();
+    const t=ev.touches&&ev.touches[0]?ev.touches[0]:(ev.changedTouches&&ev.changedTouches[0]?ev.changedTouches[0]:ev);
+    return { x:(t.clientX-r.left)*(W/r.width), y:(t.clientY-r.top)*(H/r.height) };
+  }
+
+  function onDown(ev){
+    if(phase!=='aim') return;
+    if(turn!=='P') return;
+    ev.preventDefault();
+    const p=canvasPos(ev);
+
+    // まずトレイの手札を引き出すか判定（タッチしやすいよう広めの判定）
+    for(const s of stashSlots()){
+      if(Math.hypot(s.x-p.x, s.y-p.y) < s.r+18){
+        stashDrag={idx:s.idx, sz:s.sz, x:p.x, y:p.y}; return;
+      }
+    }
+    // attack: 自分の机上の消しゴムを掴む（指でも掴みやすいよう+20の余裕）
+    let pick=null,best=1e9;
+    for(const e of erasers){
+      if(!e.alive||e.owner!=='P')continue;
+      const d=Math.hypot(e.x-p.x,e.y-p.y);
+      if(d<e.r+20 && d<best){best=d;pick=e;}
+    }
+    if(pick){ drag={er:pick,mx:p.x,my:p.y}; }
+  }
+
+  function onMove(ev){
+    if(stashDrag){ const p=canvasPos(ev); stashDrag.x=p.x; stashDrag.y=p.y; ev.preventDefault(); return; }
+    if(!drag) return;
+    ev.preventDefault();
+    const p=canvasPos(ev); drag.mx=p.x; drag.my=p.y;
+  }
+
+  function onUp(ev){
+    // トレイから引き出した手札を場内に置く
+    if(stashDrag){
+      ev.preventDefault();
+      const sz=stashDrag.sz, pr=SIZES[sz].r, p={x:stashDrag.x,y:stashDrag.y};
+      const sd=stashDrag; stashDrag=null;
+      if(isPlaceValid(p.x,p.y,pr) && hand.P[sd.idx]===sz){
+        erasers.push(mkEraser(p.x,p.y,'P',sz));
+        hand.P.splice(sd.idx,1);
+        startSim();
+      } else {
+        setMsg('そこには置けません。机の空きスペースへドラッグしてね');
+        syncHUD();
+      }
+      return;
+    }
+    if(!drag) return;
+    ev.preventDefault();
+    const e=drag.er;
+    let dx=e.x-drag.mx, dy=e.y-drag.my, d=Math.hypot(dx,dy);
+    drag=null;
+    if(d<10){ return; } // タップのみ＝キャンセル
+    if(d>MAX_PULL){dx*=MAX_PULL/d;dy*=MAX_PULL/d;d=MAX_PULL;}
+    const sp=(d/MAX_PULL)*MAX_SPEED;
+    const ang=Math.atan2(dy,dx);
+    e.vx=Math.cos(ang)*sp; e.vy=Math.sin(ang)*sp;
+    startSim();
+  }
+
+  function isPlaceValid(x,y,r=R){
+    // 机の上ならどこでもOK（自陣以外も可）。縁から余裕＋他と重ならない＋すき間は不可
+    if(x<table.x+r || x>table.x+table.w-r) return false;
+    if(y<table.y+r || y>table.y+table.h-r) return false;
+    if(inGap(x,y)) return false;
+    if(splitMode && y>gap.y0-r && y<gap.y1+r && Math.abs(x-bridge.x)>bridge.w/2) return false; // 橋からはみ出し不可
+    for(const e of erasers){ if(e.alive && Math.hypot(e.x-x,e.y-y)<e.r+r+4) return false; }
+    for(const p of obstacles){ if(Math.abs(p.x-x)<p.w/2+r && Math.abs(p.y-y)<p.h/2+r) return false; }
+    for(const b of boxes){ if(Math.hypot(b.x-x,b.y-y)<b.s+r) return false; }
+    return true;
+  }
+
+  function startSim(){ drag=null; stashDrag=null; phase='sim'; setBusy(true); setMsg('…'); }
+
+  // ---------- CPU（戦略AI） ----------
+  function cpuTurn(){
+    if(phase==='over') return;
+    const myOnTable = erasers.filter(e=>e.alive&&e.owner==='C');
+    const targets   = erasers.filter(e=>e.alive&&e.owner==='P');
+
+    // 机上に無ければ手札から追加
+    if(myOnTable.length===0 && hand.C.length>0){
+      const spot=freeSpot('C');
+      if(spot){ const sz=hand.C.shift(); erasers.push(mkEraser(spot.x,spot.y,'C',sz)); startSim(); return; }
+    }
+    if(myOnTable.length===0){ startSim(); return; }
+
+    // 全(攻撃役×標的)の組から最良プランを選ぶ
+    let best=null, bestScore=-1e9;
+    for(const s of myOnTable){
+      for(const t of targets){
+        const plan=cpuPlan(s,t);
+        if(plan && plan.score>bestScore){ bestScore=plan.score; best={s, ...plan}; }
+      }
+    }
+    if(!best){
+      const s=myOnTable[0], ang=Math.random()*6.28, sp=0.5*MAX_SPEED;
+      s.vx=Math.cos(ang)*sp; s.vy=Math.sin(ang)*sp; startSim(); return;
+    }
+    // 橋渡しは精度を上げて確実に（すき間に落ちないよう誤差を抑える）
+    const err=(best.crossing?0.4:1)*DIFF.cpuError;
+    const ang=best.ang + (Math.random()-0.5)*err;
+    const sp=best.power*MAX_SPEED;
+    best.s.vx=Math.cos(ang)*sp; best.s.vy=Math.sin(ang)*sp;
+    startSim();
+  }
+
+  // shooter→target の攻撃プラン。分割時は橋を経由して相手側へ渡るよう狙う
+  function cpuPlan(s, t){
+    const cy=table.y+table.h/2;
+    const crossing = splitMode && ((s.y<cy)!==(t.y<cy));   // すき間で隔てられている
+    if(crossing){
+      // 橋中央を狙ったとき、すき間に進入する瞬間のxが橋幅に収まるか＝直接渡れるか判定
+      const tNear=(s.y<cy?gap.y0:gap.y1);
+      const f=(tNear-s.y)/(cy-s.y);                          // 進入までの割合 0..1
+      const entryX=s.x+(bridge.x-s.x)*f;
+      const canCross=Math.abs(entryX-bridge.x) < bridge.w/2 - R*0.6;
+      if(canCross){
+        // 橋を通って相手側の机へ着地
+        const dir={x:bridge.x-s.x, y:cy-s.y};
+        const dl=Math.hypot(dir.x,dir.y)||1, uy=dir.y/dl;
+        const beyond=(s.y<cy?gap.y1:gap.y0);
+        const fwd=Math.abs(beyond-cy)/Math.max(0.45,Math.abs(uy)) + 95;
+        const ang=Math.atan2(dir.y,dir.x);
+        const power=clamp((dl+fwd)*(1-s.fr)/MAX_SPEED*1.28, 0.6, 0.99);
+        const bridgeAlign=1-Math.min(1,Math.abs(t.x-bridge.x)/(table.w*0.5));
+        return {ang, power, score:1.0+bridgeAlign*1.1, crossing:true};
+      }
+      // まだ橋から遠い → 自陣で橋の正面へ水平に寄せる（落ちないよう控えめに）
+      const dx=bridge.x-s.x, dl=Math.abs(dx)||1;
+      const ang=Math.atan2(0,dx);                            // 水平移動
+      const power=clamp(dl*(1-s.fr)/MAX_SPEED*0.92, 0.4, 0.82);
+      const score=0.55 - Math.abs(s.x-bridge.x)/table.w;     // 近づくほど良い（攻撃より低優先）
+      return {ang, power, score, crossing:true, reposition:true};
+    }
+    // 同じ側：相手を最寄りの縁へ押し出して落とす
+    const edge=nearestEdgeDir(t);
+    const dx=t.x-s.x, dy=t.y-s.y, d=Math.hypot(dx,dy);
+    if(d<1) return null;
+    const ang=Math.atan2(dy,dx);
+    const align=(dx/d)*edge.x+(dy/d)*edge.y;
+    const power=Math.min(1, DIFF.cpuPowerBase + d/360 + Math.random()*DIFF.cpuPowerJit);
+    const score=align*2 - d/300 + 1.0;                      // 同側は確実なので優先
+    return {ang, power, score, crossing:false};
+  }
+
+  function nearestEdgeDir(e){
+    const dl=e.x-table.x, dr=table.x+table.w-e.x, dt=e.y-table.y, db=table.y+table.h-e.y;
+    const m=Math.min(dl,dr,dt,db);
+    if(m===dl) return {x:-1,y:0};
+    if(m===dr) return {x:1,y:0};
+    if(m===dt) return {x:0,y:-1};
+    return {x:0,y:1};
+  }
+
+  // ---------- UI ----------
+  function updateButtons(){}
+  function setBusy(b){
+    UI.cardP.classList.toggle('active',turn==='P');
+    UI.cardC.classList.toggle('active',turn==='C');
+  }
+  function setMsg(h){UI.msg.innerHTML=h;}
+  // 手札の残り消しゴムをサイズ付きアイコンで表示
+  function renderHand(owner){
+    const el = owner==='P'?UI.handP:UI.handC;
+    const col= owner==='P'?'#4f8cff':'#ff5d6c';
+    el.innerHTML='';
+    if(hand[owner].length===0){ const s=document.createElement('span'); s.className='none'; s.textContent='なし'; el.appendChild(s); return; }
+    for(const sz of hand[owner]){
+      const w=Math.round(SIZES[sz].r*0.72);
+      const d=document.createElement('span');
+      d.className='he';
+      d.style.cssText=`width:${w}px;height:${Math.round(w*0.7)}px;background:${col}`;
+      el.appendChild(d);
+    }
+  }
+  function syncHUD(){
+    UI.scoreP.textContent=score.P; UI.scoreC.textContent=score.C;
+    UI.tblP.textContent=alive('P'); UI.tblC.textContent=alive('C');
+    renderHand('P'); renderHand('C');
+    UI.cardP.classList.toggle('active',turn==='P');
+    UI.cardC.classList.toggle('active',turn==='C');
+    UI.sub.textContent=`レベル ${level}${streak>0?`（${streak}連勝）`:''}${splitMode?' · 机が2分割！':''} · ドラッグで発射`;
+  }
+
+  // ---------- helpers ----------
+  function clamp(v,a,b){return v<a?a:v>b?b:v;}
+  function roundRect(x,y,w,h,r){
+    ctx.beginPath();
+    ctx.moveTo(x+r,y);
+    ctx.arcTo(x+w,y,x+w,y+h,r);
+    ctx.arcTo(x+w,y+h,x,y+h,r);
+    ctx.arcTo(x,y+h,x,y,r);
+    ctx.arcTo(x,y,x+w,y,r);
+    ctx.closePath();
+  }
+
+  // events
+  cv.addEventListener('mousedown',onDown);
+  window.addEventListener('mousemove',onMove);
+  window.addEventListener('mouseup',onUp);
+  cv.addEventListener('touchstart',onDown,{passive:false});
+  cv.addEventListener('touchmove',onMove,{passive:false});
+  cv.addEventListener('touchend',onUp,{passive:false});
+  UI.btnReset.onclick =()=>{ level=1; streak=0; init(); };  // 最初から(レベル1)
+  UI.ovBtn.onclick    =init;                                 // levelはfinish()で更新済み
+
+  init();
+})();
+</script>
+</body>
+</html>

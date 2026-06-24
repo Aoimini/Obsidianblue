@@ -1,0 +1,423 @@
+/* Global Resets and Classroom Background */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Zen Maru Gothic', 'Helvetica Neue', Arial, sans-serif;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+body {
+    background-color: #2b3e2a; /* Deep classroom chalkboard green */
+    background-image: 
+        radial-gradient(#395438 15%, transparent 20%),
+        radial-gradient(#395438 15%, transparent 20%);
+    background-size: 60px 60px;
+    background-position: 0 0, 30px 30px;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Main Container: Simulates a wooden desk placement in the classroom */
+#game-container {
+    position: relative;
+    width: 800px;
+    height: 600px;
+    background-color: #d7a15c; /* Desk color backup */
+    border-radius: 12px;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        inset 0 2px 5px rgba(255, 255, 255, 0.3),
+        inset 0 -5px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    border: 10px solid #5a3d20; /* Dark wood desk rim */
+}
+
+/* Canvas is the wooden desk surface */
+#game-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    cursor: grab;
+}
+
+#game-canvas:active {
+    cursor: grabbing;
+}
+
+/* Screens: UI Overlays */
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(4px);
+    z-index: 10;
+    transition: opacity 0.3s ease;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+    display: none !important;
+}
+
+/* Notebook Page Styling for Menu and Rules */
+.notebook-page {
+    width: 550px;
+    background-color: #fdfdf5; /* Cream paper */
+    background-image: 
+        linear-gradient(#e1e8f0 1px, transparent 1px);
+    background-size: 100% 28px;
+    box-shadow: 
+        5px 5px 0px rgba(0,0,0,0.15),
+        10px 10px 0px #fff,
+        10px 10px 5px rgba(0,0,0,0.1),
+        15px 15px 0px #eee,
+        15px 15px 5px rgba(0,0,0,0.05);
+    border-radius: 4px;
+    padding: 30px 40px;
+    position: relative;
+    border-left: 2px solid #ff9e9e; /* Red margin line */
+    overflow: hidden;
+    transform: rotate(-0.5deg);
+    transition: transform 0.3s ease;
+}
+
+.notebook-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 30px;
+    bottom: 0;
+    width: 1px;
+    background-color: #ff9e9e; /* Margin guideline */
+}
+
+.notebook-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #888;
+    border-bottom: 2px solid #5d8aa8;
+    padding-bottom: 5px;
+    margin-bottom: 25px;
+    font-family: monospace;
+}
+
+.notebook-body {
+    padding-top: 10px;
+    line-height: 28px;
+}
+
+/* Typography styling */
+.game-title {
+    font-family: 'Yusei Magic', sans-serif;
+    font-size: 48px;
+    color: #2b5797; /* Blue ink color */
+    text-align: center;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.05);
+}
+
+.game-subtitle {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-size: 18px;
+    color: #555;
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+/* Sticky Note Style Buttons */
+.menu-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.notebook-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #3b78e7; /* Sticky note blue */
+    border: none;
+    border-radius: 3px;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transform: rotate(-1deg);
+    transition: all 0.2s ease;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    text-decoration: none;
+    text-align: center;
+    position: relative;
+}
+
+.notebook-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: rgba(0,0,0,0.15);
+}
+
+.notebook-btn:hover {
+    transform: scale(1.05) rotate(1deg);
+    box-shadow: 5px 8px 12px rgba(0,0,0,0.2);
+}
+
+.notebook-btn:active {
+    transform: scale(0.98) rotate(-1deg);
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.15);
+}
+
+.notebook-btn.secondary {
+    background-color: #f4b400; /* Yellow sticky note */
+    color: #333;
+    transform: rotate(1.5deg);
+}
+
+.notebook-btn.secondary:hover {
+    transform: scale(1.05) rotate(-1deg);
+}
+
+.notebook-btn.small {
+    padding: 6px 15px;
+    font-size: 14px;
+    transform: rotate(0deg);
+}
+
+.notebook-btn.small:hover {
+    transform: scale(1.05);
+}
+
+/* How to Play overlay structure */
+.rules-content {
+    line-height: 1.8;
+}
+
+.rules-content h3 {
+    margin-top: 15px;
+    color: #d93025; /* Red ink */
+    border-bottom: 1px dashed #d93025;
+    padding-bottom: 2px;
+    font-size: 18px;
+}
+
+.rules-content p, .rules-content li {
+    font-size: 15px;
+    margin-bottom: 8px;
+    color: #444;
+}
+
+.rules-content ul {
+    padding-left: 20px;
+}
+
+/* Decorative Scribbles (Doodles) */
+.doodles {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    display: flex;
+    gap: 15px;
+    font-size: 24px;
+    opacity: 0.7;
+}
+
+.doodle {
+    animation: bounceDoodle 3s infinite ease-in-out alternate;
+}
+
+.doodle-ruler {
+    animation-delay: 1.5s;
+}
+
+@keyframes bounceDoodle {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(-8px) rotate(10deg); }
+}
+
+/* HUD Overlay */
+#hud {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 5;
+    pointer-events: none; /* Let clicks pass through to canvas */
+}
+
+.hud-item {
+    background: rgba(253, 253, 245, 0.9); /* Cream sticky note style */
+    padding: 8px 16px;
+    border-radius: 4px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.15);
+    border: 1px solid #e1e8f0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    pointer-events: auto; /* Re-enable clicks */
+    transform: rotate(-0.5deg);
+}
+
+#turn-indicator {
+    transform: rotate(1deg);
+}
+
+#give-up-btn {
+    pointer-events: auto;
+}
+
+.hud-item .label {
+    font-weight: bold;
+    color: #666;
+    font-size: 14px;
+}
+
+.hud-item .value {
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.text-player {
+    color: #1a73e8; /* Player Blue */
+}
+
+.text-cpu {
+    color: #d93025; /* Enemy Red */
+}
+
+/* Super Gauge styling */
+.gauge-bar-bg {
+    width: 120px;
+    height: 14px;
+    background-color: #ddd;
+    border-radius: 7px;
+    overflow: hidden;
+    border: 1px solid #aaa;
+    box-shadow: inset 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.gauge-bar-fill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #34a853, #fbbc05);
+    transition: width 0.2s ease-out;
+}
+
+.super-ready-text {
+    font-size: 12px;
+    color: #ea4335;
+    font-weight: bold;
+    animation: blinkText 0.8s infinite alternate;
+}
+
+@keyframes blinkText {
+    0% { opacity: 0.3; transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1.05); }
+}
+
+/* Game Over Result Card */
+.result-card {
+    width: 450px;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    text-align: center;
+    position: relative;
+    border: 4px solid #f4b400; /* School color rim */
+    transform: scale(0.9);
+    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popIn {
+    to { transform: scale(1); }
+}
+
+/* Teacher's red circle stamp */
+.stamp-container {
+    position: absolute;
+    top: -45px;
+    right: 20px;
+    width: 110px;
+    height: 110px;
+    z-index: 12;
+}
+
+.stamp {
+    width: 100%;
+    height: 100%;
+    border: 3px double #d93025;
+    border-radius: 50%;
+    color: #d93025;
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    font-family: 'Yusei Magic', sans-serif;
+    transform: rotate(15deg) scale(2);
+    opacity: 0;
+    animation: stampSeal 0.6s cubic-bezier(0.55, 0, 1, 0.45) 0.5s forwards;
+    box-shadow: inset 0 0 4px rgba(217, 48, 37, 0.1);
+}
+
+@keyframes stampSeal {
+    to {
+        transform: rotate(-12deg) scale(1);
+        opacity: 0.85;
+    }
+}
+
+#result-title {
+    font-family: 'Yusei Magic', sans-serif;
+    font-size: 36px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+#result-desc {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.result-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.result-actions .notebook-btn {
+    margin: 0;
+}

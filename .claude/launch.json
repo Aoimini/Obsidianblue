@@ -6,6 +6,30 @@
       "runtimeExecutable": "/usr/bin/env",
       "runtimeArgs": ["-C", "/Users/aoi/lifebalance_mvp", "/usr/bin/python3", "-m", "http.server", "8080"],
       "port": 8080
+    },
+    {
+      "name": "profile-book",
+      "runtimeExecutable": "/bin/bash",
+      "runtimeArgs": ["-c", "cd /tmp/profile-book && /usr/bin/python3 -m http.server 8765"],
+      "port": 8765
+    },
+    {
+      "name": "dive-game",
+      "runtimeExecutable": "/usr/bin/env",
+      "runtimeArgs": ["-C", "/tmp/dive-game", "/usr/bin/python3", "-m", "http.server", "8099", "--directory", "/tmp/dive-game"],
+      "port": 8099
+    },
+    {
+      "name": "eraser",
+      "runtimeExecutable": "/usr/bin/env",
+      "runtimeArgs": ["-C", "/tmp/eraser-battle", "/usr/bin/python3", "-m", "http.server", "8077", "--directory", "/tmp/eraser-battle"],
+      "port": 8077
+    },
+    {
+      "name": "lt-slides",
+      "runtimeExecutable": "/bin/bash",
+      "runtimeArgs": ["-c", "cd /tmp/lt-slides && /usr/bin/python3 -m http.server 8055"],
+      "port": 8055
     }
   ]
 }

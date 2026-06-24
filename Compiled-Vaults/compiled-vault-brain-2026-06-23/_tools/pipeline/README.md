@@ -6,6 +6,12 @@ vault, writes a "1日のまとめ" into that day's Obsidian daily note, validate
 **Target day = yesterday** by default (the 4am run summarizes the day that just ended).
 Override with `VAULTBRAIN_DATE=YYYY-MM-DD`.
 
+**Runs up to 3x/day, does work once.** Fires at **04:00** and **16:00** (retry, in case 04:00 hit the
+Claude session limit) and at **login/boot** (catch-up if the Mac was off). A once-per-target-day
+guard (`~/.local/share/vaultbrain/last_completed_target`) skips if the day is already summarized.
+A run that hits the session limit (RATELIMIT) or fails is NOT marked done, so a later slot retries it.
+Force a re-run with `VAULTBRAIN_FORCE=1` or an explicit `VAULTBRAIN_DATE`.
+
 ## What runs each morning
 1. `collect_local.sh` — source-vault (Obsidian) markdown changed since last run, incl. that day's
    daily note + voice diary (read-only; strips its own past auto-summary to avoid re-summarizing).

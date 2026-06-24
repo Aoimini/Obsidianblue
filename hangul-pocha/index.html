@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>한글 포차 | HANGUL POCHA - ネオンハングルパズルゲーム</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="canopy-neon">
+      <span>한글 포차</span> HANGUL POCHA
+    </div>
+    <div class="subtitle">Assemble Letters, Serve Stories</div>
+  </header>
+
+  <!-- Main Grid -->
+  <main>
+    
+    <!-- Left Column: Customer & Settings -->
+    <div class="left-panel">
+      
+      <!-- Customer Card -->
+      <section class="neon-panel pink" aria-label="Customer Board">
+        <div class="customer-area">
+          <div class="speech-bubble" id="customer-bubble">
+            いらっしゃいませ！メニューを選んで注文を受けてね！
+          </div>
+          <div class="customer-avatar" id="customer-avatar-container">
+            <!-- Custom animated SVG customer will be rendered here dynamically -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Category Selection -->
+      <section class="neon-panel cyan" aria-label="Menu Card">
+        <h3 class="tray-title" style="margin-bottom: 0.8rem;">注文メニューを選択</h3>
+        <div class="category-list" id="category-list">
+          <button class="menu-item active" data-category="food" id="btn-cat-food">
+            <div class="menu-info">
+              <span class="menu-name-kr">음식 & 음료</span>
+              <span class="menu-name-en">Food & Drinks</span>
+            </div>
+            <span class="menu-icon">🍢</span>
+          </button>
+          
+          <button class="menu-item" data-category="travel" id="btn-cat-travel">
+            <div class="menu-info">
+              <span class="menu-name-kr">여행 & 명소</span>
+              <span class="menu-name-en">Travel & Places</span>
+            </div>
+            <span class="menu-icon">🚇</span>
+          </button>
+
+          <button class="menu-item" data-category="daily" id="btn-cat-daily">
+            <div class="menu-info">
+              <span class="menu-name-kr">일상 & 인사</span>
+              <span class="menu-name-en">Daily & Greetings</span>
+            </div>
+            <span class="menu-icon">💬</span>
+          </button>
+
+          <button class="menu-item" data-category="culture" id="btn-cat-culture">
+            <div class="menu-info">
+              <span class="menu-name-kr">한류 & K-POP</span>
+              <span class="menu-name-en">K-Wave & pop</span>
+            </div>
+            <span class="menu-icon">✨</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Setting Card -->
+      <section class="neon-panel purple" aria-label="Settings">
+        <h3 class="tray-title" style="margin-bottom: 0.8rem;">環境設定</h3>
+        <div class="settings-panel">
+          <div class="setting-row">
+            <span class="setting-label">ルビ（カタカナ）表示</span>
+            <label class="switch">
+              <input type="checkbox" id="toggle-romaji" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="setting-row">
+            <span class="setting-label">パーツの色分け</span>
+            <label class="switch">
+              <input type="checkbox" id="toggle-color-code" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="setting-row">
+            <span class="setting-label">音声読み上げ</span>
+            <label class="switch">
+              <input type="checkbox" id="toggle-voice" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Right Column: Puzzle Board -->
+    <div class="playboard-panel">
+      
+      <!-- Workspace Card -->
+      <section class="neon-panel amber" style="display: flex; flex-direction: column; flex: 1;">
+        <div class="board-header">
+          <h2 class="board-title">ハングル調理台</h2>
+          <div class="game-stats">
+            <div class="stat-badge">
+              SCORE: <span id="stat-score">0000</span>
+            </div>
+            <div class="stat-badge">
+              SERVED: <span id="stat-level">0/0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="puzzle-arena" id="puzzle-arena">
+          <div class="word-meaning" id="word-meaning">
+            注文： <span>キンパ</span>
+          </div>
+          <div class="word-romanization" id="word-romanization">
+            Gim-bap / キムパプ
+          </div>
+
+          <!-- Letters assembly slots are created here in JS -->
+          <div class="syllable-container" id="syllable-container"></div>
+        </div>
+
+        <!-- Draggable Letter Pieces Pool -->
+        <div class="ingredient-tray-wrapper">
+          <div class="tray-title">ハングル素材トレイ（ドラッグして配置）</div>
+          <div class="ingredient-tray" id="ingredient-tray">
+            <!-- Letters elements will be appended here in JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Action Buttons Row -->
+      <div class="action-row">
+        <button class="btn-neon" id="btn-recipe-book">
+          📖 レシピ本 (単語帳)
+        </button>
+        <button class="btn-neon secondary" id="btn-sandbox">
+          🧪 ハングル砂場
+        </button>
+        <button class="btn-neon cyan-btn" id="btn-skip">
+          ➡️ スキップ
+        </button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Recipe Book Drawer (Sidebar) -->
+  <div class="drawer-overlay" id="recipe-overlay"></div>
+  <aside class="drawer-panel" id="recipe-drawer">
+    <div class="drawer-header">
+      <h2 class="drawer-title">📖 レシピ本 (単語帳)</h2>
+      <button class="drawer-close" id="btn-close-recipe">&times;</button>
+    </div>
+    <div class="drawer-content" id="recipe-content">
+      <!-- Vocabulary lists are populated dynamically -->
+    </div>
+  </aside>
+
+  <!-- Sandbox Modal -->
+  <div class="modal-overlay" id="sandbox-overlay"></div>
+  <div class="modal-card" id="sandbox-modal" style="display: none; position: fixed; z-index: 105;">
+    <div class="modal-header">
+      <h2 class="modal-title">🧪 ハングル砂場 (フリープレイ)</h2>
+      <button class="drawer-close" id="btn-close-sandbox" style="font-size: 2rem;">&times;</button>
+    </div>
+    
+    <div class="sandbox-arena">
+      <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); text-align: center;">
+        子音・母音・パッチムを自由に置いて、文字がどう変化するか見てみよう！
+      </p>
+      
+      <!-- Fixed shape slots in Sandbox -->
+      <div class="sandbox-slots">
+        <div class="syllable-block layout-lrb color-coded-slots" style="width: 160px; height: 160px;">
+          <div class="letter-slot" data-slot="choseong" data-type="consonant" data-hint="子音"></div>
+          <div class="letter-slot" data-slot="jungseong" data-type="vowel" data-hint="母音"></div>
+          <div class="letter-slot" data-slot="jongseong" data-type="consonant" data-hint="パッチム"></div>
+        </div>
+      </div>
+
+      <!-- Live Result Display -->
+      <div class="sandbox-result">
+        <div class="sandbox-char" id="sandbox-result-char">-</div>
+        <div class="sandbox-sound" id="sandbox-result-sound">組み立ててみよう</div>
+      </div>
+    </div>
+
+    <!-- Letters Tray for Sandbox -->
+    <div class="sandbox-tray">
+      <div class="tray-title" style="text-align: center;">子音 (Consonants)</div>
+      <div class="sandbox-row" id="sandbox-consonants-row"></div>
+      
+      <div class="tray-title" style="text-align: center; margin-top: 5px;">母音 (Vowels)</div>
+      <div class="sandbox-row" id="sandbox-vowels-row"></div>
+
+      <div class="tray-title" style="text-align: center; margin-top: 5px;">パッチム (Final Consonants)</div>
+      <div class="sandbox-row" id="sandbox-batchim-row"></div>
+    </div>
+    
+    <button class="btn-neon" id="btn-clear-sandbox" style="margin-top: 5px;">リセット</button>
+  </div>
+
+  <!-- Toast Toast Notification -->
+  <div class="toast" id="toast-notify">お見事！ 完璧な発音！</div>
+
+  <script src="app.js"></script>
+</body>
+</html>

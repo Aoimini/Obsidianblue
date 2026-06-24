@@ -146,8 +146,10 @@ else
   git commit -m "vault: daily auto-update $TARGET_DATE [$STATUS]" >/dev/null 2>&1 && echo "COMMITTED [$STATUS]"
 fi
 
-# 8) advance watermark + mark this target day done (so login/boot runs don't repeat it)
+# 8) advance watermark + mark this target day done (so login/boot runs don't repeat it).
+#    Only mark on OK/WARN (a real summary was produced). On RATELIMIT or FAIL we leave it UNmarked
+#    so the next login/boot (or the afternoon retry slot) tries again when quota is back.
 date +%Y-%m-%dT%H:%M:%S > "$DATA/last_run"
-[ "$STATUS" != "FAIL" ] && echo "$TARGET_DATE" > "$DATA/last_completed_target"
+case "$STATUS" in OK|WARN) echo "$TARGET_DATE" > "$DATA/last_completed_target";; esac
 find "$INBOX" -type f -mtime +14 -delete 2>/dev/null
 echo "================ done: status=$STATUS notes=$NOTES ================"

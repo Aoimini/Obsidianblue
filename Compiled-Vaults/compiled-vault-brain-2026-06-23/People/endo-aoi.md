@@ -48,7 +48,7 @@ last_verified: 2026-06-23
 ## Relationship Map
 - 所属/利用: [[Companies/concon-inc]]（Slack org）
 - コミュニティ: [[Companies/ai-mokuyokai]]（創設者 [[People/usutaku-usui-takumi]]）
-- 担当プロジェクト: [[Projects/kaisha-daruma-ivs]]、[[Projects/non-no-editorial]]、[[Projects/life-balance-app]]
+- 担当プロジェクト: [[Projects/kaisha-daruma-ivs]]、[[Projects/non-no-editorial]]、[[Projects/life-balance-app]]、[[Projects/hansoku-compe-2026]]
 - 転職（進行中選考）: [[Companies/yoyogi-animation-group]]（代アニ・CRM）/ [[Companies/wantedly]] / [[Companies/fusion]]
 - 転職（情報収集）: [[Companies/not-a-hotel]] / [[Companies/voising]] / [[Companies/yutori]] / [[Companies/kurashicom]] / [[Companies/toho]]（[[Decisions/career-change-2026]]）
 
@@ -56,6 +56,7 @@ last_verified: 2026-06-23
 - **ソロ海外旅行（05-24〜06-04）**: 韓国（ソウル2泊）→ ドイツ（フランクフルト1泊）→ スペイン（パルマ・デ・マヨルカ3泊 → バルセロナ4泊）。初の長期一人旅。サグラダ・ファミリア訪問（ガウディ没後100年完成直前）、現地でミシュラン掲載シェフと偶遇。会社だるま撮影も現地で実施。
 - **25歳の誕生日（06-04）**: 帰国便の機上で迎えた。帰国後、中野で友人21人を自ら集め誕生日会を開催（初の自主開催）。「自分のことを大切にしてくれる人を大事にしよう」という気づき。
 - **Usutaku誕生日イベント参加（06-07）**: 表参道。母とハングリータイガー（武蔵小杉）でランチ後。
+- **06-23**: Usutakuさんおすすめの「自分の取扱説明書」をObsidianで作成（「記録とるの楽しい」）。昼にジム。InMode美容施術を受けた。販促コンペ2026の企画書（エマール・モンダミン2ブランド計20案）をブラッシュアップ。
   Source: [[Sources/src-auto-2026-06-23]]
 
 ## Open Loops

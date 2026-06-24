@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>☆AI木曜会 プロフ帳☆</title>
+<style>
+* { box-sizing:border-box; margin:0; }
+body {
+  font-family:"Hiragino Maru Gothic ProN","Yu Gothic","Noto Sans JP",sans-serif;
+  color:#7a4a5a; padding:28px 14px;
+  background-color:#ffe9f2;
+  background-image:
+    radial-gradient(#ffd1e3 12%, transparent 13%),
+    radial-gradient(#ffd1e3 12%, transparent 13%);
+  background-size:42px 42px; background-position:0 0,21px 21px;
+}
+.notebook { max-width:960px; margin:0 auto; background:#fffdf6;
+  border:4px solid #ff9ec4; border-radius:22px; padding:26px 20px 34px;
+  box-shadow:6px 6px 0 #ffb7d2; position:relative; }
+.notebook::before { content:"✁ ----------------------------------------------------------";
+  position:absolute; top:-14px; left:24px; color:#ffa9c9; font-size:.8rem; letter-spacing:2px;
+  background:transparent; }
+h1 { text-align:center; font-size:1.7rem; color:#ff5e9d;
+  text-shadow:2px 2px 0 #fff, 3px 3px 0 #ffc6dd; letter-spacing:.12em; }
+h1 .star { color:#ffd233; text-shadow:1px 1px 0 #e8a700; }
+.sub { text-align:center; color:#c98aa4; font-size:.8rem; margin:6px 0 18px; }
+.sub::before, .sub::after { content:" ♪ "; color:#8fd6c9; }
+.controls { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-bottom:14px; }
+#q { flex:1 1 100%; max-width:400px; margin:0 auto; padding:10px 16px;
+  border:3px dashed #ffabcb; border-radius:24px; font-size:1rem;
+  background:#fff; color:#7a4a5a; outline:none; }
+#q::placeholder { color:#e3a8c0; }
+.fbtn { border:2px solid #ffabcb; background:#fff; border-radius:16px;
+  padding:6px 13px; font-size:.78rem; cursor:pointer; color:#d36e98;
+  box-shadow:2px 2px 0 #ffd5e6; font-family:inherit; }
+.fbtn.on { background:#ff8fbb; color:#fff; border-color:#ff6fa6; box-shadow:2px 2px 0 #f0a4c2; }
+#count { text-align:center; color:#d99cb5; font-size:.85rem; margin-bottom:14px; }
+#count::before { content:"☆ "; } #count::after { content:" ☆"; }
+.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(285px,1fr)); gap:18px; }
+.card { border-radius:4px 18px 4px 18px; padding:18px 14px 14px; position:relative;
+  border:2px solid rgba(0,0,0,.06);
+  box-shadow:3px 3px 0 rgba(214,138,168,.35); transform:rotate(-.6deg); }
+.card:nth-child(even) { transform:rotate(.7deg); border-radius:18px 4px 18px 4px; }
+.card.pink { background:#ffeef5; border-color:#ffc2d9; }
+.card.mint { background:#eafaf3; border-color:#b3e6d2; }
+.card.sora { background:#eaf4fd; border-color:#b9dcf5; }
+.card.lemon { background:#fffbe2; border-color:#f3e6a2; }
+.card.lavender { background:#f4eefc; border-color:#d9c8f0; }
+.washi { position:absolute; top:-10px; left:50%; transform:translateX(-50%) rotate(-3deg);
+  width:84px; height:20px; background:repeating-linear-gradient(45deg,#ffd9e8,#ffd9e8 6px,#fff0f6 6px,#fff0f6 12px);
+  opacity:.85; border-radius:2px; }
+.cardhead { display:flex; gap:12px; align-items:center; margin-bottom:10px; }
+.avatar { width:52px; height:52px; border-radius:50%; flex-shrink:0;
+  background:#fff; border:3px double #ffa9c9; color:#ff7cab;
+  display:flex; align-items:center; justify-content:center; font-size:1.3rem; font-weight:700; overflow:hidden; }
+.avatar.photo img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
+.namelabel { font-size:.62rem; color:#cf8da9; letter-spacing:.2em; }
+.name { font-weight:800; font-size:1.05rem; color:#b03d6d; }
+.row { display:flex; gap:8px; align-items:baseline; padding:5px 2px;
+  border-bottom:2px dotted rgba(190,120,150,.4); font-size:.8rem; }
+.row:last-child { border-bottom:none; }
+.label { flex-shrink:0; width:64px; font-size:.66rem; color:#fff;
+  background:#ffa3c6; border-radius:10px; text-align:center; padding:2px 0; }
+.val { color:#8a5a6c; }
+.links a { color:#e0699a; text-decoration:none; margin-right:8px; }
+.links a:hover { text-decoration:wavy underline; }
+.tags { display:flex; flex-wrap:wrap; gap:4px; }
+.tag { font-size:.62rem; background:#fff; border:1px solid #e8bccd;
+  border-radius:10px; padding:1px 7px; color:#b5798f; }
+.hide { display:none; }
+.footer { text-align:center; margin-top:24px; color:#daa3ba; font-size:.78rem; }
+</style></head><body>
+<div class="notebook">
+<h1><span class="star">★</span> AI木曜会 プロフ帳 <span class="star">★</span></h1>
+<div class="sub">ともだちコレクション 2026年版（パイロット版5イベント）</div>
+<div class="controls"><input id="q" placeholder="なまえでさがす…♪"><button class="fbtn" data-f="volley29">第29回バレーしよう会@スポ</button><button class="fbtn" data-f="cc">Claude Code語ろう</button><button class="fbtn" data-f="lt">LT会~AI活用事例発表会~</button><button class="fbtn" data-f="michikusa">Michikusa×100合</button><button class="fbtn" data-f="bday">usutakuさん誕生日＆A</button></div>
+<div id="count"></div>
+<div class="grid"><div class="card pink" data-name="sayoko arai（さよ） " data-events="cc bday lt">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">S</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">Sayoko Arai（さよ）</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="https://x.com/sayoko_ai" target="_blank">🐦 X</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span><span class="tag">06/07 usutakuさん誕生日＆AI木</span><span class="tag">05/17 LT会~AI活用事例発表会~(2</span></span></div>
+</div><div class="card mint" data-name="mamik｜まみっく " data-events="volley29 cc lt">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">m</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">mamik｜まみっく</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="mailto:heidifmly@gmail.com">💌 メール</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/23 第29回バレーしよう会@スポーツ</span><span class="tag">05/18 Claude Code語ろう会</span><span class="tag">05/17 LT会~AI活用事例発表会~(2</span></span></div>
+</div><div class="card sora" data-name="じゅんじゅん " data-events="volley29 cc lt">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">じ</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">じゅんじゅん</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="mailto:nowstonejun@gmail.com">💌 メール</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/23 第29回バレーしよう会@スポーツ</span><span class="tag">05/18 Claude Code語ろう会</span><span class="tag">05/17 LT会~AI活用事例発表会~(2</span></span></div>
+</div><div class="card lemon" data-name="ダイキ " data-events="volley29 cc lt">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">ダ</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">ダイキ</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="mailto:daiki.96.1217@gmail.com">💌 メール</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/23 第29回バレーしよう会@スポーツ</span><span class="tag">05/18 Claude Code語ろう会</span><span class="tag">05/17 LT会~AI活用事例発表会~(2</span></span></div>
+</div><div class="card lavender" data-name="富永茜（とみー） " data-events="michikusa bday lt">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">富</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">富永茜（とみー）</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">AI木曜会広報・イベント主催</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/13 Michikusa×100合同採</span><span class="tag">06/07 usutakuさん誕生日＆AI木</span><span class="tag">05/17 LT会~AI活用事例発表会~(2</span></span></div>
+</div><div class="card pink" data-name="山田智彦 " data-events="volley29 cc michikusa">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">山</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">山田智彦</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">株式会社100 HubSpotコンサルタント / AI木曜会運営</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="https://instagram.com/yamatomoson" target="_blank">📷 Instagram</a> <a href="https://x.com/tomnhikohimoto" target="_blank">🐦 X</a> <a href="mailto:yamatomo.koala@gmail.com">💌 メール</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/23 第29回バレーしよう会@スポーツ</span><span class="tag">05/18 Claude Code語ろう会</span><span class="tag">05/13 Michikusa×100合同採</span></span></div>
+</div><div class="card mint" data-name="河野瑛吾（えいご） " data-events="volley29 cc lt">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">河</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">河野瑛吾（えいご）</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="mailto:eigokono1058@gmail.com">💌 メール</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/23 第29回バレーしよう会@スポーツ</span><span class="tag">05/18 Claude Code語ろう会</span><span class="tag">05/17 LT会~AI活用事例発表会~(2</span></span></div>
+</div><div class="card sora" data-name="ayumi アユチャン " data-events="bday lt">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">A</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">AYUMI アユチャン</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">AI木曜会運営（ラン部主催）</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">06/07 usutakuさん誕生日＆AI木</span><span class="tag">05/17 LT会~AI活用事例発表会~(2</span></span></div>
+</div><div class="card lemon" data-name="chika lee " data-events="cc lt">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">C</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">Chika Lee</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="https://instagram.com/leechigram" target="_blank">📷 Instagram</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span><span class="tag">05/17 LT会~AI活用事例発表会~(2</span></span></div>
+</div><div class="card lavender" data-name="haruki " data-events="cc lt">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">H</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">Haruki</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="https://instagram.com/ttharugram" target="_blank">📷 Instagram</a> <a href="mailto:harudog111@gmail.com">💌 メール</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span><span class="tag">05/17 LT会~AI活用事例発表会~(2</span></span></div>
+</div><div class="card pink" data-name="hiro " data-events="cc lt">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">H</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">Hiro</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span><span class="tag">05/17 LT会~AI活用事例発表会~(2</span></span></div>
+</div><div class="card mint" data-name="koyo " data-events="cc lt">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">K</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">Koyo</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span><span class="tag">05/17 LT会~AI活用事例発表会~(2</span></span></div>
+</div><div class="card sora" data-name="miho fujiue " data-events="volley29 lt">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">M</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">Miho Fujiue</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="mailto:mear_s2gx@i.softbank.jp">💌 メール</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/23 第29回バレーしよう会@スポーツ</span><span class="tag">05/17 LT会~AI活用事例発表会~(2</span></span></div>
+</div><div class="card lemon" data-name="miyuki kawanishi " data-events="cc lt">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">M</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">Miyuki Kawanishi</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span><span class="tag">05/17 LT会~AI活用事例発表会~(2</span></span></div>
+</div><div class="card lavender" data-name="yuta masui " data-events="cc lt">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">Y</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">Yuta Masui</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="https://x.com/japansmallboi" target="_blank">🐦 X</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span><span class="tag">05/17 LT会~AI活用事例発表会~(2</span></span></div>
+</div><div class="card pink" data-name="muko " data-events="cc lt">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">m</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">muko</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span><span class="tag">05/17 LT会~AI活用事例発表会~(2</span></span></div>
+</div><div class="card mint" data-name="tactac " data-events="cc lt">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">t</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">tactac</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span><span class="tag">05/17 LT会~AI活用事例発表会~(2</span></span></div>
+</div><div class="card sora" data-name="かおりん🍏 " data-events="cc lt">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">か</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">かおりん🍏</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span><span class="tag">05/17 LT会~AI活用事例発表会~(2</span></span></div>
+</div><div class="card lemon" data-name="かつや勝谷俊介 " data-events="volley29 cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">か</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">かつや勝谷俊介</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="mailto:lalaton345@gmail.com">💌 メール</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/23 第29回バレーしよう会@スポーツ</span><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card lavender" data-name="さかい " data-events="cc lt">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">さ</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">さかい</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span><span class="tag">05/17 LT会~AI活用事例発表会~(2</span></span></div>
+</div><div class="card pink" data-name="だいもん " data-events="cc lt">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">だ</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">だいもん</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span><span class="tag">05/17 LT会~AI活用事例発表会~(2</span></span></div>
+</div><div class="card mint" data-name="とがしたまは（たまちゃん） たまちゃん＠ai木曜会インターン" data-events="cc bday">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">と</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">とがしたまは（たまちゃん）</div></div></div>
+<div class="row"><span class="label">Fincs名</span><span class="val">たまちゃん＠AI木曜会インターン</span></div>
+<div class="row"><span class="label">おしごと</span><span class="val">Michikusa株式会社インターン / 法政大学 法学部 国際政治学科2年</span></div>
+<div class="row"><span class="label">じこしょうかい</span><span class="val">本名：富樫玲巴。たまちゃん！で声かけてOK🆗 趣味：クラシックバレエ🩰・F1（Alpine Gasly/Williams Sainz応援）🏎️・昔の洋楽（American pops/R&amp;B, city pop, inst）🎧 おしゃべり・パッション・ポジティブ✅ 夢は草原でフリスビーとバレーとドッジを楽しむ人生。密かにジオゲッサー部長狙い</span></div>
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span><span class="tag">06/07 usutakuさん誕生日＆AI木</span></span></div>
+</div><div class="card sora" data-name="はなわだいき " data-events="cc lt">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">は</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">はなわだいき</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span><span class="tag">05/17 LT会~AI活用事例発表会~(2</span></span></div>
+</div><div class="card lemon" data-name="ひかる " data-events="cc lt">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">ひ</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">ひかる</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span><span class="tag">05/17 LT会~AI活用事例発表会~(2</span></span></div>
+</div><div class="card lavender" data-name="みっちー（佐藤みちたけ） " data-events="cc lt">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">み</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">みっちー（佐藤みちたけ）</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span><span class="tag">05/17 LT会~AI活用事例発表会~(2</span></span></div>
+</div><div class="card pink" data-name="よーよー " data-events="volley29 lt">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">よ</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">よーよー</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="mailto:yeyang0816@gmail.com">💌 メール</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/23 第29回バレーしよう会@スポーツ</span><span class="tag">05/17 LT会~AI活用事例発表会~(2</span></span></div>
+</div><div class="card mint" data-name="アリ@コンサルと筋トレ " data-events="volley29 cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">ア</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">アリ@コンサルと筋トレ</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">コンサル</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="https://instagram.com/crio_bakibaki" target="_blank">📷 Instagram</a> <a href="mailto:yskarmt20@gmail.com">💌 メール</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/23 第29回バレーしよう会@スポーツ</span><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card sora" data-name="カイト（kaito shimomura） " data-events="volley29 bday">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">カ</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">カイト（Kaito Shimomura）</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="https://x.com/pharma_k_ai" target="_blank">🐦 X</a> <a href="mailto:kaito.shimomura01@kantetsu-ai.com">💌 メール</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/23 第29回バレーしよう会@スポーツ</span><span class="tag">06/07 usutakuさん誕生日＆AI木</span></span></div>
+</div><div class="card lemon" data-name="タイキ " data-events="cc lt">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">タ</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">タイキ</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="https://instagram.com/taikiyamada1130" target="_blank">📷 Instagram</a> <a href="https://x.com/itaiki_yama" target="_blank">🐦 X</a> <a href="mailto:itaiki1130@gmail.com">💌 メール</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span><span class="tag">05/17 LT会~AI活用事例発表会~(2</span></span></div>
+</div><div class="card lavender" data-name="伊藤広晃 " data-events="cc lt">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">伊</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">伊藤広晃</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span><span class="tag">05/17 LT会~AI活用事例発表会~(2</span></span></div>
+</div><div class="card pink" data-name="佐々木 翔 " data-events="cc lt">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">佐</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">佐々木 翔</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span><span class="tag">05/17 LT会~AI活用事例発表会~(2</span></span></div>
+</div><div class="card mint" data-name="原口怜(れん) " data-events="volley29 cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">原</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">原口怜(れん)</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="https://instagram.com/_ren.1224" target="_blank">📷 Instagram</a> <a href="mailto:renkichi1224@gmail.com">💌 メール</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/23 第29回バレーしよう会@スポーツ</span><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card sora" data-name="末廣涼太 " data-events="volley29 cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">末</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">末廣涼太</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="https://instagram.com/moguangl" target="_blank">📷 Instagram</a> <a href="mailto:kmr225115919@gmail.com">💌 メール</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/23 第29回バレーしよう会@スポーツ</span><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card lemon" data-name="森よしき " data-events="volley29 cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">森</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">森よしき</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">UNDER CORE</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="mailto:yoshiki.mori@under-core.com">💌 メール</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/23 第29回バレーしよう会@スポーツ</span><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card lavender" data-name="櫻岡紘典（さくらおかひろのり） 櫻岡紘典（さくらおかひろのり）" data-events="volley29 cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">櫻</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">櫻岡紘典（さくらおかひろのり）</div></div></div>
+<div class="row"><span class="label">Fincs名</span><span class="val">櫻岡紘典（さくらおかひろのり）</span></div>
+<div class="row"><span class="label">おしごと</span><span class="val">Webエンジニア</span></div>
+<div class="row"><span class="label">じこしょうかい</span><span class="val">東京/31歳/Webエンジニア。好きなもの：奥さん/娘/酒/ご飯/ライブ。嫌いなもの：痛風。「仕事よりプライベート」「やりたいことだけやりたい」という甘えた考え方をAIで正当化するために色々がんばってます</span></div>
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="https://instagram.com/hirosuke_0520" target="_blank">📷 Instagram</a> <a href="https://x.com/momomocci441" target="_blank">🐦 X</a> <a href="mailto:tstsn1sh1n0@gmail.com">💌 メール</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/23 第29回バレーしよう会@スポーツ</span><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card pink" data-name="池上享平（キヨ） " data-events="volley29 cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">池</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">池上享平（キヨ）</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="mailto:kyo.5up.net@gmail.com">💌 メール</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/23 第29回バレーしよう会@スポーツ</span><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card mint" data-name="河瀬葵 " data-events="cc bday">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">河</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">河瀬葵</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">AI木曜会運営</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="https://instagram.com/kawaseaoi_ai" target="_blank">📷 Instagram</a> <a href="https://x.com/kawaseaoi_AI" target="_blank">🐦 X</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span><span class="tag">06/07 usutakuさん誕生日＆AI木</span></span></div>
+</div><div class="card sora" data-name="臼井拓水（usutaku） " data-events="michikusa bday">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">臼</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">臼井拓水（usutaku）</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">Michikusa株式会社 代表取締役 / AI木曜会創設者</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="https://instagram.com/usutaku_copilot" target="_blank">📷 Instagram</a> <a href="https://x.com/usutaku_channel" target="_blank">🐦 X</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/13 Michikusa×100合同採</span><span class="tag">06/07 usutakuさん誕生日＆AI木</span></span></div>
+</div><div class="card lemon" data-name="akimitsu onodera " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">A</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">Akimitsu Onodera</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card lavender" data-name="azusa akiyama " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">A</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">Azusa Akiyama</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card pink" data-name="chihiro " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">C</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">Chihiro</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card mint" data-name="hiroyuki ishino " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">H</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">HIROYUKI ISHINO</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card sora" data-name="kiryu " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">K</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">Kiryu</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="https://instagram.com/kir___yu" target="_blank">📷 Instagram</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card lemon" data-name="mitsuhito kawada " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">M</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">MITSUHITO KAWADA</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="https://x.com/tagawatagawa2" target="_blank">🐦 X</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card lavender" data-name="miyu " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">M</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">Miyu</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card pink" data-name="nakanishi masataka " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">N</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">Nakanishi Masataka</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card mint" data-name="ryofujii " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">R</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">Ryofujii</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card sora" data-name="tatsuya fujita " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">T</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">Tatsuya Fujita</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="mailto:ytttjf6211@gmail.com">💌 メール</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card lemon" data-name="kanta " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">k</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">kanta</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card lavender" data-name="yuki（前川） " data-events="volley29">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">y</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">yuki（前川）</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">マネーフォワード</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="mailto:maekawa.yuki@moneyforward.co.jp">💌 メール</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/23 第29回バレーしよう会@スポーツ</span></span></div>
+</div><div class="card pink" data-name="おきた " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">お</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">おきた</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card mint" data-name="かかず " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">か</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">かかず</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="https://instagram.com/kakazu_yuki" target="_blank">📷 Instagram</a> <a href="https://x.com/kakazuast" target="_blank">🐦 X</a> <a href="mailto:ekakazuastro@gmail.com">💌 メール</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card sora" data-name="かねごん " data-events="volley29">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">か</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">かねごん</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="mailto:masafumi0710@gmail.com">💌 メール</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/23 第29回バレーしよう会@スポーツ</span></span></div>
+</div><div class="card lemon" data-name="ちんへじゅ " data-events="volley29">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">ち</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">ちんへじゅ</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="mailto:heju.jin0920@outlook.jp">💌 メール</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/23 第29回バレーしよう会@スポーツ</span></span></div>
+</div><div class="card lavender" data-name="なかねん " data-events="volley29">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">な</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">なかねん</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="mailto:ai.baske.1103@gmail.com">💌 メール</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/23 第29回バレーしよう会@スポーツ</span></span></div>
+</div><div class="card pink" data-name="ももこ（旧姓吉澤 ヨッシー） " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">も</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">ももこ（旧姓吉澤 ヨッシー）</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card mint" data-name="ようすけ " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">よ</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">ようすけ</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="mailto:tarakoghibli@gmail.com">💌 メール</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card sora" data-name="カズマ（ズーマ）@水戸の人 " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">カ</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">カズマ（ズーマ）@水戸の人</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card lemon" data-name="ガチャこyuka " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">ガ</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">ガチャこYuka</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="https://x.com/gaishoku_gacha" target="_blank">🐦 X</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card lavender" data-name="デュオンスアンドン " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">デ</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">デュオンスアンドン</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card pink" data-name="亀ちゃん/亀野流 " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">亀</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">亀ちゃん/亀野流</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="https://instagram.com/kamechan_usagi" target="_blank">📷 Instagram</a> <a href="https://x.com/usagi_kamechan" target="_blank">🐦 X</a> <a href="mailto:nagare.0913@gmail.com">💌 メール</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card mint" data-name="凛 " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">凛</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">凛</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="https://instagram.com/rin_restart_jp" target="_blank">📷 Instagram</a> <a href="https://x.com/rin_restart_jp" target="_blank">🐦 X</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card sora" data-name="原拓己 " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">原</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">原拓己</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card lemon" data-name="和田佳樹 " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">和</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">和田佳樹</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card lavender" data-name="大貫真奈 " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">大</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">大貫真奈</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card pink" data-name="山崎ひなせ " data-events="volley29">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">山</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">山崎ひなせ</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="mailto:yamasaki.hinase@gmail.com">💌 メール</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/23 第29回バレーしよう会@スポーツ</span></span></div>
+</div><div class="card mint" data-name="山崎善久 " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">山</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">山崎善久</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card sora" data-name="山本佳野 " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">山</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">山本佳野</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card lemon" data-name="岡村俊男 " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">岡</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">岡村俊男</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card lavender" data-name="松井涼子 " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">松</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">松井涼子</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card pink" data-name="橋本ありさ " data-events="volley29">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">橋</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">橋本ありさ</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="mailto:ay.reckless@gmail.com">💌 メール</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/23 第29回バレーしよう会@スポーツ</span></span></div>
+</div><div class="card mint" data-name="水田 涼介 / zutan " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">水</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">水田 涼介 / zutan</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="mailto:mizutaryosuke@gmail.com">💌 メール</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card sora" data-name="津山隆平 " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">津</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">津山隆平</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card lemon" data-name="浅見基 " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">浅</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">浅見基</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card lavender" data-name="清水慎二郎 " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">清</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">清水慎二郎</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card pink" data-name="渕上竜太朗 " data-events="volley29">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">渕</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">渕上竜太朗</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="mailto:ryuzaki270993@gmail.com">💌 メール</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/23 第29回バレーしよう会@スポーツ</span></span></div>
+</div><div class="card mint" data-name="稲次悠介 " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">稲</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">稲次悠介</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card sora" data-name="芹川 秋人 " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">芹</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">芹川 秋人</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="mailto:mmzukakito@gmail.com">💌 メール</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card lemon" data-name="落合秀峻 " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">落</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">落合秀峻</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card lavender" data-name="藤井 " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">藤</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">藤井</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card pink" data-name="藤岡菜々子 " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">藤</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">藤岡菜々子</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card mint" data-name="西本彩乃 " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">西</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">西本彩乃</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="https://instagram.com/__ange34" target="_blank">📷 Instagram</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card sora" data-name="野村拓未 " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">野</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">野村拓未</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card lemon" data-name="金子 紗也 " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">金</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">金子 紗也</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links"><a href="https://instagram.com/kanek__n" target="_blank">📷 Instagram</a> <a href="https://x.com/majimedesu_" target="_blank">🐦 X</a></span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card lavender" data-name="鈴木信幸 " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">鈴</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">鈴木信幸</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card pink" data-name="鈴木勇也 " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">鈴</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">鈴木勇也</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card mint" data-name="陸人 伊藤 " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">陸</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">陸人 伊藤</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card sora" data-name="陽世 " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">陽</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">陽世</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card lemon" data-name="須貝宏幸 " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">須</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">須貝宏幸</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card lavender" data-name="高階星弥 " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">高</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">高階星弥</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div><div class="card pink" data-name="鶴巻浩平 " data-events="cc">
+<div class="washi"></div>
+<div class="cardhead"><div class="avatar">鶴</div>
+<div><div class="namelabel">なまえ☆</div><div class="name">鶴巻浩平</div></div></div>
+
+<div class="row"><span class="label">おしごと</span><span class="val">ひみつ☆</span></div>
+
+<div class="row"><span class="label">れんらく先</span><span class="val links">また聞いてね♪</span></div>
+<div class="row"><span class="label">出会った日</span><span class="val tags"><span class="tag">05/18 Claude Code語ろう会</span></span></div>
+</div></div>
+<div class="footer">- 書いてくれてありがとう♪ また遊ぼうね -</div>
+</div>
+<script>
+const q=document.getElementById('q'),cards=[...document.querySelectorAll('.card')],
+btns=[...document.querySelectorAll('.fbtn')],count=document.getElementById('count');
+let f=null;
+function apply(){
+  const t=q.value.toLowerCase();let n=0;
+  cards.forEach(c=>{
+    const ok=(!t||c.dataset.name.includes(t))&&(!f||c.dataset.events.split(' ').includes(f));
+    c.classList.toggle('hide',!ok);if(ok)n++;
+  });
+  count.textContent=n+'人';
+}
+q.addEventListener('input',apply);
+btns.forEach(b=>b.addEventListener('click',()=>{
+  if(f===b.dataset.f){f=null;b.classList.remove('on');}
+  else{f=b.dataset.f;btns.forEach(x=>x.classList.remove('on'));b.classList.add('on');}
+  apply();
+}));
+apply();
+</script></body></html>

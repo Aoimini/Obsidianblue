@@ -9,13 +9,19 @@
         <string>/bin/bash</string>
         <string>/Users/aoi/Desktop/Bluenote/Compiled-Vaults/compiled-vault-brain-2026-06-23/_tools/pipeline/daily_update.sh</string>
     </array>
+    <!-- 04:00 primary; 16:00 retry (quota reset by mid-afternoon). The once-per-day guard
+         makes 16:00 skip if 04:00 already produced the summary. -->
     <key>StartCalendarInterval</key>
-    <dict>
-        <key>Hour</key>
-        <integer>4</integer>
-        <key>Minute</key>
-        <integer>0</integer>
-    </dict>
+    <array>
+        <dict>
+            <key>Hour</key><integer>4</integer>
+            <key>Minute</key><integer>0</integer>
+        </dict>
+        <dict>
+            <key>Hour</key><integer>16</integer>
+            <key>Minute</key><integer>0</integer>
+        </dict>
+    </array>
     <!-- Also run at login/boot so a missed 04:00 (Mac off / logged out) is caught up.
          daily_update.sh has a once-per-target-day guard so repeated logins don't re-run it. -->
     <key>RunAtLoad</key>

@@ -19,10 +19,11 @@ last_updated: 2026-06-23
 - 進行中の転職選考: [[Companies/yoyogi-animation-group]]（代アニ）、[[Companies/wantedly]]、[[Companies/fusion]]
 - 転職検討（情報収集）: [[Companies/not-a-hotel]]、[[Companies/voising]]、[[Companies/yutori]]、[[Companies/kurashicom]]、[[Companies/toho]]
 
-## Projects（3）
+## Projects（4）
 - [[Projects/kaisha-daruma-ivs]] — 会社だるま×IVS 動画施策
 - [[Projects/non-no-editorial]] — non-no 記事企画・エディターズ（試泊会 締切6/26）
 - [[Projects/life-balance-app]] — 自作セルフトラッキングツール
+- [[Projects/hansoku-compe-2026]] — 販促コンペ2026（エマール＋モンダミン計20案）
 
 ## Topics（2）
 - [[Topics/health-body-management]] — 健康・体型管理
