@@ -113,7 +113,7 @@ PY
   fi
 else
   echo "No new local/Chrome/Notion input for $TARGET_DATE; skipping AI synthesis."
-  NOTES="$NOTES no_input"
+  NOTES="$NOTES no_input"; AI_SKIPPED_NO_INPUT=1
 fi
 
 # 5b) inject the day's auto-summary into the Obsidian daily note `## 1. MEMO`
@@ -147,9 +147,14 @@ else
 fi
 
 # 8) advance watermark + mark this target day done (so login/boot runs don't repeat it).
-#    Only mark on OK/WARN (a real summary was produced). On RATELIMIT or FAIL we leave it UNmarked
-#    so the next login/boot (or the afternoon retry slot) tries again when quota is back.
+#    Mark done ONLY if the digest was actually produced (ties completion to the real artifact), or
+#    if there was genuinely no input. A timeout / rate-limit / error that produced no summary leaves
+#    the day UNmarked, so the afternoon retry slot or next login retries it.
 date +%Y-%m-%dT%H:%M:%S > "$DATA/last_run"
-case "$STATUS" in OK|WARN) echo "$TARGET_DATE" > "$DATA/last_completed_target";; esac
+if [ -f "$VAULT/Reports/daily-digests/$TARGET_DATE.md" ] || [ "${AI_SKIPPED_NO_INPUT:-0}" = "1" ]; then
+  echo "$TARGET_DATE" > "$DATA/last_completed_target"
+else
+  echo "no digest produced for $TARGET_DATE — leaving UNmarked for retry"
+fi
 find "$INBOX" -type f -mtime +14 -delete 2>/dev/null
 echo "================ done: status=$STATUS notes=$NOTES ================"

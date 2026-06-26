@@ -34,9 +34,11 @@ the pipeline writes into the original vault — and only between those markers.
 ## Inputs captured
 - **Obsidianメモ/日記/音声日記** — any note you add/edit (the daily note's voice diary is read & folded in).
 - **Google検索履歴** — via Chrome's local history (`q=` searches). Digest summarizes *themes*, not raw URLs.
-- **Mac アプリ利用時間** — from `knowledgeC.db` (needs Full Disk Access). iPhone Screen Time does
-  NOT reach the Mac (no local DB), so **iPhone SNS time is manual** — write it in the voice diary
-  (e.g. "Instagram 1h20m") and the AI folds it into the same line.
+- **Mac アプリ利用時間** — from `knowledgeC.db` (needs Full Disk Access).
+- **iPhone SNS Screen Time** — save a Screen Time screenshot into iCloud Drive → `ScreenTime/`.
+  `collect_screentime.py` OCRs the newest one for that day with macOS Vision (local, free) and the
+  AI extracts each SNS app's time into the digest. (No readable iPhone DB exists, hence the screenshot.)
+  You can still just type it in the voice diary instead.
 - **Notion** — your work DBs, once you connect a token.
 - NOT here: Gmail/Calendar/Slack (managed connectors aren't available headless) — do those in a session.
 
@@ -67,8 +69,10 @@ bash _tools/pipeline/setup_notion.sh
 # ...and in Notion, share the target pages/DBs with the integration (••• → Connections).
 
 # Mac app-usage (collect_screentime.py) needs Full Disk Access for /bin/bash (see note below).
-#   NOTE: iPhone Screen Time is NOT available locally on this Mac (verified) — only Mac app usage.
-#   For iPhone SNS time, just type it in your voice diary; the AI folds it into the same line.
+# iPhone SNS Screen Time via screenshot OCR (folder already created at):
+#   ~/Library/Mobile Documents/com~apple~CloudDocs/ScreenTime   (= iCloud Drive → "ScreenTime")
+#   On iPhone: take a Screen Time screenshot → Share → Save to Files → ScreenTime folder
+#   (or make a 1-tap Shortcut "Save to ScreenTime"). The morning run OCRs that day's newest image.
 
 # install the 04:00 schedule
 cp _tools/pipeline/com.vaultbrain.daily.plist ~/Library/LaunchAgents/

@@ -35,10 +35,10 @@
   },
   "finance_policy": "keep amounts and line items; never copy account/card numbers, auth codes, passwords, tokens",
   "batches_completed": 6,
-  "canonical_notes_created": 114,
+  "canonical_notes_created": 115,
   "people_notes": 92,
   "company_notes": 10,
-  "source_traces_created": 17,
+  "source_traces_created": 18,
   "context_packs_created": 1,
   "validation_status": "PASS (0 issues, 137 notes) 2026-06-23",
   "waves_done": {
@@ -55,5 +55,5 @@
     "Optional: per-event granularity from daily notes; 1_Inbox思考メモ -> Topics"
   ],
   "blockers": [],
-  "last_updated": "2026-06-24T-delta-06-23"
+  "last_updated": "2026-06-26T-delta-06-24"
 }

@@ -48,7 +48,7 @@ last_verified: 2026-06-23
 ## Relationship Map
 - 所属/利用: [[Companies/concon-inc]]（Slack org）
 - コミュニティ: [[Companies/ai-mokuyokai]]（創設者 [[People/usutaku-usui-takumi]]）
-- 担当プロジェクト: [[Projects/kaisha-daruma-ivs]]、[[Projects/non-no-editorial]]、[[Projects/life-balance-app]]、[[Projects/hansoku-compe-2026]]
+- 担当プロジェクト: [[Projects/kaisha-daruma-ivs]]、[[Projects/non-no-editorial]]、[[Projects/life-balance-app]]、[[Projects/hansoku-compe-2026]]、[[Projects/lemon-official-site]]
 - 転職（進行中選考）: [[Companies/yoyogi-animation-group]]（代アニ・CRM）/ [[Companies/wantedly]] / [[Companies/fusion]]
 - 転職（情報収集）: [[Companies/not-a-hotel]] / [[Companies/voising]] / [[Companies/yutori]] / [[Companies/kurashicom]] / [[Companies/toho]]（[[Decisions/career-change-2026]]）
 
@@ -58,6 +58,8 @@ last_verified: 2026-06-23
 - **Usutaku誕生日イベント参加（06-07）**: 表参道。母とハングリータイガー（武蔵小杉）でランチ後。
 - **06-23**: Usutakuさんおすすめの「自分の取扱説明書」をObsidianで作成（「記録とるの楽しい」）。昼にジム。InMode美容施術を受けた。販促コンペ2026の企画書（エマール・モンダミン2ブランド計20案）をブラッシュアップ。
   Source: [[Sources/src-auto-2026-06-23]]
+- **06-24**: LEMON公式サイト制作に集中（WORKSセクション構築・番組実績12件＋フード案件4件の画像/ロゴ収集、お問い合わせフォーム・プライバシーポリシー設置）。Codex 1h39m＋Antigravity-ide利用でAIコーディングを実務活用。クレアチンサプリ検討。乃木坂46横アリ公演チケット検索。
+  Source: [[Sources/src-auto-2026-06-24]]
 
 ## Open Loops
 - [[Decisions/career-change-2026]] — 進行中選考（代アニ/Wantedly/FUSION）+ VOISING グッズコラボ面談進行

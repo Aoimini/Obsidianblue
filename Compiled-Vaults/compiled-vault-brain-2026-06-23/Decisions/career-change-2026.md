@@ -46,8 +46,7 @@ sensitivity: personal
   Source: [[Sources/src-auto-2026-06-23]]
 - **企業リサーチ（情報収集段階、6/22）**: HEARTBEATS社（トレカ・業績）、株式会社LEMON（赤坂・フード・コミュニケーションデザイン）を検索。
   Source: [[Sources/src-auto-2026-06-22]]
-- **株式会社LEMON サイト制作（6/23）**: Studio.designで作ったLEMON社サイトを独自サイトに移行する作業を実施。GitHub PAT作成・Antigravity IDE利用。クライアントワークの可能性あり（元vaultに3_Project/lemon-official-site/ディレクトリ存在）。
-  Source: [[Sources/src-auto-2026-06-23]]
+- **株式会社LEMON サイト制作（6/23〜24）**: 独立プロジェクトとして進行中 → [[Projects/lemon-official-site]]。クライアントワーク（元vaultに3_Project/lemon-official-site/ディレクトリ存在）。06-22の企業調査段階から06-23〜24で本格制作に移行。
 
 ## Consequences / 補完が必要なスキル
 データ・数字の言語化（GA4・ファネル）、CRM/MA実務、財務基礎、英語アウトプット（TOEIC: 8/23に900点台目標、現在545）、自己開示・習慣化。

@@ -41,8 +41,10 @@ Fold ONLY the new information from the delta files into the existing canonical n
    **気付き**
    - …（1-2行。日記の内省や、検索/行動から読めるもの）
    **PC・SNS利用**
-   - PC: screentime_<date>.md の Macアプリ利用時間を要約（上位2-4アプリ＋合計）。
-   - SNS: ユーザーが音声日記/メモに iPhone のSNS時間（例「Instagram 1h20m」）を書いていれば記載。無ければ省略。
+   - PC: screentime_<date>.md の「Macアプリ利用」を要約（上位2-4アプリ＋合計）。
+   - SNS: screentime_<date>.md に「スクショOCR」テキストがあれば、そこから iPhone のSNSアプリ名と
+     利用時間を抽出して記載（例: OCRの「Instagram 1時間20分」→「Instagram 1h20m」）。複数あれば上位を列挙。
+     OCRが無ければ、音声日記に書かれたSNS時間を使う。どちらも無ければ省略。
    <!-- memo-block:end -->
    ```
    You may add extra context (Notion動き, double-bracket wikilinks) OUTSIDE the markers. The marker region
