@@ -27,6 +27,10 @@ last_verified: 2026-06-23
 - [[People/endo-aoi]]
 - [[Decisions/career-change-2026]]
 
+## Activity Log
+- **年収リサーチ（06-26）**: 「fusion 中途年収」「希望年収 低く言ってしまった」「転職希望年収 聞かれたら」をChrome検索。社員「馬場」「紅林」も検索（面接前のリサーチか）。年収交渉に関する不安・準備が見られる。note.com「新卒座談会 FUSIONの成長環境」も閲覧。
+  Source: [[Sources/src-auto-2026-06-26]]
+
 ## Provenance
 - [[Sources/src-gcal-2026]] — FUSION準備/返信タスク
 - [[Sources/src-local-tenshoku-md]] — 広告運用軸 ex.FUSION
