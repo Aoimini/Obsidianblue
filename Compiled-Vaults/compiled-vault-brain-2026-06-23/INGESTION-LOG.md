@@ -56,3 +56,6 @@ Resumable log. On any restart, read this file and `state.json` first, then conti
 
 ## 2026-06-26 — Daily Delta: 2026-06-24
 - Ingested local_delta_2026-06-24 (daily note未作成, テンプレにIVS撮影メモ追記, 06-25日記=空), chrome_2026-06-24 (44 searches, 103 pages), screentime_2026-06-24 (5h40m). Created Projects/lemon-official-site (LEMON公式サイト制作). Updated 6 canonical notes (kaisha-daruma-ivs, health-body-management, goals-2026, career-change-2026, endo-aoi, INDEX). Created src-auto-2026-06-24 + daily digest 2026-06-24.
+
+## 2026-06-26 — Daily Delta: 2026-06-25
+- Ingested local_delta_2026-06-25 (daily note MEMO空白), chrome_2026-06-25 (60 searches, 99 pages), screentime_2026-06-25 (7h31m). Updated 4 canonical notes (hansoku-compe-2026, lemon-official-site, career-change-2026, health-body-management). No new entities. Created src-auto-2026-06-25 + daily digest 2026-06-25.

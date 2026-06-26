@@ -28,8 +28,12 @@ last_verified: 2026-06-24
 - **06-24**: WORKSセクションの実績棚卸しに集中。番組制作実績（料理の鉄人、CHEF-1グランプリ、家事ヤロウ!!!、ウワサのお客さま、坂上・指原のつぶれない店、新しいカギ、VS魂、100%アピールちゃん、アイアンシェフ、できたできたできた、宝メシグランプリ、夕食ばんざい）とフードコーディネート実績（JALホテルズ Parfait Amour、西武鉄道52席の至福、スーパースイーツ、Cafe余白）の画像/ロゴ収集。お問い合わせフォーム（Googleフォーム埋め込み/formrun検討）とプライバシーポリシーの設置作業。Codex 1h39m + Antigravity-ide 13m を使用しサイト開発。Michikusa株式会社サイトをベンチマーク参照。
   Source: [[Sources/src-auto-2026-06-24]]
 
-## Tech Stack（推定）
-- ホスティング: 独自サイト（Studio.designからの移行）
+- **06-25**: Cloudflare Workersへのデプロイ作業。お名前.comのDNS管理画面とCloudflare DNS設定画面を行き来し、lemon-akasaka.comのDNSレコード設定を実施。サイトがlemon-official-site.aoiendo05.workers.devで稼働確認済み（トップ・Works・Privacy Policyの3ページ）。GitHubリポジトリからのデプロイパイプライン構築（Cloudflare Workers and Pagesのインストール手順を参照）。
+  Source: [[Sources/src-auto-2026-06-25]]
+
+## Tech Stack
+- ホスティング: **Cloudflare Workers**（lemon-akasaka.com / lemon-official-site.aoiendo05.workers.dev）
+- ドメイン管理: お名前.com → Cloudflare DNS
 - 開発ツール: Antigravity IDE、Codex（AIコーディング）
 - フォーム: Googleフォーム埋め込みまたはformrun
 
