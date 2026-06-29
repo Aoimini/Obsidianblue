@@ -55,6 +55,11 @@ sensitivity: personal
 - **Web入館証（06-26）**: visitor.eforms.jp にアクセス。企業訪問（面接 or 商談）があった可能性。
   Source: [[Sources/src-auto-2026-06-26]]
 
+- **ADK勤務体系調査（06-27）**: ADKの裁量労働制・フレックスタイム制についてOpenWork・公式採用ページ・ワンキャリア転職で調査。残業代の仕組みも検索。ADKが転職候補に浮上した可能性。
+  Source: [[Sources/src-auto-2026-06-27]]
+- **業界比較リサーチ（06-28）**: 「広告代理店 PR業界 エンタメ業界 違い」をChatGPT＋YouTube（業界研究動画・PRと広告代理店の違い解説）＋記事で調査。業界選択の軸を整理中。
+  Source: [[Sources/src-auto-2026-06-28]]
+
 ## Consequences / 補完が必要なスキル
 データ・数字の言語化（GA4・ファネル）、CRM/MA実務、財務基礎、英語アウトプット（TOEIC: 8/23に900点台目標、現在545）、自己開示・習慣化。
 
