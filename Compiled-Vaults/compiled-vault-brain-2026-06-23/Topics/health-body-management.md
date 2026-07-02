@@ -49,6 +49,9 @@ last_verified: 2026-06-23
 - **深夜検索（06-30 02:15）**: 「脳波 うつ病」を深夜に検索。一過性の調査と思われ最小限の記録にとどめる。
   Source: [[Sources/src-auto-2026-06-30]]
 
+- **CrossFit世田谷 / Hyrox 再調査（07-02）**: 「クロスフィット世田谷」「hyrox」（17:13）を再検索。crossfitsetagaya.hacomono.jp（Hacomono予約サイト）および公式 crossfit-setagaya.com を閲覧。06-22・06-25に続く継続的な入会検討。
+  Source: [[Sources/src-auto-2026-07-02]]
+
 ## Sensitivity
 過去にメンタル不調の記述あり。健康・心理は配慮し、本人が話題化したときのみ最小限に扱う。
 
