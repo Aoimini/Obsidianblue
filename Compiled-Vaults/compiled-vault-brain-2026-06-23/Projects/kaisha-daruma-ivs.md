@@ -35,6 +35,8 @@ last_verified: 2026-06-23
   Source: [[Sources/src-auto-2026-06-29]]
 - **IVS機材選定・移動最終確認（06-30）**: DJI Mic Mini / Mic 2 / Mic Mini 2をDJI Storeで比較調査（モバイルレシーバーの要否含む）。IVS会場インタビュー撮影（06-30 18:00〜20:00予定）に向けた機材選定と推定。また、スマートEX同行者のICカード乗車方法（パスモ連携確認）をFAQで確認 — 複数名での新幹線移動手配の最終確認。
   Source: [[Sources/src-auto-2026-06-30]]
+- **IVS当日確認（07-01）**: IVS2026 GUEST GUIDEBOOK（www.ivs.events）を閲覧。EXサービス（shinkansen2.jr-central.co.jp）にも再アクセス。07-01は「企業用撮影（日中）」の予定日に相当 — 当日の最終確認と推定。
+  Source: [[Sources/src-auto-2026-07-01]]
 
 ### IVS撮影スケジュール・ルール（06-24確認, source: 日記テンプレ）
 - **IVS会場用撮影**: 30日 18:00〜20:00

@@ -74,3 +74,6 @@ Resumable log. On any restart, read this file and `state.json` first, then conti
 
 ## 2026-07-01 — Daily Delta: 2026-06-30
 - Ingested local_delta_2026-06-30 (日記未作成, changed files=なし), chrome_2026-06-30 (39 searches, 54 pages), screentime_2026-06-30 (Mac 2h56m). Updated 4 canonical notes (hansoku-compe-2026, kaisha-daruma-ivs, usutaku-usui-takumi, health-body-management). No new entities. Created src-auto-2026-06-30 + daily digest 2026-06-30.
+
+## 2026-07-02 — Daily Delta: 2026-07-01
+- Ingested local_delta_2026-07-01 (日記未作成, changed files=1: 販促/エマール写真.md), chrome_2026-07-01 (39 searches, 46 pages), screentime_2026-07-01 (Mac 1h58m: PowerPoint 1h40m). Updated 4 canonical notes (yoyogi-animation-group, career-change-2026, hansoku-compe-2026, kaisha-daruma-ivs). No new entities. Created src-auto-2026-07-01 + daily digest 2026-07-01.

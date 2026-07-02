@@ -59,6 +59,16 @@ sensitivity: personal
   Source: [[Sources/src-auto-2026-06-27]]
 - **業界比較リサーチ（06-28）**: 「広告代理店 PR業界 エンタメ業界 違い」をChatGPT＋YouTube（業界研究動画・PRと広告代理店の違い解説）＋記事で調査。業界選択の軸を整理中。
   Source: [[Sources/src-auto-2026-06-28]]
+- **代アニ MD職詳細調査（07-01）**: [[Companies/yoyogi-animation-group]] の「グッズ・MD企画メンバー」職種を閲覧後、MD（マーチャンダイジング）職の仕事内容・年収（800〜900万円台求人あり）・昇進・AI活用を集中調査（doda/ミドルの転職/msmd.jp）。「月200時間労働は違法か」も確認（代アニ選考前の労働環境チェックと推定）。エンタメ×MD がCRMと並ぶ検討軸として浮上。
+  Source: [[Sources/src-auto-2026-07-01]]
+- **株式会社ウタイテ調査（07-01）**: 年収情報・新卒採用情報を閲覧（en-ambi.com, gaishishukatsu.com）。情報収集段階。
+  Source: [[Sources/src-auto-2026-07-01]]
+- **株式会社100 再調査（07-01）**: Green転職・doda で中途採用情報（「HubSpot国内NO1パートナー シニアCRMコンサルタント」下北沢）を閲覧。もともと7軸の「IT・CRM/AI掛け合わせ・toC」候補として既記。
+  Source: [[Sources/src-auto-2026-07-01]]
+- **playground 閲覧（07-01）**: herp.careers「スポーツ・エンタメ業界にデジタル革命の波を巻き起こす提案型営業」求人を閲覧。情報収集段階。
+  Source: [[Sources/src-auto-2026-07-01]]
+- **ビズリーチ再アクセス（07-01）**: ハイクラス転職サイトを確認継続。
+  Source: [[Sources/src-auto-2026-07-01]]
 
 ## Consequences / 補完が必要なスキル
 データ・数字の言語化（GA4・ファネル）、CRM/MA実務、財務基礎、英語アウトプット（TOEIC: 8/23に900点台目標、現在545）、自己開示・習慣化。
