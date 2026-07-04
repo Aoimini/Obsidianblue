@@ -6,7 +6,7 @@ tags:
   - health
 source_status: source-backed
 sensitivity: personal
-last_verified: 2026-06-23
+last_verified: 2026-07-03
 ---
 
 # 健康・体型管理
@@ -51,6 +51,9 @@ last_verified: 2026-06-23
 
 - **CrossFit世田谷 / Hyrox 再調査（07-02）**: 「クロスフィット世田谷」「hyrox」（17:13）を再検索。crossfitsetagaya.hacomono.jp（Hacomono予約サイト）および公式 crossfit-setagaya.com を閲覧。06-22・06-25に続く継続的な入会検討。
   Source: [[Sources/src-auto-2026-07-02]]
+
+- **湘南美容外科（SBC）ログイン・脱毛（07-03）**: MySBCマイページにログインし、脱毛関連ページ・予約契約/施術履歴を確認。既知のInMode/ベンスクリニック系とは別クリニックでの脱毛施術の利用・検討と推定。
+  Source: [[Sources/src-auto-2026-07-03]]
 
 ## Sensitivity
 過去にメンタル不調の記述あり。健康・心理は配慮し、本人が話題化したときのみ最小限に扱う。

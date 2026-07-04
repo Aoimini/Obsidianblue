@@ -3,7 +3,7 @@ type: context-pack
 scope: "遠藤葵の2026年転職・キャリア意思決定を支援するタスク"
 tags:
   - context-pack
-last_updated: 2026-06-23
+last_updated: 2026-07-03
 ---
 
 # Context Pack: 2026年 転職・キャリア支援
@@ -17,15 +17,18 @@ last_updated: 2026-06-23
 - 方針: [[Decisions/career-change-2026]] — インハウス／成長企業／裁量あり／年収400万以上。
 - 具体検討先の一例: [[Companies/not-a-hotel]]（HRコンテンツディレクター、志望動機作成済み）。
 
-## Current State（2026-06）
-- **進行中の選考**: [[Companies/yoyogi-animation-group]]（代アニ・CRM/ファンコミュニティ、最有力）、[[Companies/wantedly]]（6/10面接）、[[Companies/fusion]]（広告運用）。
+## Current State（2026-07時点）
+- **進行中の選考**: [[Companies/yoyogi-animation-group]]（代アニ・CRM/MDが並ぶ検討軸、最有力）、[[Companies/wantedly]]（6/10面接）、[[Companies/fusion]]（広告運用）。
+- **新規応募（07-03）**: OpenWork経由でソニーグループ「Sony Acceleration Platform ブランディング・コミュニケーション」求人に応募完了。
 - 情報収集段階: NOT A HOTEL / VOISING / yutori / クラシコム / 東宝。
-- 軸の有力線は「エンタメ × CRM」。
+- 軸の有力線は「エンタメ × CRM/MD」。
+- **オファー交渉リサーチ（07-03）**: 複数内定時の年収交渉・他社条件の伝え方をリサーチ。実際に複数内定が進行中かは未確認。
 - 補完中スキル: データ/数字、CRM/MA、財務基礎、英語（TOEIC 8/23に900目標、現在545）。
 
 ## Open Loops
 - 応募する業界・職種の最終決定
 - [[Companies/not-a-hotel]] への応募可否
+- 複数内定時のオファー交渉方針
 - [[Commitments/goals-2026]] の「転職する」
 
 ## Sources
