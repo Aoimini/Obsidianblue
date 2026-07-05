@@ -6,7 +6,7 @@ tags:
   - health
 source_status: source-backed
 sensitivity: personal
-last_verified: 2026-07-03
+last_verified: 2026-07-04
 ---
 
 # 健康・体型管理
@@ -54,6 +54,9 @@ last_verified: 2026-07-03
 
 - **湘南美容外科（SBC）ログイン・脱毛（07-03）**: MySBCマイページにログインし、脱毛関連ページ・予約契約/施術履歴を確認。既知のInMode/ベンスクリニック系とは別クリニックでの脱毛施術の利用・検討と推定。
   Source: [[Sources/src-auto-2026-07-03]]
+
+- **HYROX千葉 具体調査（07-04）**: 「hyrox 千葉」「hyrox 千葉 レース スケジュール」「hyrox 千葉 レース開始時間」を検索。HYROX千葉・幕張2026（8/7-9開催）の日程・チケット・初心者出場ロードマップのページを閲覧。06-22・07-02の一般的な「hyrox」検索から、参加候補として具体レースの調査に進展。
+  Source: [[Sources/src-auto-2026-07-04]]
 
 ## Sensitivity
 過去にメンタル不調の記述あり。健康・心理は配慮し、本人が話題化したときのみ最小限に扱う。

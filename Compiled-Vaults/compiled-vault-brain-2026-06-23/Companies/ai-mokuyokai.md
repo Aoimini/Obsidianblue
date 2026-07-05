@@ -9,7 +9,7 @@ tags:
   - community
 source_status: source-backed
 sensitivity: normal
-last_verified: 2026-06-23
+last_verified: 2026-07-04
 ---
 
 # AI木曜会 (AI Thursday Club)
@@ -23,6 +23,10 @@ last_verified: 2026-06-23
 
 ## Members
 プロフィール帳に約95名分のプロフィールが存在（元vault 5_Docs/木曜会/プロフィール帳/）。本格パスでPeople化予定。
+
+## Recent activity
+- **Fincsコンテンツ閲覧（07-04）**: AI木曜会のトーク一覧・動画一覧・セレクション一覧（Fincs）と「2026年前半のAIニュースを一気に振り返る会 by 河瀬」を閲覧。過去回の視聴・キャッチアップ。
+  Source: [[Sources/src-auto-2026-07-04]]
 
 ## Related
 - [[People/usutaku-usui-takumi]]（創設者）

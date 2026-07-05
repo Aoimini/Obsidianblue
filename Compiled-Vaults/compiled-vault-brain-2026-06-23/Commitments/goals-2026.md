@@ -7,7 +7,7 @@ tags:
 source_status: source-backed
 status: active
 sensitivity: personal
-last_verified: 2026-06-23
+last_verified: 2026-07-04
 ---
 
 # Commitment: 2026年（25歳）の目標
@@ -36,6 +36,9 @@ last_verified: 2026-06-23
 - **TOEIC学習継続（06-27）**: abceedのTOEICオンライン模試ページを閲覧。
 - **リベシティ調査（06-27）**: リベラルアーツシティ（リベ大コミュニティ）の会費・評判を検索し、経済的自由の宿題リスト・学長マガジンチャットを閲覧。副業月5万目標に関連する情報収集。
   Source: [[Sources/src-auto-2026-06-27]]
+
+- **3Dモデル生成ツール再調査（07-04）**: 「旅行中に撮った写真 3D生成」「旅行写真 3D生成」を検索し、Meshy・Hi3D・mini3D・AI世界モデルMarbleを閲覧。06-26のHi3D/Meshy調査に続き、「3Dプリンター開始」目標に向けた具体用途（旅行写真の3D化）の検討。
+  Source: [[Sources/src-auto-2026-07-04]]
 
 ## Note
 これらは本人の目標・願望であり、達成確約ではない。進捗は元vaultの日次ノート（2_daily/）で追跡されている。
