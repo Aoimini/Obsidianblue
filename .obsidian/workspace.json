@@ -4,43 +4,23 @@
     "type": "split",
     "children": [
       {
-        "id": "f5a0d25f0df5b924",
+        "id": "7f267d2f81999a5b",
         "type": "tabs",
         "children": [
           {
-            "id": "014103b658ad0d9c",
+            "id": "8e21840717248f0b",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "kanban",
               "state": {
-                "file": "販促/アイデア_雪国まいたけ極.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
+                "file": "無題のカンバン.md",
+                "kanbanViewState": {
+                  "kanban-plugin": "board",
+                  "list-collapse": []
                 }
               },
-              "icon": "lucide-file",
-              "title": "アイデア_雪国まいたけ極"
-            }
-          },
-          {
-            "id": "20ab23d887612d2a",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "デジマ_spreads/spread_001.png"
-              },
-              "icon": "lucide-image",
-              "title": "spread_001"
+              "icon": "lucide-trello",
+              "title": "無題のカンバン"
             }
           }
         ]
@@ -63,7 +43,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "自主マス",
+                "query": "単語カード",
                 "matchingCase": true,
                 "explainSearch": true,
                 "collapseAll": false,
@@ -107,8 +87,7 @@
               "title": "Vertical tabs"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "74bdebda5cfaad44",
@@ -129,7 +108,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 239.50124740600586
   },
   "right": {
     "id": "86e4665383d1b40c",
@@ -140,55 +119,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "5d5932f9e8725858",
-            "type": "leaf",
-            "state": {
-              "type": "webviewer",
-              "state": {
-                "url": "https://luma.com/j0vnhfx0?tk=8mFKPG",
-                "title": "AI木曜会_Claude Code語ろう会 · Luma",
-                "mode": "webview"
-              },
-              "icon": "globe-2",
-              "title": "AI木曜会_Claude Code語ろう会 · Luma"
-            }
-          },
-          {
-            "id": "31ac825db7a035b0",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "5_Docs/自主マス/0620自主マス.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "0620自主マス"
-            }
-          },
-          {
             "id": "17d4410b271375c8",
             "type": "leaf",
             "state": {
               "type": "webviewer",
               "state": {
                 "url": "https://calendar.google.com/calendar/u/0/r/day?pli=1",
-                "title": "Google カレンダー - 2026年 6月 24日 (水曜日)、今日",
+                "title": "Google カレンダー - 2026年 7月 6日 (月曜日)、今日",
                 "mode": "webview"
               },
               "icon": "globe-2",
-              "title": "Google カレンダー - 2026年 6月 24日 (水曜日)、今日"
+              "title": "Google カレンダー - 2026年 7月 6日 (月曜日)、今日"
             }
           },
           {
@@ -252,7 +193,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "5_Docs/読書/日本経済地図.md",
+                "file": "無題のカンバン.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -262,7 +203,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "日本経済地図へのバックリンク"
+              "title": "無題のカンバンへのバックリンク"
             }
           },
           {
@@ -293,16 +234,41 @@
               "icon": "lucide-list",
               "title": "04-16-2026のアウトライン"
             }
+          },
+          {
+            "id": "0e1572cf5ceed5f2",
+            "type": "leaf",
+            "state": {
+              "type": "review-queue-list-view",
+              "state": {},
+              "icon": "SpacedRepIcon",
+              "title": "ノートレビューのキュー"
+            }
+          },
+          {
+            "id": "19c7b971ccadca6d",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {},
+              "icon": "spreadsheet",
+              "title": "Advanced Tables"
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 9
       }
     ],
     "direction": "horizontal",
-    "width": 213.5
+    "width": 467.5
   },
   "left-ribbon": {
     "hiddenItems": {
+      "open-gate:家計簿シート": false,
+      "quickadd:QuickAdd": false,
+      "obsidian-spaced-repetition:フラッシュカードのレビュー": false,
+      "obsidian-kanban:カンバンボードを新規作成": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
       "bases:新規ベースを作成": true,
       "markdown-importer:Markdownインポーターを開く": false,
       "zk-prefixer:新規ユニークノートの作成": false,
@@ -314,63 +280,63 @@
       "templates:テンプレートを挿入": false,
       "command-palette:コマンドパレットを開く": false,
       "open-gate:notionメモ": false,
+      "obsidian-kindle-plugin:Sync your Kindle highlights": false,
       "github-sync:Sync with Remote": false,
       "obsidian-git:Open Git source control": false,
-      "obsidian-kindle-plugin:Sync your Kindle highlights": false,
       "obsidian-excalidraw-plugin:New drawing": false,
       "templater-obsidian:Templater": false,
       "omnisearch:Omnisearch": false,
       "obsidian42-brat:BRAT": false
     }
   },
-  "active": "014103b658ad0d9c",
+  "active": "19c7b971ccadca6d",
   "lastOpenFiles": [
-    "販促/アイデア_モンダミン.md",
-    "販促/アイデア_チロルチョコ.md",
-    "販促/アイデア_エマール.md",
-    "2_daily/06-23-2026.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Projects/hansoku-compe-2026.md",
-    "2_daily/06-22-2026.md",
-    "販促/アイデア_雪国まいたけ極.md",
-    "販促/アイデア_チロルチョコ.md.tmp.72053.d85983f78487",
-    "販促/受賞作分析_戦略と傾向.md",
-    "3_Project/lemon-official-site/README.md",
-    "3_Project/lemon-official-site/public/styles.css",
-    "販促/販促コンペ攻略法考察.md",
-    "3_Project/lemon-official-site/public/index.html",
-    "3_Project/lemon-official-site/public/assets/service-kitchen.jpg",
-    "3_Project/lemon-official-site/source/asset-gallery.html",
-    "3_Project/lemon-official-site/public/assets/d220f8518d9658eb.webp",
-    "3_Project/lemon-official-site/public/assets/73be2d85cc147200.webp",
-    "3_Project/lemon-official-site/public/assets/252e83cb682209a1.webp",
-    "3_Project/lemon-official-site/public/assets/7e3275d9a5c7dd19.svg",
-    "3_Project/lemon-official-site/public/assets/17fea7c49dfbb833.webp",
-    "3_Project/lemon-official-site/public/assets/8f4c258d6d89e7d5.svg",
-    "3_Project/lemon-official-site/public/assets/69d8e34edfb3c05e.webp",
-    "3_Project/lemon-official-site/public/assets/eb3cbc3eb61c3f7e.webp",
-    "3_Project/lemon-official-site/public/assets/1b2314284fcfc80c",
-    "3_Project/lemon-official-site/public/assets/b0b0d9ee3f9a8f59.svg",
-    "3_Project/lemon-official-site/public/assets/manifest.json",
-    "3_Project/lemon-official-site/public/assets/219c0b88ea8429cf",
-    "3_Project/lemon-official-site/public/assets/ec761e246df0bce6",
-    "3_Project/lemon-official-site/public/assets/7213306578e19132",
-    "3_Project/lemon-official-site/public/assets/ed276ade5f13553d.css",
-    "販促/モンダミン.md",
-    "5_Docs/転職/Wantedly.md",
-    "カラリア.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Reports/daily-digests/2026-06-22.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Sources/src-auto-2026-06-22.md",
-    "2_daily/06-21-2026.md",
-    "2_daily/01-01-2000.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Reports/daily-digests/2000-01-01.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Reports/auto-update-log.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Reports/daily-digests/2026-06-23.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Sources/src-auto-2026-06-23.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Reports/daily-digests/README.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/_tools/pipeline/README.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/_tools/pipeline/daily_update_prompt.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Maps/people-ai-mokuyokai.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Companies/fusion.md",
+    "無題のカンバン.md",
+    "5_Docs/英語/単語カード.md",
+    "5_Docs/英語/単語メモ.md",
+    "5_Docs/転職/職務経歴書_実績サマリ.md",
+    "5_Docs/転職/転職ボード.md",
+    "🏠 ダッシュボード.md",
+    "2_daily/07-06-2026.md",
+    "5_Docs/英語/0426テスト.md",
+    "5_Docs/転職/転職テーブル.base",
+    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Reports/daily-digests/2026-07-05.md",
+    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Sources/src-auto-2026-07-05.md",
+    "5_Docs/note/note下書き_休職と今の自分.md",
+    "5_Docs/note/gs.md",
+    "5_Docs/non-no/サグラダファミリア_マップ画像制作依頼書.md",
+    "2_daily/07-05-2026.md",
+    "2_daily/07-03-2026.md",
+    "6_Personal/心得.md",
+    "1_Inbox/YouTubeの世界に入って3年で学んだこと.md",
+    "99_Archive/README.md",
+    "2_daily/_review/2026-06_月次レビュー.md",
+    "2_daily/_review",
+    "6_Personal/2026_GOAL.md",
+    "6_Personal/販促/販促会議2026 チロルチョコ.pdf",
+    "6_Personal/販促/販促コンペ攻略法考察.md",
+    "6_Personal/販促/販促コンペ2026エマール.pdf",
+    "6_Personal/販促/販促コンペ2026まいたけ.pdf",
+    "6_Personal/販促/受賞作分析_戦略と傾向.md",
+    "6_Personal/販促/モンダミン最終アイデア.md",
+    "6_Personal/販促/モンダミン.md",
+    "6_Personal/販促/チロルチョコ最終アイデア.md",
+    "6_Personal/販促/エマール写真.md",
+    "6_Personal/販促",
+    "6_Personal/思考",
+    "6_Personal/レシピ",
+    "6_Personal/34ストレングスファインダー.pdf",
+    "6_Personal",
+    "5_Docs/research_survey/preview.png",
+    "Pasted image 20260629120126.png",
+    "Clippings/デジマ_spreads/spread_015.png",
+    "Pasted image 20260702133151.png",
+    "Pasted image 20260629121225.png",
+    "3_Project/会社だるま_IVS/node_modules/jszip/graph.svg",
+    "CleanShot 2026-06-22 at 11.24.55.png",
+    "CleanShot 2026-06-22 at 11.20.42.png",
+    "Clippings/デジマ_spreads/spread_001.png",
+    "outputs/research_survey/preview.png",
     "無題のファイル.canvas"
   ]
 }

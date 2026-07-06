@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>株式会社LEMON　&lt;番組制作・フードコーディネート&gt;</title>
-  <meta name="description" content="株式会社レモンは番組制作からイベントまで幅広くフードコーディネーターによるサポート業務と制作進行を行う会社です。">
-  <meta property="og:title" content="株式会社LEMON　&lt;番組制作・フードコーディネート&gt;">
-  <meta property="og:description" content="株式会社レモンは番組制作からイベントまで幅広くフードコーディネーターによるサポート業務と制作進行を行う会社です。">
+  <title>株式会社LEMON　&lt;番組・動画制作・フードコーディネート&gt;</title>
+  <meta name="description" content="株式会社レモンは番組・動画制作からイベントまで幅広くフードコーディネーターによるサポート業務と制作進行を行う会社です。">
+  <meta property="og:title" content="株式会社LEMON　&lt;番組・動画制作・フードコーディネート&gt;">
+  <meta property="og:description" content="株式会社レモンは番組・動画制作からイベントまで幅広くフードコーディネーターによるサポート業務と制作進行を行う会社です。">
   <meta property="og:image" content="assets/og-image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,12 +18,6 @@
     <a class="wordmark" href="#top" aria-label="LEMON top">
       <img src="assets/45c4332e393767e0.webp" alt="LEMON">
     </a>
-    <nav class="nav" aria-label="Main navigation">
-      <a href="#about">ABOUT</a>
-      <a href="#service">SERVICE</a>
-      <a href="#studio">STUDIO</a>
-      <a href="#access">ACCESS</a>
-    </nav>
     <a class="contact-button" href="#contact">CONTACT</a>
   </header>
 
@@ -38,18 +32,16 @@
       <img class="food food-burger" src="assets/f452355deafb2383.webp" alt="">
       <img class="food food-curry" src="assets/5a29472a3c920957.webp" alt="">
       <img class="main-logo" src="assets/e63d57a801fa722e.webp" alt="LEMON">
-      <a class="scroll-cue" href="#about" aria-label="Scroll to about">
-        <span></span><span></span>
-      </a>
     </section>
 
     <section class="about" id="about">
       <div class="about-inner">
-        <h1>About us..</h1>
+        <p class="section-kicker">私たちについて</p>
+        <h1>About Us</h1>
         <h2>常にフレッシュな想いで、アクセントになる仕事を</h2>
         <p class="lead">LEMONは2人の女性によって2024年に設立された会社です。<br>数々の現場経験で培ったフードコーディネーター業務と<br>幅広い人脈を活かした制作進行の二足の草鞋を履く会社です。</p>
-        <a class="pill-link" href="#company">会社概要</a>
-        <div class="profile-grid">
+        <button class="view-more" type="button" data-toggle-about aria-expanded="false">View More</button>
+        <div class="profile-grid" id="about-profiles" hidden>
           <article class="profile">
             <p class="role">フードコーディネーター</p>
             <h3>兀下 優子 (Yuko Hageshita)</h3>
@@ -69,15 +61,16 @@
     <section class="service" id="service">
       <div class="service-bg"></div>
       <div class="section-inner">
+        <p class="section-kicker">事業内容</p>
         <h2>Service</h2>
         <p class="section-copy">テレビ番組から、SNS関連、イベントまで媒体問わず食に関する業務のサポートを行います。</p>
         <div class="service-list">
           <article class="service-card">
             <img src="assets/d220f8518d9658eb.webp" alt="">
             <div>
-              <h3>番組制作</h3>
+              <h3>番組・動画制作</h3>
               <p>撮影内容・規模・時間・予算にあった企画をご提案させていただきます。</p>
-              <a href="#contact">担当案件 / 実績 はこちら <span>→</span></a>
+              <a href="works.html#program">案件事例 <span>→</span></a>
             </div>
           </article>
           <article class="service-card">
@@ -85,7 +78,7 @@
             <div>
               <h3>レシピ監修</h3>
               <p>現場の環境・顧客ニーズに合わせたレシピをご提供させていただきます。</p>
-              <a href="#contact">担当案件 / 実績 はこちら <span>→</span></a>
+              <a href="works.html#recipe">案件事例 <span>→</span></a>
             </div>
           </article>
           <article class="service-card">
@@ -93,22 +86,38 @@
             <div>
               <h3>イベントサポート</h3>
               <p>イベント規模、日程、予算感などに応じた料理内容をご提案させていただきます。</p>
-              <a href="#contact">担当案件 / 実績 はこちら <span>→</span></a>
+              <a href="works.html#event">案件事例 <span>→</span></a>
             </div>
           </article>
         </div>
       </div>
     </section>
 
+    <section class="news" id="news">
+      <div class="section-inner">
+        <p class="section-kicker">お知らせ</p>
+        <h2>News</h2>
+        <article class="news-card">
+          <time datetime="2026-06-24">2026.06.24</time>
+          <p>コーポレートサイトをオープンしました</p>
+        </article>
+      </div>
+    </section>
+
     <section class="studio" id="studio">
       <div class="section-inner">
+        <p class="section-kicker">撮影施設</p>
         <h2>Studio</h2>
         <div class="studio-panel">
-          <img src="assets/cffd30bde4d3d399.webp" alt="LEMON studio">
+          <div class="studio-photos" aria-label="LEMON studio photos">
+            <img src="assets/studio-kitchen-wide.jpg" alt="LEMON studio kitchen">
+            <img src="assets/studio-kitchen.jpg" alt="LEMON studio sink and stove">
+            <img src="assets/studio-tableware.jpg" alt="LEMON studio tableware">
+          </div>
           <div>
-            <p class="studio-catch">＼料理インサートから小規模撮影まで対応可能／</p>
+            <p class="studio-catch">＼インサート撮影対応可能／</p>
             <p>赤坂駅から徒歩５分、溜池山王駅から徒歩８分の場所にあり、食器、調理道具も完備しています。</p>
-            <a class="studio-link" href="#contact">スタジオレンタル・撮影案件の相談はこちらから</a>
+            <a class="studio-link" href="#contact">スタジオレンタルの相談はこちら</a>
           </div>
         </div>
       </div>
@@ -127,26 +136,50 @@
     </section>
 
     <section class="contact" id="contact">
-      <div class="section-inner contact-grid">
-        <div>
-          <h2>Contact</h2>
-          <a class="top-link" href="#top">TOPに戻る</a>
-          <p class="company">株式会社 LEMON<br>代表　兀下優子（ハゲシタ ユウコ）</p>
+      <div class="section-inner contact-panel">
+        <p class="contact-bg-title" aria-hidden="true">CONTACT</p>
+        <div class="contact-heading">
+          <h2>CONTACT</h2>
+          <p>— お問い合わせ</p>
         </div>
-        <form class="contact-form" action="#" method="post">
-          <label>Full Name <span>*</span><input name="name" required></label>
-          <label>Email <span>*</span><input type="email" name="email" required></label>
-          <label>Select <span>*</span>
-            <select name="topic" required>
-              <option value="">Please Select</option>
-              <option>仕事案件の相談</option>
-              <option>スタジオレンタルの相談</option>
-              <option>その他</option>
-            </select>
+        <div class="contact-intro">
+          <p>お仕事のご依頼やご質問などお気軽にお問い合わせください。</p>
+          <p>内容を確認後、担当者よりご連絡させていただきます。返信メールが迷惑メールフォルダに振り分けられる場合がございますので、数日経っても返信がない場合はご確認ください。</p>
+        </div>
+        <form class="contact-form" action="https://docs.google.com/forms/d/e/1FAIpQLSfRInkn23eLqlQxKyBbJ5Ob9gZqm6r0w9NNK3cm9I-RB_jIlA/formResponse" method="post" target="hidden_iframe" onsubmit="window.lemonFormSubmitted=true">
+          <label>
+            <span class="field-label">会社名</span>
+            <input name="entry.1971247697" autocomplete="organization" placeholder="株式会社 LEMON">
           </label>
-          <label>Message <span>*</span><textarea name="message" rows="6" required></textarea></label>
-          <button type="submit">Send</button>
+          <label>
+            <span class="field-label">氏名 <em>必須</em></span>
+            <input name="entry.1625760064" autocomplete="name" placeholder="山田 太郎" required>
+          </label>
+          <label>
+            <span class="field-label">メールアドレス <em>必須</em></span>
+            <input type="email" name="entry.1146405264" autocomplete="email" placeholder="example@gmail.com" required>
+          </label>
+          <label>
+            <span class="field-label">電話番号 <em>必須</em></span>
+            <input type="tel" name="entry.1232560881" autocomplete="tel" placeholder="09012341234" required>
+          </label>
+          <fieldset>
+            <legend>お問い合せ内容 <em>必須</em></legend>
+            <label><input type="radio" name="entry.2116563505" value="番組・動画制作に関して" required>番組・動画制作に関して</label>
+            <label><input type="radio" name="entry.2116563505" value="レシピ監修に関して">レシピ監修に関して</label>
+            <label><input type="radio" name="entry.2116563505" value="イベントサポートに関して">イベントサポートに関して</label>
+            <label><input type="radio" name="entry.2116563505" value="施設利用に関して">施設利用に関して</label>
+            <label><input type="radio" name="entry.2116563505" value="__other_option__">その他</label>
+          </fieldset>
+          <label>
+            <span class="field-label">お問い合わせ内容</span>
+            <textarea name="entry.2115222511" rows="8" placeholder="お問い合わせ内容をご入力ください"></textarea>
+          </label>
+          <p class="form-policy">送信いただく内容は、<a href="privacy.html">プライバシーポリシー</a>に基づき取り扱います。</p>
+          <button type="submit">送信する</button>
+          <p class="form-success" id="form-success" role="status">送信ありがとうございました。内容を確認後、ご連絡いたします。</p>
         </form>
+        <iframe class="hidden-iframe" name="hidden_iframe" title="Google Forms submission target" onload="if(window.lemonFormSubmitted){document.getElementById('form-success').classList.add('is-visible');}"></iframe>
       </div>
     </section>
   </main>
@@ -156,9 +189,61 @@
     <nav aria-label="Footer navigation">
       <a href="#about">ABOUT</a>
       <a href="#service">SERVICE</a>
+      <a href="works.html">WORKS</a>
+      <a href="#news">NEWS</a>
       <a href="#access">ACCESS</a>
       <a href="#studio">STUDIO</a>
+      <a href="privacy.html">PRIVACY POLICY</a>
     </nav>
   </footer>
+  <nav class="floating-menu" aria-label="Quick navigation" data-floating-menu>
+    <div class="floating-menu__panel" id="floating-menu-panel">
+      <a href="#top">TOP</a>
+      <a href="#about">ABOUT</a>
+      <a href="#service">SERVICE</a>
+      <a href="works.html">WORKS</a>
+      <a href="#contact">CONTACT</a>
+    </div>
+    <button class="floating-menu__button" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="floating-menu-panel" data-menu-toggle>
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+  <script>
+    window.lemonFormSubmitted = false;
+    const aboutToggle = document.querySelector("[data-toggle-about]");
+    const aboutProfiles = document.getElementById("about-profiles");
+
+    aboutToggle?.addEventListener("click", () => {
+      const isOpen = aboutToggle.getAttribute("aria-expanded") === "true";
+      aboutToggle.setAttribute("aria-expanded", String(!isOpen));
+      aboutToggle.textContent = isOpen ? "View More" : "Close";
+      aboutProfiles.hidden = isOpen;
+      document.getElementById("about")?.classList.toggle("is-expanded", !isOpen);
+      if (isOpen) {
+        aboutProfiles.before(aboutToggle);
+      } else {
+        aboutProfiles.after(aboutToggle);
+      }
+    });
+
+    const floatingMenu = document.querySelector("[data-floating-menu]");
+    const menuToggle = document.querySelector("[data-menu-toggle]");
+
+    menuToggle?.addEventListener("click", () => {
+      const isOpen = floatingMenu.classList.toggle("is-open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "メニューを閉じる" : "メニューを開く");
+    });
+
+    floatingMenu?.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        floatingMenu.classList.remove("is-open");
+        menuToggle?.setAttribute("aria-expanded", "false");
+        menuToggle?.setAttribute("aria-label", "メニューを開く");
+      });
+    });
+  </script>
 </body>
 </html>

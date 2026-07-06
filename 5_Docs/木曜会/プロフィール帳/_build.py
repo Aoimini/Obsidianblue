@@ -8,6 +8,17 @@ events, people = data["events"], data["people"]
 def safe(name):
     return re.sub(r'[/\\:*?"<>|｜🍏👍★🪄🐰🐢🏀♨️🫑]', "", name).strip()
 
+def keep_section(path, header, default="-"):
+    """既存ノートの手書きセクションを再生成後も保持する"""
+    if not path.exists():
+        return default
+    text = path.read_text()
+    m = re.search(rf"^## {re.escape(header)}\n(.*?)(?=^## |\Z)", text, re.M | re.S)
+    if not m:
+        return default
+    body = m.group(1).strip()
+    return body if body else default
+
 for p in people:
     ev_lines = "\n".join(
         f"- {events[e]['date']} {events[e]['title']}（{events[e]['type']}）"
@@ -16,7 +27,10 @@ for p in people:
     if p["ig"]: sns.append(f"Instagram: https://instagram.com/{p['ig']}")
     if p["x"]: sns.append(f"X: https://x.com/{p['x']}")
     sns_block = "\n".join(f"  - {s}" for s in sns) if sns else "  -"
-    (DIR / f"{safe(p['name'])}.md").write_text(f"""---
+    note = DIR / f"{safe(p['name'])}.md"
+    next_talk = keep_section(note, "次に話すこと")
+    memo = keep_section(note, "メモ")
+    note.write_text(f"""---
 tags: [人物, AI木曜会]
 ---
 
@@ -33,8 +47,11 @@ tags: [人物, AI木曜会]
 ## 出会ったイベント
 {ev_lines}
 
+## 次に話すこと
+{next_talk}
+
 ## メモ
--
+{memo}
 """)
 
 # HTML生成（平成初期プロフ帳風）

@@ -1,3 +1,9 @@
+---
+ステータス: 
+志望度: 
+次アクション: 
+---
+
 
   
 ![HRコンテンツディレクター](https://herp.careers/v1/notahotelinc/kZFZfpHxaJD6/coverimages/dc2c5eff-0242-4f12-b276-3192b9e8d2d5)

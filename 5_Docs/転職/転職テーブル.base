@@ -1,0 +1,23 @@
+filters:
+  and:
+    - file.inFolder("5_Docs/転職")
+    - file.ext == "md"
+    - file.name != "職務経歴書"
+    - file.name != "職務経歴書_実績サマリ"
+    - file.name != "履歴書"
+    - file.name != "転職ボード"
+properties:
+  note.ステータス:
+    displayName: ステータス
+  note.志望度:
+    displayName: 志望度
+  note.次アクション:
+    displayName: 次アクション
+views:
+  - type: table
+    name: 一覧
+    order:
+      - file.name
+      - ステータス
+      - 志望度
+      - 次アクション
