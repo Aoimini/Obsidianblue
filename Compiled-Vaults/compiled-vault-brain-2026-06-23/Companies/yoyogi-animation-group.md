@@ -12,7 +12,7 @@ tags:
   - entertainment
 source_status: source-backed
 sensitivity: personal
-last_verified: 2026-06-23
+last_verified: 2026-07-07
 ---
 
 # 代々木アニメーショングループ（代アニ）
@@ -54,6 +54,10 @@ last_verified: 2026-06-23
 - 「代アニ密着 仕事 MD」「代アニ密着 仕事」「代々木アニメーション学院」YouTubeを複数視聴 — 社内環境と業務内容の確認。
 - 「代々木アニメーション学院採用」「代々木アニメーション 賞与評価」「代々木アニメーション 評価」を検索（賞与・評価制度まで確認フェーズ）。
   Source: [[Sources/src-auto-2026-07-02]]
+
+## 継続関心の確認（07-07 Chrome）
+- 「代々木アニメーション学院採用」を再検索。07-02の採用媒体横断調査以降も関心継続中。
+  Source: [[Sources/src-auto-2026-07-07]]
 
 ## Open Loops
 - 選考結果・次フェーズ

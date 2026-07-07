@@ -34,8 +34,9 @@ last_updated: 2026-06-23
 - [[Preferences/strengths-finder-gunshi]] — 軍師型 自己モデル
 - [[Preferences/habits-and-values]] — 価値観と日々の習慣
 
-## Procedures（1）
+## Procedures（2）
 - [[Procedures/household-budget-entry]] — 家計簿記入フロー
+- [[Procedures/notion-vs-obsidian-usage]] — Notion/Obsidian使い分け判断フロー
 
 ## Decisions（1）
 - [[Decisions/career-change-2026]] — 2026年転職方針（進行中選考あり）
