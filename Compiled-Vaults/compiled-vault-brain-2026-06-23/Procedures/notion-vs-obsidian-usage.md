@@ -43,9 +43,9 @@ git管理と自動化（launchd・Claude Code）はObsidian側のみ。
 ## テーマ別の「正」（複製を作らない）
 | テーマ | 正（マスター） | 補助 |
 |---|---|---|
-| TOEIC | Notion Aoi-private-「📚 英語学習」 | Obsidian [[単語カード]] |
+| TOEIC | Notion Aoi-private-「📚 英語学習」 | Obsidian「単語カード」 |
 | 家計簿 | Googleスプレッドシート（毎週土曜自動記入, [[Procedures/household-budget-entry]]） | Notion収支記録／Obsidian 5_Docs/収支 |
-| 転職 | Obsidian 5_Docs/転職（[[転職ボード]]・企業ノート・[[転職軸の整理]]） | Notion面接AIノート → 終わったら企業ノートへ転記 |
+| 転職 | Obsidian 5_Docs/転職（「転職ボード」・企業ノート・「転職軸の整理」） | Notion面接AIノート → 終わったら企業ノートへ転記 |
 | タスク | Notion「情報管理」のGTD | Obsidian日記のチェックは習慣だけ |
 | レシピ | Notion「R e c i p e」 | Obsidian 6_Personal/レシピ |
 | 記事の収集 | Obsidian Clippings／1_Inbox | Notionには作らない |
