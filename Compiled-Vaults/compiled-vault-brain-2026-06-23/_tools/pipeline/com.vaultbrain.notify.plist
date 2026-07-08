@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.vaultbrain.notify</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/aoi/Desktop/Bluenote/Compiled-Vaults/compiled-vault-brain-2026-06-23/_tools/pipeline/notify.sh</string>
+    </array>
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key><integer>6</integer>
+        <key>Minute</key><integer>0</integer>
+    </dict>
+    <key>RunAtLoad</key>
+    <false/>
+    <key>StandardOutPath</key>
+    <string>/Users/aoi/.local/share/vaultbrain/logs/notify.out</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/aoi/.local/share/vaultbrain/logs/notify.err</string>
+</dict>
+</plist>

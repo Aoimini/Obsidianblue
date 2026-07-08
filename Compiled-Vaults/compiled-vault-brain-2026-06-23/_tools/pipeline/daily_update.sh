@@ -157,4 +157,9 @@ else
   echo "no digest produced for $TARGET_DATE — leaving UNmarked for retry"
 fi
 find "$INBOX" -type f -mtime +14 -delete 2>/dev/null
+
+# If this is the 05:xx wake-run, keep the Mac awake ~20 min so the 06:00 notification fires
+# before it goes back to sleep (relevant when running from a scheduled wake, lid closed).
+if [ "$(date +%H)" = "05" ]; then caffeinate -u -t 1200 >/dev/null 2>&1 & fi
+
 echo "================ done: status=$STATUS notes=$NOTES ================"

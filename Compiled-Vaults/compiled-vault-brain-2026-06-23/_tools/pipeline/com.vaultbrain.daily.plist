@@ -11,8 +11,14 @@
     </array>
     <!-- 04:00 primary; 16:00 retry (quota reset by mid-afternoon). The once-per-day guard
          makes 16:00 skip if 04:00 already produced the summary. -->
+    <!-- 05:50 primary (right after the pmset wake, so one wake covers generate→06:00 notify);
+         04:00 for always-on Macs; 16:00 retry. The once-per-day guard makes extras skip. -->
     <key>StartCalendarInterval</key>
     <array>
+        <dict>
+            <key>Hour</key><integer>5</integer>
+            <key>Minute</key><integer>50</integer>
+        </dict>
         <dict>
             <key>Hour</key><integer>4</integer>
             <key>Minute</key><integer>0</integer>
