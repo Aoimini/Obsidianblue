@@ -83,7 +83,13 @@ COST="0"
 if [ -n "$HAS_LOCAL" ] || [ "$HAS_NOTION" = "yes" ] || [ "$HAS_CHROME" = "yes" ]; then
   echo "Running AI synthesis (claude -p, $MODEL, acceptEdits, file tools only)..."
   CLAUDE_JSON="$DATA/logs/claude_$TS.json"
-  claude -p "$(cat "$PIPE/daily_update_prompt.md")" \
+  # Prepend an explicit target-date directive (lighter models must not guess from stale inbox files)
+  PROMPT="TARGET DATE: $TARGET_DATE — process ONLY the delta files for this exact date
+(local_delta_$TARGET_DATE.md, chrome_$TARGET_DATE.md, screentime_$TARGET_DATE.md, notion_$TARGET_DATE.md)
+and you MUST write/update Reports/daily-digests/$TARGET_DATE.md with a memo-block. Ignore inbox files of other dates.
+
+$(cat "$PIPE/daily_update_prompt.md")"
+  claude -p "$PROMPT" \
         --model "$MODEL" \
         --permission-mode acceptEdits \
         --allowedTools "Read Edit Write Grep Glob" \
@@ -98,7 +104,8 @@ except Exception:
     print('AI_COST=0; AI_ERR=parse; AI_REASON=no_json'); sys.exit()
 cost=d.get('total_cost_usd',0) or 0
 err=bool(d.get('is_error'))
-res=(d.get('result') or '')[:120].replace('"','').replace('\n',' ')
+import re as _re
+res=_re.sub(r'[\"`$\\\\\n;()]', ' ', (d.get('result') or '')[:120])  # strip eval-breaking chars
 reason='ratelimit' if ('limit' in res.lower()) else ('err' if err else 'ok')
 print(f'AI_COST={cost:.4f}; AI_ERR={int(err)}; AI_REASON={reason}; AI_MSG="{res}"')
 PY

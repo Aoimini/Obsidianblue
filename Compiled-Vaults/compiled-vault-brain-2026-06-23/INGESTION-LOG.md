@@ -87,5 +87,8 @@ Resumable log. On any restart, read this file and `state.json` first, then conti
 ## 2026-07-06 — Daily Delta: 2026-07-05
 - Ingested local_delta_2026-07-05 (daily note MEMO空欄; テンプレ再編で心得/2026_GOALをファイル分離, 撮影メモをプロジェクトへ移動 — いずれも内容は既存記載と同一で構造変更のみ; note下書き「休職と今の自分」が新規一次情報), chrome_2026-07-05 (24 searches, 93 pages), screentime_2026-07-05 (Mac 2h26m: Chrome 1h48m). Updated 3 canonical notes (endo-aoi — 休職確定・社会人3年目・課外活動詳細・note.com発信開始, career-change-2026, health-body-management — ジム予約トラブル). No new entities (川口潤・家電比較は文脈不明のためSource Traceのみに記録). Created src-auto-2026-07-05 + daily digest 2026-07-05.
 
+## 2026-07-08 — Daily Delta: 2026-07-06
+- Ingested local_delta_2026-07-06 (daily note 07-06 MEMO空欄, テンプレのまま), chrome_2026-07-06 (19 searches, 99 pages), screentime_2026-07-06 (Mac 6h51m: Chrome 5h55m / Claude 36m). Canonical-note updates: career-change-2026 に ADK への転職検討の継続示唆を追記。No new entities (ルイ・ロブション/パティスリー・左利きのエレン・/stu・金融リテラシーは文脈不明のためSource Traceのみに記録). Created src-auto-2026-07-06 + daily digest 2026-07-06.
+
 ## 2026-07-08 — Daily Delta: 2026-07-07
 - Ingested local_delta_2026-07-07 (daily note 07-07 MEMO空欄, テンプレのまま), chrome_2026-07-07 (36 searches, ~155-159 pages), screentime_2026-07-07 (Mac 5h23m: Chrome 4h16m / Claude 29m). Updated 2 canonical notes (career-change-2026 — 休職中の転職実務リサーチ・年収交渉継続・代アニ再訪・Iターン検索, yoyogi-animation-group — 継続関心の確認). No new entities (finchi株式会社/LINE検索・工藤綾乃・大島明季絵は文脈不明のためSource Traceのみに記録). Created src-auto-2026-07-07 + daily digest 2026-07-07. Note: canonical-note updates were made in an earlier partial run same day (05:22); this pass completed the digest/log/state.json finalization and confirmed the followup delta (07-08 daily note template creation) added no new substantive information.
