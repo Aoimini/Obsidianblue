@@ -120,6 +120,9 @@ fi
 #     (deterministic + idempotent; creates the note from template if missing; preserves voice diary)
 python3 "$PIPE/inject_memo.py" || { STATUS="WARN"; NOTES="$NOTES inject_failed"; }
 
+# 5c) auto-heal unresolved wikilinks the AI may have created (prevents validate_fail commits)
+python3 "$PIPE/fix_links.py" || true
+
 # 6) validation gate (compiled vault)
 if python3 "$VAULT/_tools/validate.py"; then
   echo "VALIDATE PASS"
