@@ -8,7 +8,8 @@ untouched. Run it AFTER the AI synthesis and BEFORE validate.py.
 """
 import os, re
 
-VAULT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# this file lives at <vault>/_tools/pipeline/fix_links.py → vault root is 3 levels up
+VAULT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 CANON = ("People","Companies","Projects","Products","Topics","Decisions",
          "Commitments","Procedures","Preferences")
 
