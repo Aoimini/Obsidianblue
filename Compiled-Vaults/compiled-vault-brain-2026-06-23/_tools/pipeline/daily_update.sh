@@ -22,7 +22,7 @@ RUNTS="$(date +%Y-%m-%d)"
 TS="$TARGET_DATE"
 mkdir -p "$INBOX" "$DATA/logs"
 LOG="$DATA/logs/run_$RUNTS.log"
-MODEL="${VAULTBRAIN_MODEL:-sonnet}"
+MODEL="${VAULTBRAIN_MODEL:-haiku}"   # light model by default (cost); override VAULTBRAIN_MODEL=sonnet for heavy days
 DRYRUN="${VAULTBRAIN_DRYRUN:-0}"
 
 exec >>"$LOG" 2>&1
