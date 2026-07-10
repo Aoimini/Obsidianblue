@@ -10,13 +10,13 @@
   },
   "checkpoint": "Broad pass done (local full + connectors). Optional deep passes remain (Notion DB rows, Gmail entity-targeted bodies, daily-event granularity).",
   "sources_discovered": {
-    "local_md_total": 738,
-    "local_md_content": 448,
+    "local_md_total": 740,
+    "local_md_content": 450,
     "daily_notes": 234,
     "thursday_club_profiles": 95,
     "docs_md": 125,
     "inbox_md": 27,
-    "projects": 12
+    "projects": 13
   },
   "sources_ingested": {
     "local": 0,
@@ -34,11 +34,11 @@
     "notion": {"account": "Aostu / 2520095291@campus.ouj.ac.jp (放送大学)", "match": false, "approved": true, "note": "user confirmed inclusion 2026-06-23; contains real work data (制作進行/案件管理)"}
   },
   "finance_policy": "keep amounts and line items; never copy account/card numbers, auth codes, passwords, tokens",
-  "batches_completed": 6,
-  "canonical_notes_created": 115,
+  "batches_completed": 7,
+  "canonical_notes_created": 117,
   "people_notes": 92,
   "company_notes": 10,
-  "source_traces_created": 20,
+  "source_traces_created": 21,
   "context_packs_created": 1,
   "validation_status": "PASS (0 issues, 137 notes) 2026-06-23",
   "waves_done": {
@@ -55,5 +55,5 @@
     "Optional: per-event granularity from daily notes; 1_Inbox思考メモ -> Topics"
   ],
   "blockers": [],
-  "last_updated": "2026-07-09T00:00:00Z-delta-07-08-ingested"
+  "last_updated": "2026-07-09T23:59:59Z-delta-07-09-ingested"
 }

@@ -95,3 +95,6 @@ Resumable log. On any restart, read this file and `state.json` first, then conti
 
 ## 2026-07-08 — Daily Delta: 2026-07-04 (backfill)
 - Ingested local_delta_2026-07-04 (daily note 07-04 未作成, changed files=none), chrome_2026-07-04 (6 searches, 40 pages), screentime_2026-07-04 (Mac 2h31m: Chrome 1h28m / Claude 32m / Antigravity-ide 11m / Canva 4m / Obsidian 4m). Updated 4 canonical notes (career-change-2026 — FP基礎知識リサーチ・AI時代キャリア戦略, health-body-management — HYROX千葉2026/8/7-9の具体的開始時間・初心者ロードマップ確認, goals-2026 — 旅行写真3D化目標の継続確認, ai-mokuyokai — Fincsコンテンツ復習). No new entities created (HYROX参加は情報収集段階・文脈不明のためSource Traceのみ). Created src-auto-2026-07-04 (already partially filled) + daily digest 2026-07-04.
+
+## 2026-07-10 — Daily Delta: 2026-07-09
+- Ingested local_delta_2026-07-09 (daily note 07-09 未作成, changed files=2: 3_Project/pomu-search-companion/PomuMenuBar/README.md + design-guideline.md), chrome_2026-07-09 (51 searches, 262 pages), screentime_2026-07-09 (Mac 6h07m: Chrome 4h00m / Antigravity-ide 44m / Claude 36m). Created NEW PROJECT: Projects/pomu-search-companion (ポム & マフィン メニューバーアプリ, SwiftUI, MVP実装完了). Updated Maps/INDEX.md (project count 5→6), state.json (canonical_notes_created 115→117, projects discovered 12→13). Created src-auto-2026-07-09 + daily digest 2026-07-09.
