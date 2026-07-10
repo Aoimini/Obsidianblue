@@ -98,3 +98,6 @@ Resumable log. On any restart, read this file and `state.json` first, then conti
 
 ## 2026-07-10 — Daily Delta: 2026-07-09
 - Ingested local_delta_2026-07-09 (daily note 07-09 未作成, changed files=2: 3_Project/pomu-search-companion/PomuMenuBar/README.md + design-guideline.md), chrome_2026-07-09 (51 searches, 262 pages), screentime_2026-07-09 (Mac 6h07m: Chrome 4h00m / Antigravity-ide 44m / Claude 36m). Created NEW PROJECT: Projects/pomu-search-companion (ポム & マフィン メニューバーアプリ, SwiftUI, MVP実装完了). Updated Maps/INDEX.md (project count 5→6), state.json (canonical_notes_created 115→117, projects discovered 12→13). Created src-auto-2026-07-09 + daily digest 2026-07-09.
+
+## 2026-07-11 — Daily Delta: 2026-07-10
+- Ingested local_delta_2026-07-10 (daily note 07-10 未作成, changed files=8: 5_Docs/転職/FUSION_楠勇真プロファイル.md + 7 clippings articles about Kusunoki Yuma; 2_daily/07-09-2026.md empty), chrome_2026-07-10 (52 searches, 226 pages), screentime_2026-07-10 (Mac 3h05m: Chrome 2h38m / Antigravity-ide 9m / Obsidian 5m). Updated 1 canonical note: Companies/fusion (activity log 2026-07-10: 楠勇真 leadership deep-dive research + compensation/offer prep). No new people entities created (楠勇真 profile exists as synthesis doc 5_Docs/転職/, not yet as standalone canonical note). Created src-auto-2026-07-10 + daily digest 2026-07-10. State.json: last_updated → 2026-07-10T23:59:59Z.
