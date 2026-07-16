@@ -27,6 +27,8 @@ last_verified: 2026-07-04
 ## Recent activity
 - **Fincsコンテンツ閲覧（07-04）**: AI木曜会のトーク一覧・動画一覧・セレクション一覧（Fincs）と「2026年前半のAIニュースを一気に振り返る会 by 河瀬」を閲覧。過去回の視聴・キャッチアップ。
   Source: [[Sources/src-auto-2026-07-04]]
+- **volleyball観戦イベント（07-15）**: ネーションズリーグ男子イタリア戦（会場: 新宿 HUB Shinjuku）。3-2で日本勝利。[[People/endo-aoi]] が複数メンバーを集めて企画。試合観戦後、HUBで飲食。「バレーに興味がなくても試合が面白いと楽しんでもらえる」という本人コメント。会場でのアニメ・エンタメ関心もあり。
+  Source: [[Sources/src-auto-2026-07-15]]
 
 ## Related
 - [[People/usutaku-usui-takumi]]（創設者）
