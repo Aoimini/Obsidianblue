@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="210mm" height="297mm" viewBox="0 0 210 297" font-family="Hiragino Sans, sans-serif">
+<rect x="0" y="0" width="210" height="297" fill="#FFFFFF"/>
+<text x="35" y="20" font-size="3.4" fill="#666666">シート2｜サン・バルトメウ教会（レイヤーA・いちばん奥）</text>
+<g transform="translate(35,30)"><g id="church">
+<path d="M6,95 L6,30 L9,30 L9,12 L15,0 L21,12 L21,30 L24,30 L24,6 L118,6 L118,14 L122,14 L122,8 L132,8 L132,14 L138,14 L138,95 Z" fill="#CBBDA5" stroke="#111111" stroke-width="0.5" stroke-linejoin="round"/>
+<rect x="6" y="30" width="18" height="65" fill="#B7A78D"/>
+<polygon points="15,0 21,12 15,12" fill="#B7A78D"/>
+<path d="M12,52 v-8 a3,3 0 0 1 6,0 v8 z" fill="#453C30"/>
+<rect x="28" y="6" width="4" height="4" fill="#93856C"/>
+<rect x="36" y="6" width="4" height="4" fill="#93856C"/>
+<rect x="44" y="6" width="4" height="4" fill="#93856C"/>
+<rect x="52" y="6" width="4" height="4" fill="#93856C"/>
+<rect x="60" y="6" width="4" height="4" fill="#93856C"/>
+<rect x="68" y="6" width="4" height="4" fill="#93856C"/>
+<rect x="76" y="6" width="4" height="4" fill="#93856C"/>
+<rect x="84" y="6" width="4" height="4" fill="#93856C"/>
+<rect x="92" y="6" width="4" height="4" fill="#93856C"/>
+<rect x="100" y="6" width="4" height="4" fill="#93856C"/>
+<rect x="108" y="6" width="4" height="4" fill="#93856C"/>
+<rect x="24" y="13" width="94" height="14" fill="#B7A78D"/>
+<path d="M29,27 v-7.5 a2.5,2.5 0 0 1 5,0 V27 Z" fill="#453C30"/>
+<path d="M40,27 v-7.5 a2.5,2.5 0 0 1 5,0 V27 Z" fill="#453C30"/>
+<path d="M51,27 v-7.5 a2.5,2.5 0 0 1 5,0 V27 Z" fill="#453C30"/>
+<path d="M62,27 v-7.5 a2.5,2.5 0 0 1 5,0 V27 Z" fill="#453C30"/>
+<path d="M73,27 v-7.5 a2.5,2.5 0 0 1 5,0 V27 Z" fill="#453C30"/>
+<path d="M84,27 v-7.5 a2.5,2.5 0 0 1 5,0 V27 Z" fill="#453C30"/>
+<path d="M95,27 v-7.5 a2.5,2.5 0 0 1 5,0 V27 Z" fill="#453C30"/>
+<path d="M106,27 v-7.5 a2.5,2.5 0 0 1 5,0 V27 Z" fill="#453C30"/>
+<rect x="24" y="27" width="94" height="2" fill="#93856C"/>
+<rect x="24" y="10" width="4" height="85" fill="#B7A78D"/>
+<rect x="114" y="10" width="4" height="85" fill="#B7A78D"/>
+<line x1="28" y1="35" x2="114" y2="35" stroke="#BAA98E" stroke-width="0.3"/>
+<line x1="28" y1="45" x2="114" y2="45" stroke="#BAA98E" stroke-width="0.3"/>
+<line x1="28" y1="58" x2="114" y2="58" stroke="#BAA98E" stroke-width="0.3"/>
+<line x1="28" y1="70" x2="114" y2="70" stroke="#BAA98E" stroke-width="0.3"/>
+<line x1="28" y1="82" x2="114" y2="82" stroke="#BAA98E" stroke-width="0.3"/>
+<circle cx="70" cy="50" r="17" fill="#E7DCC6"/>
+<circle cx="70" cy="50" r="17" fill="none" stroke="#93856C" stroke-width="0.8"/>
+<circle cx="70" cy="50" r="14" fill="#453C30"/>
+<line x1="70" y1="50" x2="83.3" y2="50.0" stroke="#E7DCC6" stroke-width="1"/>
+<line x1="70" y1="50" x2="80.8" y2="57.8" stroke="#E7DCC6" stroke-width="1"/>
+<line x1="70" y1="50" x2="74.1" y2="62.6" stroke="#E7DCC6" stroke-width="1"/>
+<line x1="70" y1="50" x2="65.9" y2="62.6" stroke="#E7DCC6" stroke-width="1"/>
+<line x1="70" y1="50" x2="59.2" y2="57.8" stroke="#E7DCC6" stroke-width="1"/>
+<line x1="70" y1="50" x2="56.7" y2="50.0" stroke="#E7DCC6" stroke-width="1"/>
+<line x1="70" y1="50" x2="59.2" y2="42.2" stroke="#E7DCC6" stroke-width="1"/>
+<line x1="70" y1="50" x2="65.9" y2="37.4" stroke="#E7DCC6" stroke-width="1"/>
+<line x1="70" y1="50" x2="74.1" y2="37.4" stroke="#E7DCC6" stroke-width="1"/>
+<line x1="70" y1="50" x2="80.8" y2="42.2" stroke="#E7DCC6" stroke-width="1"/>
+<circle cx="78.3" cy="52.7" r="2" fill="none" stroke="#E7DCC6" stroke-width="0.8"/>
+<circle cx="75.1" cy="57.1" r="2" fill="none" stroke="#E7DCC6" stroke-width="0.8"/>
+<circle cx="70.0" cy="58.8" r="2" fill="none" stroke="#E7DCC6" stroke-width="0.8"/>
+<circle cx="64.9" cy="57.1" r="2" fill="none" stroke="#E7DCC6" stroke-width="0.8"/>
+<circle cx="61.7" cy="52.7" r="2" fill="none" stroke="#E7DCC6" stroke-width="0.8"/>
+<circle cx="61.7" cy="47.3" r="2" fill="none" stroke="#E7DCC6" stroke-width="0.8"/>
+<circle cx="64.9" cy="42.9" r="2" fill="none" stroke="#E7DCC6" stroke-width="0.8"/>
+<circle cx="70.0" cy="41.2" r="2" fill="none" stroke="#E7DCC6" stroke-width="0.8"/>
+<circle cx="75.1" cy="42.9" r="2" fill="none" stroke="#E7DCC6" stroke-width="0.8"/>
+<circle cx="78.3" cy="47.3" r="2" fill="none" stroke="#E7DCC6" stroke-width="0.8"/>
+<circle cx="70" cy="50" r="3.5" fill="none" stroke="#E7DCC6" stroke-width="1.2"/>
+<circle cx="40" cy="42" r="4" fill="#453C30" stroke="#E7DCC6" stroke-width="0.8"/>
+<line x1="37.8" y1="42" x2="42.2" y2="42" stroke="#E7DCC6" stroke-width="0.7"/>
+<line x1="40" y1="39.8" x2="40" y2="44.2" stroke="#E7DCC6" stroke-width="0.7"/>
+<circle cx="100" cy="42" r="4" fill="#453C30" stroke="#E7DCC6" stroke-width="0.8"/>
+<line x1="97.8" y1="42" x2="102.2" y2="42" stroke="#E7DCC6" stroke-width="0.7"/>
+<line x1="100" y1="39.8" x2="100" y2="44.2" stroke="#E7DCC6" stroke-width="0.7"/>
+<path d="M58,95 L58,80 Q58,68 70,68 Q82,68 82,80 L82,95 Z" fill="#453C30"/>
+<path d="M61,95 L61,81 Q61,71 70,71 Q79,71 79,81 L79,95 Z" fill="none" stroke="#E7DCC6" stroke-width="0.8"/>
+<rect x="118" y="14" width="4" height="81" fill="#B7A78D"/>
+<rect x="121" y="14" width="4" height="4" fill="#93856C"/>
+<rect x="129" y="14" width="4" height="4" fill="#93856C"/>
+<path d="M124,42 v-9 a2,2 0 0 1 4,0 v9 z" fill="#453C30"/>
+<path d="M130,42 v-9 a2,2 0 0 1 4,0 v9 z" fill="#453C30"/>
+<line x1="127" y1="8.5" x2="127" y2="13.5" stroke="#93856C" stroke-width="1.2"/>
+<line x1="124.5" y1="10" x2="129.5" y2="10" stroke="#93856C" stroke-width="1.2"/>
+<line x1="120" y1="52" x2="136" y2="52" stroke="#BAA98E" stroke-width="0.3"/>
+<line x1="120" y1="64" x2="136" y2="64" stroke="#BAA98E" stroke-width="0.3"/>
+<line x1="120" y1="76" x2="136" y2="76" stroke="#BAA98E" stroke-width="0.3"/>
+<line x1="120" y1="86" x2="136" y2="86" stroke="#BAA98E" stroke-width="0.3"/>
+</g>
+<rect x="32" y="95" width="20" height="8" fill="#F4EFE4" stroke="#111111" stroke-width="0.5"/>
+<line x1="32" y1="95" x2="52" y2="95" stroke="#1E6FD9" stroke-width="0.5" stroke-dasharray="2.5,1.5"/>
+<rect x="96" y="95" width="20" height="8" fill="#F4EFE4" stroke="#111111" stroke-width="0.5"/>
+<line x1="96" y1="95" x2="116" y2="95" stroke="#1E6FD9" stroke-width="0.5" stroke-dasharray="2.5,1.5"/>
+</g>
+<text x="35" y="145" font-size="3" fill="#666666">足タブを谷折りし、台座の赤スリットAに差し込む</text>
+
+</svg>

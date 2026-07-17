@@ -1,0 +1,21 @@
+version: "Apple Swift version 6.1.2 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)"
+options: "d6620670e18bf487f541111972ee62aa9ac9924acb64ebb1f78a626b61c4ef6b"
+build_start_time: [1783724964, 177864000]
+build_end_time: [1783724965, 505109000]
+inputs:
+  "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/App.swift": [1783724941, 496895295]
+  "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Logic/IdleActivityMonitor.swift": [1783595902, 232811593]
+  "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Logic/MoodThresholds.swift": [1783692095, 869673500]
+  "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Models/Copy.swift": [1783589416, 180595871]
+  "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Models/PomuMood.swift": [1783692067, 55814303]
+  ? "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Overlay/OverlayWindowController.swift"
+  : [1783595292, 870482687]
+  "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/State/AppState.swift": [1783692090, 546904901]
+  "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/CompanionOverlayView.swift": [1783595282, 663055657]
+  "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/CompanionSprites.swift": [1783595254, 339232397]
+  "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/MenuBarPomuIcon.swift": [1783703358, 903261265]
+  "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/MenuBarPopoverView.swift": [1783692127, 216865123]
+  "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/MuffinSpriteView.swift": [1783692046, 315694533]
+  "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/Palette.swift": [1783593667, 178560071]
+  "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/PixelGridView.swift": [1783594985, 528425364]
+  "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/PomuSpriteView.swift": [1783692040, 390916001]

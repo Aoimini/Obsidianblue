@@ -1,0 +1,740 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ポム & マフィン メニューバー常駐プロトタイプ</title>
+  <style>
+    :root {
+      --cream: #fff2a8;
+      --cream-shadow: #f6d96b;
+      --milk: #fff9ef;
+      --caramel: #b7835c;
+      --choco: #2a1b18;
+      --pudding: #ffe39a;
+      --pudding-shadow: #f2c567;
+      --pudding-caramel: #8b5a2b;
+      --peach: #f7b7a6;
+      --bubble: #fffdf6;
+      --orange: #ffb45e;
+      --sky: #8ecae6;
+      --mint: #9bd7bd;
+      --screen: #f3ead2;
+      --menubar: rgba(255, 255, 255, 0.82);
+      --shadow: rgba(42, 27, 24, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      background:
+        radial-gradient(circle at 16% 24%, rgba(142, 202, 230, 0.42), transparent 26%),
+        radial-gradient(circle at 78% 72%, rgba(155, 215, 189, 0.38), transparent 28%),
+        var(--screen);
+      color: var(--choco);
+      font-family: ui-rounded, "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
+      overflow: hidden;
+    }
+
+    .desktop {
+      position: relative;
+      min-height: 100vh;
+      padding-top: 32px;
+    }
+
+    .menubar {
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 12px;
+      border-bottom: 1px solid rgba(42, 27, 24, 0.16);
+      background: var(--menubar);
+      backdrop-filter: blur(16px);
+      font-size: 13px;
+      font-weight: 700;
+      z-index: 10;
+    }
+
+    .menu-left,
+    .menu-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .menu-left span,
+    .menu-right span {
+      white-space: nowrap;
+    }
+
+    .pomu-menu-item {
+      position: relative;
+      width: 30px;
+      height: 26px;
+      display: grid;
+      place-items: center;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.42);
+      cursor: default;
+    }
+
+    .mini-pomu {
+      position: relative;
+      width: 22px;
+      height: 22px;
+      transform-origin: 50% 85%;
+      image-rendering: pixelated;
+    }
+
+    .state-idle .mini-pomu {
+      animation: idle-blink 3.8s steps(2) infinite;
+    }
+
+    .state-searching .mini-pomu {
+      animation: menu-walk 1.2s steps(4) infinite;
+    }
+
+    .state-looping .mini-pomu {
+      animation: menu-puri 720ms steps(6) infinite;
+    }
+
+    .state-stuck .mini-pomu {
+      animation: menu-stuck 900ms steps(2) infinite;
+    }
+
+    .state-resting .mini-pomu {
+      transform: rotate(-7deg) translateY(2px);
+      opacity: 0.72;
+    }
+
+    .mini-pomu-body {
+      position: absolute;
+      left: 4px;
+      top: 5px;
+      width: 15px;
+      height: 16px;
+      border: 2px solid var(--choco);
+      background: var(--cream);
+      box-shadow: inset -2px -2px 0 var(--cream-shadow);
+      clip-path: polygon(20% 0, 80% 0, 100% 24%, 92% 86%, 66% 100%, 24% 96%, 0 72%, 2% 24%);
+    }
+
+    .mini-ear {
+      position: absolute;
+      top: 7px;
+      width: 7px;
+      height: 9px;
+      border: 2px solid var(--choco);
+      background: var(--cream);
+      z-index: -1;
+    }
+
+    .mini-ear.left {
+      left: 0;
+      transform: rotate(14deg);
+    }
+
+    .mini-ear.right {
+      right: 0;
+      transform: rotate(-14deg);
+    }
+
+    .mini-hat {
+      position: absolute;
+      left: 6.5px;
+      top: -1px;
+      width: 9px;
+      height: 6px;
+      border: 2px solid var(--choco);
+      background: linear-gradient(var(--pudding), var(--pudding-shadow));
+      clip-path: polygon(5% 0, 95% 0, 80% 100%, 20% 100%);
+      z-index: 2;
+    }
+
+    .mini-hat::before {
+      content: "";
+      position: absolute;
+      left: 1px;
+      top: -3px;
+      width: 3px;
+      height: 4px;
+      background: var(--pudding-caramel);
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+    }
+
+    .mini-hat::after {
+      content: "";
+      position: absolute;
+      right: 1px;
+      top: -3px;
+      width: 3px;
+      height: 4px;
+      background: var(--pudding-caramel);
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+    }
+
+    .mini-eye {
+      position: absolute;
+      top: 11px;
+      width: 2px;
+      height: 2px;
+      background: var(--choco);
+      z-index: 3;
+    }
+
+    .mini-eye.left {
+      left: 8px;
+    }
+
+    .mini-eye.right {
+      left: 14px;
+    }
+
+    .mini-mouth {
+      position: absolute;
+      left: 10px;
+      top: 14px;
+      width: 5px;
+      height: 3px;
+      border-bottom: 2px solid var(--choco);
+      z-index: 3;
+    }
+
+    .popover {
+      position: fixed;
+      top: 38px;
+      right: 18px;
+      width: min(340px, calc(100vw - 28px));
+      border: 3px solid var(--choco);
+      background: #fffdf6;
+      box-shadow: 7px 7px 0 var(--shadow);
+      z-index: 9;
+    }
+
+    .popover::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      right: 72px;
+      width: 16px;
+      height: 16px;
+      border-left: 3px solid var(--choco);
+      border-top: 3px solid var(--choco);
+      background: #fffdf6;
+      transform: rotate(45deg);
+    }
+
+    .popover-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border-bottom: 3px solid var(--choco);
+      background: #fff4c2;
+    }
+
+    .status-title {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.2;
+    }
+
+    .status-pill {
+      padding: 4px 8px;
+      border: 2px solid var(--choco);
+      background: var(--orange);
+      font-size: 12px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .popover-body {
+      display: grid;
+      grid-template-columns: 112px 1fr;
+      gap: 12px;
+      padding: 14px;
+    }
+
+    .pixel-stage {
+      position: relative;
+      width: 112px;
+      height: 108px;
+    }
+
+    .pomu {
+      position: absolute;
+      left: 4px;
+      bottom: 0;
+      width: 74px;
+      height: 88px;
+      transform-origin: 50% 85%;
+      animation: popover-puri 840ms steps(6) infinite;
+    }
+
+    .pomu-body {
+      position: absolute;
+      left: 9px;
+      bottom: 0;
+      width: 58px;
+      height: 68px;
+      border: 3px solid var(--choco);
+      background: var(--cream);
+      box-shadow: inset -6px -6px 0 var(--cream-shadow);
+      clip-path: polygon(18% 6%, 82% 6%, 96% 27%, 92% 78%, 72% 100%, 28% 96%, 7% 75%, 5% 28%);
+    }
+
+    .ear {
+      position: absolute;
+      top: 22px;
+      width: 23px;
+      height: 33px;
+      border: 3px solid var(--choco);
+      background: var(--cream);
+      z-index: -1;
+    }
+
+    .ear.left {
+      left: 0;
+      transform: rotate(15deg);
+    }
+
+    .ear.right {
+      right: 0;
+      transform: rotate(-15deg);
+    }
+
+    .hat {
+      position: absolute;
+      left: 24px;
+      top: 8px;
+      width: 26px;
+      height: 16px;
+      border: 3px solid var(--choco);
+      background: linear-gradient(var(--pudding), var(--pudding-shadow));
+      clip-path: polygon(5% 0, 95% 0, 78% 100%, 22% 100%);
+      z-index: 3;
+    }
+
+    .hat::before,
+    .hat::after {
+      content: "";
+      position: absolute;
+      top: -6px;
+      width: 5px;
+      height: 8px;
+      background: var(--pudding-caramel);
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+    }
+
+    .hat::before {
+      left: 5px;
+    }
+
+    .hat::after {
+      right: 5px;
+    }
+
+    .face {
+      position: absolute;
+      left: 24px;
+      top: 40px;
+      width: 30px;
+      height: 24px;
+      z-index: 4;
+    }
+
+    .eye {
+      position: absolute;
+      top: 2px;
+      width: 4px;
+      height: 4px;
+      background: var(--choco);
+    }
+
+    .eye.left {
+      left: 3px;
+    }
+
+    .eye.right {
+      right: 3px;
+    }
+
+    .mouth {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      width: 12px;
+      height: 7px;
+      border-bottom: 3px solid var(--choco);
+    }
+
+    .arm {
+      position: absolute;
+      top: 54px;
+      width: 12px;
+      height: 22px;
+      border: 3px solid var(--choco);
+      background: var(--cream);
+      z-index: 3;
+    }
+
+    .arm.left {
+      left: 12px;
+      transform: rotate(14deg);
+    }
+
+    .arm.right {
+      right: 13px;
+      transform: rotate(-14deg);
+    }
+
+    .muffin {
+      position: absolute;
+      right: 4px;
+      bottom: 0;
+      width: 36px;
+      height: 48px;
+      animation: muffin-hop 840ms steps(4) infinite;
+    }
+
+    .muffin-body {
+      position: absolute;
+      left: 4px;
+      bottom: 0;
+      width: 28px;
+      height: 38px;
+      border: 3px solid var(--choco);
+      background: var(--milk);
+      box-shadow: inset -4px -4px 0 #f0dfce;
+      clip-path: polygon(13% 16%, 44% 3%, 82% 13%, 96% 38%, 88% 88%, 62% 100%, 24% 96%, 3% 70%, 6% 34%);
+    }
+
+    .muffin-spot {
+      position: absolute;
+      right: 2px;
+      top: 8px;
+      width: 13px;
+      height: 10px;
+      border: 3px solid var(--choco);
+      background: var(--caramel);
+    }
+
+    .muffin-eye {
+      position: absolute;
+      top: 22px;
+      width: 3px;
+      height: 3px;
+      background: var(--choco);
+      z-index: 4;
+    }
+
+    .muffin-eye.left {
+      left: 13px;
+    }
+
+    .muffin-eye.right {
+      right: 10px;
+    }
+
+    .muffin-mouth {
+      position: absolute;
+      left: 17px;
+      top: 28px;
+      width: 8px;
+      height: 8px;
+      border-left: 3px solid var(--choco);
+      border-bottom: 3px solid var(--choco);
+      transform: rotate(-45deg);
+      z-index: 4;
+    }
+
+    .message {
+      display: grid;
+      gap: 8px;
+      align-content: start;
+    }
+
+    .bubble {
+      position: relative;
+      padding: 10px 12px;
+      border: 3px solid var(--choco);
+      background: var(--bubble);
+      font-size: 17px;
+      font-weight: 900;
+      line-height: 1.35;
+    }
+
+    .subline {
+      margin: 0;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      padding: 0 14px 14px;
+    }
+
+    .action {
+      min-height: 40px;
+      padding: 8px 6px;
+      border: 3px solid var(--choco);
+      background: white;
+      color: var(--choco);
+      box-shadow: 3px 3px 0 var(--shadow);
+      font: inherit;
+      font-size: 12px;
+      font-weight: 900;
+      line-height: 1.15;
+    }
+
+    .action:nth-child(1) {
+      background: var(--mint);
+    }
+
+    .action:nth-child(2) {
+      background: var(--orange);
+    }
+
+    .action:nth-child(3) {
+      background: var(--sky);
+    }
+
+    .state-list {
+      position: absolute;
+      left: 28px;
+      bottom: 28px;
+      width: min(420px, calc(100vw - 56px));
+      display: grid;
+      gap: 8px;
+    }
+
+    .state-row {
+      display: grid;
+      grid-template-columns: 88px 1fr 64px;
+      gap: 8px;
+      align-items: center;
+      padding: 10px 12px;
+      border: 3px solid var(--choco);
+      background: rgba(255, 253, 246, 0.82);
+      box-shadow: 4px 4px 0 var(--shadow);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border: 2px solid var(--choco);
+      background: var(--cream);
+    }
+
+    .state-name {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .active-row {
+      background: #fff4c2;
+    }
+
+    .caption {
+      position: absolute;
+      left: 28px;
+      top: 70px;
+      max-width: 460px;
+      margin: 0;
+      padding: 14px 16px;
+      border: 3px solid var(--choco);
+      background: rgba(255, 253, 246, 0.86);
+      box-shadow: 5px 5px 0 var(--shadow);
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1.55;
+    }
+
+    @keyframes idle-blink {
+      0%, 92%, 100% { opacity: 1; }
+      94%, 98% { opacity: 0.7; }
+    }
+
+    @keyframes menu-walk {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(2px); }
+    }
+
+    @keyframes menu-puri {
+      0% { transform: translateX(0) rotate(0deg) scaleX(1); }
+      16% { transform: translateX(-1px) rotate(-4deg) scaleX(1.05); }
+      33% { transform: translateX(1px) rotate(4deg) scaleX(0.95); }
+      50% { transform: translateX(-1px) rotate(-8deg) scaleX(1.08); }
+      66% { transform: translateX(1px) rotate(8deg) scaleX(0.92); }
+      100% { transform: translateX(0) rotate(0deg) scaleX(1); }
+    }
+
+    @keyframes menu-stuck {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.52; transform: scale(1.1); }
+    }
+
+    @keyframes popover-puri {
+      0% { transform: translateX(0) rotate(0deg) scaleX(1); }
+      16% { transform: translateX(-2px) rotate(-3deg) scaleX(1.03); }
+      33% { transform: translateX(2px) rotate(3deg) scaleX(0.97); }
+      50% { transform: translateX(-1px) rotate(-7deg) scaleX(1.06); }
+      66% { transform: translateX(1px) rotate(7deg) scaleX(0.94); }
+      100% { transform: translateX(0) rotate(0deg) scaleX(1); }
+    }
+
+    @keyframes muffin-hop {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    @media (max-width: 680px) {
+      .menu-left span:not(:first-child),
+      .menu-right span:not(:last-child):not(.time) {
+        display: none;
+      }
+
+      .caption {
+        left: 16px;
+        right: 16px;
+        top: 56px;
+        max-width: none;
+      }
+
+      .popover {
+        right: 14px;
+        top: 38px;
+      }
+
+      .state-list {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        width: auto;
+      }
+
+      .state-row {
+        grid-template-columns: 88px 1fr;
+      }
+
+      .state-row span:last-child {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="desktop">
+    <nav class="menubar" aria-label="macOS風メニューバー">
+      <div class="menu-left">
+        <span>Pom</span>
+        <span>File</span>
+        <span>View</span>
+      </div>
+      <div class="menu-right">
+        <span>Wi-Fi</span>
+        <span>Sound</span>
+        <div class="pomu-menu-item state-looping" aria-label="ポム: Looping">
+          <div class="mini-pomu">
+            <div class="mini-ear left"></div>
+            <div class="mini-ear right"></div>
+            <div class="mini-pomu-body"></div>
+            <div class="mini-hat"></div>
+            <div class="mini-eye left"></div>
+            <div class="mini-eye right"></div>
+            <div class="mini-mouth"></div>
+          </div>
+        </div>
+        <span class="time">22:18</span>
+      </div>
+    </nav>
+
+    <p class="caption">
+      メニューバーのポムが状態を小さく表示する。Loopingではぷりぷり踊り、クリックするとマフィンと選択肢が出る。
+    </p>
+
+    <section class="popover" aria-label="ポムのポップオーバー">
+      <header class="popover-header">
+        <h1 class="status-title">検索ループかも</h1>
+        <span class="status-pill">Looping</span>
+      </header>
+
+      <div class="popover-body">
+        <div class="pixel-stage" aria-label="ポムとマフィン">
+          <div class="pomu">
+            <div class="ear left"></div>
+            <div class="ear right"></div>
+            <div class="pomu-body"></div>
+            <div class="hat"></div>
+            <div class="arm left"></div>
+            <div class="arm right"></div>
+            <div class="face">
+              <div class="eye left"></div>
+              <div class="eye right"></div>
+              <div class="mouth"></div>
+            </div>
+          </div>
+
+          <div class="muffin">
+            <div class="muffin-body"></div>
+            <div class="muffin-spot"></div>
+            <div class="muffin-eye left"></div>
+            <div class="muffin-eye right"></div>
+            <div class="muffin-mouth"></div>
+          </div>
+        </div>
+
+        <div class="message">
+          <div class="bubble">いったん<br>ぷりっと休も</div>
+          <p class="subline">マフィン: しんこきゅでちゅ</p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="action">10秒<br>休む</button>
+        <button class="action">あと<br>1ページ</button>
+        <button class="action">メモ<br>する</button>
+      </div>
+    </section>
+
+    <section class="state-list" aria-label="状態一覧">
+      <div class="state-row">
+        <span class="state-name"><span class="dot"></span>Idle</span>
+        <span>静止。対応不要。</span>
+        <span>最小</span>
+      </div>
+      <div class="state-row">
+        <span class="state-name"><span class="dot"></span>Searching</span>
+        <span>ゆっくり揺れる。調べもの中。</span>
+        <span>弱</span>
+      </div>
+      <div class="state-row active-row">
+        <span class="state-name"><span class="dot"></span>Looping</span>
+        <span>ぷりぷり踊る。同じ検索が増えてきた。</span>
+        <span>中</span>
+      </div>
+      <div class="state-row">
+        <span class="state-name"><span class="dot"></span>Stuck</span>
+        <span>ぽむぽむ点滅。長時間抜けられていない。</span>
+        <span>強</span>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

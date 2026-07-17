@@ -1,0 +1,490 @@
+{
+  "builtTestProducts" : [
+
+  ],
+  "copyCommands" : {
+
+  },
+  "explicitTargetDependencyImportCheckingMode" : {
+    "none" : {
+
+    }
+  },
+  "generatedSourceTargetSet" : [
+
+  ],
+  "pluginDescriptions" : [
+
+  ],
+  "swiftCommands" : {
+    "C.PomuMenuBar-arm64-apple-macosx15.0-debug.module" : {
+      "executable" : "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "fileList" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/sources",
+      "importPath" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/App.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Logic/IdleActivityMonitor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Logic/MoodThresholds.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Models/Copy.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Models/PomuMood.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Overlay/OverlayWindowController.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/State/AppState.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/CompanionOverlayView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/CompanionSprites.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/MenuBarPomuIcon.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/MenuBarPopoverView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/MuffinSpriteView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/Palette.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/PixelGridView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/PomuSpriteView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/sources"
+        }
+      ],
+      "isLibrary" : false,
+      "moduleName" : "PomuMenuBar",
+      "moduleOutputPath" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/Modules/PomuMenuBar.swiftmodule",
+      "objects" : [
+        "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/App.swift.o",
+        "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/IdleActivityMonitor.swift.o",
+        "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/MoodThresholds.swift.o",
+        "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/Copy.swift.o",
+        "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/PomuMood.swift.o",
+        "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/OverlayWindowController.swift.o",
+        "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/AppState.swift.o",
+        "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/CompanionOverlayView.swift.o",
+        "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/CompanionSprites.swift.o",
+        "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/MenuBarPomuIcon.swift.o",
+        "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/MenuBarPopoverView.swift.o",
+        "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/MuffinSpriteView.swift.o",
+        "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/Palette.swift.o",
+        "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/PixelGridView.swift.o",
+        "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/PomuSpriteView.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx13.0",
+        "-enable-batch-mode",
+        "-index-store-path",
+        "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j10",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-module-cache-path",
+        "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-Xfrontend",
+        "-entry-point-function-name",
+        "-Xfrontend",
+        "PomuMenuBar_main",
+        "-swift-version",
+        "5",
+        "-F",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-sdk",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "pomumenubar"
+      ],
+      "outputFileMapPath" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/App.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/IdleActivityMonitor.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/MoodThresholds.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/Copy.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/PomuMood.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/OverlayWindowController.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/AppState.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/CompanionOverlayView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/CompanionSprites.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/MenuBarPomuIcon.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/MenuBarPopoverView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/MuffinSpriteView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/Palette.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/PixelGridView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/PomuSpriteView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/Modules/PomuMenuBar.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/App.swift",
+        "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Logic/IdleActivityMonitor.swift",
+        "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Logic/MoodThresholds.swift",
+        "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Models/Copy.swift",
+        "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Models/PomuMood.swift",
+        "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Overlay/OverlayWindowController.swift",
+        "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/State/AppState.swift",
+        "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/CompanionOverlayView.swift",
+        "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/CompanionSprites.swift",
+        "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/MenuBarPomuIcon.swift",
+        "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/MenuBarPopoverView.swift",
+        "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/MuffinSpriteView.swift",
+        "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/Palette.swift",
+        "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/PixelGridView.swift",
+        "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/PomuSpriteView.swift"
+      ],
+      "tempsPath" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build",
+      "wholeModuleOptimization" : false
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "swiftTargetScanArgs" : {
+    "PomuMenuBar" : [
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "-module-name",
+      "PomuMenuBar",
+      "-package-name",
+      "pomumenubar",
+      "-incremental",
+      "-c",
+      "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/App.swift",
+      "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Logic/IdleActivityMonitor.swift",
+      "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Logic/MoodThresholds.swift",
+      "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Models/Copy.swift",
+      "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Models/PomuMood.swift",
+      "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Overlay/OverlayWindowController.swift",
+      "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/State/AppState.swift",
+      "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/CompanionOverlayView.swift",
+      "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/CompanionSprites.swift",
+      "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/MenuBarPomuIcon.swift",
+      "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/MenuBarPopoverView.swift",
+      "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/MuffinSpriteView.swift",
+      "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/Palette.swift",
+      "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/PixelGridView.swift",
+      "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/PomuSpriteView.swift",
+      "-I",
+      "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx13.0",
+      "-enable-batch-mode",
+      "-index-store-path",
+      "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j10",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-module-cache-path",
+      "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-Xfrontend",
+      "-entry-point-function-name",
+      "-Xfrontend",
+      "PomuMenuBar_main",
+      "-swift-version",
+      "5",
+      "-F",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-sdk",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "pomumenubar",
+      "-driver-use-frontend-path",
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc"
+    ]
+  },
+  "targetDependencyMap" : {
+    "PomuMenuBar" : [
+
+    ]
+  },
+  "testDiscoveryCommands" : {
+
+  },
+  "testEntryPointCommands" : {
+
+  },
+  "traitConfiguration" : {
+    "enableAllTraits" : false
+  },
+  "writeCommands" : {
+    "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar-entitlement.plist" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<entitlement-plist>"
+        },
+        {
+          "kind" : "virtual",
+          "name" : "<com.apple.security.get-task-allow>"
+        }
+      ],
+      "outputFilePath" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar-entitlement.plist"
+    },
+    "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/App.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Logic/IdleActivityMonitor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Logic/MoodThresholds.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Models/Copy.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Models/PomuMood.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Overlay/OverlayWindowController.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/State/AppState.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/CompanionOverlayView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/CompanionSprites.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/MenuBarPomuIcon.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/MenuBarPopoverView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/MuffinSpriteView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/Palette.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/PixelGridView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/PomuSpriteView.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/sources"
+    },
+    "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.product/Objects.LinkFileList" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<link-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/App.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/AppState.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/CompanionOverlayView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/CompanionSprites.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/Copy.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/IdleActivityMonitor.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/MenuBarPomuIcon.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/MenuBarPopoverView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/MoodThresholds.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/MuffinSpriteView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/OverlayWindowController.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/Palette.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/PixelGridView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/PomuMood.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.build/PomuSpriteView.swift.o"
+        }
+      ],
+      "outputFilePath" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/PomuMenuBar.product/Objects.LinkFileList"
+    },
+    "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt" : {
+      "alwaysOutOfDate" : true,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<swift-get-version>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Library/Developer/CommandLineTools/usr/bin/swiftc"
+        }
+      ],
+      "outputFilePath" : "/Users/aoi/Desktop/Bluenote/3_Project/pomu-search-companion/PomuMenuBar/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+    }
+  }
+}

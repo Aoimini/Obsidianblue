@@ -1,0 +1,656 @@
+<title>英単語テスト</title>
+<style>
+  :root {
+    --bg: #f4f6f8;
+    --surface: #ffffff;
+    --ink: #1c2430;
+    --ink-2: #5b6675;
+    --line: #dde3ea;
+    --accent: #0b7285;
+    --accent-ink: #ffffff;
+    --accent-soft: #e0f1f4;
+    /* カテゴリ色（validate_palette.js 検証済み: light #ffffff 面） */
+    --good: #0ca678;  --good-soft: #e2f5ee;   /* 習得済 */
+    --bad: #e03131;   --bad-soft: #fceaea;    /* 要復習 */
+    --new: #e8930c;   --new-soft: #fdf1dd;    /* ニュー */
+    --leech: #7048e8; --leech-soft: #ede7fb;  /* 苦手（リーチ） */
+    --new-text: #9a6700;
+    --good-text: #087f5b;
+    --bad-text: #c92a2a;
+    --leech-text: #5f3dc4;
+    --shadow: 0 1px 2px rgba(18, 28, 40, .06), 0 4px 16px rgba(18, 28, 40, .05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #12161c; --surface: #1b212a; --ink: #e7ecf2; --ink-2: #93a0b0;
+      --line: #2c3542; --accent: #4cb8cc; --accent-ink: #0c1417; --accent-soft: #173741;
+      /* dark面 #1b212a 用ステップ（検証済み） */
+      --good: #0e9f74; --good-soft: #16302a;
+      --bad: #e04848;  --bad-soft: #3d2226;
+      --new: #cf8018;  --new-soft: #382d1c;
+      --leech: #9775fa; --leech-soft: #2a2440;
+      --new-text: #e3b34c; --good-text: #58c9a4; --bad-text: #ef8484; --leech-text: #b197fc;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 6px 20px rgba(0,0,0,.3);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #12161c; --surface: #1b212a; --ink: #e7ecf2; --ink-2: #93a0b0;
+    --line: #2c3542; --accent: #4cb8cc; --accent-ink: #0c1417; --accent-soft: #173741;
+    --good: #0e9f74; --good-soft: #16302a;
+    --bad: #e04848;  --bad-soft: #3d2226;
+    --new: #cf8018;  --new-soft: #382d1c;
+    --leech: #9775fa; --leech-soft: #2a2440;
+    --new-text: #e3b34c; --good-text: #58c9a4; --bad-text: #ef8484; --leech-text: #b197fc;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 6px 20px rgba(0,0,0,.3);
+  }
+  :root[data-theme="light"] {
+    --bg: #f4f6f8; --surface: #ffffff; --ink: #1c2430; --ink-2: #5b6675;
+    --line: #dde3ea; --accent: #0b7285; --accent-ink: #ffffff; --accent-soft: #e0f1f4;
+    --good: #0ca678; --good-soft: #e2f5ee;
+    --bad: #e03131;  --bad-soft: #fceaea;
+    --new: #e8930c;  --new-soft: #fdf1dd;
+    --leech: #7048e8; --leech-soft: #ede7fb;
+    --new-text: #9a6700; --good-text: #087f5b; --bad-text: #c92a2a; --leech-text: #5f3dc4;
+    --shadow: 0 1px 2px rgba(18, 28, 40, .06), 0 4px 16px rgba(18, 28, 40, .05);
+  }
+  * { box-sizing: border-box; }
+  html, body { background: var(--bg); }
+  body {
+    margin: 0;
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Noto Sans JP", sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .app { max-width: 560px; margin: 0 auto; padding: 20px 16px 56px; }
+
+  .masthead { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin: 4px 2px 14px; }
+  .masthead h1 { font-size: 17px; font-weight: 700; margin: 0; letter-spacing: .02em; }
+  .masthead .date { font-size: 12px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+
+  .tabs { display: flex; gap: 4px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 4px; margin-bottom: 16px; }
+  .tabs button {
+    flex: 1; border: 0; background: transparent; color: var(--ink-2);
+    font: inherit; font-size: 13px; font-weight: 600; padding: 7px 4px; border-radius: 8px; cursor: pointer;
+  }
+  .tabs button.on { background: var(--accent); color: var(--accent-ink); }
+  .tabs button:focus-visible, .choice:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); padding: 20px; }
+
+  /* ---- dashboard (intro) ---- */
+  .donutwrap { display: flex; justify-content: center; padding: 8px 0 4px; }
+  .donut { width: 210px; height: 210px; }
+  .donut .track { stroke: var(--line); opacity: .5; }
+  .donut .seg { transition: stroke-dashoffset .4s ease; }
+  @media (prefers-reduced-motion: reduce) { .donut .seg { transition: none; } }
+  .donut-center { font-variant-numeric: tabular-nums; }
+  .donut-center .pct { font-size: 44px; font-weight: 800; fill: var(--ink); }
+  .donut-center .pctmark { font-size: 20px; font-weight: 700; fill: var(--ink-2); }
+  .donut-center .sub { font-size: 12px; font-weight: 600; fill: var(--ink-2); letter-spacing: .08em; }
+
+  .cats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 14px 0 4px; }
+  .cat { text-align: center; padding: 10px 4px 8px; border-radius: 10px; background: var(--bg); }
+  .cat .n { font-size: 26px; font-weight: 800; line-height: 1.15; font-variant-numeric: tabular-nums; }
+  .cat .n small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+  .cat .l { display: flex; align-items: center; justify-content: center; gap: 5px; font-size: 12px; font-weight: 700; margin-top: 2px; }
+  .cat .en { font-size: 9px; letter-spacing: .12em; color: var(--ink-2); font-weight: 600; }
+  .cat.c-new .l { color: var(--new-text); }
+  .cat.c-bad .l { color: var(--bad-text); }
+  .cat.c-good .l { color: var(--good-text); }
+  .dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+  .dot.new { background: var(--new); } .dot.bad { background: var(--bad); }
+  .dot.good { background: var(--good); } .dot.leech { background: var(--leech); }
+
+  .actions { display: grid; gap: 8px; margin-top: 16px; }
+  .btn {
+    display: block; width: 100%; border: 0; border-radius: 10px; cursor: pointer;
+    background: var(--accent); color: var(--accent-ink);
+    font: inherit; font-size: 15px; font-weight: 700; padding: 13px;
+  }
+  .btn.ghost { background: transparent; color: var(--accent); border: 1px solid var(--line); }
+  .btn[disabled] { opacity: .45; cursor: default; }
+  .note { font-size: 12px; color: var(--ink-2); margin-top: 10px; }
+  .mix { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 2px; justify-content: center; }
+  .chip { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; }
+  .chip.bad { background: var(--bad-soft); color: var(--bad-text); }
+  .chip.new { background: var(--new-soft); color: var(--new-text); }
+  .chip.rev { background: var(--accent-soft); color: var(--accent); }
+  .chip.leech { background: var(--leech-soft); color: var(--leech-text); }
+
+  /* ---- question ---- */
+  .qmeta { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--ink-2); margin-bottom: 8px; font-variant-numeric: tabular-nums; }
+  .qmeta .tags { display: flex; gap: 5px; }
+  .qtag { font-weight: 700; padding: 1px 8px; border-radius: 999px; font-size: 11px; }
+  .qtag.bad { background: var(--bad-soft); color: var(--bad-text); }
+  .qtag.new { background: var(--new-soft); color: var(--new-text); }
+  .qtag.rev { background: var(--accent-soft); color: var(--accent); }
+  .qtag.leech { background: var(--leech-soft); color: var(--leech-text); }
+  .qtag.dir { background: var(--bg); color: var(--ink-2); border: 1px solid var(--line); }
+  .bar { height: 4px; background: var(--line); border-radius: 2px; overflow: hidden; margin-bottom: 20px; }
+  .bar i { display: block; height: 100%; background: var(--accent); transition: width .25s ease; }
+  @media (prefers-reduced-motion: reduce) { .bar i { transition: none; } }
+  .word {
+    font-family: "Iowan Old Style", "Palatino Nova", Palatino, Georgia, "Times New Roman", serif;
+    font-size: clamp(26px, 7.5vw, 38px); font-weight: 600; line-height: 1.25;
+    text-wrap: balance; margin: 4px 0 20px; overflow-wrap: break-word;
+  }
+  .word.ja {
+    font-family: inherit;
+    font-size: clamp(19px, 5.5vw, 26px); font-weight: 700;
+  }
+  .choices { display: grid; gap: 8px; }
+  .choice {
+    text-align: left; font: inherit; font-size: 14px; line-height: 1.5;
+    background: var(--bg); color: var(--ink);
+    border: 1.5px solid var(--line); border-radius: 10px; padding: 11px 13px; cursor: pointer;
+  }
+  .choice.en { font-family: Georgia, "Times New Roman", serif; font-size: 15px; }
+  .choice:not([disabled]):hover { border-color: var(--accent); }
+  .choice.hit { border-color: var(--good); background: var(--good-soft); font-weight: 700; }
+  .choice.miss { border-color: var(--bad); background: var(--bad-soft); }
+  .choice[disabled] { cursor: default; opacity: .92; }
+  .verdict { display: flex; align-items: center; gap: 8px; font-weight: 700; margin-top: 16px; font-size: 14px; }
+  .verdict.ok { color: var(--good-text); } .verdict.ng { color: var(--bad-text); }
+  .nextbtn { margin-top: 12px; }
+
+  /* ---- result ---- */
+  .intro h2, .result h2 { margin: 0 0 6px; font-size: 15px; }
+  .score { font-size: 40px; font-weight: 800; font-variant-numeric: tabular-nums; margin: 6px 0 2px; }
+  .score small { font-size: 16px; color: var(--ink-2); font-weight: 600; }
+  .wronglist { margin: 14px 0 4px; padding: 0; list-style: none; display: grid; gap: 6px; }
+  .wronglist li { background: var(--bad-soft); border-radius: 8px; padding: 8px 12px; font-size: 13px; }
+  .wronglist b { font-family: Georgia, serif; }
+
+  /* ---- book ---- */
+  .group { margin-bottom: 18px; }
+  .group h3 { font-size: 13px; margin: 0 0 8px; display: flex; align-items: center; gap: 8px; }
+  .group h3 .count { font-size: 11px; color: var(--ink-2); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .entries { display: grid; gap: 6px; }
+  .entry { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 9px 12px; }
+  .entry .w { font-family: Georgia, serif; font-weight: 600; font-size: 14px; }
+  .entry .m { font-size: 13px; color: var(--ink-2); }
+  .entry .meta { font-size: 11px; color: var(--ink-2); margin-top: 2px; font-variant-numeric: tabular-nums; }
+  .empty { color: var(--ink-2); font-size: 13px; padding: 8px 2px; }
+
+  /* ---- log ---- */
+  .session { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 11px 14px; margin-bottom: 8px; }
+  .session .head { display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .session .head .sc.ok { color: var(--good-text); } .session .head .sc.ng { color: var(--bad-text); }
+  .session .miss { font-size: 12px; color: var(--ink-2); margin-top: 4px; }
+
+  /* ---- data (backup) ---- */
+  .datacard h3 { font-size: 13px; margin: 14px 0 6px; }
+  .datacard textarea {
+    width: 100%; min-height: 72px; font: 11px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+    color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 8px;
+    resize: vertical;
+  }
+  .datarow { display: flex; gap: 8px; margin-top: 8px; }
+  .datarow .btn { padding: 9px; font-size: 13px; }
+  .flash { font-size: 12px; font-weight: 600; margin-top: 6px; }
+  .flash.ok { color: var(--good-text); } .flash.ng { color: var(--bad-text); }
+
+  .foot { text-align: center; font-size: 11px; color: var(--ink-2); margin-top: 28px; }
+</style>
+
+<div class="app">
+  <div class="masthead">
+    <h1>📝 英単語テスト</h1>
+    <span class="date" id="today"></span>
+  </div>
+
+  <div class="tabs" role="tablist">
+    <button id="tab-test" class="on">テスト</button>
+    <button id="tab-book">単語帳</button>
+    <button id="tab-log">きろく</button>
+  </div>
+
+  <div id="view-test"></div>
+  <div id="view-book" hidden></div>
+  <div id="view-log" hidden></div>
+
+  <p class="foot">単語データ更新: __BUILD__（毎朝6時ごろ自動更新）</p>
+</div>
+
+<script>
+const WORDS = __WORDS_JSON__;
+const KEY_STATE    = "eitango.v3.state";
+const KEY_STATE_V2 = "eitango.v2.state";
+const KEY_STATE_V1 = "eitango.v1.state";
+const KEY_HIST     = "eitango.v1.history";
+const INTERVALS = [1, 3, 7, 14, 30, 60]; // v2形式からの移行にのみ使用
+const SESSION_SIZE = 15;   // 1回のテストは15問
+const LEECH_AT = 4;        // 誤答がこの回数に達したら「苦手」
+const LEECH_MIX = 2;       // 苦手を毎回混ぜる最大数
+const REVERSE_AT = 14;     // 間隔がこの日数以上に育ったら日→英で出題
+const EASE_MIN = 1.3, EASE_MAX = 3.2, EASE_START = 2.5;
+const FAST_MS = 7000;      // これより速い正解は「余裕」→ 定着係数を上げる
+
+const load = (k, fb) => { try { return JSON.parse(localStorage.getItem(k)) ?? fb; } catch { return fb; } };
+const save = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch { /* 保存不可でもセッション中はメモリ上で継続 */ } };
+const todayStr = () => {
+  const d = new Date();
+  return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
+};
+const addDays = (dateStr, n) => {
+  const d = new Date(dateStr + "T00:00:00");
+  d.setDate(d.getDate() + n);
+  return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
+};
+const daysBetween = (a, b) => Math.round((new Date(b + "T00:00:00") - new Date(a + "T00:00:00")) / 86400000);
+
+/* ---- 進捗データベース（localStorage） ----
+   word -> {ivl:間隔日数, ease:定着係数, due:'YYYY-MM-DD', bad:直近ミス, last, wrongCount, seenCount}
+   簡易SM-2: 正解で ivl×ease に伸長、ミスで ivl半分＋ease低下＋翌日再出題 */
+function fromV2(v2) {
+  const out = {};
+  for (const [w, s] of Object.entries(v2)) {
+    const lv = s.level || 0;
+    out[w] = {
+      ivl: lv > 0 ? INTERVALS[Math.min(lv, INTERVALS.length) - 1] : 1,
+      ease: Math.max(EASE_MIN, EASE_START - 0.2 * (s.wrongCount || 0)),
+      due: s.due || todayStr(),
+      bad: lv === 0 && (s.seenCount || 0) > 0,
+      last: s.last, wrongCount: s.wrongCount || 0, seenCount: s.seenCount || 0,
+    };
+  }
+  return out;
+}
+let state = load(KEY_STATE, null);
+if (!state) {
+  let v2 = load(KEY_STATE_V2, null);
+  if (!v2) { // v1（正解/要復習の2フォルダ方式）→ v2相当へ
+    const v1 = load(KEY_STATE_V1, {});
+    v2 = {};
+    for (const [w, s] of Object.entries(v1)) {
+      const ok = s.box === "correct";
+      v2[w] = { level: ok ? 1 : 0, due: ok ? addDays(s.last || todayStr(), 1) : todayStr(),
+                last: s.last, wrongCount: s.wrongCount || 0, seenCount: s.seenCount || 0 };
+    }
+  }
+  state = fromV2(v2);
+  save(KEY_STATE, state);
+}
+let hist  = load(KEY_HIST, []);    // [{date, total, correct, wrong:[words]}]
+
+const st = w => state[w.w];
+/* 3カテゴリ: new=ニュー（未出題） bad=要復習（直近ミス） good=習得済（連続正解中） */
+const catOf = w => {
+  const s = st(w);
+  if (!s || !s.seenCount) return "new";
+  return s.bad ? "bad" : "good";
+};
+const isLeech = w => (st(w)?.wrongCount || 0) >= LEECH_AT;
+const isDue = w => { const s = st(w); return !!s && s.seenCount > 0 && (s.due || "") <= todayStr(); };
+/* 忘却リスク: 期限をどれだけ超過したかを間隔との比で見る（3日間隔で5日超過 ≫ 60日間隔で5日超過） */
+const overdueRatio = w => {
+  const s = st(w);
+  return daysBetween(s.due || todayStr(), todayStr()) / Math.max(1, s.ivl || 1);
+};
+/* 間隔が十分育った単語は日→英（想起）で出題 */
+const isReverse = w => { const s = st(w); return !!s && !s.bad && (s.ivl || 0) >= REVERSE_AT; };
+const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+
+/* ---------- 出題の組み立て（1回15問） ----------
+   1. 要復習: ミスした単語。誤答回数が多い順
+   2. 苦手:   誤答4回以上の単語を最大2語（期限前でも混ぜる）
+   3. 復習:   期限が来た単語。忘却リスク（超過÷間隔）が大きい順
+   4. ニュー: 未出題。追加日が新しい順（1回最大5語の枠を確保。復習を食い潰さない）
+   復習が少ない日はニューが残り枠を全部使う */
+const NEW_PER_SESSION = 5;
+function buildQuiz() {
+  const bad = WORDS.filter(w => isDue(w) && st(w).bad)
+                   .sort((a, b) => (st(b).wrongCount || 0) - (st(a).wrongCount || 0));
+  const fresh = WORDS.filter(w => catOf(w) === "new").sort((a, b) => b.d.localeCompare(a.d));
+  const rev = WORDS.filter(w => isDue(w) && !st(w).bad)
+                   .sort((a, b) => overdueRatio(b) - overdueRatio(a));
+  const q = [];
+  const push = (w, tag) => { if (q.length < SESSION_SIZE && !q.some(x => x.w.w === w.w)) q.push({ w, tag, rev: isReverse(w) }); };
+  bad.forEach(w => push(w, isLeech(w) ? "leech" : "bad"));
+  if (bad.length + fresh.length + rev.length > 0) {
+    WORDS.filter(w => isLeech(w) && !isDue(w) && catOf(w) !== "new")
+         .sort((a, b) => (st(b).wrongCount || 0) - (st(a).wrongCount || 0))
+         .slice(0, LEECH_MIX).forEach(w => push(w, "leech"));
+  }
+  const newTarget = Math.min(NEW_PER_SESSION, fresh.length);
+  rev.forEach(w => { if (q.length < SESSION_SIZE - newTarget) push(w, isLeech(w) ? "leech" : "rev"); });
+  fresh.forEach(w => push(w, "new"));
+  rev.forEach(w => push(w, isLeech(w) ? "leech" : "rev"));   // ニューが5語未満なら復習で埋める
+  return q;
+}
+function buildRandomQuiz() {
+  return shuffle([...WORDS]).slice(0, SESSION_SIZE)
+    .map(w => ({ w, tag: isLeech(w) ? "leech" : catOf(w) === "bad" ? "bad" : catOf(w) === "new" ? "new" : "rev", rev: isReverse(w) }));
+}
+
+/* 難しめの4択: 品詞ラベルや意味の長さが近いものを誤答に選ぶ */
+function distractors(word) {
+  const posOf = m => (m.match(/前置詞|接続詞|副詞|形容詞|動詞|名詞/) || [""])[0];
+  const t = posOf(word.m);
+  const pool = WORDS.filter(w => w.w !== word.w && w.m !== word.m);
+  const scored = pool.map(w => {
+    let s = Math.random();
+    if (t && posOf(w.m) === t) s += 2;                                  // 同じ品詞ラベル
+    s += 1 - Math.min(1, Math.abs(w.m.length - word.m.length) / 12);    // 意味の長さが近い
+    return { m: w.m, s };
+  }).sort((a, b) => b.s - a.s);
+  const out = [];
+  for (const c of scored) { if (!out.includes(c.m)) out.push(c.m); if (out.length === 3) break; }
+  return out;
+}
+/* 日→英用の誤答: 語長・頭文字が近い英単語を選ぶ */
+function distractorsEn(word) {
+  const pool = WORDS.filter(w => w.w !== word.w && w.m !== word.m);
+  const scored = pool.map(w => {
+    let s = Math.random();
+    if (w.w[0]?.toLowerCase() === word.w[0]?.toLowerCase()) s += 1.5;   // 同じ頭文字
+    s += 1 - Math.min(1, Math.abs(w.w.length - word.w.length) / 8);     // 語長が近い
+    return { w: w.w, s };
+  }).sort((a, b) => b.s - a.s);
+  const out = [];
+  for (const c of scored) { if (!out.includes(c.w)) out.push(c.w); if (out.length === 3) break; }
+  return out;
+}
+
+/* ---------- ダッシュボード ---------- */
+const $ = id => document.getElementById(id);
+let quiz = [], idx = 0, hits = 0, misses = [];
+let phase = "main", relearn = [], relearnTotal = 0, qStart = 0;
+
+function donutSVG(counts) {
+  const total = counts.new + counts.bad + counts.good;
+  const pct = total ? Math.round((counts.good / total) * 100) : 0;
+  const R = 82, C = 2 * Math.PI * R, GAP = 3;
+  const segs = [
+    { n: counts.good, color: "var(--good)" },
+    { n: counts.bad,  color: "var(--bad)" },
+    { n: counts.new,  color: "var(--new)" },
+  ].filter(s => s.n > 0);
+  let off = -C / 4;
+  const arcs = segs.map(s => {
+    const len = (s.n / total) * C;
+    const gap = segs.length > 1 ? GAP : 0;
+    const a = `<circle class="seg" r="${R}" cx="105" cy="105" fill="none"
+      stroke="${s.color}" stroke-width="18"
+      stroke-dasharray="${Math.max(0, len - gap)} ${C - Math.max(0, len - gap)}"
+      stroke-dashoffset="${-off}" />`;
+    off += len;
+    return a;
+  }).join("");
+  return `
+    <svg class="donut" viewBox="0 0 210 210" role="img" aria-label="習得率 ${pct}%（習得済${counts.good}語・要復習${counts.bad}語・ニュー${counts.new}語）">
+      <circle class="track" r="${R}" cx="105" cy="105" fill="none" stroke-width="18"/>
+      ${arcs}
+      <g class="donut-center" text-anchor="middle">
+        <text x="105" y="112"><tspan class="pct">${pct}</tspan><tspan class="pctmark" dx="2">%</tspan></text>
+        <text x="105" y="136" class="sub">習得率</text>
+      </g>
+    </svg>`;
+}
+
+function startSession(items) {
+  quiz = items; idx = 0; hits = 0; misses = [];
+  phase = "main"; relearn = []; relearnTotal = 0;
+  renderQuestion();
+}
+
+function renderIntro() {
+  const counts = { new: 0, bad: 0, good: 0 };
+  WORDS.forEach(w => counts[catOf(w)]++);
+  const leeches = WORDS.filter(isLeech).length;
+  const today = buildQuiz();
+  const c = { bad: 0, new: 0, rev: 0, leech: 0 };
+  today.forEach(q => c[q.tag]++);
+  const doneAll = today.length === 0;
+  $("view-test").innerHTML = `
+    <div class="card intro">
+      <div class="donutwrap">${donutSVG(counts)}</div>
+      <div class="cats">
+        <div class="cat c-new">
+          <div class="n">${counts.new}<small>語</small></div>
+          <div class="l"><span class="dot new"></span>ニュー</div>
+          <div class="en">NEW</div>
+        </div>
+        <div class="cat c-bad">
+          <div class="n">${counts.bad}<small>語</small></div>
+          <div class="l"><span class="dot bad"></span>要復習</div>
+          <div class="en">REVIEW</div>
+        </div>
+        <div class="cat c-good">
+          <div class="n">${counts.good}<small>語</small></div>
+          <div class="l"><span class="dot good"></span>習得済</div>
+          <div class="en">MASTERED</div>
+        </div>
+      </div>
+      ${doneAll ? "" : `<div class="mix">
+        ${c.bad ? `<span class="chip bad">要復習 ${c.bad}</span>` : ""}
+        ${c.leech ? `<span class="chip leech">苦手 ${c.leech}</span>` : ""}
+        ${c.new ? `<span class="chip new">ニュー ${c.new}</span>` : ""}
+        ${c.rev ? `<span class="chip rev">復習 ${c.rev}</span>` : ""}
+      </div>`}
+      <div class="actions">
+        <button class="btn" id="start" ${doneAll ? "disabled" : ""}>${doneAll ? "今日の復習はすべて完了 🎉" : `今日のテスト（${today.length}問）`}</button>
+        <button class="btn ghost" id="random">ランダム${SESSION_SIZE}問</button>
+      </div>
+      <p class="note">忘却曲線に沿った出題です。間違えた単語はその場で解き直し＆間隔が縮んで翌日再出題。正解すると単語ごとの定着度に応じて間隔が伸びます（目安 1→3→8→20→50日）。誤答${LEECH_AT}回以上は「苦手」として毎回混ざり、よく育った単語は日本語→英語で出ます。</p>
+    </div>`;
+  if (!doneAll) $("start").onclick = () => startSession(today);
+  $("random").onclick = () => startSession(buildRandomQuiz());
+}
+
+function currentItem() { return phase === "main" ? quiz[idx] : relearn[0]; }
+
+function renderQuestion() {
+  const q = currentItem(), word = q.w;
+  const reverse = q.rev;
+  const correct = reverse ? word.w : word.m;
+  const opts = shuffle(reverse ? [word.w, ...distractorsEn(word)] : [word.m, ...distractors(word)]);
+  const tagLabel = { bad: "要復習", new: "ニュー", rev: "復習", leech: "苦手" }[q.tag];
+  const headRight = phase === "main"
+    ? `${idx + 1} / ${quiz.length}`
+    : `解き直し 残り${relearn.length}語`;
+  const prog = phase === "main"
+    ? (idx / quiz.length) * 100
+    : ((relearnTotal - relearn.length) / Math.max(1, relearnTotal)) * 100;
+  $("view-test").innerHTML = `
+    <div class="card">
+      <div class="qmeta">
+        <span class="tags">
+          <span class="qtag ${q.tag}">${phase === "relearn" ? "解き直し" : tagLabel}</span>
+          ${reverse ? `<span class="qtag dir">日→英</span>` : ""}
+        </span>
+        <span>${headRight}</span>
+      </div>
+      <div class="bar"><i style="width:${prog}%"></i></div>
+      <div class="word ${reverse ? "ja" : ""}" ${reverse ? "" : 'lang="en"'}>${esc(reverse ? word.m : word.w)}</div>
+      <div class="choices">
+        ${opts.map(m => `<button class="choice ${reverse ? "en" : ""}" ${reverse ? 'lang="en"' : ""}>${esc(m)}</button>`).join("")}
+      </div>
+      <div id="after"></div>
+    </div>`;
+  qStart = Date.now();
+  document.querySelectorAll(".choice").forEach(btn => {
+    btn.onclick = () => answer(btn, btn.textContent === correct, q);
+  });
+}
+
+function answer(btn, ok, q) {
+  const word = q.w;
+  const correct = q.rev ? word.w : word.m;
+  const elapsed = Date.now() - qStart;
+  document.querySelectorAll(".choice").forEach(b => {
+    b.disabled = true;
+    if (b.textContent === correct) b.classList.add("hit");
+  });
+  if (!ok) btn.classList.add("miss");
+
+  if (phase === "main") {
+    // SRS更新は本編のみ（解き直しは練習扱い）
+    const s = state[word.w] || { ivl: 0, ease: EASE_START, wrongCount: 0, seenCount: 0, bad: false };
+    if (s.ease == null) s.ease = EASE_START;
+    s.seenCount++; s.last = todayStr();
+    if (ok) {
+      if (s.bad) {
+        s.bad = false;                    // ミス後の復帰: 半分に縮めた間隔から再開
+      } else if (s.ivl < 1) {
+        s.ivl = 1;                        // 初正解: 翌日
+      } else {
+        s.ivl = Math.min(365, Math.max(s.ivl + 1, Math.round(s.ivl * s.ease)));
+      }
+      if (elapsed < FAST_MS) s.ease = Math.min(EASE_MAX, s.ease + 0.1);  // 余裕の正解→伸びを速く
+      s.due = addDays(todayStr(), s.ivl);
+      hits++;
+    } else {
+      s.bad = true;
+      s.wrongCount = (s.wrongCount || 0) + 1;
+      s.ease = Math.max(EASE_MIN, s.ease - 0.2);                          // ミス→伸びを遅く
+      s.ivl = Math.max(1, Math.floor((s.ivl || 1) / 2));                  // 完全リセットではなく半分戻し
+      s.due = addDays(todayStr(), 1);                                     // 明日再出題
+      misses.push(q);
+    }
+    state[word.w] = s; save(KEY_STATE, state);
+  }
+
+  const verdictExtra = phase === "main" && !ok ? "（あとで解き直します）" : "";
+  $("after").innerHTML = `
+    <div class="verdict ${ok ? "ok" : "ng"}">${ok ? "⭕ 正解" : "❌ 不正解"}　<span style="font-weight:600">${esc(word.w)} — ${esc(word.m)}</span>${verdictExtra}</div>
+    <button class="btn nextbtn" id="next">次へ</button>`;
+  $("next").onclick = () => nextStep(ok);
+  $("next").focus();
+}
+
+function nextStep(ok) {
+  if (phase === "main") {
+    idx++;
+    if (idx < quiz.length) return renderQuestion();
+    if (misses.length) {           // ①ミスをその場で解き直し（正解するまで）
+      phase = "relearn";
+      relearn = shuffle([...misses]);
+      relearnTotal = relearn.length;
+      return renderQuestion();
+    }
+    return renderResult();
+  }
+  // relearn: 正解したら消化、ミスなら列の後ろへ
+  if (ok) relearn.shift();
+  else relearn.push(relearn.shift());
+  if (relearn.length) return renderQuestion();
+  return renderResult();
+}
+
+function renderResult() {
+  hist.unshift({ date: todayStr(), total: quiz.length, correct: hits, wrong: misses.map(q => q.w.w) });
+  hist = hist.slice(0, 60); save(KEY_HIST, hist);
+  const rate = Math.round((hits / quiz.length) * 100);
+  $("view-test").innerHTML = `
+    <div class="card result">
+      <h2>結果</h2>
+      <div class="score">${hits}<small> / ${quiz.length}（${rate}%）</small></div>
+      ${misses.length ? `<ul class="wronglist">${misses.map(q => `<li><b>${esc(q.w.w)}</b> — ${esc(q.w.m)}</li>`).join("")}</ul>
+        <p class="note">↑ この${misses.length}語は解き直し済み。間隔が縮んで明日また出ます。</p>` : `<p class="note">全問正解！それぞれ次の復習間隔まで出題されません 🎉</p>`}
+      <button class="btn" id="again" style="margin-top:12px">ホームに戻る</button>
+      <button class="btn ghost" id="tobook" style="margin-top:8px">単語帳を見る</button>
+    </div>`;
+  $("again").onclick = renderIntro;
+  $("tobook").onclick = () => switchTab("book");
+}
+
+/* ---------- 単語帳ビュー ---------- */
+function renderBook() {
+  const groups = [
+    { key: "leech", label: `苦手（誤答${LEECH_AT}回以上）`, dot: "leech" },
+    { key: "bad",   label: "要復習（ミスした単語）",   dot: "bad" },
+    { key: "new",   label: "ニュー（未出題）",         dot: "new" },
+    { key: "good",  label: "習得済（連続正解中）",     dot: "good" },
+  ];
+  $("view-book").innerHTML = groups.map(g => {
+    const items = WORDS.filter(w => g.key === "leech" ? isLeech(w) : (!isLeech(w) && catOf(w) === g.key))
+      .sort((a, b) => {
+        if (g.key === "new") return b.d.localeCompare(a.d);                                    // 追加が新しい順
+        if (g.key === "leech" || g.key === "bad") return (st(b)?.wrongCount || 0) - (st(a)?.wrongCount || 0); // ミスが多い順
+        return (st(a)?.due || "").localeCompare(st(b)?.due || "");                             // 次回が近い順
+      });
+    return `<div class="group">
+      <h3><span class="dot ${g.dot}"></span>${g.label}<span class="count">${items.length}語</span></h3>
+      <div class="entries">${items.length ? items.map(w => {
+        const s = state[w.w];
+        const meta = [`追加 ${w.d}`]
+          .concat(s?.due ? [`次回 ${s.due}`] : [])
+          .concat(s?.ivl ? [`間隔${s.ivl}日`] : [])
+          .concat(s?.wrongCount ? [`誤答${s.wrongCount}回`] : []).join("　");
+        return `<div class="entry"><span class="w" lang="en">${esc(w.w)}</span><div class="m">${esc(w.m)}</div><div class="meta">${meta}</div></div>`;
+      }).join("") : `<div class="empty">なし</div>`}</div>
+    </div>`;
+  }).join("");
+}
+
+/* ---------- きろくビュー（履歴 + 進捗データのバックアップ） ---------- */
+function renderLog() {
+  const sessions = hist.length ? hist.map(h => {
+    const rate = h.correct / h.total;
+    return `<div class="session">
+      <div class="head"><span>${h.date}</span><span class="sc ${rate >= .8 ? "ok" : "ng"}">${h.correct} / ${h.total}</span></div>
+      ${h.wrong.length ? `<div class="miss">間違い: ${h.wrong.map(esc).join("、")}</div>` : ""}
+    </div>`;
+  }).join("") : `<div class="card"><p class="note" style="margin:0">まだ記録がありません。最初のテストを解くとここに積み上がります。</p></div>`;
+  $("view-log").innerHTML = `${sessions}
+    <div class="card datacard" style="margin-top:14px">
+      <h3 style="margin-top:0">進捗データ（この端末のブラウザに保存）</h3>
+      <p class="note" style="margin-top:0">単語の習熟レベルとテスト履歴はこの端末のブラウザ内データベース（localStorage）に記録されています。別の端末に引き継ぐときは、書き出したデータを相手の端末で読み込んでください。</p>
+      <div class="datarow">
+        <button class="btn ghost" id="exportbtn">書き出す</button>
+        <button class="btn ghost" id="importbtn">読み込む</button>
+      </div>
+      <div id="dataarea"></div>
+    </div>`;
+  $("exportbtn").onclick = () => {
+    const payload = JSON.stringify({ v: 3, state, hist });
+    $("dataarea").innerHTML = `
+      <h3>書き出しデータ（全文をコピーして保存）</h3>
+      <textarea readonly id="exp">${esc(payload)}</textarea>
+      <div class="flash ok" id="expmsg"></div>`;
+    const ta = $("exp"); ta.focus(); ta.select();
+    try { navigator.clipboard?.writeText(payload).then(() => { $("expmsg").textContent = "クリップボードにコピーしました"; }); } catch {}
+  };
+  $("importbtn").onclick = () => {
+    $("dataarea").innerHTML = `
+      <h3>読み込み（書き出したデータを貼り付け）</h3>
+      <textarea id="imp" placeholder='{"v":3,"state":{...},"hist":[...]}'></textarea>
+      <div class="datarow"><button class="btn" id="doimport">この内容で置き換える</button></div>
+      <div class="flash" id="impmsg"></div>`;
+    $("doimport").onclick = () => {
+      const msg = $("impmsg");
+      try {
+        const d = JSON.parse($("imp").value);
+        if (!d || typeof d.state !== "object" || !Array.isArray(d.hist)) throw new Error("形式が違います");
+        state = d.v >= 3 ? d.state : fromV2(d.state);   // 旧v2の書き出しも受け付ける
+        hist = d.hist;
+        save(KEY_STATE, state); save(KEY_HIST, hist);
+        msg.className = "flash ok"; msg.textContent = "読み込みました。進捗を置き換えています。";
+        setTimeout(renderLog, 900);
+      } catch (e) {
+        msg.className = "flash ng"; msg.textContent = "読み込めませんでした。書き出したデータをそのまま貼り付けてください。";
+      }
+    };
+  };
+}
+
+/* ---------- 共通 ---------- */
+function esc(s) { const d = document.createElement("span"); d.textContent = s; return d.innerHTML; }
+function switchTab(name) {
+  ["test", "book", "log"].forEach(t => {
+    $("tab-" + t).classList.toggle("on", t === name);
+    $("view-" + t).hidden = t !== name;
+  });
+  if (name === "book") renderBook();
+  if (name === "log") renderLog();
+  if (name === "test") renderIntro();
+}
+$("tab-test").onclick = () => switchTab("test");
+$("tab-book").onclick = () => switchTab("book");
+$("tab-log").onclick = () => switchTab("log");
+
+$("today").textContent = todayStr();
+renderIntro();
+</script>
