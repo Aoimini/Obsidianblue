@@ -29,6 +29,8 @@ last_verified: 2026-07-04
   Source: [[Sources/src-auto-2026-07-04]]
 - **volleyball観戦イベント（07-15）**: ネーションズリーグ男子イタリア戦（会場: 新宿 HUB Shinjuku）。3-2で日本勝利。[[People/endo-aoi]] が複数メンバーを集めて企画。試合観戦後、HUBで飲食。「バレーに興味がなくても試合が面白いと楽しんでもらえる」という本人コメント。会場でのアニメ・エンタメ関心もあり。
   Source: [[Sources/src-auto-2026-07-15]]
+- **Fincsコンテンツ再訪（07-22）**: AI木曜会のFincsプラットフォーム上のトーク一覧・動画ライブラリへのアクセス。継続的なコンテンツフォローアップ。
+  Source: [[Sources/src-auto-2026-07-22]]
 
 ## Related
 - [[People/usutaku-usui-takumi]]（創設者）
