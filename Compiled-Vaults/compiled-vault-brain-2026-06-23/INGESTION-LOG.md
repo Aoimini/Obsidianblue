@@ -24,6 +24,14 @@ Resumable log. On any restart, read this file and `state.json` first, then conti
 ### No mutations performed
 - Original vault: read-only. No external writes (no email/calendar/Slack/Notion writes).
 
+## 2026-08-03 — Daily Delta Ingestion
+- Processed delta files for 2026-08-03: local_delta (no changes), chrome (7 searches + 115 pages), screentime (Mac 4h57m), no Notion delta.
+- No vault file changes; daily note template-only (MEMO blank).
+- Created digest at `Reports/daily-digests/2026-08-03.md` with memo-block (sports interest, compliance research exploration, fitness facility planning, entertainment media).
+- Created source trace at `Sources/src-auto-2026-08-03.md`.
+- No new canonical entities created; activity consumptive and exploratory.
+- Updated state.json `last_updated` to 2026-08-03T23:59:59Z.
+
 ## 2026-06-23 — Phase 2: Smoke Pass
 - User approved at Checkpoint 1: include Notion (放送大学 acct), keep finance amounts/line-items (still never copy account/card numbers, auth codes, tokens).
 - Notion smoke: search confirmed real work data (制作進行/案件管理/クリエイティブプロジェクト DB). Reclassified Notion as approved.
