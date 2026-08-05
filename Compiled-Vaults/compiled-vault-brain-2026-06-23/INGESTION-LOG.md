@@ -32,6 +32,17 @@ Resumable log. On any restart, read this file and `state.json` first, then conti
 - No new canonical entities created; activity consumptive and exploratory.
 - Updated state.json `last_updated` to 2026-08-03T23:59:59Z.
 
+## 2026-08-06 — Daily Delta: 2026-08-05
+- Ingested local_delta_2026-08-05 (daily note 08-05 template-only with TOEIC vocabulary list; changed files=none), chrome_2026-08-05 (5 unique searches, 105 visited pages), screentime_2026-08-05 (Mac 5h21m: Chrome 2h58m / Claude 59m / Obsidian 57m), no Notion delta.
+- New personal interest detected: divination learning path (四柱推命・タロット占い自習探索、Amazon Kindle本購入、YouTube学習動画ゆとりくん視聴、note.com自習記事閲覧).
+- Smartwatch shopping/research interest (Garmin Venu 4 multiple product page visits) — potential fitness tech upgrade aligned with health-body-management.
+- Entertainment consumption: Netflix titles + Japanese media character/talent search (谷胡桃).
+- Ongoing patterns: TOEIC study (abceed mock test scoring), yutori company observation (YouTube videos), AI木曜会 engagement (Luma/Notion/Canva revisit), Chrome extension/productivity tool research.
+- No new canonical people/company entities created (divination is personal interest topic, not entity profile; Garmin is brand/product, not entity; all company/person research within existing scope).
+- Optionally updated canonical notes: health-body-management (smartwatch research noted), habits-and-values (new divination learning interest noted).
+- Created src-auto-2026-08-05.md + daily digest 2026-08-05.md with memo-block.
+- Updated state.json `last_updated` to 2026-08-05T23:59:59Z-delta-08-05-ingested.
+
 ## 2026-08-05 — Daily Delta: 2026-08-04
 - Ingested local_delta_2026-08-04 (daily notes 08-03 with MEMO + 08-04 with vocabulary list), chrome_2026-08-04 (4 searches, 69 pages), screentime_2026-08-04 (Mac 5h14m: Chrome 4h31m / Obsidian 31m / Claude 4m), no Notion delta.
 - Updated 2 canonical notes: health-body-management (HYROX千葉 2026-08-07-09 registration confirmed, period management via tampon purchase), career-change-2026 (OpenWork company research session — デジタルアスリート、ノバセル、FUSION、ADK年収・文化調査).
