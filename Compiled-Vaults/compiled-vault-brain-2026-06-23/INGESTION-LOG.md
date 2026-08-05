@@ -32,6 +32,14 @@ Resumable log. On any restart, read this file and `state.json` first, then conti
 - No new canonical entities created; activity consumptive and exploratory.
 - Updated state.json `last_updated` to 2026-08-03T23:59:59Z.
 
+## 2026-08-05 — Daily Delta: 2026-08-04
+- Ingested local_delta_2026-08-04 (daily notes 08-03 with MEMO + 08-04 with vocabulary list), chrome_2026-08-04 (4 searches, 69 pages), screentime_2026-08-04 (Mac 5h14m: Chrome 4h31m / Obsidian 31m / Claude 4m), no Notion delta.
+- Updated 2 canonical notes: health-body-management (HYROX千葉 2026-08-07-09 registration confirmed, period management via tampon purchase), career-change-2026 (OpenWork company research session — デジタルアスリート、ノバセル、FUSION、ADK年収・文化調査).
+- Created digest at `Reports/daily-digests/2026-08-04.md` with memo-block (HYROX preparation 1 week out, menstrual health management, company research, entertainment consumption).
+- Created source trace at `Sources/src-auto-2026-08-04.md`.
+- No new canonical entities created; activity spans fitness event finalization + ongoing career research + health management.
+- Updated state.json `last_updated` to 2026-08-04T23:59:59Z-delta-08-04-ingested.
+
 ## 2026-06-23 — Phase 2: Smoke Pass
 - User approved at Checkpoint 1: include Notion (放送大学 acct), keep finance amounts/line-items (still never copy account/card numbers, auth codes, tokens).
 - Notion smoke: search confirmed real work data (制作進行/案件管理/クリエイティブプロジェクト DB). Reclassified Notion as approved.
