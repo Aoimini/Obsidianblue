@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2_daily/07-17-2026.md",
+                "file": "1_Inbox/アイドル最新曲メモ_iLiFE・NEO JAPONISM.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,11 +52,35 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "07-17-2026"
+              "title": "アイドル最新曲メモ_iLiFE・NEO JAPONISM"
+            }
+          },
+          {
+            "id": "9085910dedd704b4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "6_Personal/四柱推命.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "四柱推命"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -76,7 +100,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "楠勇真",
+                "query": "オファー",
                 "matchingCase": true,
                 "explainSearch": true,
                 "collapseAll": false,
@@ -159,11 +183,11 @@
               "type": "webviewer",
               "state": {
                 "url": "https://calendar.google.com/calendar/u/0/r/day?pli=1",
-                "title": "Google カレンダー - 2026年 7月 13日 (月曜日)、今日",
+                "title": "Google カレンダー - 2026年 8月 6日 (木曜日)、今日",
                 "mode": "webview"
               },
               "icon": "globe-2",
-              "title": "Google カレンダー - 2026年 7月 13日 (月曜日)、今日"
+              "title": "Google カレンダー - 2026年 8月 6日 (木曜日)、今日"
             }
           },
           {
@@ -299,12 +323,11 @@
               "title": "家計簿シート"
             }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 588.5
+    "width": 848.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -333,54 +356,54 @@
       "obsidian42-brat:BRAT": false
     }
   },
-  "active": "87bab0dd86ad1f9e",
+  "active": "17d4410b271375c8",
   "lastOpenFiles": [
-    "2_daily/07-17-2026.md",
-    "2_daily/07-16-2026.md",
-    "2_daily/07-15-2026.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Reports/daily-digests/2026-07-16.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Sources/src-auto-2026-07-16.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Reports/daily-digests/2026-07-15.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Sources/src-auto-2026-07-15.md",
-    "焦げ目.md",
-    "Pasted image 20260715150206.png",
-    "Pasted image 20260715143033.png",
-    "Pasted image 20260715142954.png",
+    "6_Personal/四柱推命_算出方法.md.tmp.58724.a4eb9100516d",
+    "身旺身弱判定表.png",
+    "十二運星_11-12.png",
+    "十二運星_09-10.png",
+    "十二運星_07-08.png",
+    "十二運星_05-06.png",
+    "十二運星_03-04.png",
+    "十二運星_01-02.png",
+    "十二運星_パワー一覧.png",
+    "通変星早見表.png",
+    "通変星_5グループ.png",
+    "6_Personal/四柱推命.md",
+    "6_Personal/四柱推命_算出方法.md",
+    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Reports/daily-digests/2026-08-05.md",
+    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Sources/src-auto-2026-08-05.md",
+    "2_daily/08-05-2026.md",
+    "2_daily/08-04-2026.md",
+    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Reports/daily-digests/2026-08-04.md",
+    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Sources/src-auto-2026-08-04.md",
+    "2_daily/08-03-2026.md",
+    "TOEIC対策.md",
+    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Sources/src-auto-2026-08-03.md",
+    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Reports/daily-digests/2026-08-03.md",
+    "1_Inbox/アイドル最新曲メモ_iLiFE・NEO JAPONISM.md",
+    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Sources/src-auto-2026-08-02.md",
+    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Reports/daily-digests/2026-08-02.md",
+    "2_daily/08-01-2026.md",
+    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Reports/daily-digests/2026-08-01.md",
+    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Sources/src-auto-2026-08-01.md",
+    "1_Inbox/TIF2026_遠藤担当グループ_過去披露楽曲まとめ.md",
+    "2_daily/08-02-2026.md",
+    "2_daily/07-30-2026.md",
+    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Reports/daily-digests/2026-07-30.md",
+    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Sources/src-auto-2026-07-30.md",
+    "2_daily/_review/2026-07_月次レビュー.md",
+    "5_Docs/転職/FUSIONオファー.md",
+    "2_daily/2026",
+    "3_Project/TOKYO_LOLLIPOP_台湾Threads/資料",
+    "3_Project/TOKYO_LOLLIPOP_台湾Threads/議事録",
+    "3_Project/TOKYO_LOLLIPOP_台湾Threads/報告",
+    "3_Project/TOKYO_LOLLIPOP_台湾Threads",
+    "無題のファイル.base",
     "3_Project/eitango-quiz/quiz.html",
     "3_Project/eitango-quiz/template.html",
     "3_Project/eitango-quiz/build_quiz.py",
     "3_Project/eitango-quiz",
-    "6_Personal/英単語テスト.md",
-    "6_Personal/英単語帳.md",
-    "2_daily/07-14-2026.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Reports/daily-digests/2026-07-14.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Sources/src-auto-2026-07-14.md",
-    "2_daily/07-13-2026.md",
-    "6_Personal/34ストレングスファインダー.pdf",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/INGESTION-LOG.md.tmp.93946.38c8ab37ff1d",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Reports/daily-digests/2026-07-13.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Sources/src-auto-2026-07-13.md",
-    "2_daily/07-06-2026.md",
-    "Clippings/デジマ_まとめ.md",
-    "2_daily/202606/06-30-2026.md",
-    "2_daily/07-09-2026.md",
-    "2_daily/07-10-2026.md",
-    "2_daily/07-11-2026.md",
-    "2_daily/07-01-2026.md",
-    "5_Docs/転職/FUSION_楠勇真プロファイル.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Sources/src-auto-2026-07-12.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Reports/daily-digests/2026-07-11.md",
-    "3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/MenuBarPopoverView.swift",
-    "3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Views/MenuBarPomuIcon.swift",
-    "Clippings/person",
-    "3_Project/pomu-search-companion/PomuMenuBar/Sources/PomuMenuBar/Overlay/OverlayWindowController.swift",
-    "3_Project/travel-craft-soller/preview-scene.svg",
-    "3_Project/travel-craft-soller/popup-sheet2-parts.svg",
-    "3_Project/travel-craft-soller/popup-sheet1-base-card.svg",
-    "3_Project/travel-craft-soller/diorama-sheet4-tram.svg",
-    "3_Project/travel-craft-soller/diorama-sheet3-tree-lamp.svg",
-    "3_Project/travel-craft-soller/diorama-sheet2-church.svg",
-    "3_Project/travel-craft-soller/diorama-sheet1-sky-base.svg",
     "無題のファイル.canvas"
   ]
 }
