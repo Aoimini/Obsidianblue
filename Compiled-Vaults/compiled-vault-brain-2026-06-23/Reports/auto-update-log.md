@@ -93,3 +93,4 @@ report: auto-update-log
 - 2026-08-06 — status: **OK** — cost=$0.3357 (model=haiku, local=nonempty, chrome=yes, screen=yes, notion=no)
 - 2026-08-07 — status: **OK** — cost=$0.2959 (model=haiku, local=nonempty, chrome=yes, screen=yes, notion=no)
 - 2026-08-08 — status: **OK** — cost=$0.3366 (model=haiku, local=none, chrome=yes, screen=yes, notion=no)
+- 2026-08-10 — status: **WARN** — cost=$0.1543 claude_error (model=haiku, local=none, chrome=yes, screen=yes, notion=no)
