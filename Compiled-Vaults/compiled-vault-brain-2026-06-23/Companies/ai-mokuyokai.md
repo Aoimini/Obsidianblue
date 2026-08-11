@@ -32,6 +32,9 @@ last_verified: 2026-07-04
 - **Fincsコンテンツ再訪（07-22）**: AI木曜会のFincsプラットフォーム上のトーク一覧・動画ライブラリへのアクセス。継続的なコンテンツフォローアップ。
   Source: [[Sources/src-auto-2026-07-22]]
 
+- **Fincsプラットフォーム継続エンゲージメント（08-08）**: AI木曜会 Fincs platform への再訪問、talk library / video library review。継続的なコンテンツフォローアップ。
+  Source: [[Sources/src-auto-2026-08-08]]
+
 ## Related
 - [[People/usutaku-usui-takumi]]（創設者）
 - [[People/endo-aoi]]
