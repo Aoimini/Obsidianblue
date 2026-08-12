@@ -11,24 +11,10 @@
             "id": "93f50f28413f3e15",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2_daily/07-15-2026.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "07-15-2026"
+              "title": "新規タブ"
             }
           },
           {
@@ -61,7 +47,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "6_Personal/四柱推命.md",
+                "file": "6_Personal/四柱推命/MY四柱推命.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -76,11 +62,47 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "四柱推命"
+              "title": "MY四柱推命"
+            }
+          },
+          {
+            "id": "e184e7d8e235df84",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2_daily/08-12-2026.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "08-12-2026"
+            }
+          },
+          {
+            "id": "4ba6e12aeb698e3b",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.13.6"
+              },
+              "icon": "lucide-book-up",
+              "title": "リリースノート 1.13.6"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -118,7 +140,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "ファイルエクスプローラ"
@@ -145,7 +169,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       },
       {
         "id": "74bdebda5cfaad44",
@@ -183,11 +207,11 @@
               "type": "webviewer",
               "state": {
                 "url": "https://calendar.google.com/calendar/u/0/r/day?pli=1",
-                "title": "Google カレンダー - 2026年 8月 6日 (木曜日)、今日",
-                "mode": "webview"
+                "title": "calendar.google.com/calendar/u/0/r/day?pli=1",
+                "mode": "error"
               },
               "icon": "globe-2",
-              "title": "Google カレンダー - 2026年 8月 6日 (木曜日)、今日"
+              "title": "calendar.google.com/calendar/u/0/r/day?pli=1"
             }
           },
           {
@@ -323,11 +347,12 @@
               "title": "家計簿シート"
             }
           }
-        ]
+        ],
+        "currentTab": 8
       }
     ],
     "direction": "horizontal",
-    "width": 848.5
+    "width": 225.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -356,54 +381,54 @@
       "obsidian42-brat:BRAT": false
     }
   },
-  "active": "17d4410b271375c8",
+  "active": "4ba6e12aeb698e3b",
   "lastOpenFiles": [
-    "6_Personal/四柱推命_算出方法.md.tmp.58724.a4eb9100516d",
-    "身旺身弱判定表.png",
-    "十二運星_11-12.png",
-    "十二運星_09-10.png",
-    "十二運星_07-08.png",
-    "十二運星_05-06.png",
-    "十二運星_03-04.png",
-    "十二運星_01-02.png",
-    "十二運星_パワー一覧.png",
-    "通変星早見表.png",
-    "通変星_5グループ.png",
-    "6_Personal/四柱推命.md",
-    "6_Personal/四柱推命_算出方法.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Reports/daily-digests/2026-08-05.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Sources/src-auto-2026-08-05.md",
-    "2_daily/08-05-2026.md",
-    "2_daily/08-04-2026.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Reports/daily-digests/2026-08-04.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Sources/src-auto-2026-08-04.md",
-    "2_daily/08-03-2026.md",
+    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Reports/daily-digests/2026-08-12.md",
+    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Sources/src-auto-2026-08-12.md",
+    "3_Project/non-no/HYROX初心者ガイド_千葉大会参戦レポ_WP用.html",
+    "3_Project/non-no/HYROX初心者ガイド_千葉大会参戦レポ.md",
+    "2_daily/08-12-2026.md",
+    "ACCヤングコンペ.md",
+    "2_daily/08-11-2026.md",
+    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Reports/daily-digests/2026-08-11.md",
+    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Sources/src-auto-2026-08-11.md",
+    "2_daily/08-08-2026.md",
+    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Reports/daily-digests/2026-08-08.md",
+    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Sources/src-auto-2026-08-08.md",
+    "2_daily/08-07-2026.md",
+    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Reports/daily-digests/2026-08-07.md",
+    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Sources/src-auto-2026-08-07.md",
+    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Projects/acc-young-competition.md",
+    "6_Personal/四柱推命/MY四柱推命.md",
+    "Threads活用最前線：台湾で広がる次世代のSNS広告戦略の実態とは？.md",
+    "6_Personal/四柱推命/Pasted image 20260805133756.png",
+    "6_Personal/四柱推命/吉_干合と支合.png",
+    "無題のファイル.base",
+    "6_Personal/四柱推命",
     "TOEIC対策.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Sources/src-auto-2026-08-03.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Reports/daily-digests/2026-08-03.md",
-    "1_Inbox/アイドル最新曲メモ_iLiFE・NEO JAPONISM.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Sources/src-auto-2026-08-02.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Reports/daily-digests/2026-08-02.md",
-    "2_daily/08-01-2026.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Reports/daily-digests/2026-08-01.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Sources/src-auto-2026-08-01.md",
-    "1_Inbox/TIF2026_遠藤担当グループ_過去披露楽曲まとめ.md",
-    "2_daily/08-02-2026.md",
-    "2_daily/07-30-2026.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Reports/daily-digests/2026-07-30.md",
-    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Sources/src-auto-2026-07-30.md",
-    "2_daily/_review/2026-07_月次レビュー.md",
-    "5_Docs/転職/FUSIONオファー.md",
+    "2_daily/2026/202608/08-02-2026.md",
+    "2_daily/2026/202608/08-01-2026.md",
+    "2_daily/2026/202607/07-01-2026.md",
+    "2_daily/2026/202608",
+    "2_daily/2026/202607",
+    "2_daily/2026/202608/08-06-2026.md",
+    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Reports/daily-digests/2026-08-06.md",
+    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Sources/src-auto-2026-08-06.md",
+    "6_Personal/四柱推命_算出方法.md.tmp.58724.a4eb9100516d",
+    "6_Personal/四柱推命/身旺身弱判定表.png",
+    "6_Personal/四柱推命/十二運星_11-12.png",
+    "6_Personal/四柱推命/十二運星_09-10.png",
+    "6_Personal/四柱推命/十二運星_07-08.png",
+    "6_Personal/四柱推命/十二運星_05-06.png",
+    "6_Personal/四柱推命/十二運星_03-04.png",
+    "6_Personal/四柱推命/十二運星_01-02.png",
+    "6_Personal/四柱推命/十二運星_パワー一覧.png",
+    "6_Personal/四柱推命/四柱推命_算出方法.md",
+    "Compiled-Vaults/compiled-vault-brain-2026-06-23/Reports/daily-digests/2026-08-05.md",
     "2_daily/2026",
     "3_Project/TOKYO_LOLLIPOP_台湾Threads/資料",
     "3_Project/TOKYO_LOLLIPOP_台湾Threads/議事録",
     "3_Project/TOKYO_LOLLIPOP_台湾Threads/報告",
-    "3_Project/TOKYO_LOLLIPOP_台湾Threads",
-    "無題のファイル.base",
-    "3_Project/eitango-quiz/quiz.html",
-    "3_Project/eitango-quiz/template.html",
-    "3_Project/eitango-quiz/build_quiz.py",
-    "3_Project/eitango-quiz",
     "無題のファイル.canvas"
   ]
 }
